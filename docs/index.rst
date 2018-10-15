@@ -2,7 +2,12 @@ Welcome to the documentation of the IBSI
 ========================================
 
 .. toctree::
+   :hidden:
 
+   Home < self >
+
+.. toctree::
+   :maxdepth: 2
   The image biomarker standardisation initiative <The_image_biomarker_standardisation_initiative>
   Introduction <Introduction>
   Image processing <Image_processing>

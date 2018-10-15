@@ -7,7 +7,9 @@ from six.moves import range
 
 
 def main():
-  output = parse_input(r'..\ibsi-reference-manual\IBSIWorkDocument.tex')
+  tex_source = r'..\ibsi-reference-manual\IBSIWorkDocument.tex'
+  output = parse_input(tex_source)
+  figures = parse_tex_figures(tex_source)
   if output is None or output == '':
     raise ValueError('Empty output was returned!')
 
@@ -33,6 +35,9 @@ def main():
 
   for section in split_sections(output_lines, hdr_chars):
     process_citations(section, citation_data)
+    fix_math_block(section)
+    fix_figures(section, figures)
+
     out_str = u'\n'.join(section).encode('utf-8')
     print('Storing section %s' % section[0])
     with open(section[0].replace(' ', '_')+'.rst', mode='wb') as out_fs:
@@ -199,6 +204,119 @@ def _format_citation(record):
 
   return '; '.join(citation), url
 
+
+def fix_math_block(section_lines):
+
+  math_block = False
+  math_line = False
+  indent = None
+  for line_idx in range(len(section_lines)):
+    line = section_lines[line_idx]
+
+    if line == '':
+      continue
+
+    if re.match('\s*.. math::$', line):
+      math_block = True
+    elif re.match('\s*.. math::', line):
+      math_line = True
+    elif math_block:
+      if indent is None:
+        indent = re.match('\s*', line).group()
+      elif not re.match(indent + '\S', line):
+        indent = None
+        math_block = False
+        section_lines[line_idx] = line.strip()
+    elif math_line and line.startswith(' '):
+      math_line = False
+      section_lines[line_idx] = line.strip()
+
+
+def parse_tex_figures(tex_source):
+  """
+  Figures in Tex are not parsed correctly by pandoc.
+
+  For example, \label and \scale are ignored, and caption is copied to alt:
+
+  :param tex_source: Tex base file of the IBSI document
+  :return: a dictionary containing the Tex defined filename as key, and the replacement lines as value (list)
+  """
+
+  if not os.path.isfile(tex_source):
+    raise ValueError('Tex source file (%s) is not found!' % tex_source)
+
+  figures = {}
+  with open(tex_source, mode='r') as tex_fs:
+    tex_data = tex_fs.read()
+
+  for match in re.finditer(r'\\begin\{figure\}.*\n(?P<fig_data>(.+\n)+)\\end\{figure\}', tex_data):
+    figure_data = match.groupdict()['fig_data']
+    fig_elements = {}
+    fig_name = None
+
+    if r'\centering' in figure_data:
+      fig_elements['align'] = 'center'
+    if r'\includegraphics' in figure_data:
+
+      graphics_sec = re.search(r'\\includegraphics(\[.*scale=(?P<scale>0\.\d+)\])?\{(?P<fig_name>.+)\}', figure_data)
+
+      fig_name = graphics_sec.groupdict()['fig_name']
+      scale = graphics_sec.groupdict().get('scale')
+      if scale:
+        fig_elements['scale'] = str(int(float(scale) * 100))
+
+    caption = re.search(r'\\caption\{(.+)\}', figure_data)
+    if caption:
+      fig_elements['caption'] = caption.group(1)
+    label = re.search(r'\\label\{(.+)\}', figure_data)
+    if label:
+      fig_elements['label'] = label.group(1)
+
+    if fig_name:
+      figures[fig_name] = fig_elements
+
+  return figures
+
+
+def fix_figures(section_lines, figures):
+  fig_start = None
+  indent = None
+
+  replacements = []
+
+  for line_idx in range(len(section_lines)):
+    line = section_lines[line_idx]
+
+    if line.startswith('.. figure:: '):
+      fig_name = line.replace('.. figure:: ', '')
+      if fig_name in figures:
+        fig_start = line_idx
+    elif fig_start is not None:
+      if indent is None:
+        indent = re.match('\s*', line).group()
+      elif line == '' or not re.match(indent + '\S', line):
+        indent = None
+        fig_end = line_idx
+
+        #while section_lines[fig_end] == '':
+        #  fig_end -= 1
+        replacements.append((fig_start, fig_end, fig_name))
+
+        fig_start = None
+
+  for r in replacements:
+    fig = []
+    fig_data = figures[r[2]]
+    if 'label' in fig_data:
+      fig.append(u'.. _%s:' % fig_data['label'])
+
+    fig.append(u'.. figure:: ' + r[2].replace('.pdf', '.png'))
+
+    for k in ('scale', 'align'):
+      if k in fig_data:
+        fig.append(u'   :%s: %s' % (k, fig_data[k].strip()))
+
+    section_lines[r[0]:r[1]] = fig
 
 if __name__ == '__main__':
   os.chdir(r'..\docs')
