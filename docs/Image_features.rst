@@ -1,6 +1,9 @@
 Image features
 ==============
 
+General considerations
+----------------------
+
 In this chapter we will describe a set of quantitative image features.
 The feature set presented here largely builds upon the feature sets
 proposed by \[1_\] and
@@ -63,7 +66,7 @@ distance weighting for texture features is described. All three are
 defined below.
 
 Grid distances
---------------
+^^^^^^^^^^^^^^
 
 Grid distance is an important concept that is used by several feature
 families, particularly texture features. Grid distances can be measured
@@ -74,15 +77,15 @@ vector from a center voxel at
 
 -  :math:`\ell_1` norm or *Manhattan* norm ():
 
-   .. math:: \norm{\mathbf{m}}_1 = |m_x| + |m_y| + |m_z|
+   .. math:: \|\mathbf{m}\|_1 = |m_x| + |m_y| + |m_z|
 
 -  :math:`\ell_2` norm or *Euclidean* norm ():
 
-   .. math:: \norm{\mathbf{m}}_2 = \sqrt{m_x^2 + m_y^2 + m_z^2}
+   .. math:: \|\mathbf{m}\|_2 = \sqrt{m_x^2 + m_y^2 + m_z^2}
 
 -  :math:`\ell_{\infty}` norm or *Chebyshev* norm ():
 
-   .. math:: \norm{\mathbf{m}}_{\infty} = \text{max}(|m_x|,|m_y|,|m_z|)
+   .. math:: \|\mathbf{m}\|_{\infty} = \text{max}(|m_x|,|m_y|,|m_z|)
 
 An example of how the above norms differ in practice is shown in figure
 [fig:distance\_norms].
@@ -94,7 +97,7 @@ An example of how the above norms differ in practice is shown in figure
 120pt [fig:chebyshev\_distance]
 
 Feature aggregation
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 Features from some families may be calculated from, e.g. slices. As a
 consequence, multip le values for the same feature may be computed.
@@ -104,7 +107,7 @@ Feature aggregation methods depend on the family, and are detailed in
 the family description.
 
 Distance weighting
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Distance weighting is not a default operation for any of the texture
 families, but is implemented in software such as PyRadiomics
@@ -135,7 +138,7 @@ at the ROI edge well, and also to avoid inconsistencies in feature
 values introduced by mixing representations in small voxel volumes.
 
 Mesh-based representation
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A mesh-based representation of the outer surface allows consistent
 evaluation of the surface volume and area independent of size.
@@ -193,7 +196,7 @@ consistent orientation of the face normals. Algorithm implementations
 may return consistently orientated faces by default.
 
 ROI morphological and intensity masks
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ROI consists of a morphological and an intensity mask. The
 morphological mask is used to calculate many of the morphological
@@ -207,13 +210,13 @@ digital phantom, but differ due to re-segmentation of the intensity
 mask.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 By definition, morphological features are calculated in 3D (), and not
 per slice.
 
 Volume 
-^^^^^^^
+~~~~~~~
 
 The *volume* :math:`V` is calculated from the ROI mesh as follows
 \[8_\]. A tetrahedron is formed by each face
@@ -236,7 +239,7 @@ For positron emission tomography, *volume* is equivalent to the
 *metabolically active tumour volume* (MATV).
 
 Approximate volume
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 In clinical practice, volumes are commonly determined by counting
 voxels. For volumes consisting of a large number of voxels (1000s), the
@@ -254,7 +257,7 @@ Here :math:`N_v` is the number of voxels in the morphological mask of
 the ROI, and :math:`V_k` the volume of voxel :math:`k`.
 
 Surface area
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 The *surface area* :math:`A` is also calculated from the ROI mesh by
 summing over the triangular face surface areas
@@ -273,7 +276,7 @@ area* :math:`A` is then:
 .. math:: F_{\mathit{morph.area}} = A = \sum_{k=1}^{N_{fc}} A_k
 
 Surface to volume ratio
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 The *surface to volume ratio* is given as
 \[1_\]:
@@ -281,7 +284,7 @@ The *surface to volume ratio* is given as
 .. math:: F_{\mathit{morph.av}} = \frac{A}{V}
 
 Compactness 1
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Several features (*compactness 1* and *2*, *spherical disproportion*,
 *sphericity* and *asphericity*) quantify the deviation of the ROI volume
@@ -298,7 +301,7 @@ Some definitions use :math:`A^{2/3}` instead of :math:`A^{3/2}`
 quantity.
 
 Compactness 2
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 *Compactness 2* \[1_\] also quantifies how
 sphere-like the volume is:
@@ -309,7 +312,7 @@ By definition
 :math:`F_{\mathit{morph.comp.1}} = 1/6\pi \left(F_{\mathit{morph.comp.2}}\right)^{1/2}`.
 
 Spherical disproportion 
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Spherical disproportion* \[1_\] likewise
 describes how sphere-like the volume is:
@@ -320,7 +323,7 @@ By definition
 :math:`F_{\mathit{morph.sph.dispr}} = \left(F_{\mathit{morph.comp.2}}\right)^{-1/3}`.
 
 Sphericity 
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 *Sphericity* \[1_\] is a further measure to
 describe how sphere-like the volume is:
@@ -331,7 +334,7 @@ By definition
 :math:`F_{\mathit{morph.sphericity}} = \left(F_{\mathit{morph.comp.2}}\right)^{1/3}`.
 
 Asphericity 
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 *Asphericity* \[9_\] also describes how
 much the ROI deviates from a perfect sphere, with perfectly spherical
@@ -343,7 +346,7 @@ By definition
 :math:`F_{\mathit{morph.asphericity}} = \left(F_{\mathit{morph.comp.2}}\right)^{-1/3}-1`
 
 Centre of mass shift 
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 The distance between the ROI volume centroid and the intensity-weighted
 ROI volume is an abstraction of the spatial distribution of low/high
@@ -367,7 +370,7 @@ The distance between the two centres of mass is then:
 .. math:: F_{\mathit{morph.com}} = ||\overrightarrow{CoM}_{geom}-\overrightarrow{CoM}_{gl}||_2
 
 Maximum 3D diameter 
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 The *maximum 3D diameter* \[1_\] is the distance
 between the two most distant vertices in the ROI mesh vertex set
@@ -388,7 +391,7 @@ features
 ([feat\_morph\_vol\_dens\_conv\_hull]-[feat\_morph\_area\_dens\_conv\_hull]).
 
 Major axis length 
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 Principal component analysis (PCA) can be used to determine the main
 orientation of the ROI \[10_\]. On a three
@@ -418,7 +421,7 @@ largest eigenvalue obtained by PCA on the point set of voxel centers
 .. math:: F_{\mathit{morph.pca.major}} = 2a = 4\sqrt{\lambda_{\mathit{major}}}
 
 Minor axis length 
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 The *minor axis length* of the ROI provides a measure of how far the
 volume extends along the second largest axis. The *minor axis length* is
@@ -429,7 +432,7 @@ largest eigenvalue obtained by PCA, as described in Section
 .. math:: F_{\mathit{morph.pca.minor}}= 2b =4\sqrt{\lambda_{\mathit{minor}}}
 
 Least axis length 
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 The least axis is the axis along which the object is least extended. The
 *least axis length* is twice the semi-axis length :math:`c`, determined
@@ -439,7 +442,7 @@ using the smallest eigenvalue obtained by PCA, as described in Section
 .. math:: F_{\mathit{morph.pca.least}}= 2c =4\sqrt{\lambda_{\mathit{least}}}
 
 Elongation 
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 The ratio of the major and minor principal axis lengths could be viewed
 as the extent to which a volume is longer than it is wide, i.e. is
@@ -450,7 +453,7 @@ smaller values express greater elongation of the ROI volume.
 .. math:: F_{\mathit{morph.pca.elongation}} =\sqrt{\frac{\lambda_{minor}}{\lambda_{major}}}
 
 Flatness
-^^^^^^^^
+~~~~~~~~
 
 The ratio of the major and least axis lengths could be viewed as the
 extent to which a volume is flat relative to its length. For
@@ -461,7 +464,7 @@ objects which are increasingly flatter.
 .. math:: F_{\mathit{morph.pca.flatness}} = \sqrt{\frac{\lambda_{least}}{\lambda_{major}}}
 
 Volume density - axis-aligned bounding box
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Volume density is the fraction of the ROI volume and a comparison
 volume. Here the comparison volume is that of the axis-aligned bounding
@@ -477,7 +480,7 @@ This feature is also called *extent*
 \[12_, 10_\].
 
 Area density - axis-aligned bounding box
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Conceptually similar to the *volume density - axis-aligned bounding box*
 feature, *area density* considers the ratio of the ROI surface area and
@@ -490,7 +493,7 @@ Thus:
 .. math:: F_{\mathit{morph.a.dens.aabb}} = \frac{A}{A_{aabb}}
 
 Volume density - oriented minimum bounding box
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The volume of an axis-aligned bounding box is generally not the smallest
 obtainable volume enclosing the ROI. By orienting the box along a
@@ -511,7 +514,7 @@ Here :math:`V_{ombb}` is the volume of the oriented minimum bounding
 box.
 
 Area density - oriented minimum bounding box
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *area density* is estimated as:
 
@@ -522,7 +525,7 @@ calculated for the *volume density - oriented minimum bounding box*
 feature.
 
 Volume density - approximate enclosing ellipsoid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The eigenvectors and eigenvalues from PCA of the ROI voxel center point
 set :math:`\mathbf{X}_{c}` can be used to describe an ellipsoid
@@ -535,7 +538,7 @@ The *volume density* is then:
 .. math:: F_{\mathit{morph.v.dens.aee}} = \frac{3V}{4\pi abc}
 
 Area density - approximate enclosing ellipsoid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The surface area of an ellipsoid can generally not be evaluated in an
 elementary form. However, it is possible to approximate the surface
@@ -556,7 +559,7 @@ The *area density* is then approximated as:
 .. math:: F_{\mathit{morph.a.dens.aee}} = \frac{A}{A_{\mathit{aee}}}
 
 Volume density - minimum volume enclosing ellipsoid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The approximate ellipsoid may not enclose the ROI or be the smallest
 enclosing ellipsoid. The minimum volume enclosing ellipsoid is generally
@@ -578,7 +581,7 @@ For Khachiyan’s barycentric coordinate descent-based methods we use a
 default tolerance :math:`\tau=0.001` as stopping criterion.
 
 Area density - minimum volume enclosing ellipsoid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The surface area of an ellipsoid does not have a general elementary
 form, but should be approximated as noted in Section
@@ -588,7 +591,7 @@ MVEE be :math:`A_{\mathit{mvee}}`. Then:
 .. math:: F_{\mathit{morph.a.dens.mvee}} = \frac{A}{A_{\mathit{mvee}}}
 
 Volume density - convex hull
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The convex hull encloses ROI mesh vertex set :math:`\mathbf{X}_{vx}` and
 consists of the vertex set :math:`\mathbf{X}_{vx,convex}` and
@@ -603,7 +606,7 @@ This feature is also called *solidity*
 \[12_, 10_\].
 
 Area density - convex hull
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The area of the convex hull :math:`A_{convex}` is the sum of the areas
 of the faces of the convex hull, as in the calculation of the *area*
@@ -613,7 +616,7 @@ the one used in the *volume density - convex hull* feature. Then:
 .. math:: F_{\mathit{morph.a.dens.conv.hull}} = \frac{A}{A_{convex}}
 
 Integrated intensity
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 *Integrated intensity* is the average grey level multiplied by the
 volume. In the context of :sup:`18`\ F-FDG-PET, this feature is called
@@ -624,7 +627,7 @@ volume. In the context of :sup:`18`\ F-FDG-PET, this feature is called
 :math:`N_{v,gl}` is the number of voxels in the ROI intensity mask.
 
 Moran’s I index
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Moran’s *I* index is an indicator of spatial autocorrelation
 \[22_, 23_\]. It is defined as:
@@ -646,7 +649,7 @@ Approximation by repeated subsampling of the ROI may be required to make
 the calculation tractable, at the cost of accuracy.
 
 Geary’s C measure
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Geary’s *C* measure assesses spatial autocorrelation, similar to Moran’s
 *I* index \[25_, 23_\]. In contrast to
@@ -678,13 +681,13 @@ voxel, the corresponding local neighbourhood draws upon all voxels
 regardless of being in an ROI.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 By definition, local intensity features are calculated in 3D (), and not
 per slice.
 
 Local intensity peak 
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 The *local intensity peak* was originally devised for reducing variance
 in determining standardised uptake values \[26_\].
@@ -704,7 +707,7 @@ ROI, *local intensity peak* is calculated for each of these voxels, and
 the highest *local intensity peak* is chosen.
 
 Global intensity peak 
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 The *global intensity peak* feature :math:`F_{\mathit{loc.peak.global}}`
 is similar to the *local intensity peak*
@@ -742,28 +745,28 @@ intensity mask is denoted as
 :math:`\mathbf{X}_{gl}=\left\lbrace X_{gl,1},X_{gl,2},\ldots,X_{gl,N_v}\right\rbrace`.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 We recommend calculating intensity-based statistical features using the
 3D volume (). Computing features per slice and subsequently averaging ()
 is not recommended.
 
 Mean
-^^^^
+~~~~
 
 The *mean* grey level of :math:`\mathbf{X}_{gl}` is calculated as:
 
 .. math:: F_{\mathit{stat.mean}} = \frac{1}{N_v}\sum_{k=1}^{N_v} X_{gl,k}
 
 Variance
-^^^^^^^^
+~~~~~~~~
 
 The grey level *variance* of :math:`\mathbf{X}_{gl}` is defined as:
 
 .. math:: F_{\mathit{stat.var}} = \frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{gl,k}-\mu \right)^2
 
 Skewness
-^^^^^^^^
+~~~~~~~~
 
 The *skewness* of the grey level distribution of :math:`\mathbf{X}_{gl}`
 is defined as:
@@ -774,7 +777,7 @@ Here :math:`\mu=F_{\mathit{stat.mean}}`. If the grey level *variance*
 :math:`F_{\mathit{stat.var}} = 0`, :math:`F_{\mathit{stat.skew}}=0`.
 
 Kurtosis
-^^^^^^^^
+~~~~~~~~
 
 *Kurtosis*, or technically excess kurtosis, is a measure of peakedness
 in the grey level distribution :math:`\mathbf{X}_{gl}`:
@@ -787,19 +790,19 @@ distributions. If the grey level *variance*
 :math:`F_{\mathit{stat.var}} = 0`, :math:`F_{\mathit{stat.kurt}}=0`.
 
 Median
-^^^^^^
+~~~~~~
 
 The *median* :math:`F_{\mathit{stat.median}}` is the sample median of
 :math:`\mathbf{X}_{gl}`.
 
 Minimum grey level
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 The *minimum grey level* :math:`F_{\mathit{stat.min}}` is equal to the
 lowest grey level present in :math:`\mathbf{X}_{gl}`.
 
 10\ :sup:`th` percentile
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 :math:`P_{10}` is the 10\ :sup:`th` percentile of
 :math:`\mathbf{X}_{gl}`. :math:`P_{10}` is more robust to grey level
@@ -807,7 +810,7 @@ outliers than the *minimum grey level* and is defined as
 :math:`F_{\mathit{stat.P10}}`.
 
 90\ :sup:`th` percentile
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 :math:`P_{90}` is the 90\ :sup:`th` percentile of
 :math:`\mathbf{X}_{gl}`. :math:`P_{90}` is more robust to grey level
@@ -815,13 +818,13 @@ outliers than the *maximum grey level* and is defined as
 :math:`F_{\mathit{stat.P90}}`.
 
 Maximum grey level
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 The *maximum grey level* :math:`F_{\mathit{stat.max}}` is equal to the
 highest grey level present in :math:`\mathbf{X}_{gl}`.
 
 Interquartile range
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 The *interquartile range* (IQR) of :math:`\mathbf{X}_{gl}` is defined
 as:
@@ -832,14 +835,14 @@ as:
 75\ :sup:`th` percentiles of :math:`\mathbf{X}_{gl}`, respectively.
 
 Range
-^^^^^
+~~~~~
 
 The *range* of grey levels is defined as:
 
 .. math:: F_{\mathit{stat.range}} = \text{max}(\mathbf{X}_{gl}) - \text{min}(\mathbf{X}_{gl})
 
 Mean absolute deviation
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 *Mean absolute deviation* is a measure of dispersion from the mean of
 :math:`\mathbf{X}_{gl}`:
@@ -849,7 +852,7 @@ Mean absolute deviation
 Here :math:`\mu=F_{\mathit{stat.mean}}`.
 
 Robust mean absolute deviation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *mean absolute deviation* feature may be influenced by outliers. To
 increase robustness, the set of grey levels can be restricted to those
@@ -869,7 +872,7 @@ The robust mean absolute deviation is then:
 :math:`\mathbf{X_{gl,10-90}}`.
 
 Median absolute deviation
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Median absolute deviation* is similar in concept to *mean absolute
 deviation*, but measures dispersion from the median instead of mean.
@@ -880,7 +883,7 @@ Thus:
 Here, median :math:`M = F_{\mathit{stat.median}}`.
 
 Coefficient of variation
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *coefficient of variation* measures the dispersion of the
 :math:`\mathbf{X}_{gl}` distribution. It is defined as:
@@ -892,7 +895,7 @@ Here :math:`\sigma={F_{\mathit{stat.var}}}^{1/2}` and
 of the grey level distribution, respectively.
 
 Quartile coefficient of dispersion
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *quartile coefficient of dispersion* is a more robust alternative to
 *coefficient of variance*. It is defined as:
@@ -903,7 +906,7 @@ The *quartile coefficient of dispersion* is a more robust alternative to
 75\ :sup:`th` percentile of :math:`\mathbf{X}_{gl}`, respectively.
 
 Energy
-^^^^^^
+~~~~~~
 
 *Energy* \[1_\] of :math:`\mathbf{X}_{gl}` is
 defined as:
@@ -911,7 +914,7 @@ defined as:
 .. math:: F_{\mathit{stat.energy}} = \sum_{k=1}^{N_v} X_{gl,k}^2
 
 Root mean square
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 The *root mean square* feature \[1_\], which
 also called the *quadratic mean*, of :math:`\mathbf{X}_{gl}` is defined
@@ -937,14 +940,14 @@ level :math:`i` in :math:`\mathbf{X}_{d}`. The occurrence probability
 :math:`p_i=n_i/N_v`.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 We recommend calculating intensity histogram features using the 3D
 volume (). Computing features per slice and subsequently averaging () is
 not recommended.
 
 Intensity histogram mean
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *mean* \[1_\] of :math:`\mathbf{X}_{d}` is
 calculated as:
@@ -956,7 +959,7 @@ An equivalent formulation is:
 .. math:: F_{\mathit{ih.mean}} = \sum_{i=1}^{N_g}i\,p_i
 
 Intensity histogram variance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *variance* \[1_\] of :math:`\mathbf{X}_{d}`
 is defined as:
@@ -969,7 +972,7 @@ to:
 .. math:: F_{\mathit{ih.var}} = \sum_{i=1}^{N_g}\left(i-\mu\right)^2 p_i
 
 Intensity histogram skewness
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *skewness* \[1_\] of :math:`\mathbf{X}_{d}`
 is defined as:
@@ -985,7 +988,7 @@ If the discretised grey level variance :math:`F_{\mathit{ih.var}} = 0`,
 :math:`F_{\mathit{ih.skew}}=0`.
 
 Intensity histogram kurtosis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Kurtosis* \[1_\], or technically excess
 kurtosis, is calculated as measure of peakedness of the distribution
@@ -1003,13 +1006,13 @@ kurtosis on 0 for normal distributions. If the discretised grey level
 :math:`F_{\mathit{ih.var}} = 0`, :math:`F_{\mathit{ih.kurt}}=0`.
 
 Intensity histogram median
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *median* :math:`F_{\mathit{ih.median}}` is the sample median of
 :math:`\mathbf{X}_{d}` \[1_\].
 
 Intensity histogram minimum grey level
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *minimum grey level* \[1_\]
 :math:`F_{\mathit{ih.min}}` is equal to the lowest discretised grey
@@ -1018,19 +1021,19 @@ discretisation :math:`F_{\mathit{ih.min}}=1` by definition, but it may
 deviate for *fixed bin size* discretisation.
 
 Intensity histogram 10\ :sup:`th` percentile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :math:`P_{10}` is the 10\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`
 and is defined as :math:`F_{\mathit{ih.P10}}`.
 
 Intensity histogram 90\ :sup:`th` percentile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :math:`P_{90}` is the 90\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`
 and is defined as :math:`F_{\mathit{ih.P90}}`.
 
 Intensity histogram maximum grey level
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *maximum grey level* \[1_\]
 :math:`F_{\mathit{ih.max}}` is equal to the highest discretised grey
@@ -1038,7 +1041,7 @@ level present in :math:`\mathbf{X}_{d}`. :math:`F_{\mathit{ih.max}}=N_g`
 by definition.
 
 Intensity histogram mode
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *mode* of :math:`\mathbf{X}_{d}` :math:`F_{\mathit{ih.mode}}` is the
 most common discretised grey level present, i.e. :math:`i` for which
@@ -1049,7 +1052,7 @@ pathological cases with two such bins equidistant to the mean, the bin
 to the left of the mean is selected.
 
 Intensity histogram interquartile range
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *interquartile range* (IQR) of :math:`\mathbf{X}_{d}` is defined as:
 
@@ -1060,7 +1063,7 @@ The *interquartile range* (IQR) of :math:`\mathbf{X}_{d}` is defined as:
 interquartile range of :math:`\mathbf{X}_{d}` is always an integer.
 
 Intensity histogram range
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *range* of grey levels \[1_\] in the
 histogram is defined as:
@@ -1072,7 +1075,7 @@ histogram. For *fixed bin number* discretisation
 :math:`F_{\mathit{ih.range}}=N_g` by definition.
 
 Intensity histogram mean absolute deviation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *mean absolute deviation* \[1_\] is a
 measure of dispersion from the mean of :math:`\mathbf{X}_{d}`:
@@ -1082,7 +1085,7 @@ measure of dispersion from the mean of :math:`\mathbf{X}_{d}`:
 Here :math:`\mu=F_{\mathit{ih.mean}}`.
 
 Intensity histogram robust mean absolute deviation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Intensity histogram mean absolute deviation* may be affected by
 outliers. To increase robustness, the set of discretised grey levels
@@ -1103,7 +1106,7 @@ corresponding to the 10\ :sup:`th` and 90\ :sup:`th` percentiles of
 :math:`\mathbf{X}_{d,10-90}`.
 
 Intensity histogram median absolute deviation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Histogram median absolute deviation* is conceptually similar to
 *histogram mean absolute deviation*, but measures dispersion from the
@@ -1114,7 +1117,7 @@ median instead of mean. Thus:
 Here, median :math:`M = F_{\mathit{ih.median}}`.
 
 Intensity histogram coefficient of variation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *coefficient of variation* measures the dispersion of the histogram.
 It is defined as:
@@ -1126,7 +1129,7 @@ Here :math:`\sigma={F_{\mathit{ih.var}}}^{1/2}` and
 the discretised grey level distribution, respectively.
 
 Intensity histogram quartile coefficient of dispersion
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *quartile coefficient of dispersion* is a more robust alternative to
 *coefficient of variance*. It is defined as:
@@ -1137,7 +1140,7 @@ The *quartile coefficient of dispersion* is a more robust alternative to
 75\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`, respectively.
 
 Intensity histogram entropy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Entropy* \[1_\] is an information-theoretic
 concept that gives a metric for the information contained within
@@ -1147,7 +1150,7 @@ which is defined as:
 .. math:: F_{\mathit{ih.entropy}} = - \sum_{i=1}^{N_g} p_i \log_2 p_i
 
 Intensity histogram uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Uniformity* \[1_\] of :math:`\mathbf{X}_{d}` is
 defined as:
@@ -1157,7 +1160,7 @@ defined as:
 Note that this feature is sometimes also referred to as *energy*.
 
 Maximum histogram gradient
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The histogram gradient :math:`\mathbf{H}'` of intensity histogram
 :math:`\mathbf{H}` can be calculated as:
@@ -1182,7 +1185,7 @@ is:
 .. math:: F_{\mathit{ih.max.grad}} = \text{max}\left(\mathbf{H}'\right)
 
 Maximum histogram gradient grey level
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *maximum histogram gradient grey level*
 \[13_\] :math:`F_{\mathit{ih.max.grad.gl}}` is
@@ -1190,14 +1193,14 @@ the discretised grey level corresponding to the *maximum histogram
 gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was maximal.
 
 Minimum histogram gradient
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *minimum histogram gradient* \[13_\] is:
 
 .. math:: F_{\mathit{ih.min.grad}} = \text{min}\left(\mathbf{H}'\right)
 
 Minimum histogram gradient grey level
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *minimum histogram gradient grey level*
 \[13_\] :math:`F_{\mathit{ih.min.grad.gl}}` is
@@ -1228,7 +1231,7 @@ whenever it is possible for imaging modalities with definite intensity
 units (both discrete and continuous cases).
 
 Definite intensity units – discrete case
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some imaging modalities by default generate voxels with calibrated,
 discrete intensities – for example CT. In this case, the discretised ROI
@@ -1242,7 +1245,7 @@ re-segmentation range, the upper limit of the range is
 The discretisation interval is :math:`w_d=1`.
 
 Definite intensity units – continuous case
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Imaging with calibrated, continuous intensities such as PET requires
 discretisation to determine the IVH, while preserving the quantitative
@@ -1272,7 +1275,7 @@ The total range is then
 the discretisation interval matches the bin width, i.e. :math:`w_d=w_b`.
 
 Arbitrary intensity units
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some imaging modalities such as raw MRI data have arbitrary intensities.
 In such cases, a *fixed bin number* discretisation method with
@@ -1289,7 +1292,7 @@ consequentially the discretisation interval is :math:`w_d=1` and the
 total range is :math:`\mathbf{G}=[1,N_g]`
 
 Calculating the IV histogram
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We use :math:`\mathbf{X}_{d,gl}` to calculate fractional volumes and
 fractional grey levels.
@@ -1344,14 +1347,14 @@ corresponding volume fraction that contains grey level :math:`i` or
 greater.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 We recommend calculating intensity-volume histogram features using the
 3D volume (). Computing features per slice and subsequently averaging ()
 is not recommended.
 
 Volume at intensity fraction
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *volume at intensity fraction* :math:`V_x` is the largest volume
 fraction :math:`\nu` that has an intensity fraction :math:`\gamma` of at
@@ -1364,7 +1367,7 @@ features are defined as :math:`F_{\mathit{ivh.V10}}` and
 :math:`F_{\mathit{ivh.V90}}`, respectively.
 
 Intensity at volume fraction
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *intensity at volume fraction* :math:`I_x` is the minimum
 discretised grey level :math:`i` present in at most :math:`x\%` of the
@@ -1374,7 +1377,7 @@ features are defined as :math:`F_{\mathit{ivh.I10}}` and
 :math:`F_{\mathit{ivh.I90}}`, respectively.
 
 Volume fraction difference between intensity fractions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is the difference between the volume fractions at two
 different intensity fractions, e.g. :math:`V_{10}-V_{90}`
@@ -1382,7 +1385,7 @@ different intensity fractions, e.g. :math:`V_{10}-V_{90}`
 feature is defined as :math:`F_{\mathit{ivh.V10minusV90}}`.
 
 Intensity fraction difference between volume fractions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is the difference between discretised grey levels at two
 different fractional volumes, e.g. :math:`I_{10} - I_{90}`
@@ -1390,7 +1393,7 @@ different fractional volumes, e.g. :math:`I_{10} - I_{90}`
 feature is defined as :math:`F_{\mathit{ivh.I10minusI90}}`.
 
 Area under the IVH curve
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *area under the IVH curve* :math:`F_{\mathit{ivh.auc}}` was defined
 by \[28_\]. The *area under the IVH curve*
@@ -1476,7 +1479,7 @@ voxels at :math:`(0,0,3)`, :math:`(0,3,0)`, :math:`(3,0,0)`,
 considered.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 To improve rotational invariance, GLCM feature values are computed by
 aggregating information from the different underlying directional
@@ -1545,7 +1548,7 @@ for direction :math:`\Delta` in slice :math:`k` (if applicable), and
 (e) the matrices are merged prior to feature calculation.|
 
 Distances and distance weighting
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The default neighbourhood includes all voxels within Chebyshev distance
 :math:`1`. The corresponding direction vectors are multiplied by the
@@ -1559,8 +1562,8 @@ to potential reproducibility issues.
 GLCMs may be weighted for distance by multiplying :math:`\mathbf{M}`
 with a weighting factor :math:`w`. By default :math:`w=1`, but :math:`w`
 may also be an inverse distance function to weight each GLCM, e.g.
-:math:`w=\norm{\mathbf{m}}^{-1}` or :math:`w=\exp(-\norm{\mathbf{m}}^2)`
-\[4_\], with :math:`\norm{\mathbf{m}}`
+:math:`w=\|\mathbf{m}\|^{-1}` or :math:`w=\exp(-\|\mathbf{m}\|^2)`
+\[4_\], with :math:`\|\mathbf{m}\|`
 the length of direction vector :math:`m`. Whether distance weighting
 yields different feature values depends on several factors. When
 aggregating the feature values, matrices have to be merged first,
@@ -1573,7 +1576,7 @@ weighting. Weighting may furthermore have no effect for distance
 exceptions, we recommend against using distance weighting for GLCM.
 
 Joint maximum
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 *Joint maximum* \[32_\] is the probability
 corresponding to the most common grey level co-occurrence in the GLCM:
@@ -1581,7 +1584,7 @@ corresponding to the most common grey level co-occurrence in the GLCM:
 .. math:: F_{\mathit{cm.joint.max}}=\text{max}(p_{ij})
 
 Joint average
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 *Joint average* \[30_\] is the grey level
 weighted sum of joint probabilities:
@@ -1589,7 +1592,7 @@ weighted sum of joint probabilities:
 .. math:: F_{\mathit{cm.joint.avg}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\, p_{ij}
 
 Joint variance
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 The *joint variance* \[30_\], which is also
 called *sum of squares* \[29_\], is defined
@@ -1601,14 +1604,14 @@ Here :math:`\mu` is equal to the value of
 :math:`F_{\mathit{cm.joint.avg}}`, which was defined above.
 
 Joint entropy
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 *Joint entropy* \[29_\] is defined as:
 
 .. math:: F_{\mathit{cm.joint.entr}}=-\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{ij} \log_2 p_{ij}
 
 Difference average
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 The *difference average* \[30_\] for the diagonal
 probabilities is defined as:
@@ -1619,7 +1622,7 @@ By definition *difference average* is equivalent to the *dissimilarity*
 feature \[4_\].
 
 Difference variance
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 The *difference variance* for the diagonal probabilities
 \[29_\] is defined as:
@@ -1629,7 +1632,7 @@ The *difference variance* for the diagonal probabilities
 Here :math:`\mu` is equal to the value of *difference average*.
 
 Difference entropy
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 The *difference entropy* for the diagonal probabilities
 \[29_\] is defined as:
@@ -1637,7 +1640,7 @@ The *difference entropy* for the diagonal probabilities
 .. math:: F_{\mathit{cm.diff.entr}}=-\sum_{k=0}^{N_g-1} p_{i-j,k} \log_2 p_{i-j,k}
 
 Sum average
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 The *sum average* for the cross-diagonal probabilities
 \[29_\] is defined as:
@@ -1649,7 +1652,7 @@ By definition,
 \[4_\].
 
 Sum variance
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 The *sum variance* for the cross-diagonal probabilities
 \[29_\] is defined as:
@@ -1661,7 +1664,7 @@ is mathematically identical to the *cluster tendency* feature
 \[4_\].
 
 Sum entropy
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 The *sum entropy* for the cross-diagonal probabilities
 \[29_\] is defined as:
@@ -1669,7 +1672,7 @@ The *sum entropy* for the cross-diagonal probabilities
 .. math:: F_{\mathit{cm.sum.entr}}=-\sum_{k=2}^{2N_g} p_{i+j,k} \log_2 p_{i+j,k}
 
 Angular second moment
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 The *angular second moment* \[29_\], which
 represents the energy of :math:`\mathbf{P}_{\Delta}`, is defined as:
@@ -1681,7 +1684,7 @@ This feature is also called *energy*
 \[33_\].
 
 Contrast
-^^^^^^^^
+~~~~~~~~
 
 *Contrast* assesses grey level variations
 \[29_\]. Hence elements of
@@ -1696,7 +1699,7 @@ is seemingly more complex, but rearranging and simplifying terms leads
 to the above formulation of *contrast*.
 
 Dissimilarity
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 *Dissimilarity* \[33_\] is conceptually similar
 to the *contrast* feature, and is defined as:
@@ -1707,7 +1710,7 @@ By definition *dissimilarity* is equivalent to the *difference average*
 feature \[4_\].
 
 Inverse difference
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 *Inverse difference* is a measure of homogeneity
 \[33_\]. Grey level co-occurrences with a large
@@ -1723,7 +1726,7 @@ probabilities \[4_\]:
 .. math:: F_{\mathit{cm.inv.diff}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k}
 
 Normalised inverse difference
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \[33_\] suggested normalising *inverse
 difference* to improve classification ability. The normalised feature is
@@ -1742,7 +1745,7 @@ probabilities \[4_\]:
 .. math:: F_{\mathit{cm.inv.diff.norm}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k/N_g}
 
 Inverse difference moment
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Inverse difference moment* \[29_\] is similar
 in concept to the *inverse difference* feature, but with lower weights
@@ -1759,7 +1762,7 @@ This feature is also called *homogeneity*
 \[30_\].
 
 Normalised inverse difference moment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \[33_\] suggested normalising *inverse
 difference moment* to improve classification performance. This leads to
@@ -1773,7 +1776,7 @@ probabilities \[4_\]:
 .. math:: F_{\mathit{cm.inv.diff.mom.norm}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+\left(k/N_g\right)^2}
 
 Inverse variance
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 The *inverse variance* \[1_\] feature is defined
 as:
@@ -1787,7 +1790,7 @@ instead of :math:`k=0`\ \[4_\]:
 .. math:: F_{\mathit{cm.inv.var}}=\sum_{k=1}^{N_g-1} \frac{p_{i-j,k}}{k^2}
 
 Correlation
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 *Correlation* \[29_\] is defined as:
 
@@ -1813,14 +1816,14 @@ Again, simplifying due to matrix symmetry yields:
 .. math:: F_{\mathit{cm.corr}}=\frac{1}{\sigma_{i.}^2} \sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i-\mu_{i.}\right) \left(j-\mu_{i.}\right)p_{ij}
 
 Autocorrelation
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 \[34_\] defined *autocorrelation* as:
 
 .. math:: F_{\mathit{cm.auto.corr}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\,j\,p_{ij}
 
 Cluster tendency
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 *Cluster tendency* \[1_\] is defined as:
 
@@ -1837,7 +1840,7 @@ formulated as:
 feature \[4_\].
 
 Cluster shade
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 *Cluster shade* \[30_\] is defined as:
 
@@ -1852,7 +1855,7 @@ formulated as:
 .. math:: F_{\mathit{cm.clust.shade}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-2\mu_{i.}\right)^3 p_{ij}
 
 Cluster prominence
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 *Cluster prominence* \[30_\] is defined as:
 
@@ -1866,7 +1869,7 @@ formulated as:
 .. math:: F_{\mathit{cm.clust.prom}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-2\mu_{i.}\right)^4 p_{ij}
 
 First measure of information correlation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Information theoretic correlation* is estimated using two different
 measures \[29_\]. For symmetric
@@ -1885,7 +1888,7 @@ to the entropy of the column marginal probability.
 .. math:: \mathit{HXY}_1 = -\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{ij} \log_2 \left(p_{i.} p_{.j}\right)
 
 Second measure of information correlation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *second measure of information theoretic correlation*
 \[29_\] is estimated as follows for symmetric
@@ -1931,7 +1934,7 @@ the runs over the grey values :math:`i` for run length :math:`j` is
 :math:`r_{.j}=\sum_{i=1}^{N_g} r_{ij}`.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 To improve rotational invariance, GLRLM feature values are computed by
 aggregating information from the different underlying directional
@@ -1962,13 +1965,13 @@ retain consistency. Feature values may dependent strongly on the
 aggregation method.
 
 Distance weighting
-------------------
+^^^^^^^^^^^^^^^^^^
 
 GLRLMs may be weighted for distance by multiplying the run lengths with
 a weighting factor :math:`w`. By default :math:`w=1`, but :math:`w` may
 also be an inverse distance function, e.g.
-:math:`w=\norm{\mathbf{m}}^{-1}` or :math:`w=\exp(-\norm{\mathbf{m}}^2)`
-\[4_\], with :math:`\norm{\mathbf{m}}`
+:math:`w=\|\mathbf{m}\|^{-1}` or :math:`w=\exp(-\|\mathbf{m}\|^2)`
+\[4_\], with :math:`\|\mathbf{m}\|`
 the length of direction vector :math:`m`. Whether distance weighting
 yields different feature values depends on several factors. When
 aggregating the feature values, matrices have to be merged first,
@@ -1981,7 +1984,7 @@ use, and we caution against it due to potential reproducibility issues.
 | 
 
 Short runs emphasis
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises short run lengths
 \[35_\]. It is defined as:
@@ -1989,7 +1992,7 @@ This feature emphasises short run lengths
 .. math:: F_{\mathit{rlm.sre}} = \frac{1}{N_s} \sum_{j=1}^{N_r} \frac{r_{.j}}{j^2}
 
 Long runs emphasis
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 This feature emphasises long run lengths
 \[35_\]. It is defined as:
@@ -1997,7 +2000,7 @@ This feature emphasises long run lengths
 .. math:: F_{\mathit{rlm.lre}} = \frac{1}{N_s} \sum_{j=1}^{N_r} j^2 r_{.j}
 
 Low grey level run emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is a grey level analogue to *short runs emphasis*
 \[36_\]. Instead of short run lengths, low grey
@@ -2006,7 +2009,7 @@ levels are emphasised. The feature is defined as:
 .. math:: F_{\mathit{rlm.lgre}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{r_{i.}}{i^2}
 
 High grey level run emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *high grey level run emphasis* feature is a grey level analogue to
 *long runs emphasis* \[36_\]. The feature
@@ -2015,7 +2018,7 @@ emphasises high grey levels, and is defined as:
 .. math:: F_{\mathit{rlm.hgre}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 r_{i.}
 
 Short run low grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises runs in the upper left quadrant of the GLRLM,
 where short run lengths and low grey levels are located
@@ -2024,7 +2027,7 @@ where short run lengths and low grey levels are located
 .. math:: F_{\mathit{rlm.srlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{r_{ij}}{i^2 j^2}
 
 Short run high grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises runs in the lower left quadrant of the GLRLM,
 where short run lengths and high grey levels are located
@@ -2033,7 +2036,7 @@ where short run lengths and high grey levels are located
 .. math:: F_{\mathit{rlm.srhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{i^2 r_{ij}}{j^2}
 
 Long run low grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises runs in the upper right quadrant of the GLRLM,
 where long run lengths and low grey levels are located
@@ -2042,7 +2045,7 @@ where long run lengths and low grey levels are located
 .. math:: F_{\mathit{rlm.lrlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{j^2 r_{ij}}{i^2}
 
 Long run high grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises runs in the lower right quadrant of the GLRLM,
 where long run lengths and high grey levels are located
@@ -2051,7 +2054,7 @@ where long run lengths and high grey levels are located
 .. math:: F_{\mathit{rlm.lrhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i^2 j^2 r_{ij}
 
 Grey level non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature assesses the distribution of runs over the grey values
 \[35_\]. The feature value is low when runs
@@ -2060,7 +2063,7 @@ are equally distributed along grey levels. The feature is defined as:
 .. math:: F_{\mathit{rlm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} r_{i.}^2
 
 Normalised grey level non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -2068,7 +2071,7 @@ It is defined as:
 .. math:: F_{\mathit{rlm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} r_{i.}^2
 
 Run length non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This features assesses the distribution of runs over the run lengths
 \[35_\]. The feature value is low when runs
@@ -2077,7 +2080,7 @@ are equally distributed along run lengths. It is defined as:
 .. math:: F_{\mathit{rlm.rlnu}}= \frac{1}{N_s} \sum_{j=1}^{N_r} r_{.j}^2
 
 Normalised run length non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is normalised version of the *run length non-uniformity* feature.
 It is defined as:
@@ -2085,7 +2088,7 @@ It is defined as:
 .. math:: F_{\mathit{rlm.rlnu.norm}}= \frac{1}{N_s^2} \sum_{j=1}^{N_r} r_{.j}^2
 
 Run percentage
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 This feature measures the fraction of the number of realised runs and
 the maximum number of potential runs \[35_\].
@@ -2099,7 +2102,7 @@ As noted before, when this feature is calculated using a merged GLRLM,
 matrices to allow proper normalisation.
 
 Grey level variance
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 This feature estimates the variance in runs over the grey levels. Let
 :math:`p_{ij} = r_{ij}/N_s` be the joint probability estimate for
@@ -2111,7 +2114,7 @@ finding discretised grey level :math:`i` with run length :math:`j`.
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i\,p_{ij}`.
 
 Run length variance
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 This feature estimates the variance in runs over the run lengths. As
 before let :math:`p_{ij} = r_{ij}/N_s`. The feature is defined as:
@@ -2122,7 +2125,7 @@ Mean run length is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} j\,p_{ij}`.
 
 Run entropy
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 *Run entropy* was investigated by \[38_\].
 Again, let :math:`p_{ij} = r_{ij}/N_s`. The entropy is then defined as:
@@ -2162,7 +2165,7 @@ discretised grey level :math:`i`, regardless of size. Likewise, let
 in Table [figGLSZM1].
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Three methods can be used to aggregate GLSZMs and arrive at a single
 feature value. A schematic example is shown in Figure
@@ -2182,7 +2185,7 @@ consistency. Feature values may dependent strongly on the aggregation
 method.
 
 Distances
----------
+^^^^^^^^^
 
 The default neighbourhood for GLSZM is constructed using Chebyshev
 distance :math:`\delta=1`. Manhattan or Euclidean norms may also be used
@@ -2194,7 +2197,7 @@ different neighbourhoods for determining voxel linkage is non-standard
 use, and we caution against it due to potential reproducibility issues.
 
 Note on feature references
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 GLSZM feature definitions are based on the definitions of GLRLM features
 \[39_\]. Hence, references may be found in the
@@ -2221,21 +2224,21 @@ feature value. In (b) the matrices from the different slices are merged
 prior to feature calculation.|
 
 Small zone emphasis
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises small zones. It is defined as:
 
 .. math:: F_{\mathit{szm.sze}} = \frac{1}{N_s} \sum_{j=1}^{N_z} \frac{s_{.j}}{j^2}
 
 Large zone emphasis
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises large zones. It is defined as:
 
 .. math:: F_{\mathit{szm.lze}} = \frac{1}{N_s} \sum_{j=1}^{N_z} j^2 s_{.j}
 
 Low grey level zone emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is a grey level analogue to *small zone emphasis*. Instead
 of small zone sizes, low grey levels are emphasised. The feature is
@@ -2244,7 +2247,7 @@ defined as:
 .. math:: F_{\mathit{szm.lgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{s_{i.}}{i^2}
 
 High grey level zone emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *high grey level zone emphasis* feature is a grey level analogue to
 *large zone emphasis*. The feature emphasises high grey levels, and is
@@ -2253,7 +2256,7 @@ defined as:
 .. math:: F_{\mathit{szm.hgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 s_{i.}
 
 Small zone low grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises zone counts within the upper left quadrant of
 the GLSZM, where small zone sizes and low grey levels are located. It is
@@ -2262,7 +2265,7 @@ defined as:
 .. math:: F_{\mathit{szm.szlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{s_{ij}}{i^2 j^2}
 
 Small zone high grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises zone counts in the lower left quadrant of the
 GLSZM, where small zone sizes and high grey levels are located. The
@@ -2271,7 +2274,7 @@ feature is defined as:
 .. math:: F_{\mathit{szm.szhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{i^2 s_{ij}}{j^2}
 
 Large zone low grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises zone counts in the upper right quadrant of the
 GLSZM, where large zone sizes and low grey levels are located. The
@@ -2280,7 +2283,7 @@ feature is defined as:
 .. math:: F_{\mathit{szm.lzlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{j^2 s_{ij}}{i^2}
 
 Large zone high grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises zone counts in the lower right quadrant of the
 GLSZM, where large zone sizes and high grey levels are located. The
@@ -2289,7 +2292,7 @@ feature is defined as:
 .. math:: F_{\mathit{szm.lzhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} i^2 j^2 s_{ij}
 
 Grey level non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature assesses the distribution of zone counts over the grey
 values. The feature value is low when zone counts are equally
@@ -2298,7 +2301,7 @@ distributed along grey levels. The feature is defined as:
 .. math:: F_{\mathit{szm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} s_{i.}^2
 
 Normalised grey level non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -2306,7 +2309,7 @@ It is defined as:
 .. math:: F_{\mathit{szm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} s_{i.}^2
 
 Zone size non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 This features assesses the distribution of zone counts over the
 different zone sizes. *Zone size non-uniformity* is low when zone counts
@@ -2315,7 +2318,7 @@ are equally distributed along zone sizes. It is defined as:
 .. math:: F_{\mathit{szm.zsnu}}= \frac{1}{N_s} \sum_{j=1}^{N_z} s_{.j}^2
 
 Normalised zone size non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a normalised version of *zone size non-uniformity*. It is
 defined as:
@@ -2323,7 +2326,7 @@ defined as:
 .. math:: F_{\mathit{szm.zsnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_z} s_{.j}^2
 
 Zone percentage
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 This feature measures the fraction of the number of realised zones and
 the maximum number of potential zones. Highly uniform ROIs produce a low
@@ -2332,7 +2335,7 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 .. math:: F_{\mathit{szm.z.perc}}=\frac{N_s}{N_v}
 
 Grey level variance
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 This feature estimates the variance in zone counts over the grey levels.
 Let :math:`p_{ij} = s_{ij}/N_s` be the joint probability estimate for
@@ -2344,7 +2347,7 @@ The feature is then defined as:
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} i\,p_{ij}`.
 
 Zone size variance
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 This feature estimates the variance in zone counts over the different
 zone sizes. As before let :math:`p_{ij} = s_{ij}/N_s`. The feature is
@@ -2356,7 +2359,7 @@ Mean zone size is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} j\,p_{ij}`.
 
 Zone size entropy
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Let :math:`p_{ij} = s_{ij}/N_s`. *Zone size entropy* is then defined as:
 
@@ -2422,14 +2425,14 @@ distance :math:`j`, regardless of grey level. A two dimensional example
 is shown in Table [figGLDZM1].
 
 Morphological and intensity masks.
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The GLDZM is special in that it uses both ROI masks. The distance map is
 determined using the morphological ROI mask, whereas the intensity mask
 is used for determining the zones, as with the GLSZM.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Three methods can be used to aggregate GLDZMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
@@ -2449,7 +2452,7 @@ consistency. Feature values may dependent strongly on the aggregation
 method.
 
 Distances
----------
+^^^^^^^^^
 
 In addition to the use of different distance norms to determine voxel
 linkage, as described in section [sect\_glszm], different distance norms
@@ -2467,28 +2470,28 @@ norms is non-standard use, and we caution against it due to potential
 reproducibility issues.
 
 Note on feature references
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 GLDZM feature definitions are based on the definitions of GLRLM features
 \[39_\]. Hence, references may be found in the
 section on GLRLM ([sect\_glrlm]).
 
 Small distance emphasis
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises small distances. It is defined as:
 
 .. math:: F_{\mathit{dzm.sde}} = \frac{1}{N_s} \sum_{j=1}^{N_d} \frac{d_{.j}}{j^2}
 
 Large distance emphasis
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises large distances. It is defined as:
 
 .. math:: F_{\mathit{dzm.lde}} = \frac{1}{N_s} \sum_{j=1}^{N_d} j^2 d_{.j}
 
 Low grey level zone emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is a grey level analogue to *small distance emphasis*.
 Instead of small zone distances, low grey levels are emphasised. The
@@ -2497,7 +2500,7 @@ feature is defined as:
 .. math:: F_{\mathit{dzm.lgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{d_{i.}}{i^2}
 
 High grey level zone emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *high grey level zone emphasis* feature is a grey level analogue to
 *large distance emphasis*. The feature emphasises high grey levels, and
@@ -2506,7 +2509,7 @@ is defined as:
 .. math:: F_{\mathit{dzm.hgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 d_{i.}
 
 Small distance low grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises runs in the upper left quadrant of the GLDZM,
 where small zone distances and low grey levels are located. It is
@@ -2515,7 +2518,7 @@ defined as:
 .. math:: F_{\mathit{dzm.sdlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{d_{ij}}{i^2 j^2}
 
 Small distance high grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises runs in the lower left quadrant of the GLDZM,
 where small zone distances and high grey levels are located. *Small
@@ -2524,7 +2527,7 @@ distance high grey level emphasis* is defined as:
 .. math:: F_{\mathit{dzm.sdhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{i^2 d_{ij}}{j^2}
 
 Large distance low grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises runs in the upper right quadrant of the GLDZM,
 where large zone distances and low grey levels are located. The feature
@@ -2533,7 +2536,7 @@ is defined as:
 .. math:: F_{\mathit{dzm.ldlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{j^2 d_{ij}}{i^2}
 
 Large distance high grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises runs in the lower right quadrant of the GLDZM,
 where large zone distances and high grey levels are located. The *large
@@ -2542,7 +2545,7 @@ distance high grey level emphasis* feature is defined as:
 .. math:: F_{\mathit{dzm.ldhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} i^2 j^2 d_{ij}
 
 Grey level non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature measures the distribution of zone counts over the grey
 values. *Grey level non-uniformity* is low when zone counts are equally
@@ -2551,7 +2554,7 @@ distributed along grey levels. The feature is defined as:
 .. math:: F_{\mathit{dzm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} d_{i.}^2
 
 Normalised grey level non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -2559,7 +2562,7 @@ It is defined as:
 .. math:: F_{\mathit{dzm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} d_{i.}^2
 
 Zone distance non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Zone distance non-uniformity* measures the distribution of zone counts
 over the different zone distances. *Zone distance non-uniformity* is low
@@ -2569,7 +2572,7 @@ defined as:
 .. math:: F_{\mathit{dzm.zdnu}}= \frac{1}{N_s} \sum_{j=1}^{N_d} d_{.j}^2
 
 Zone distance non-uniformity normalised
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a normalised version of the *zone distance non-uniformity*
 feature. It is defined as:
@@ -2577,7 +2580,7 @@ feature. It is defined as:
 .. math:: F_{\mathit{dzm.zdnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_d} d_{.j}^2
 
 Zone percentage
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 This feature measures the fraction of the number of realised zones and
 the maximum number of potential zones. Highly uniform ROIs produce a low
@@ -2586,7 +2589,7 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 .. math:: F_{\mathit{dzm.z.perc}}=\frac{N_s}{N_v}
 
 Grey level variance
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 This feature estimates the variance in zone counts over the grey levels.
 Let :math:`p_{ij} = d_{ij}/N_s` be the joint probability estimate for
@@ -2598,7 +2601,7 @@ finding zones with discretised grey level :math:`i` at distance
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} i\,p_{ij}`.
 
 Zone distance variance
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 This feature estimates the variance in zone counts for the different
 zone distances. As before let :math:`p_{ij} = d_{ij}/N_s`. The feature
@@ -2610,7 +2613,7 @@ Mean zone size is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} j\,p_{ij}`.
 
 Zone distance entropy
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Again, let :math:`p_{ij} = d_{ij}/N_s`. Zone distance entropy is then
 defined as:
@@ -2642,7 +2645,7 @@ the average grey level within a neighbourhood centred at
 different slices. Neighbourhood grey tone difference :math:`s_i` for
 discretised grey level :math:`i` is then:
 
-.. math:: s_i=\sum_{k}^{N_v} \abs{i-\overline{X}_k} \, \iverson{X_d(\mathbf{k})=i \text{ and } k \text{has a valid neighbourhood}}
+.. math:: s_i=\sum_{k}^{N_v} |i-\overline{X}_k| \, \big[X_d(\mathbf{k})=i \text{ and } k \text{has a valid neighbourhood}\big]
 
 Here, :math:`[\ldots]` is an Iverson bracket, which is :math:`1` if the
 conditions that the grey level :math:`X_{d,k}` of voxel :math:`k` is
@@ -2666,18 +2669,18 @@ Instead, we consider a valid neighbourhood to exist if there is at least
 one neighbouring voxel included in the ROI mask. The average grey level
 for voxel :math:`k` within a valid neighbourhood is then:
 
-.. math:: \overline{X}_k =\frac{1}{W_k}\sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta X_{d}(\mathbf{k}+\mathbf{m}) \iverson{\mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: \overline{X}_k =\frac{1}{W_k}\sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta X_{d}(\mathbf{k}+\mathbf{m}) \big[\mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
 The neighbourhood size :math:`W_k` for this voxel is equal to the
 number of voxels in the neighbourhood that are part of the ROI mask:
 
-.. math:: W_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \iverson{\mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: W_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \big[\mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
 Under our definition, neighbourhood grey tone difference :math:`s_i`
 for discretised grey level :math:`i` can be directly expressed using
 neighbourhood size :math:`W_k` of voxel :math:`k`:
 
-.. math:: s_i=\sum_{k}^{N_v} \abs{i-\overline{X}_k} \, \iverson{X_d(\mathbf{k})=i \text{ and } W_k\neq0}
+.. math:: s_i=\sum_{k}^{N_v} |i-\overline{X}_k| \, \big[X_d(\mathbf{k})=i \text{ and } W_k\neq0\big]
 
 Consequentially, :math:`n_i` is the total number of voxels with grey
 level :math:`i` which have a non-zero neighbourhood size.
@@ -2692,7 +2695,7 @@ number of discretised grey levels with :math:`p_i>0`. In the above
 example, :math:`N_g=4` and :math:`N_{g,p}=3`.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Three methods can be used to aggregate NGTDMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
@@ -2713,37 +2716,37 @@ different slices. Note that when NGTDMs are merged, :math:`N_{v,c}` and
 may dependent strongly on the aggregation method.
 
 Distances and distance weighting
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The default neighbourhood is defined using the Chebyshev norm. Manhattan
 or Euclidean norms may be used as well. This requires a more general
 definition for the average grey level :math:`\overline{X}_k`:
 
-.. math:: \overline{X}_k =\frac{1}{W_k}\sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta X_{d}(\mathbf{k}+\mathbf{m}) \iverson{\norm{\mathbf{m}}\leq\delta \text{ and } \mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: \overline{X}_k =\frac{1}{W_k}\sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta X_{d}(\mathbf{k}+\mathbf{m}) \big[\|\mathbf{m}\|\leq\delta \text{ and } \mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
 The neighbourhood size :math:`W_k` is:
 
-.. math:: W_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \iverson{\norm{\mathbf{m}}\leq\delta \text{ and } \mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: W_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \big[\|\mathbf{m}\|\leq\delta \text{ and } \mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
-As before, :math:`\iverson{\ldots}` is an Iverson bracket.
+As before, :math:`\big[\ldots\big]` is an Iverson bracket.
 
 Distance weighting for NGTDM is relatively straightforward. Let
 :math:`w` be a weight dependent on :math:`\mathbf{m}`, e.g.
-:math:`w=\norm{\mathbf{m}}^{-1}` or
-:math:`w=\exp(-\norm{\mathbf{m}}^2)`. The average grey level is then:
+:math:`w=\|\mathbf{m}\|^{-1}` or
+:math:`w=\exp(-\|\mathbf{m}\|^2)`. The average grey level is then:
 
-.. math:: \overline{X}_k =\frac{1}{W_k}\sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta w(\mathbf{m}) X_{d}(\mathbf{k}+\mathbf{m}) \iverson{\norm{\mathbf{m}}\leq\delta \text{ and } \mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: \overline{X}_k =\frac{1}{W_k}\sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta w(\mathbf{m}) X_{d}(\mathbf{k}+\mathbf{m}) \big[\|\mathbf{m}\|\leq\delta \text{ and } \mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
 The neighbourhood size :math:`W_k` becomes a general weight:
 
-.. math:: W_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta w(\mathbf{m}) \iverson{\norm{\mathbf{m}}\leq\delta \text{ and } \mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: W_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta w(\mathbf{m}) \big[\|\mathbf{m}\|\leq\delta \text{ and } \mathbf{m\neq\mathbf{0}} \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
 Employing different distance norms and distance weighting is considered
 non-standard use, and we caution against them due to potential
 reproducibility issues.
 
 Coarseness
-^^^^^^^^^^
+~~~~~~~~~~
 
 Grey level differences in coarse textures are generally small due to
 large-scale patterns. Summing differences gives an indication of the
@@ -2760,7 +2763,7 @@ but an explicit, though arbitrary, maximum value should allow for more
 consistency.
 
 Contrast
-^^^^^^^^
+~~~~~~~~
 
 *Contrast* depends on the dynamic range of the grey levels as well as
 the spatial frequency of intensity changes
@@ -2776,7 +2779,7 @@ measure for intensity changes within the volume. If :math:`N_{g,p}=1`,
 :math:`F_{\mathit{ngt.contrast}}=0`.
 
 Busyness
-^^^^^^^^
+~~~~~~~~
 
 Textures with large changes in grey levels between neighbouring voxels
 are said to be busy \[40_\]. *Busyness* was
@@ -2794,7 +2797,7 @@ always evaluate to 0. Therefore we use a slightly different definition
 If :math:`N_{g,p}=1`, :math:`F_{\mathit{ngt.busyness}}=0`.
 
 Complexity
-^^^^^^^^^^
+~~~~~~~~~~
 
 Complex textures are non-uniform and rapid changes in grey levels are
 common \[40_\]. Texture *complexity* is
@@ -2806,7 +2809,7 @@ As before, :math:`p_{i_{1}}=p_{i_{2}}` for :math:`i_{1}=i_{2}`, and
 likewise :math:`s_{i_{1}}=s_{i_{2}}` for :math:`i_{1}=i_{2}`.
 
 Strength
-^^^^^^^^
+~~~~~~~~
 
 \[40_\] defined texture *strength* as:
 
@@ -2829,14 +2832,14 @@ considered to belong to the neighbourhood of the center voxel. The
 discretised grey levels of the center voxel :math:`k` at position
 :math:`\mathbf{k}` and a neighbouring voxel :math:`m` at
 :math:`\mathbf{k}+\mathbf{m}` are said to be dependent if
-:math:`\abs{X_d(\mathbf{k}) - X_d(\mathbf{k}+\mathbf{m}) } \leq \alpha`,
+:math:`|X_d(\mathbf{k}) - X_d(\mathbf{k}+\mathbf{m}) | \leq \alpha`,
 with :math:`\alpha` being a non-negative integer coarseness parameter.
 The number of grey level dependent voxels :math:`j` within the
 neighbourhood is then counted as:
 
-.. math:: j_k = 1+\sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \iverson{\abs{X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})} \leq \alpha \text{ and } \mathbf{m}\neq\mathbf{0}}
+.. math:: j_k = 1+\sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \big[|X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})| \leq \alpha \text{ and } \mathbf{m}\neq\mathbf{0}\big]
 
-Here, :math:`\iverson{\ldots}` is an Iverson bracket, which is
+Here, :math:`\big[\ldots\big]` is an Iverson bracket, which is
 :math:`1` if the aforementioned condition is fulfilled, and :math:`0`
 otherwise. Note that the minimum dependence :math:`j_k=1` and not
 :math:`j_k=0`. This is done because some feature definitions require a
@@ -2844,7 +2847,7 @@ minimum dependence of 1 or are undefined otherwise. One may therefore
 also simplify the expression for :math:`j_k` by including the center
 voxel:
 
-.. math:: j_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \iverson{\abs{X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})} \leq \alpha}
+.. math:: j_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \big[|X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})| \leq \alpha\big]
 
 Dependence :math:`j_k` is iteratively determined for each voxel
 :math:`k` in the ROI intensity mask. :math:`\mathbf{M}` is then the
@@ -2873,7 +2876,7 @@ ROI intensity mask are considered, and consequently :math:`N_v=N_s`.
 Neighbourhood voxels located outside the ROI do not add to dependence
 :math:`j`:
 
-.. math:: j_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \iverson{\abs{X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})} \leq \alpha \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: j_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \big[|X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})| \leq \alpha \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
 Note that while :math:`\alpha=0` is a typical choice for the coarseness
 parameter, different :math:`\alpha` are possible. Likewise, a typical
@@ -2881,7 +2884,7 @@ choice for neighbourhood radius :math:`\delta` is Chebyshev distance
 :math:`\delta=1` but larger values are possible as well.
 
 Aggregating features
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Three methods can be used to aggregate NGLDMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
@@ -2901,32 +2904,32 @@ be summed to retain consistency. Feature values may dependent strongly
 on the aggregation method.
 
 Distances and distance weighting
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Default neighbourhoods are constructed using the Chebyshev norm, but
 other norms can be used as well. For this purpose it is useful to
 generalise the dependence count equation to:
 
-.. math:: j_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \iverson{\norm{\mathbf{m}}\leq\delta \text{ and } \abs{X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})} \leq \alpha \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: j_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta \big[\|\mathbf{m}\|\leq\delta \text{ and } |X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})| \leq \alpha \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
 with :math:`\mathbf{m}` the vector between voxels :math:`k` and
-:math:`m` and :math:`\norm{\mathbf{m}}` its length according to the
+:math:`m` and :math:`\|\mathbf{m}\|` its length according to the
 particular norm.
 
 In addition, dependence may be weighted by distance. Let :math:`w` be a
 weight dependent on :math:`\mathbf{m}`, e.g.
-:math:`w=\norm{\mathbf{m}}^{-1}` or
-:math:`w=\exp(-\norm{\mathbf{m}}^2)`. The dependence of voxel :math:`k`
+:math:`w=\|\mathbf{m}\|^{-1}` or
+:math:`w=\exp(-\|\mathbf{m}\|^2)`. The dependence of voxel :math:`k`
 is then:
 
-.. math:: j_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta w(\mathbf{m}) \iverson{\norm{\mathbf{m}}\leq\delta \text{ and } \abs{X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})} \leq \alpha \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}}
+.. math:: j_k = \sum_{m_z{=}-\delta}^\delta \sum_{m_y{=}-\delta}^\delta \sum_{m_x{=}-\delta}^\delta w(\mathbf{m}) \big[\|\mathbf{m}\|\leq\delta \text{ and } |X_{d}(\mathbf{k})-X_{d}(\mathbf{k}+\mathbf{m})| \leq \alpha \text{ and } \mathbf{k}+\mathbf{m} \text{ in ROI}\big]
 
 Employing different distance norms and distance weighting is considered
 non-standard use, and we caution against them due to potential
 reproducibility issues.
 
 Note on feature references
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The NGLDM is structured similarly to the GLRLM, GLSZM and GLDZM. NGLDM
 feature definitions are therefore based on the definitions of GLRLM
@@ -2934,7 +2937,7 @@ features, and references may be found in Section [sect\_glrlm], except
 for the features originally defined by \[41_\].
 
 Low dependence emphasis
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises low neighbouring grey level dependence counts.
 \[41_\] refer to this feature as *small number
@@ -2943,7 +2946,7 @@ emphasis*. It is defined as:
 .. math:: F_{\mathit{ngl.lde}} = \frac{1}{N_s} \sum_{j=1}^{N_n} \frac{s_{.j}}{j^2}
 
 High dependence emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises high neighbouring grey level dependence counts.
 \[41_\] refer to this feature as *large number
@@ -2952,7 +2955,7 @@ emphasis*. It is defined as:
 .. math:: F_{\mathit{ngl.hde}} = \frac{1}{N_s} \sum_{j=1}^{N_n} j^2 s_{.j}
 
 Low grey level count emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is a grey level analogue to *low dependence emphasis*.
 Instead of low neighbouring grey level dependence counts, low grey
@@ -2961,7 +2964,7 @@ levels are emphasised. The feature is defined as:
 .. math:: F_{\mathit{ngl.lgce}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{s_{i.}}{i^2}
 
 High grey level count emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *high grey level count emphasis* feature is a grey level analogue to
 *high dependence emphasis*. The feature emphasises high grey levels, and
@@ -2970,7 +2973,7 @@ is defined as:
 .. math:: F_{\mathit{ngl.hgce}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 s_{i.}
 
 Low dependence low grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises neighbouring grey level dependence counts in the
 upper left quadrant of the NGLDM, where low dependence counts and low
@@ -2979,7 +2982,7 @@ grey levels are located. It is defined as:
 .. math:: F_{\mathit{ngl.ldlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{s_{ij}}{i^2 j^2}
 
 Low dependence high grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises neighbouring grey level dependence counts in the
 lower left quadrant of the NGLDM, where low dependence counts and high
@@ -2988,7 +2991,7 @@ grey levels are located. The feature is defined as:
 .. math:: F_{\mathit{ngl.ldhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{i^2 s_{ij}}{j^2}
 
 High dependence low grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises neighbouring grey level dependence counts in the
 upper right quadrant of the NGLDM, where high dependence counts and low
@@ -2997,7 +3000,7 @@ grey levels are located. The feature is defined as:
 .. math:: F_{\mathit{ngl.hdlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{j^2 s_{ij}}{i^2}
 
 High dependence high grey level emphasis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *high dependence high grey level emphasis* feature emphasises
 neighbouring grey level dependence counts in the lower right quadrant of
@@ -3007,7 +3010,7 @@ located. The feature is defined as:
 .. math:: F_{\mathit{ngl.hdhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} i^2 j^2 s_{ij}
 
 Grey level non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Grey level non-uniformity* assesses the distribution of neighbouring
 grey level dependence counts over the grey values. The feature value is
@@ -3017,7 +3020,7 @@ The feature is defined as:
 .. math:: F_{\mathit{ngl.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} s_{i.}^2
 
 Normalised grey level non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -3029,7 +3032,7 @@ When calculating *grey level non-uniformity normalised* using a single
 uniformity* feature \[4_\].
 
 Dependence count non-uniformity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This features assesses the distribution of neighbouring grey level
 dependence counts over the different dependence counts. The feature
@@ -3040,7 +3043,7 @@ non-uniformity*. It is defined as:
 .. math:: F_{\mathit{ngl.dcnu}}= \frac{1}{N_s} \sum_{j=1}^{N_n} s_{.j}^2
 
 Dependence count non-uniformity normalised
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a normalised version of the *dependence count non-uniformity*
 feature. It is defined as:
@@ -3048,7 +3051,7 @@ feature. It is defined as:
 .. math:: F_{\mathit{ngl.dcnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_n} s_{.j}^2
 
 Dependence count percentage
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature measures the fraction of the number of realised
 neighbourhoods and the maximum number of potential neighbourhoods.
@@ -3059,7 +3062,7 @@ case under our definition. It is defined as:
 .. math:: F_{\mathit{ngl.dc.perc}}=\frac{N_s}{N_v}
 
 Grey level variance
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 This feature estimates the variance in dependence counts over the grey
 levels. Let :math:`p_{ij} = s_{ij}/N_s` be the joint probability
@@ -3071,7 +3074,7 @@ estimate for finding discretised grey level :math:`i` with dependence
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} i\,p_{ij}`.
 
 Dependence count variance
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature estimates the variance in dependence counts over the
 different possible dependence counts. As before let
@@ -3083,7 +3086,7 @@ Mean dependence count is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} j\,p_{ij}`.
 
 Dependence count entropy
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is referred to as *entropy* by
 \[41_\]. Let :math:`p_{ij} = s_{ij}/N_s`.
@@ -3097,7 +3100,7 @@ dependence count :math:`s_{ij}` instead of count probability
 :math:`p_{ij}`.
 
 Dependence count energy
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is called *second moment* by \[41_\].
 Let :math:`p_{ij} = s_{ij}/N_s`. Then *dependence count energy* is

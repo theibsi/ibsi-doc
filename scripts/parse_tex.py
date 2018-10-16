@@ -35,7 +35,8 @@ def main():
 
   for section in split_sections(output_lines, hdr_chars):
     process_citations(section, citation_data)
-    fix_math_block(section)
+    fix_math_indent(section)
+    fix_math_formula(section)
     fix_figures(section, figures)
 
     out_str = u'\n'.join(section).encode('utf-8')
@@ -205,7 +206,7 @@ def _format_citation(record):
   return '; '.join(citation), url
 
 
-def fix_math_block(section_lines):
+def fix_math_indent(section_lines):
 
   math_block = False
   math_line = False
@@ -230,6 +231,43 @@ def fix_math_block(section_lines):
     elif math_line and line.startswith(' '):
       math_line = False
       section_lines[line_idx] = line.strip()
+
+
+def fix_math_formula(section_lines):
+  keys = {r'\floor*{': (r'\left\lfloor ', r'\right\rfloor '),
+          r'\ceil*{': (r'\left\lceil ', r'\right\rceil '),
+          r'\abs{': ('|', '|'),
+          r'\norm{': (r'\|', r'\|'),
+          r'\iverson{': (r'\big[', r'\big]')}
+  regex = r'\\(floor\*|ceil\*|abs|norm|iverson)\{'
+
+  for line_idx in range(len(section_lines)):
+    line = section_lines[line_idx]
+
+    replacements = []
+    for match in re.finditer(regex, line):
+      idx = match.start(), match.end()
+      key = line[idx[0]:idx[1]]
+
+      end_idx = None
+      level = 1
+      for char_idx, char in enumerate(line[idx[1]:], start=idx[1]):
+        if char == '{':
+          level += 1
+        elif char == '}':
+          level -= 1
+
+        if level == 0:
+          end_idx = char_idx
+          break
+
+      replacements.append((idx[0], idx[1], keys[key][0]))
+      replacements.append((end_idx, end_idx + 1, keys[key][1]))
+
+    if len(replacements) > 0:
+      for r in sorted(replacements, key=lambda x: x[0], reverse=True):
+        line = line[:r[0]] + r[2] + line[r[1]:]
+      section_lines[line_idx] = line
 
 
 def parse_tex_figures(tex_source):

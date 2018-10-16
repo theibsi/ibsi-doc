@@ -156,7 +156,7 @@ Import diagnostic features for the five different configurations are
 shown in chapter [chap\_app\_diagnostic] of the appendix.
 
 Initial image stack.
-''''''''''''''''''''
+~~~~~~~~~~~~~~~~~~~~
 
 The following features may be used to describe the initial image stack
 (i.e. after loading image data for processing):
@@ -179,13 +179,13 @@ The following features may be used to describe the initial image stack
    image.
 
 Interpolated image stack.
-'''''''''''''''''''''''''
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The above features may also be used to describe the image stack after
 image interpolation.
 
 Initial region of interest.
-'''''''''''''''''''''''''''
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following descriptors are used to describe the region of interest
 (ROI) directly after segmentation of the image:
@@ -216,13 +216,13 @@ The following descriptors are used to describe the region of interest
    voxels within the ROI intensity mask.
 
 Interpolated region of interest.
-''''''''''''''''''''''''''''''''
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The same features can be used to describe the ROI after interpolation of
 the ROI mask.
 
 Re-segmented region of interest.
-''''''''''''''''''''''''''''''''
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Again, the same features as above can be used to describe the ROI after
 re-segmentation.

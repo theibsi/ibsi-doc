@@ -358,7 +358,7 @@ and :math:`s_{a,w}` their spacing in world coordinates. Then, let
 :math:`s_{b,w}` be the desired spacing after interpolation. The axial
 dimension of the interpolated mesh grid is then:
 
-.. math:: n_b = \ceil*{\frac{n_a s_a}{s_b}}
+.. math:: n_b = \left\lceil \frac{n_a s_a}{s_b}\right\rceil 
 
 Rounding towards infinity guarantees that the interpolation grid exists
 even when the original grid contains few voxels. However, it also means
@@ -533,7 +533,7 @@ follows:
 .. math::
 
    X_{d,k} = \begin{cases}
-   \floor*{N_g \frac{X_{gl,k}-X_{gl,min}}{X_{gl,max}-X_{gl,min}}} + 1 & X_{gl,k}<X_{gl,max}\\
+   \left\lfloor N_g \frac{X_{gl,k}-X_{gl,min}}{X_{gl,max}-X_{gl,min}}\right\rfloor  + 1 & X_{gl,k}<X_{gl,max}\\
    N_g & X_{gl,k}=X_{gl,max}
    \end{cases}
 
@@ -576,7 +576,7 @@ for functional imaging modalities such as PET.
 
 Discretised intensities are computed as follows:
 
-.. math:: X_{d,k}=\floor*{\frac{X_{gl,k}-X_{gl,min}}{w_b}} + 1
+.. math:: X_{d,k}=\left\lfloor \frac{X_{gl,k}-X_{gl,min}}{w_b}\right\rfloor  + 1
 
 In short, the minimum intensity :math:`X_{gl,min}` is subtracted from
 intensity :math:`X_{gl,k}` in voxel :math:`k`, and then divided by the
