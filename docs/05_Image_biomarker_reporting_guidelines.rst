@@ -10,10 +10,10 @@ Reporting guidelines
 --------------------
 
 These guidelines are partially based on the work of
-\[1_\]. Additionally, guidelines are derived
+:cite:`Sollini2017`. Additionally, guidelines are derived
 from the image processing and feature calculation steps described within
 this document. An earlier version was reported elsewhere
-\[2_\].
+:cite:`vallieres2017responsible`.
 
 @p5cmp9.5cm@
 
@@ -339,6 +339,3 @@ to 0.99
 | w:f & weighting with function :math:`f` &
 
 In the above table, # represents numbers.
-
-.. [1] `Sollini, M., Cozzi, L., Antunovic, L., Chiti, A., Kirienko, M.; *PET Radiomics in NSCLC: state of the art and a proposal for harmonization of methodology.*; Scientific reports; 2017; 7 (1); 358 <http://www.nature.com/articles/s41598-017-00426-y>`_
-.. [2] Vallieres, Martin, Zwanenburg, Alex, Badic, Bogdan, Cheze-Le Rest, Catherine, Visvikis, Dimitris, Hatt, Mathieu; *Responsible Radiomics Research for Faster Clinical Translation*; 2017

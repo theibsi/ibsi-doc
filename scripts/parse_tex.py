@@ -1,7 +1,6 @@
 import os
 import re
 
-import bibtexparser
 import six
 from six.moves import range
 
@@ -12,10 +11,6 @@ def main():
   figures = parse_tex_figures(tex_source)
   if output is None or output == '':
     raise ValueError('Empty output was returned!')
-
-  citation_data = parse_bibliography(r'..\ibsi-reference-manual\Bibliography.bib')
-  #for entry in citation_data.entries:
-  #  print (entry['ID'], u'\xe6' in entry['ID'])
 
   output_lines = output.replace('\r', '').split('\n')
   hdr_chars = ['=', '-']
@@ -33,18 +28,24 @@ def main():
     ''
     ]
 
+  cnt = 0
   for section in split_sections(output_lines, hdr_chars):
-    process_citations(section, citation_data)
+    cnt += 1
+    process_citations(section)
     fix_math_indent(section)
     fix_math_formula(section)
     fix_figures(section, figures)
 
     out_str = u'\n'.join(section).encode('utf-8')
     print('Storing section %s' % section[0])
-    with open(section[0].replace(' ', '_')+'.rst', mode='wb') as out_fs:
-      out_fs.write(out_str)
-    index.append('   %s <%s>' % (section[0], section[0].replace(' ', '_')))
 
+    dest_name = '%-.2i_' % cnt + section[0].replace(' ', '_')
+
+    with open(dest_name + '.rst', mode='wb') as out_fs:
+      out_fs.write(out_str)
+    index.append('   %s <%s>' % (section[0], dest_name))
+
+  index.append('   References')
   index.append('')
 
   with open('index.rst', mode='w') as index_fs:
@@ -126,15 +127,8 @@ def split_sections(output_lines, header_chars=None):
   yield output_lines[start_line:]  # return the remainder of the document
 
 
-def parse_bibliography(bib_file):
-  with open(bib_file) as bib_fs:
-    return bibtexparser.load(bib_fs)
-
-
-def process_citations(section_lines, citation_data):
+def process_citations(section_lines):
   cite_pattern = r':raw-latex:`\\cite[pt]?\{(?P<Authors>[a-z,A-Z]+(-[a-z,A-Z]+)*\d{4}[a-z,A-Z]*(,\s?([a-z,A-Z]+(-[a-z,A-Z]+)*\d{4}[a-z,A-Z]*))*)\}`'
-
-  citations = {}
 
   for line_idx in range(len(section_lines)):
     line = section_lines[line_idx]
@@ -143,67 +137,14 @@ def process_citations(section_lines, citation_data):
       match_str = match.group()
       authors = match.groupdict()['Authors'].split(',')
 
-      replacements[match_str] = []
-      for a in authors:
-        a = a.strip()
-        if a not in citations:
-          a_data = citation_data.entries_dict.get(a)
-          if a_data is None:
-            continue
-          citation, url = _format_citation(a_data)
-          citations[a] = (len(citations) + 1, citation, url)
-
-        replacements[match_str].append('%i_' % citations[a][0])
+      replacements[match_str] = [a.strip() for a in authors]
 
     for r in replacements:
-      r_str = '\[' + ', '.join(replacements[r]) + '\]'
+      r_str = ':cite:`' + ','.join(replacements[r]) + '`'
       if not (line.index(r) == 0 or line[line.index(r) - 1] == ' '):
         r_str = ' ' + r_str
       line = line.replace(r, r_str)
     section_lines[line_idx] = line
-
-  for c, v in sorted(six.iteritems(citations), key=lambda x: x[1][0]):
-    if v[2] is not None:
-      link = '`%s <%s>`_' % (v[1], v[2])
-    else:
-      link = v[1]
-    section_lines.append('.. [%i] %s' % (v[0], link))
-
-
-def _format_citation(record):
-  citation = []
-  if not isinstance(record['author'], list):
-    record = bibtexparser.customization.author(record)
-
-  # Authors
-  authors = record['author']
-  if len(authors) > 6:
-    citation.append(', '.join(authors[:6] + ['et al.']).replace('{', '').replace('}', ''))
-  else:
-    citation.append(', '.join(authors).replace('{', '').replace('}', ''))
-
-  # Title
-  citation.append('*%s*' % record['title'].replace('{', '').replace('}', ''))
-
-  if 'journal' in record:
-    citation.append(record['journal'].replace('{', '').replace('}', ''))
-  if 'year' in record:
-    citation.append(record['year'])
-  if 'volume' in record:
-    vol = record['volume']
-    if 'number' in record:
-      vol = vol + ' (%s)' % record['number']
-    citation.append(vol)
-  if 'pages' in record:
-    citation.append(record['pages'])
-
-  url = None
-  if 'url' in record:
-    url = record['url'].split(' ')[0].replace('{', '').replace('}', '')
-  elif 'doi' in record:
-    url = 'https://doi.org/' + record['doi'].replace('{', '').replace('}', '')
-
-  return '; '.join(citation), url
 
 
 def fix_math_indent(section_lines):

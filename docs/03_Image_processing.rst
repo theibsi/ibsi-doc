@@ -36,7 +36,7 @@ intensities.
 Image processing may be conducted using a wide variety of schemes. We
 therefore designed a general image processing scheme for image feature
 calculation based on schemes used within scientific literature
-\[1_\]. The image processing scheme is shown in
+:cite:`Hatt2016`. The image processing scheme is shown in
 figure [figImageProc]. The processing steps referenced in the figure are
 described in detail within this chapter.
 
@@ -64,7 +64,7 @@ Data conversion
 
 Some imaging modalities require conversion of raw image data into a more
 meaningful presentation, e.g. standardised uptake values
-(SUV) \[2_\]. This is performed during the
+(SUV) :cite:`Boellaard2015`. This is performed during the
 data conversion step. Assessment of data conversion methods falls
 outside the scope of the current work.
 
@@ -73,19 +73,19 @@ Image post-acquisition processing
 
 Images are post-processed to enhance image quality. For instance,
 magnetic resonance imaging (MRI) contains both Gaussian and Rician noise
-\[3_\] and may benefit from denoising. As
+:cite:`Gudbjartsson1995` and may benefit from denoising. As
 another example, intensities measured using MR may be non-uniform across
 an image and could require correction
-\[4_, 5_, 6_\]. FDG-PET-based may
+:cite:`Sled1998,Vovk2007,Balafar2010`. FDG-PET-based may
 furthermore be corrected for partial volume effects
-\[7_, 8_\] and noise
-\[9_, 10_\]. In CT imaging, metal
+:cite:`Soret2007,Boussion2009` and noise
+:cite:`LePogam2013,ElNaqa2017`. In CT imaging, metal
 objects, e.g. pacemakers and tooth implants, introduce artifacts and may
-require artifinterpact suppression \[11_\].
+require artifinterpact suppression :cite:`Gjesteby2016`.
 Microscopy images generally benefit from field-of-view illumination
 correction as illumination is usually inhomogeneous due to the
 light-source or the optical path
-\[12_, 13_\].
+:cite:`Caicedo2017,Smith2015`.
 
 Evaluation and standardisation of various image post-acquisition
 processing methods falls outside the scope of the current work. Note
@@ -127,7 +127,7 @@ mask.
 
 A common method to determine whether a point in an image slice lies
 inside a 2D polygon is the *crossing number* algorithm, for which
-several implementations exist \[14_\]. The main
+several implementations exist :cite:`Schirra2008`. The main
 concept behind this algorithm is that for any point inside the polygon,
 any line originating outside the polygon will cross the polygon an
 uneven number of times. A simple example is shown in figure
@@ -184,7 +184,7 @@ be rotationally invariant, and to allow comparison between image data
 from different samples, cohorts or batches. Voxel interpolation affects
 image feature values as many image features are sensitive to changes in
 voxel size
-\[15_, 16_, 17_, 18_, 19_\].
+:cite:`Yan2015,Bailly2016,Altazi2017,Shafiq-ul-Hassan2017,Shiri2017`.
 Maintaining consistent isotropic voxel spacing across different
 measurements and devices is therefore important for reproducibility. At
 the moment there are no clear indications whether upsampling or
@@ -195,9 +195,9 @@ requires inference and introduces artificial information, while
 conversely upsampling to the largest dimension
 (:math:`3.0 \times 3.0 \times 3.0~\text{mm}^3`) incurs information loss.
 Multiple-scaling strategies potentially offer a good trade-off
-\[20_\]. Note that upsampling may introduce
+:cite:`Vallieres2017`. Note that upsampling may introduce
 image aliasing artifacts that require anti-aliasing filters prior to
-filtering \[21_, 22_\].
+filtering :cite:`Mackin2017,Zwanenburg2018`.
 
 While in general 3D interpolation algorithms are used to interpolate 3D
 images, 2D interpolation within the image slice plane may be recommended
@@ -240,7 +240,7 @@ While no consensus exists concerning the optimal choice of interpolation
 algorithm, *trilinear interpolation* is usually seen as a conservative
 choice. It does not lead to the blockiness produced by *nearest
 neighbour interpolation* that introduces bias in local textures
-\[1_\]. Nor does it lead to out-of-range
+:cite:`Hatt2016`. Nor does it lead to out-of-range
 intensities which may occur due to overshoot with *tricubic* and higher
 order interpolations. The latter problem can occur in acute intensity
 transitions, where the local neighbourhood itself is not sufficiently
@@ -250,9 +250,9 @@ Particularly when upsampling, *trilinear* interpolation may act as a
 low-pass filter which suppresses higher spatial frequencies and cause
 artefacts in high-pass spatial filters. Interpolation algorithms and
 their advantages and disadvantages are treated in more detail elsewhere,
-e.g. \[23_\].
+e.g. :cite:`thevenaz2000image`.
 
-In a phantom study, \[24_\] compared *nearest
+In a phantom study, :cite:`Larue2017` compared *nearest
 neighbour*, *trilinear* and *tricubic* interpolation and indicated that
 feature reproducibility is dependent on the selected interpolation
 algorithm, i.e. some features were more reproducible using one
@@ -479,8 +479,8 @@ Intensity outlier filtering
 
 ROI voxels with outlier intensities may be removed from the intensity
 mask. One method for defining outliers was suggested by
-\[25_\] after
-\[26_\]. The mean :math:`\mu` and standard
+:cite:`Vallieres2015` after
+:cite:`Collewet2004`. The mean :math:`\mu` and standard
 deviation :math:`\sigma` of grey levels of voxels assigned to the ROI
 are calculated. Voxels outside the range
 :math:`\left[\mu - 3\sigma, \mu + 3\sigma\right]` are subsequently
@@ -501,7 +501,7 @@ Intensity discretisation
 
 Discretisation or quantisation of image intensities inside the ROI is
 often required to make calculation of texture features tractable
-\[27_\], and possesses noise-suppressing properties
+:cite:`Yip2016`, and possesses noise-suppressing properties
 as well. An example of discretisation is shown in figure
 [figImageDiscretisation].
 
@@ -588,18 +588,18 @@ Other methods
 ^^^^^^^^^^^^^
 
 Many other methods and variations for discretisation exist, but are not
-described in detail here. \[25_\] described
+described in detail here. :cite:`Vallieres2015` described
 the use of *intensity histogram equalisation* and *Lloyd-Max* algorithms
 for discretisation. *Intensity histogram equalisation* involves
 redistributing intensities so that the resulting bins contain a similar
 number of voxels, i.e. contrast is increased by flattening the histogram
-as much as possible \[28_\]. Histogram
+as much as possible :cite:`Hall1971`. Histogram
 equalisation of the ROI imaging intensities can be performed before any
 other discretisation algorithm (e.g. FBN, FSB, etc.), and it also
 requires the definition of a given number of bins in the histogram to be
 equalised. The *Lloyd-Max* algorithm is an iterative clustering method
 that seeks to minimise mean squared discretisation errors
-\[29_, 30_\].
+:cite:`Max1960,Lloyd1982`.
 
 Recommendations
 ^^^^^^^^^^^^^^^
@@ -611,7 +611,7 @@ intensity definitions, re-segmentation ranges and discretisation
 algorithms are provided in Table [table\_discretisation]. Overall, the
 discretisation choice has a substantial impact on intensity
 distributions, feature values and reproducibility
-\[31_, 32_, 33_, 1_, 18_, 17_\].
+:cite:`Hatt2015,Leijenaar2015a,vanVelden2016,Desseroit2017,Hatt2016,Shafiq-ul-Hassan2017,Altazi2017`.
 
 to 0.8
 
@@ -646,46 +646,12 @@ features may be better modeled with a higher number of grey levels (e.g.
 optimization of image processing parameters for each different feature
 in terms of a specific objective. For the specific case of the
 optimization of image interpolation and discretisation prior to texture
-analysis, Vallières *et al.* \[25_\] have
+analysis, Vallières *et al.* :cite:`Vallieres2015` have
 named this process *texture optimization*. The authors notably suggested
 that the *texture optimization* process could have significant influence
 of the prognostic capability of subsequent features. In another
-study \[20_\], the authors constructed
+study :cite:`Vallieres2017`, the authors constructed
 predictive models using textures calculated from all possible
 combinations of PET and CT images interpolated at four isotropic
 resolutions and discretised with two different algorithms and four
 numbers of grey levels.
-
-.. [1] `Hatt, Mathieu, Tixier, Florent, Pierce, Larry, Kinahan, Paul E., Le Rest, Catherine Cheze, Visvikis, Dimitris; *Characterization of PET/CT images using texture analysis: the past, the present\ldots any future?*; European journal of nuclear medicine and molecular imaging; 2017; 44 (1); 151--165 <http://link.springer.com/10.1007/s00259-016-3427-0>`_
-.. [2] `Boellaard, Ronald, Delgado-Bolton, Roberto, Oyen, Wim J. G., Giammarile, Francesco, Tatsch, Klaus, Eschner, Wolfgang, et al.; *FDG PET/CT: EANM procedure guidelines for tumour imaging: version 2.0.*; European journal of nuclear medicine and molecular imaging; 2015; 42 (2); 328--54 <http://www.ncbi.nlm.nih.gov/pubmed/25452219>`_
-.. [3] `Gudbjartsson, H\'akon, Patz, Samuel; *The Rician distribution of noisy MRI data.*; Magnetic resonance in medicine; 1995; 34 (6); 910--4 <http://www.ncbi.nlm.nih.gov/pubmed/2254141>`_
-.. [4] `Sled, John G., Zijdenbos, Alex P., Evans, Alan C.; *A nonparametric method for automatic correction of intensity nonuniformity in MRI data.*; IEEE transactions on medical imaging; 1998; 17 (1); 87--97 <http://www.ncbi.nlm.nih.gov/sites/entrez?Db=pubmed\&DbFrom=pubmed\&Cmd=Link\&LinkName=pubmed\_pubmed\&LinkReadableName=Related>`_
-.. [5] `Vovk, Uros, Pernus, Franjo, Likar, Bostjan; *A review of methods for correction of intensity inhomogeneity in MRI.*; IEEE transactions on medical imaging; 2007; 26 (3); 405--21 <http://www.ncbi.nlm.nih.gov/pubmed/17354645>`_
-.. [6] `Balafar, M. A., Ramli, A. R., Saripan, M. I., Mashohor, S.; *Review of brain MRI image segmentation methods*; Artificial Intelligence Review; 2010; 33 (3); 261--274 <http://link.springer.com/10.1007/s10462-010-9155-0>`_
-.. [7] `Soret, Marine, Bacharach, Stephen L., Buvat, Ir\`ene; *Partial-volume effect in PET tumor imaging.*; Journal of nuclear medicine; 2007; 48 (6); 932--45 <http://jnm.snmjournals.org/cgi/doi/10.2967/jnumed.106.035774>`_
-.. [8] `Boussion, N., Le Rest, Catherine Cheze, Hatt, Mathieu, Visvikis, Dimitris; *Incorporation of wavelet-based denoising in iterative deconvolution for partial volume correction in whole-body PET imaging.*; European journal of nuclear medicine and molecular imaging; 2009; 36 (7); 1064--75 <http://www.ncbi.nlm.nih.gov/pubmed/19224209>`_
-.. [9] `Le Pogam, Adrien, Hanzouli, H., Hatt, Mathieu, Cheze Le Rest, Catherine, Visvikis, Dimitris; *Denoising of PET images by combining wavelets and curvelets for improved preservation of resolution and quantitation.*; Medical image analysis; 2013; 17 (8); 877--91 <http://dx.doi.org/10.1016/j.media.2013.05.005>`_
-.. [10] `El Naqa, Issam; *Image Processing and Analysis of PET and Hybrid PET Imaging*; 2017; 285--301 <https://doi.org/10.1007/978-3-319-40070-9\_12>`_
-.. [11] `Gjesteby, Lars, De Man, Bruno, Jin, Yannan, Paganetti, Harald, Verburg, Joost, Giantsoudi, Drosoula, et al.; *Metal Artifact Reduction in CT: Where Are We After Four Decades?*; IEEE Access; 2016; 4; 5826--5849 <http://ieeexplore.ieee.org/document/7565564/>`_
-.. [12] `Caicedo, Juan C., Cooper, Sam, Heigwer, Florian, Warchal, Scott, Qiu, Peng, Molnar, Csaba, et al.; *Data-analysis strategies for image-based cell profiling*; Nature Methods; 2017; 14 (9); 849--863 <https://doi.org/10.1038/nmeth.4397>`_
-.. [13] `Smith, Kevin, Li, Yunpeng, Piccinini, Filippo, Csucs, Gabor, Balazs, Csaba, Bevilacqua, Alessandro, et al.; *CIDRE: An illumination-correction method for optical microscopy*; Nature Methods; 2015; 12 (5); 404--406 <https://doi.org/10.1038/nmeth.3323>`_
-.. [14] `Schirra, Stefan; *How Reliable Are Practical Point-in-Polygon Strategies?*; 2008; 744--755 <http://link.springer.com/10.1007/978-3-540-87744-8\_62>`_
-.. [15] `Yan, Jianhua, Chu-Shern, Jason Lim, Loi, Hoi Yin, Khor, Lih Kin, Sinha, Arvind K., Quek, Swee Tian, et al.; *Impact of Image Reconstruction Settings on Texture Features in 18F-FDG PET.*; Journal of nuclear medicine; 2015; 56 (11); 1667--73 <http://jnm.snmjournals.org/cgi/doi/10.2967/jnumed.115.156927\%5Cnhttp://www.ncbi.nlm.nih.gov/pubmed/26229145>`_
-.. [16] `Bailly, Cl\'ement, Bodet-Milin, Caroline, Couespel, Sol\`ene, Necib, Hatem, Kraeber-Bod\'er\'e, Fran\ccoise, Ansquer, Catherine, et al.; *Revisiting the Robustness of PET-Based Textural Features in the Context of Multi-Centric Trials.*; PloS one; 2016; 11 (7); e0159984 <http://www.ncbi.nlm.nih.gov/pubmed/27467882>`_
-.. [17] `Altazi, Baderaldeen A, Zhang, Geoffrey G, Fernandez, Daniel C, Montejo, Michael E, Hunt, Dylan, Werner, Joan, et al.; *Reproducibility of F18-FDG PET radiomic features for different cervical tumor segmentation methods, gray-level discretization, and reconstruction algorithms.*; Journal of applied clinical medical physics; 2017; 18 (6); 32--48 <http://www.ncbi.nlm.nih.gov/pubmed/28891217>`_
-.. [18] `Shafiq-Ul-Hassan, Muhammad, Zhang, Geoffrey G., Latifi, Kujtim, Ullah, Ghanim, Hunt, Dylan C., Balagurunathan, Yoganand, et al.; *Intrinsic dependencies of CT radiomic features on voxel size and number of gray levels.*; Medical physics; 2017; 44 (3); 1050--1062 <http://doi.wiley.com/10.1002/mp.12123>`_
-.. [19] `Shiri, Isaac, Rahmim, Arman, Ghaffarian, Pardis, Geramifar, Parham, Abdollahi, Hamid, Bitarafan-Rajabi, Ahmad; *The impact of image reconstruction settings on 18F-FDG PET radiomic features: multi-scanner phantom and patient studies*; European Radiology; 2017; 27 (11); 4498--4509 <http://link.springer.com/10.1007/s00330-017-4859-z>`_
-.. [20] `Valli\`eres, Martin, Kay-Rivest, Emily, Perrin, L\'eo Jean, Liem, Xavier, Furstoss, Christophe, Aerts, Hugo J. W. L., et al.; *Radiomics strategies for risk assessment of tumour failure in head-and-neck cancer.*; Scientific reports; 2017; 7 (); 10117 <http://arxiv.org/abs/1703.08516>`_
-.. [21] `Mackin, Dennis, Fave, Xenia, Zhang, Lifei, Yang, Jinzhong, Jones, A. Kyle, Ng, Chaan S., et al.; *Harmonizing the pixel size in retrospective computed tomography radiomics studies*; PLOS ONE; 2017; 12 (9); e0178524 <http://dx.plos.org/10.1371/journal.pone.0178524>`_
-.. [22] `Zwanenburg, Alex, Leger, Stefan, Agolli, Linda, Pilz, Karoline, Troost, Esther G. C., Richter, Christian, et al.; *Assessing robustness of radiomic features by image perturbation*; eprint arXiv:1806.06719 [cs.CV]; 2018 <http://arxiv.org/abs/1806.06719>`_
-.. [23] Th\'evenaz, Philippe, Blu, Thierry, Unser, Michael; *Image interpolation and resampling*; 2000; 393--420
-.. [24] `Larue, Ruben T. H. M., van Timmeren, Janna E., de Jong, Evelyn E. C., Feliciani, Giacomo, Leijenaar, Ralph T. H., Schreurs, Wendy M. J., et al.; *Influence of gray level discretization on radiomic feature stability for different CT scanners, tube currents and slice thicknesses: a comprehensive phantom study.*; Acta oncologica; 2017; 1--10 <https://www.tandfonline.com/doi/full/10.1080/0284186X.2017.1351624>`_
-.. [25] `Valli\`eres, Martin, Freeman, Carolyn R., Skamene, Sonia R., El Naqa, Issam; *A radiomics model from joint FDG-PET and MRI texture features for the prediction of lung metastases in soft-tissue sarcomas of the extremities.*; Physics in medicine and biology; 2015; 60 (14); 5471--96 <http://www.ncbi.nlm.nih.gov/pubmed/26119045>`_
-.. [26] `Collewet, G., Strzelecki, M., Mariette, F.; *Influence of MRI acquisition protocols and image intensity normalization methods on texture classification.*; Magnetic resonance imaging; 2004; 22 (1); 81--91 <http://www.ncbi.nlm.nih.gov/pubmed/14972397>`_
-.. [27] `Yip, Stephen S. F., Aerts, Hugo J. W. L.; *Applications and limitations of radiomics.*; Physics in medicine and biology; 2016; 61 (13); R150--66 <http://stacks.iop.org/0031-9155/61/i=13/a=R150?key=crossref.134478778713970aff90f16abe110608>`_
-.. [28] `Hall, Ernest L., Kruger, Richard P., Samuel, J., Dwyer, D., McLaren, Robert W., Hall, David L., et al.; *A Survey of Preprocessing and Feature Extraction Techniques for Radiographic Images*; IEEE Transactions on Computers; 1971; C-20 (9); 1032--1044 <https://doi.org/10.1109/T-C.1971.223399>`_
-.. [29] `Max, Joel; *Quantizing for minimum distortion*; IEEE Transactions on Information Theory; 1960; 6 (1); 7--12 <http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1057548>`_
-.. [30] `Lloyd, Stuart P.; *Least Squares Quantization in PCM*; IEEE Transactions on Information Theory; 1982; 28 (2); 129--137 <https://doi.org/10.1109/TIT.1982.1056489>`_
-.. [31] `Hatt, Mathieu, Majdoub, Mohamed, Valli\`eres, Martin, Tixier, Florent, Le Rest, Catherine Cheze, Groheux, David, et al.; *18F-FDG PET uptake characterization through texture analysis: investigating the complementary nature of heterogeneity and functional tumor volume in a multi-cancer site patient cohort.*; Journal of nuclear medicine; 2015; 56 (1); 38--44 <http://jnm.snmjournals.org/content/56/1/38.abstractN2>`_
-.. [32] `Leijenaar, Ralph T. H., Nalbantov, Georgi, Carvalho, Sara, van Elmpt, Wouter J. C., Troost, Esther G. C., Boellaard, Ronald, et al.; *The effect of SUV discretization in quantitative FDG-PET Radiomics: the need for standardized methodology in tumor texture analysis.*; Scientific reports; 2015; 5 (August); 11075 <http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=4525145\&tool=pmcentrez\&rendertype=abstract>`_
-.. [33] `Desseroit, Marie-Charlotte, Tixier, Florent, Weber, Wolfgang A., Siegel, Barry A., Cheze Le Rest, Catherine, Visvikis, Dimitris, et al.; *Reliability of PET/CT Shape and Heterogeneity Features in Functional and Morphologic Components of Non-Small Cell Lung Cancer Tumors: A Repeatability Analysis in a Prospective Multicenter Cohort.*; Journal of nuclear medicine; 2017; 58 (3); 406--411 <http://jnm.snmjournals.org/lookup/doi/10.2967/jnumed.116.180919>`_

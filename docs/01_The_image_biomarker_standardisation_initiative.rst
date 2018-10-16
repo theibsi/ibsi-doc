@@ -7,7 +7,7 @@ extraction of image biomarkers from acquired imaging for the purpose of
 high-throughput quantitative image analysis (radiomics). Lack of
 reproducibility and validation of high-throughput quantitative image
 analysis studies is considered to be a major challenge for the
-field \[1_, 2_, 3_\]. Part of this
+field :cite:`Gillies2015,Yip2016,Hatt2016`. Part of this
 challenge lies in the scantiness of consensus-based guidelines and
 definitions for the process of translating acquired imaging into
 high-throughput image biomarkers. The IBSI therefore seeks to provide
@@ -272,7 +272,3 @@ to 0.99
   Rossendorf (HZDR), Dresden, Germany *and* German Cancer Consortium
   (DKTK), Partner Site Dresden, and German Cancer Research Center
   (DKFZ), Heidelberg, Germany
-
-.. [1] `Gillies, Robert J., Kinahan, Paul E., Hricak, Hedvig; *Radiomics: Images Are More than Pictures, They Are Data.*; Radiology; 2015; 278 (2); 151169 <https://doi.org/10.1148/radiol.2015151169>`_
-.. [2] `Yip, Stephen S. F., Aerts, Hugo J. W. L.; *Applications and limitations of radiomics.*; Physics in medicine and biology; 2016; 61 (13); R150--66 <http://stacks.iop.org/0031-9155/61/i=13/a=R150?key=crossref.134478778713970aff90f16abe110608>`_
-.. [3] `Hatt, Mathieu, Tixier, Florent, Pierce, Larry, Kinahan, Paul E., Le Rest, Catherine Cheze, Visvikis, Dimitris; *Characterization of PET/CT images using texture analysis: the past, the present\ldots any future?*; European journal of nuclear medicine and molecular imaging; 2017; 44 (1); 151--165 <http://link.springer.com/10.1007/s00259-016-3427-0>`_

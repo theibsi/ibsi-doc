@@ -1,5 +1,6 @@
-bibtexparser
+pybtex
 pypandoc < 1.4
 six
 sphinx
 sphinx-rtd-theme
+sphinxcontrib-bibtex

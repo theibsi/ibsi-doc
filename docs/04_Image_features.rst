@@ -6,8 +6,8 @@ General considerations
 
 In this chapter we will describe a set of quantitative image features.
 The feature set presented here largely builds upon the feature sets
-proposed by \[1_\] and
-\[2_\], which are themselves largely derived from
+proposed by :cite:`Aerts2014` and
+:cite:`Hatt2016`, which are themselves largely derived from
 earlier works. References to earlier work are provided whenever they
 could be identified.
 
@@ -24,7 +24,7 @@ lack, however, is directionality in combination with rotation
 invariance. These may be achieved by local binary patterns and steerable
 filters, which however fall beyond the scope of the current work. For
 these and other texture features, see
-\[3_\].
+:cite:`Depeursinge2014`.
 
 Features are calculated on the base image, as well as images transformed
 using wavelet or Gabor filters). To calculate features, it is assumed
@@ -111,7 +111,7 @@ Distance weighting
 
 Distance weighting is not a default operation for any of the texture
 families, but is implemented in software such as PyRadiomics
-\[4_\]. It may for example be used to
+:cite:`VanGriethuysen2017`. It may for example be used to
 put more emphasis on local intensities.
 
 Morphological features
@@ -146,10 +146,10 @@ Voxel-based representations lead to partial volume effects and
 over-estimation of surface area. The surface of the ROI volume is
 translated into a triangle mesh using a meshing algorithm. While
 multiple meshing algorithms exist, we suggest the use of the *Marching
-Cubes* algorithm \[5_, 6_\] because
+Cubes* algorithm :cite:`Lorensen1987,Lewiner2003` because
 of its widespread availability in different programming languages and
 reasonable approximation of the surface area and volume
-\[7_\]. In practice, mesh-derived feature
+:cite:`Stelldinger2007`. In practice, mesh-derived feature
 values depend upon the meshing algorithm and small differences may occur
 between meshing implementations.
 
@@ -219,7 +219,7 @@ Volume
 ~~~~~~~
 
 The *volume* :math:`V` is calculated from the ROI mesh as follows
-\[8_\]. A tetrahedron is formed by each face
+:cite:`Zhang2001`. A tetrahedron is formed by each face
 :math:`k` and the origin. By placing the origin vertex of each
 tetrahedron at :math:`(0,0,0)`, the signed volume of the tetrahedron is:
 
@@ -261,7 +261,7 @@ Surface area
 
 The *surface area* :math:`A` is also calculated from the ROI mesh by
 summing over the triangular face surface areas
-\[1_\]. By definition, the area of face
+:cite:`Aerts2014`. By definition, the area of face
 :math:`k` is:
 
 .. math:: A_k = \frac{|\mathbf{ab} \times \mathbf{ac}|}{2}
@@ -279,7 +279,7 @@ Surface to volume ratio
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 The *surface to volume ratio* is given as
-\[1_\]:
+:cite:`Aerts2014`:
 
 .. math:: F_{\mathit{morph.av}} = \frac{A}{V}
 
@@ -291,19 +291,19 @@ Several features (*compactness 1* and *2*, *spherical disproportion*,
 from a representative spheroid. All these definitions can be derived
 from one another. As a results these features are are highly correlated
 and may thus be redundant. *Compactness 1*
-\[1_\] is a measure for how compact, or
+:cite:`Aerts2014` is a measure for how compact, or
 sphere-like the volume is. It is defined as:
 
 .. math:: F_{\mathit{morph.comp.1}} = \frac{V}{\pi^{1/2} A^{3/2}}
 
 Some definitions use :math:`A^{2/3}` instead of :math:`A^{3/2}`
-\[1_\], but this does not lead to dimensionless
+:cite:`Aerts2014`, but this does not lead to dimensionless
 quantity.
 
 Compactness 2
 ~~~~~~~~~~~~~
 
-*Compactness 2* \[1_\] also quantifies how
+*Compactness 2* :cite:`Aerts2014` also quantifies how
 sphere-like the volume is:
 
 .. math:: F_{\mathit{morph.comp.2}} = 36\pi\frac{V^2}{A^3}
@@ -314,7 +314,7 @@ By definition
 Spherical disproportion 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Spherical disproportion* \[1_\] likewise
+*Spherical disproportion* :cite:`Aerts2014` likewise
 describes how sphere-like the volume is:
 
 .. math:: F_{\mathit{morph.sph.dispr}} = \frac{A}{4\pi R^2} = \frac{A}{\left(36\pi V^2\right)^{1/3}}
@@ -325,7 +325,7 @@ By definition
 Sphericity 
 ~~~~~~~~~~~
 
-*Sphericity* \[1_\] is a further measure to
+*Sphericity* :cite:`Aerts2014` is a further measure to
 describe how sphere-like the volume is:
 
 .. math:: F_{\mathit{morph.sphericity}} = \frac{\left(36\pi V^2\right)^{1/3}}{A}
@@ -336,7 +336,7 @@ By definition
 Asphericity 
 ~~~~~~~~~~~~
 
-*Asphericity* \[9_\] also describes how
+*Asphericity* :cite:`Apostolova2014` also describes how
 much the ROI deviates from a perfect sphere, with perfectly spherical
 volumes having an asphericity of 0. Asphericity is defined as:
 
@@ -372,7 +372,7 @@ The distance between the two centres of mass is then:
 Maximum 3D diameter 
 ~~~~~~~~~~~~~~~~~~~~
 
-The *maximum 3D diameter* \[1_\] is the distance
+The *maximum 3D diameter* :cite:`Aerts2014` is the distance
 between the two most distant vertices in the ROI mesh vertex set
 :math:`\mathbf{X}_{vx}`:
 
@@ -394,7 +394,7 @@ Major axis length
 ~~~~~~~~~~~~~~~~~~
 
 Principal component analysis (PCA) can be used to determine the main
-orientation of the ROI \[10_\]. On a three
+orientation of the ROI :cite:`Solomon2011`. On a three
 dimensional object, PCA yields three orthogonal eigenvectors
 :math:`\left\lbrace e_1,e_2,e_3\right\rbrace` and three eigenvalues
 :math:`\left( \lambda_1, \lambda_2, \lambda_3\right)`. These eigenvalues
@@ -416,7 +416,7 @@ for the major, minor and least axes are then
 :math:`2\sqrt{\lambda_{\mathit{least}}}` respectively. The *major axis
 length* is twice the semi-axis length :math:`a`, determined using the
 largest eigenvalue obtained by PCA on the point set of voxel centers
-:math:`\mathbf{X}_{c}` \[11_\]:
+:math:`\mathbf{X}_{c}` :cite:`Heiberger2015`:
 
 .. math:: F_{\mathit{morph.pca.major}} = 2a = 4\sqrt{\lambda_{\mathit{major}}}
 
@@ -477,7 +477,7 @@ frame.
 .. math:: F_{\mathit{morph.v.dens.aabb}} = \frac{V}{V_{\mathit{aabb}}}
 
 This feature is also called *extent*
-\[12_, 10_\].
+:cite:`ElNaqa2009,Solomon2011`.
 
 Area density - axis-aligned bounding box
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -486,7 +486,7 @@ Conceptually similar to the *volume density - axis-aligned bounding box*
 feature, *area density* considers the ratio of the ROI surface area and
 the surface area :math:`A_{aabb}` of the axis-aligned bounding box
 enclosing the ROI mesh vertex set :math:`\mathbf{X}_{vx}`
-\[13_\]. The bounding box is identical to the
+:cite:`VanDijk2016`. The bounding box is identical to the
 one used in the *volume density - axis-aligned bounding box* feature.
 Thus:
 
@@ -501,11 +501,11 @@ different set of axes, a smaller enclosing volume may be attainable. The
 oriented minimum bounding box of the ROI mesh vertex set
 :math:`\mathbf{X}_{vx}` or :math:`\mathbf{X}_{vx,convex}` encloses the
 vertex set and has the smallest possible volume. A 3D rotating callipers
-technique was devised by \[14_\] to derive the
+technique was devised by :cite:`ORourke1985` to derive the
 oriented minimum bounding box. Due to computational complexity of the
 rotating callipers technique, the oriented minimum bounding box is
 commonly approximated at lower complexity, see e.g.
-\[15_\] and \[16_\].
+:cite:`Barequet2001` and :cite:`Chan2001`.
 Thus:
 
 .. math:: F_{\mathit{morph.v.dens.ombb}} = \frac{V}{V_{ombb}}
@@ -529,7 +529,7 @@ Volume density - approximate enclosing ellipsoid
 
 The eigenvectors and eigenvalues from PCA of the ROI voxel center point
 set :math:`\mathbf{X}_{c}` can be used to describe an ellipsoid
-approximating the point cloud \[17_\]. The
+approximating the point cloud :cite:`Mazurowski2016`. The
 volume of an ellipsoid is :math:`V_{\mathit{aee}}=4 \pi\,a\,b\,c /3`,
 with :math:`a`, :math:`b`, and :math:`c` being the lengths of the
 ellipsoid’s semi-principal axes, see Section [feat\_morph\_pca\_major].
@@ -564,9 +564,9 @@ Volume density - minimum volume enclosing ellipsoid
 The approximate ellipsoid may not enclose the ROI or be the smallest
 enclosing ellipsoid. The minimum volume enclosing ellipsoid is generally
 approximated to make calculation more feasible. Various algorithms have
-been described, e.g. \[18_, 19_\],
+been described, e.g. :cite:`Todd2007,Ahipasaoglu2015`,
 which are usually elaborations on Khachiyan’s barycentric coordinate
-descent method \[20_\].
+descent method :cite:`Khachiyan1996`.
 
 The minimum volume enclosing ellipsoid (MVEE) encloses the ROI mesh
 vertex set :math:`\mathbf{X}_{vx}`, and by definition
@@ -603,7 +603,7 @@ density* can then be calculated as follows:
 .. math:: F_{\mathit{morph.v.dens.conv.hull}} = \frac{V}{V_{convex}}
 
 This feature is also called *solidity*
-\[12_, 10_\].
+:cite:`ElNaqa2009,Solomon2011`.
 
 Area density - convex hull
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -620,7 +620,7 @@ Integrated intensity
 
 *Integrated intensity* is the average grey level multiplied by the
 volume. In the context of :sup:`18`\ F-FDG-PET, this feature is called
-*total lesion glycolysis* \[21_\]. Thus:
+*total lesion glycolysis* :cite:`Vaidya2012`. Thus:
 
 .. math:: F_{\mathit{morph.integ.int}}=V\;\frac{1}{N_{v,gl}}\sum_{k=1}^{N_{v,gl}} X_{gl,k}
 
@@ -630,7 +630,7 @@ Moran’s I index
 ~~~~~~~~~~~~~~~
 
 Moran’s *I* index is an indicator of spatial autocorrelation
-\[22_, 23_\]. It is defined as:
+:cite:`Moran1950,Dale2002`. It is defined as:
 
 .. math:: F_{\mathit{morph.moran.i}} = \frac{N_{v,gl}}{\sum_{k_{1}=1}^{N_{v,gl}} \sum_{k_{2}=1}^{N_{v,gl}}w_{k_{1}k_{2}}} \frac{\sum_{k_{1}=1}^{N_{v,gl}}\sum_{k_{2}=1}^{N_{v,gl}} w_{k_{1}k_{2}}\left(X_{gl,k_{1}}-\mu \right) \left( X_{gl,k_{2}}-\mu \right)} {\sum_{k=1}^{N_{v,gl}} \left(X_{gl,k}-\mu \right)^2},\qquad k_{1}\neq k_{2}
 
@@ -639,7 +639,7 @@ mask, :math:`\mu` is the mean of :math:`\mathbf{X}_{gl}` and
 :math:`w_{k_{1}k_{2}}` is a weight factor, equal to the inverse
 Euclidean distance between voxels :math:`k_{1}` and :math:`k_{2}` of the
 point set :math:`\mathbf{X}_{c,gl}` of the ROI intensity mask
-\[24_\]. Values of Moran’s *I* close to 1.0,
+:cite:`DaSilva2008`. Values of Moran’s *I* close to 1.0,
 0.0 and -1.0 indicate high spatial autocorrelation, no spatial
 autocorrelation and high spatial anti-autocorrelation, respectively.
 
@@ -652,7 +652,7 @@ Geary’s C measure
 ~~~~~~~~~~~~~~~~~
 
 Geary’s *C* measure assesses spatial autocorrelation, similar to Moran’s
-*I* index \[25_, 23_\]. In contrast to
+*I* index :cite:`Geary1954,Dale2002`. In contrast to
 Moran’s *I* index, Geary’s *C* measure directly assesses grey level
 differences between voxels and is more sensitive to local spatial
 autocorrelation. This measure is defined as:
@@ -664,7 +664,7 @@ ROI intensity mask, :math:`\mu` is the mean of :math:`\mathbf{X}_{gl}`
 and :math:`w_{k_{1}k_{2}}` is a weight factor, equal to the inverse
 Euclidean distance between voxels :math:`k_{1}` and :math:`k_{2}` of the
 ROI voxel point set :math:`\mathbf{X}_{c,gl}`
-\[24_\].
+:cite:`DaSilva2008`.
 
 Just as Moran’s *I*, Geary’s *C* measure exhibits :math:`O(n^2)`
 behaviour and an approximation scheme may be required to make
@@ -690,11 +690,11 @@ Local intensity peak
 ~~~~~~~~~~~~~~~~~~~~~
 
 The *local intensity peak* was originally devised for reducing variance
-in determining standardised uptake values \[26_\].
+in determining standardised uptake values :cite:`Wahl2009`.
 It is defined as the mean intensity in a 1 cm\ :sup:`3` spherical volume
 (in world coordinates), which is centered on the voxel with the maximum
 intensity level in the ROI intensity mask
-\[27_\].
+:cite:`Frings2014`.
 
 To calculate :math:`F_{\mathit{loc.peak.local}}`, we first select all
 the voxels with centers within a radius
@@ -711,7 +711,7 @@ Global intensity peak
 
 The *global intensity peak* feature :math:`F_{\mathit{loc.peak.global}}`
 is similar to the *local intensity peak*
-\[27_\]. However, instead of calculating the
+:cite:`Frings2014`. However, instead of calculating the
 mean intensity for the voxel(s) with the maximum intensity, the mean
 intensity is calculated within a 1 cm\ :sup:`3` neighbourhood for every
 voxel in the ROI intensity mask. The highest intensity peak value is
@@ -908,7 +908,7 @@ The *quartile coefficient of dispersion* is a more robust alternative to
 Energy
 ~~~~~~
 
-*Energy* \[1_\] of :math:`\mathbf{X}_{gl}` is
+*Energy* :cite:`Aerts2014` of :math:`\mathbf{X}_{gl}` is
 defined as:
 
 .. math:: F_{\mathit{stat.energy}} = \sum_{k=1}^{N_v} X_{gl,k}^2
@@ -916,7 +916,7 @@ defined as:
 Root mean square
 ~~~~~~~~~~~~~~~~
 
-The *root mean square* feature \[1_\], which
+The *root mean square* feature :cite:`Aerts2014`, which
 also called the *quadratic mean*, of :math:`\mathbf{X}_{gl}` is defined
 as:
 
@@ -949,7 +949,7 @@ not recommended.
 Intensity histogram mean
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *mean* \[1_\] of :math:`\mathbf{X}_{d}` is
+The *mean* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}` is
 calculated as:
 
 .. math:: F_{\mathit{ih.mean}} = \frac{1}{N_v}\sum_{k=1}^{N_v} X_{d,k}
@@ -961,7 +961,7 @@ An equivalent formulation is:
 Intensity histogram variance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *variance* \[1_\] of :math:`\mathbf{X}_{d}`
+The *variance* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}`
 is defined as:
 
 .. math:: F_{\mathit{ih.var}} = \frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{d,k}-\mu \right)^2
@@ -974,7 +974,7 @@ to:
 Intensity histogram skewness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *skewness* \[1_\] of :math:`\mathbf{X}_{d}`
+The *skewness* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}`
 is defined as:
 
 .. math:: F_{\mathit{ih.skew}} = \frac{\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{d,k}-\mu \right) ^3}{\left(\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{d,k}-\mu \right)^2\right)^{3/2}}
@@ -990,7 +990,7 @@ If the discretised grey level variance :math:`F_{\mathit{ih.var}} = 0`,
 Intensity histogram kurtosis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Kurtosis* \[1_\], or technically excess
+*Kurtosis* :cite:`Aerts2014`, or technically excess
 kurtosis, is calculated as measure of peakedness of the distribution
 :math:`\mathbf{X}_{d}`:
 
@@ -1009,12 +1009,12 @@ Intensity histogram median
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *median* :math:`F_{\mathit{ih.median}}` is the sample median of
-:math:`\mathbf{X}_{d}` \[1_\].
+:math:`\mathbf{X}_{d}` :cite:`Aerts2014`.
 
 Intensity histogram minimum grey level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *minimum grey level* \[1_\]
+The *minimum grey level* :cite:`Aerts2014`
 :math:`F_{\mathit{ih.min}}` is equal to the lowest discretised grey
 level present in :math:`\mathbf{X}_{d}`. For *fixed bin number*
 discretisation :math:`F_{\mathit{ih.min}}=1` by definition, but it may
@@ -1035,7 +1035,7 @@ and is defined as :math:`F_{\mathit{ih.P90}}`.
 Intensity histogram maximum grey level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *maximum grey level* \[1_\]
+The *maximum grey level* :cite:`Aerts2014`
 :math:`F_{\mathit{ih.max}}` is equal to the highest discretised grey
 level present in :math:`\mathbf{X}_{d}`. :math:`F_{\mathit{ih.max}}=N_g`
 by definition.
@@ -1065,7 +1065,7 @@ interquartile range of :math:`\mathbf{X}_{d}` is always an integer.
 Intensity histogram range
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *range* of grey levels \[1_\] in the
+The *range* of grey levels :cite:`Aerts2014` in the
 histogram is defined as:
 
 .. math:: F_{\mathit{ih.range}} = \text{max}(\mathbf{X}_{d}) - \text{min}(\mathbf{X}_{d})
@@ -1077,7 +1077,7 @@ histogram. For *fixed bin number* discretisation
 Intensity histogram mean absolute deviation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *mean absolute deviation* \[1_\] is a
+The *mean absolute deviation* :cite:`Aerts2014` is a
 measure of dispersion from the mean of :math:`\mathbf{X}_{d}`:
 
 .. math:: F_{\mathit{ih.mad}} = \frac{1}{N_v}\sum_{i=1}^{N_v} \left|X_{d,i}-\mu\right|
@@ -1142,7 +1142,7 @@ The *quartile coefficient of dispersion* is a more robust alternative to
 Intensity histogram entropy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Entropy* \[1_\] is an information-theoretic
+*Entropy* :cite:`Aerts2014` is an information-theoretic
 concept that gives a metric for the information contained within
 :math:`\mathbf{X}_{d}`. The particular metric used is Shannon entropy,
 which is defined as:
@@ -1152,7 +1152,7 @@ which is defined as:
 Intensity histogram uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Uniformity* \[1_\] of :math:`\mathbf{X}_{d}` is
+*Uniformity* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}` is
 defined as:
 
 .. math:: F_{\mathit{ih.uniformity}} = \sum_{i=1}^{N_g} p_i^2
@@ -1179,7 +1179,7 @@ can be calculated in different ways. The method above has the advantages
 of being easy to implement and leading to a gradient :math:`\mathbf{H}'`
 with same size as :math:`\mathbf{H}`. This helps avoid ambiguity
 concerning correspondence between the discretised grey level and the
-bin. The *maximum histogram gradient* \[13_\]
+bin. The *maximum histogram gradient* :cite:`VanDijk2016`
 is:
 
 .. math:: F_{\mathit{ih.max.grad}} = \text{max}\left(\mathbf{H}'\right)
@@ -1188,14 +1188,14 @@ Maximum histogram gradient grey level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *maximum histogram gradient grey level*
-\[13_\] :math:`F_{\mathit{ih.max.grad.gl}}` is
+:cite:`VanDijk2016` :math:`F_{\mathit{ih.max.grad.gl}}` is
 the discretised grey level corresponding to the *maximum histogram
 gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was maximal.
 
 Minimum histogram gradient
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *minimum histogram gradient* \[13_\] is:
+The *minimum histogram gradient* :cite:`VanDijk2016` is:
 
 .. math:: F_{\mathit{ih.min.grad}} = \text{min}\left(\mathbf{H}'\right)
 
@@ -1203,7 +1203,7 @@ Minimum histogram gradient grey level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *minimum histogram gradient grey level*
-\[13_\] :math:`F_{\mathit{ih.min.grad.gl}}` is
+:cite:`VanDijk2016` :math:`F_{\mathit{ih.min.grad.gl}}` is
 the discretised grey level corresponding to the *minimum histogram
 gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was minimal.
 
@@ -1214,7 +1214,7 @@ The (cumulative) intensity-volume histogram (IVH) of the voxel grey
 level set :math:`\mathbf{X}_{gl}` of the ROI intensity mask describes
 the relationship between discretised grey level :math:`i` and the
 fraction of the volume containing at least grey level :math:`i`,
-:math:`\nu` \[12_\]. Dependent on the imaging
+:math:`\nu` :cite:`ElNaqa2009`. Dependent on the imaging
 modality, the calculation of IVH features requires discretising
 :math:`\mathbf{X}_{gl}` to generate a discretised grey level voxel set
 :math:`\mathbf{X}_{d,gl}`. Moreover, the total range :math:`\mathbf{G}`
@@ -1361,7 +1361,7 @@ fraction :math:`\nu` that has an intensity fraction :math:`\gamma` of at
 least :math:`x\%`. This differs from conceptually similar dose-volume
 histograms used in radiotherapy planning, where :math:`V_{10}` would
 indicate the volume fraction receiving at least 10 Gy planned dose.
-\[12_\] defined both :math:`V_{10}` and
+:cite:`ElNaqa2009` defined both :math:`V_{10}` and
 :math:`V_{90}` as features. In the context of this work, these two
 features are defined as :math:`F_{\mathit{ivh.V10}}` and
 :math:`F_{\mathit{ivh.V90}}`, respectively.
@@ -1371,7 +1371,7 @@ Intensity at volume fraction
 
 The *intensity at volume fraction* :math:`I_x` is the minimum
 discretised grey level :math:`i` present in at most :math:`x\%` of the
-volume. \[12_\] defined both :math:`I_{10}` and
+volume. :cite:`ElNaqa2009` defined both :math:`I_{10}` and
 :math:`I_{90}` as features. In the context of this work, these two
 features are defined as :math:`F_{\mathit{ivh.I10}}` and
 :math:`F_{\mathit{ivh.I90}}`, respectively.
@@ -1381,7 +1381,7 @@ Volume fraction difference between intensity fractions
 
 This feature is the difference between the volume fractions at two
 different intensity fractions, e.g. :math:`V_{10}-V_{90}`
-\[12_\]. In the context of this work, this
+:cite:`ElNaqa2009`. In the context of this work, this
 feature is defined as :math:`F_{\mathit{ivh.V10minusV90}}`.
 
 Intensity fraction difference between volume fractions
@@ -1389,14 +1389,14 @@ Intensity fraction difference between volume fractions
 
 This feature is the difference between discretised grey levels at two
 different fractional volumes, e.g. :math:`I_{10} - I_{90}`
-\[12_\]. In the context of this work, this
+:cite:`ElNaqa2009`. In the context of this work, this
 feature is defined as :math:`F_{\mathit{ivh.I10minusI90}}`.
 
 Area under the IVH curve
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *area under the IVH curve* :math:`F_{\mathit{ivh.auc}}` was defined
-by \[28_\]. The *area under the IVH curve*
+by :cite:`VanVelden2011`. The *area under the IVH curve*
 can be approximated by calculating the Riemann sum using the trapezoidal
 rule. Note that if there is only one grey level in the ROI, the *area
 under the IVH curve* :math:`F_{\mathit{ivh.auc}}=0`.
@@ -1434,7 +1434,7 @@ and :math:`j` occur in neighbouring voxels along direction
 :math:`\mathbf{m}_{+}=\mathbf{m}` and along direction
 :math:`\mathbf{m}_{-}= -\mathbf{m}`. Then,
 :math:`\mathbf{M}_{\mathbf{m}} = \mathbf{M}_{\mathbf{m}_{+}} + \mathbf{M}_{\mathbf{m}_{-}} = \mathbf{M}_{\mathbf{m}_{+}} + \mathbf{M}_{\mathbf{m}_{+}}^T`
-\[29_\]. As a consequence the GLCM matrix
+:cite:`Haralick1973`. As a consequence the GLCM matrix
 :math:`\mathbf{M}_{\mathbf{m}}` is symmetric. An example of the
 calculation of a GLCM is shown in Table [figGLCM1]. Corresponding grey
 level co-occurrence matrices for each direction are shown in Table
@@ -1456,7 +1456,7 @@ probability, and :math:`p_{.j}=\sum_{i=1}^{N_g} p_{ij}` is the column
 marginal probability. As :math:`\mathbf{P}_{\mathbf{m}}` is by
 definition symmetric, :math:`p_{i.} = p_{.j}`. Furthermore, let us
 consider diagonal and cross-diagonal probabilities :math:`p_{i-j}` and
-:math:`p_{i+j}` \[29_, 30_\]:
+:math:`p_{i+j}` :cite:`Haralick1973,Unser1986`:
 
 .. math::
 
@@ -1483,7 +1483,7 @@ Aggregating features
 
 To improve rotational invariance, GLCM feature values are computed by
 aggregating information from the different underlying directional
-matrices \[31_\]. Five methods can be used
+matrices :cite:`Depeursinge2017a`. Five methods can be used
 to aggregate GLCMs and arrive at a single feature value. A schematic
 example is shown in Figure [figGLCMCalcApproaches]. A feature may be
 aggregated as follows:
@@ -1563,7 +1563,7 @@ GLCMs may be weighted for distance by multiplying :math:`\mathbf{M}`
 with a weighting factor :math:`w`. By default :math:`w=1`, but :math:`w`
 may also be an inverse distance function to weight each GLCM, e.g.
 :math:`w=\|\mathbf{m}\|^{-1}` or :math:`w=\exp(-\|\mathbf{m}\|^2)`
-\[4_\], with :math:`\|\mathbf{m}\|`
+:cite:`VanGriethuysen2017`, with :math:`\|\mathbf{m}\|`
 the length of direction vector :math:`m`. Whether distance weighting
 yields different feature values depends on several factors. When
 aggregating the feature values, matrices have to be merged first,
@@ -1578,7 +1578,7 @@ exceptions, we recommend against using distance weighting for GLCM.
 Joint maximum
 ~~~~~~~~~~~~~
 
-*Joint maximum* \[32_\] is the probability
+*Joint maximum* :cite:`Haralick1979` is the probability
 corresponding to the most common grey level co-occurrence in the GLCM:
 
 .. math:: F_{\mathit{cm.joint.max}}=\text{max}(p_{ij})
@@ -1586,7 +1586,7 @@ corresponding to the most common grey level co-occurrence in the GLCM:
 Joint average
 ~~~~~~~~~~~~~
 
-*Joint average* \[30_\] is the grey level
+*Joint average* :cite:`Unser1986` is the grey level
 weighted sum of joint probabilities:
 
 .. math:: F_{\mathit{cm.joint.avg}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\, p_{ij}
@@ -1594,8 +1594,8 @@ weighted sum of joint probabilities:
 Joint variance
 ~~~~~~~~~~~~~~
 
-The *joint variance* \[30_\], which is also
-called *sum of squares* \[29_\], is defined
+The *joint variance* :cite:`Unser1986`, which is also
+called *sum of squares* :cite:`Haralick1973`, is defined
 as:
 
 .. math:: F_{\mathit{cm.joint.var}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i-\mu\right)^2 p_{ij}
@@ -1606,26 +1606,26 @@ Here :math:`\mu` is equal to the value of
 Joint entropy
 ~~~~~~~~~~~~~
 
-*Joint entropy* \[29_\] is defined as:
+*Joint entropy* :cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.joint.entr}}=-\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{ij} \log_2 p_{ij}
 
 Difference average
 ~~~~~~~~~~~~~~~~~~
 
-The *difference average* \[30_\] for the diagonal
+The *difference average* :cite:`Unser1986` for the diagonal
 probabilities is defined as:
 
 .. math:: F_{\mathit{cm.diff.avg}}=\sum_{k=0}^{N_g-1} k\, p_{i-j,k}
 
 By definition *difference average* is equivalent to the *dissimilarity*
-feature \[4_\].
+feature :cite:`VanGriethuysen2017`.
 
 Difference variance
 ~~~~~~~~~~~~~~~~~~~
 
 The *difference variance* for the diagonal probabilities
-\[29_\] is defined as:
+:cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.diff.var}}=\sum_{k=0}^{N_g-1} (k-\mu)^2 p_{i-j,k}
 
@@ -1635,7 +1635,7 @@ Difference entropy
 ~~~~~~~~~~~~~~~~~~
 
 The *difference entropy* for the diagonal probabilities
-\[29_\] is defined as:
+:cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.diff.entr}}=-\sum_{k=0}^{N_g-1} p_{i-j,k} \log_2 p_{i-j,k}
 
@@ -1643,77 +1643,77 @@ Sum average
 ~~~~~~~~~~~
 
 The *sum average* for the cross-diagonal probabilities
-\[29_\] is defined as:
+:cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.sum.avg}}=\sum_{k=2}^{2N_g} k\, p_{i+j,k}
 
 By definition,
 :math:`F_{\mathit{cm.sum.avg}} = 2 F_{\mathit{cm.joint.avg}}`
-\[4_\].
+:cite:`VanGriethuysen2017`.
 
 Sum variance
 ~~~~~~~~~~~~
 
 The *sum variance* for the cross-diagonal probabilities
-\[29_\] is defined as:
+:cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.sum.var}}=\sum_{k=2}^{2N_g} (k-\mu)^2 p_{i+j,k}
 
 Here :math:`\mu` is equal to the value of *sum average*. *Sum variance*
 is mathematically identical to the *cluster tendency* feature
-\[4_\].
+:cite:`VanGriethuysen2017`.
 
 Sum entropy
 ~~~~~~~~~~~
 
 The *sum entropy* for the cross-diagonal probabilities
-\[29_\] is defined as:
+:cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.sum.entr}}=-\sum_{k=2}^{2N_g} p_{i+j,k} \log_2 p_{i+j,k}
 
 Angular second moment
 ~~~~~~~~~~~~~~~~~~~~~
 
-The *angular second moment* \[29_\], which
+The *angular second moment* :cite:`Haralick1973`, which
 represents the energy of :math:`\mathbf{P}_{\Delta}`, is defined as:
 
 .. math:: F_{\mathit{cm.energy}} = \sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{ij}^2
 
 This feature is also called *energy*
-\[30_, 1_\] and *uniformity*
-\[33_\].
+:cite:`Unser1986,Aerts2014` and *uniformity*
+:cite:`Clausi2002`.
 
 Contrast
 ~~~~~~~~
 
 *Contrast* assesses grey level variations
-\[29_\]. Hence elements of
+:cite:`Haralick1973`. Hence elements of
 :math:`\mathbf{M}_{\Delta}` that represent large grey level differences
 receive greater weight. *Contrast* is defined as
-\[33_\]:
+:cite:`Clausi2002`:
 
 .. math:: F_{\mathit{cm.contrast}}= \sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i-j\right)^2 p_{ij}
 
-Note that the original definition by \[29_\]
+Note that the original definition by :cite:`Haralick1973`
 is seemingly more complex, but rearranging and simplifying terms leads
 to the above formulation of *contrast*.
 
 Dissimilarity
 ~~~~~~~~~~~~~
 
-*Dissimilarity* \[33_\] is conceptually similar
+*Dissimilarity* :cite:`Clausi2002` is conceptually similar
 to the *contrast* feature, and is defined as:
 
 .. math:: F_{\mathit{cm.dissimilarity}}= \sum_{i=1}^{N_g} \sum_{j=1}^{N_g} |i-j|\, p_{ij}
 
 By definition *dissimilarity* is equivalent to the *difference average*
-feature \[4_\].
+feature :cite:`VanGriethuysen2017`.
 
 Inverse difference
 ~~~~~~~~~~~~~~~~~~
 
 *Inverse difference* is a measure of homogeneity
-\[33_\]. Grey level co-occurrences with a large
+:cite:`Clausi2002`. Grey level co-occurrences with a large
 difference in levels are weighed less, thus lowering the total feature
 value. The feature score is maximal if all grey levels are the same.
 Inverse difference is defined as:
@@ -1721,14 +1721,14 @@ Inverse difference is defined as:
 .. math:: F_{\mathit{cm.inv.diff}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \frac{p_{ij}}{1+|i-j|}
 
 The equation above may also be expressed in terms of diagonal
-probabilities \[4_\]:
+probabilities :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.diff}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k}
 
 Normalised inverse difference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-\[33_\] suggested normalising *inverse
+:cite:`Clausi2002` suggested normalising *inverse
 difference* to improve classification ability. The normalised feature is
 then defined as:
 
@@ -1740,59 +1740,59 @@ matches the definition of the *normalised inverse difference moment*
 feature.
 
 The equation may also be expressed in terms of diagonal
-probabilities \[4_\]:
+probabilities :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.diff.norm}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k/N_g}
 
 Inverse difference moment
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Inverse difference moment* \[29_\] is similar
+*Inverse difference moment* :cite:`Haralick1973` is similar
 in concept to the *inverse difference* feature, but with lower weights
 for elements that are further from the diagonal:
 
 .. math:: F_{\mathit{cm.inv.diff.mom}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \frac{p_{ij}}{1+\left(i-j\right)^2}
 
 The equation above may also be expressed in terms of diagonal
-probabilities \[4_\]:
+probabilities :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.diff.mom}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k^2}
 
 This feature is also called *homogeneity*
-\[30_\].
+:cite:`Unser1986`.
 
 Normalised inverse difference moment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-\[33_\] suggested normalising *inverse
+:cite:`Clausi2002` suggested normalising *inverse
 difference moment* to improve classification performance. This leads to
 the following definition:
 
 .. math:: F_{\mathit{cm.inv.diff.mom.norm}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \frac{p_{ij}}{1+\left(i-j\right)^2/N_g^2}
 
 The equation above may also be expressed in terms of diagonal
-probabilities \[4_\]:
+probabilities :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.diff.mom.norm}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+\left(k/N_g\right)^2}
 
 Inverse variance
 ~~~~~~~~~~~~~~~~
 
-The *inverse variance* \[1_\] feature is defined
+The *inverse variance* :cite:`Aerts2014` feature is defined
 as:
 
 .. math:: F_{\mathit{cm.inv.var}}=2\sum_{i=1}^{N_g} \sum_{j>i}^{N_g} \frac{p_{ij}}{\left(i-j\right)^2}
 
 The equation above may also be expressed in terms of diagonal
 probabilities. Note that in this case, summation starts at :math:`k=1`
-instead of :math:`k=0`\ \[4_\]:
+instead of :math:`k=0`\ :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.var}}=\sum_{k=1}^{N_g-1} \frac{p_{i-j,k}}{k^2}
 
 Correlation
 ~~~~~~~~~~~
 
-*Correlation* \[29_\] is defined as:
+*Correlation* :cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.corr}}=\frac{1}{\sigma_{i.}\,\sigma_{.j}} \left(-\mu_{i.}\,\mu_{.j} + \sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\,j\,p_{ij}\right)
 
@@ -1818,14 +1818,14 @@ Again, simplifying due to matrix symmetry yields:
 Autocorrelation
 ~~~~~~~~~~~~~~~
 
-\[34_\] defined *autocorrelation* as:
+:cite:`soh1999texture` defined *autocorrelation* as:
 
 .. math:: F_{\mathit{cm.auto.corr}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\,j\,p_{ij}
 
 Cluster tendency
 ~~~~~~~~~~~~~~~~
 
-*Cluster tendency* \[1_\] is defined as:
+*Cluster tendency* :cite:`Aerts2014` is defined as:
 
 .. math:: F_{\mathit{cm.clust.tend}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-\mu_{i.}-\mu_{.j}\right)^2 p_{ij}
 
@@ -1837,12 +1837,12 @@ formulated as:
 .. math:: F_{\mathit{cm.clust.tend}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-2\mu_{i.}\right)^2 p_{ij}
 
 *Cluster tendency* is mathematically equal to the *sum variance*
-feature \[4_\].
+feature :cite:`VanGriethuysen2017`.
 
 Cluster shade
 ~~~~~~~~~~~~~
 
-*Cluster shade* \[30_\] is defined as:
+*Cluster shade* :cite:`Unser1986` is defined as:
 
 .. math:: F_{\mathit{cm.clust.shade}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-\mu_{i.}-\mu_{.j}\right)^3 p_{ij}
 
@@ -1857,7 +1857,7 @@ formulated as:
 Cluster prominence
 ~~~~~~~~~~~~~~~~~~
 
-*Cluster prominence* \[30_\] is defined as:
+*Cluster prominence* :cite:`Unser1986` is defined as:
 
 .. math:: F_{\mathit{cm.clust.prom}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-\mu_{i.}-\mu_{.j}\right)^4 p_{ij}
 
@@ -1872,7 +1872,7 @@ First measure of information correlation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Information theoretic correlation* is estimated using two different
-measures \[29_\]. For symmetric
+measures :cite:`Haralick1973`. For symmetric
 :math:`\mathbf{P}_{\Delta}` the first measure is defined as:
 
 .. math:: F_{\mathit{cm.info.corr.1}}=\frac{\mathit{HXY}-\mathit{HXY_1}}{\mathit{HX}}
@@ -1891,7 +1891,7 @@ Second measure of information correlation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *second measure of information theoretic correlation*
-\[29_\] is estimated as follows for symmetric
+:cite:`Haralick1973` is estimated as follows for symmetric
 :math:`\mathbf{P}_{\Delta}`:
 
 .. math:: F_{\mathit{cm.info.corr.2}}=\sqrt{1-\exp\left(-2\left(\mathit{HXY}_2-\mathit{HXY}\right)\right)}
@@ -1906,7 +1906,7 @@ Grey level run length based features
 ------------------------------------
 
 The grey level run length matrix (GLRLM) was introduced by
-\[35_\] to define various texture features.
+:cite:`Galloway1975` to define various texture features.
 Like the grey level co-occurrence matrix, GLRLM also assesses the
 distribution of discretised grey levels in an image or in a stack of
 images. However, whereas GLCM assesses co-occurrence of grey levels
@@ -1938,7 +1938,7 @@ Aggregating features
 
 To improve rotational invariance, GLRLM feature values are computed by
 aggregating information from the different underlying directional
-matrices \[31_\]. Five methods can be used
+matrices :cite:`Depeursinge2017a`. Five methods can be used
 to aggregate GLRLMs and arrive at a single feature value. A schematic
 example was previously shown in Figure [figGLCMCalcApproaches]. A
 feature may be aggregated as follows:
@@ -1971,7 +1971,7 @@ GLRLMs may be weighted for distance by multiplying the run lengths with
 a weighting factor :math:`w`. By default :math:`w=1`, but :math:`w` may
 also be an inverse distance function, e.g.
 :math:`w=\|\mathbf{m}\|^{-1}` or :math:`w=\exp(-\|\mathbf{m}\|^2)`
-\[4_\], with :math:`\|\mathbf{m}\|`
+:cite:`VanGriethuysen2017`, with :math:`\|\mathbf{m}\|`
 the length of direction vector :math:`m`. Whether distance weighting
 yields different feature values depends on several factors. When
 aggregating the feature values, matrices have to be merged first,
@@ -1987,7 +1987,7 @@ Short runs emphasis
 ~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises short run lengths
-\[35_\]. It is defined as:
+:cite:`Galloway1975`. It is defined as:
 
 .. math:: F_{\mathit{rlm.sre}} = \frac{1}{N_s} \sum_{j=1}^{N_r} \frac{r_{.j}}{j^2}
 
@@ -1995,7 +1995,7 @@ Long runs emphasis
 ~~~~~~~~~~~~~~~~~~
 
 This feature emphasises long run lengths
-\[35_\]. It is defined as:
+:cite:`Galloway1975`. It is defined as:
 
 .. math:: F_{\mathit{rlm.lre}} = \frac{1}{N_s} \sum_{j=1}^{N_r} j^2 r_{.j}
 
@@ -2003,7 +2003,7 @@ Low grey level run emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is a grey level analogue to *short runs emphasis*
-\[36_\]. Instead of short run lengths, low grey
+:cite:`Chu1990`. Instead of short run lengths, low grey
 levels are emphasised. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.lgre}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{r_{i.}}{i^2}
@@ -2012,7 +2012,7 @@ High grey level run emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The *high grey level run emphasis* feature is a grey level analogue to
-*long runs emphasis* \[36_\]. The feature
+*long runs emphasis* :cite:`Chu1990`. The feature
 emphasises high grey levels, and is defined as:
 
 .. math:: F_{\mathit{rlm.hgre}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 r_{i.}
@@ -2022,7 +2022,7 @@ Short run low grey level emphasis
 
 This feature emphasises runs in the upper left quadrant of the GLRLM,
 where short run lengths and low grey levels are located
-\[37_\]. It is defined as:
+:cite:`Dasarathy1991`. It is defined as:
 
 .. math:: F_{\mathit{rlm.srlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{r_{ij}}{i^2 j^2}
 
@@ -2031,7 +2031,7 @@ Short run high grey level emphasis
 
 This feature emphasises runs in the lower left quadrant of the GLRLM,
 where short run lengths and high grey levels are located
-\[37_\]. The feature is defined as:
+:cite:`Dasarathy1991`. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.srhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{i^2 r_{ij}}{j^2}
 
@@ -2040,7 +2040,7 @@ Long run low grey level emphasis
 
 This feature emphasises runs in the upper right quadrant of the GLRLM,
 where long run lengths and low grey levels are located
-\[37_\]. The feature is defined as:
+:cite:`Dasarathy1991`. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.lrlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{j^2 r_{ij}}{i^2}
 
@@ -2049,7 +2049,7 @@ Long run high grey level emphasis
 
 This feature emphasises runs in the lower right quadrant of the GLRLM,
 where long run lengths and high grey levels are located
-\[37_\]. The feature is defined as:
+:cite:`Dasarathy1991`. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.lrhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i^2 j^2 r_{ij}
 
@@ -2057,7 +2057,7 @@ Grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature assesses the distribution of runs over the grey values
-\[35_\]. The feature value is low when runs
+:cite:`Galloway1975`. The feature value is low when runs
 are equally distributed along grey levels. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} r_{i.}^2
@@ -2074,7 +2074,7 @@ Run length non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This features assesses the distribution of runs over the run lengths
-\[35_\]. The feature value is low when runs
+:cite:`Galloway1975`. The feature value is low when runs
 are equally distributed along run lengths. It is defined as:
 
 .. math:: F_{\mathit{rlm.rlnu}}= \frac{1}{N_s} \sum_{j=1}^{N_r} r_{.j}^2
@@ -2091,7 +2091,7 @@ Run percentage
 ~~~~~~~~~~~~~~
 
 This feature measures the fraction of the number of realised runs and
-the maximum number of potential runs \[35_\].
+the maximum number of potential runs :cite:`Galloway1975`.
 Strongly linear or highly uniform ROI volumes produce a low *run
 percentage*. It is defined as:
 
@@ -2127,7 +2127,7 @@ Mean run length is defined as
 Run entropy
 ~~~~~~~~~~~
 
-*Run entropy* was investigated by \[38_\].
+*Run entropy* was investigated by :cite:`Albregtsen2000`.
 Again, let :math:`p_{ij} = r_{ij}/N_s`. The entropy is then defined as:
 
 .. math:: F_{\mathit{rlm.rl.entr}} = - \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} p_{ij} \log_2 p_{ij}
@@ -2136,7 +2136,7 @@ Grey level size zone based features
 -----------------------------------
 
 The grey level size zone matrix (GLSZM) counts the number of groups (or
-zones) of linked voxels \[39_\]. Voxels are
+zones) of linked voxels :cite:`Thibault2014`. Voxels are
 linked if the neighbouring voxel has an identical discretised grey
 level. Whether a voxel classifies as a neighbour depends on its
 connectedness. In a 3D approach to texture analysis we consider
@@ -2200,7 +2200,7 @@ Note on feature references
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 GLSZM feature definitions are based on the definitions of GLRLM features
-\[39_\]. Hence, references may be found in the
+:cite:`Thibault2014`. Hence, references may be found in the
 section on GLRLM ([sect\_glrlm]).
 
 0.45 |Approaches to calculating grey level size zone matrix-based
@@ -2371,7 +2371,7 @@ Grey level distance zone based features
 The grey level distance zone matrix (GLDZM) counts the number of groups
 (or zones) of linked voxels which share a specific discretised grey
 level value and possess the same distance to ROI edge
-\[39_\]. The GLDZM thus captures the relation
+:cite:`Thibault2014`. The GLDZM thus captures the relation
 between location and grey level. Two maps are required to calculate the
 GLDZM. The first is a grey level zone map, which is identical to the one
 created for the grey level size zone matrix (GLSZM), see Section
@@ -2392,7 +2392,7 @@ group of voxels with the same grey value is equal to the minimum
 distance for the respective voxels in the distance map.
 
 Our definition deviates from the original by
-\[39_\]. The original was defined in a
+:cite:`Thibault2014`. The original was defined in a
 rectangular 2D image, whereas ROIs are rarely rectangular cuboids.
 Approximating distance using Chamfer maps is then no longer a fast and
 easy solution. Determining distance iteratively in 6 or 4-connectedness
@@ -2473,7 +2473,7 @@ Note on feature references
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 GLDZM feature definitions are based on the definitions of GLRLM features
-\[39_\]. Hence, references may be found in the
+:cite:`Thibault2014`. Hence, references may be found in the
 section on GLRLM ([sect\_glrlm]).
 
 Small distance emphasis
@@ -2623,7 +2623,7 @@ defined as:
 Neighbourhood grey tone difference based features
 -------------------------------------------------
 
-\[40_\] introduced an alternative to the grey
+:cite:`Amadasun1989` introduced an alternative to the grey
 level co-occurrence matrix. The neighbourhood grey tone difference
 matrix (NGTDM) contains the sum of grey level differences of
 pixels/voxels with discretised grey level :math:`i` and the average
@@ -2662,7 +2662,7 @@ of their neighbours are :math:`19/8` and :math:`21/8`. Thus
 and :math:`s_4=|4-17/8|=1.825`.
 
 We deviate from the original definition by
-\[40_\] as we do not demand that valid
+:cite:`Amadasun1989` as we do not demand that valid
 neighbourhoods are completely inside the ROI. In an irregular ROI mask,
 valid neighbourhoods may simply not exist for a distance :math:`\delta`.
 Instead, we consider a valid neighbourhood to exist if there is at least
@@ -2751,7 +2751,7 @@ Coarseness
 Grey level differences in coarse textures are generally small due to
 large-scale patterns. Summing differences gives an indication of the
 level of the spatial rate of change in intensity
-\[40_\]. *Coarseness* is defined as:
+:cite:`Amadasun1989`. *Coarseness* is defined as:
 
 .. math:: F_{\mathit{ngt.coarseness}}=\frac{1}{\sum_{i=1}^{N_g} p_i\,s_i }
 
@@ -2767,7 +2767,7 @@ Contrast
 
 *Contrast* depends on the dynamic range of the grey levels as well as
 the spatial frequency of intensity changes
-\[40_\]. Thus, *contrast* is defined as:
+:cite:`Amadasun1989`. Thus, *contrast* is defined as:
 
 .. math:: F_{\mathit{ngt.contrast}}=\left(\frac{1}{N_{g,p}\left(N_{g,p}-1\right)} \sum_{i_{1}=1}^{N_g} \sum_{i_{2}=1}^{N_g} p_{i_{1}} p_{i_{2}}\,(i_{1}-i_{2})^2 \right) \left( \frac{1}{N_{v,c}}\sum_{i=1}^{N_g} s_i \right)
 
@@ -2782,7 +2782,7 @@ Busyness
 ~~~~~~~~
 
 Textures with large changes in grey levels between neighbouring voxels
-are said to be busy \[40_\]. *Busyness* was
+are said to be busy :cite:`Amadasun1989`. *Busyness* was
 defined as:
 
 .. math:: F_{\mathit{ngt.busyness}}=\frac{\sum_{i=1}^{N_g}p_i\,s_i}{\sum_{i_{1}=1}^{N_g}\sum_{i_2=1}^{N_g} i_{1} \, p_{i_{1}}- i_{2} \, p_{i_{2}}},\qquad \text{$p_{i_{1}}\neq 0$ \text{and} $p_{i_{2}}\neq 0$}
@@ -2790,7 +2790,7 @@ defined as:
 As before, :math:`p_{i_{1}}=p_{i_{2}}` for :math:`i_{1}=i_{2}`. The
 original definition was erroneously formulated as the denominator will
 always evaluate to 0. Therefore we use a slightly different definition
-\[2_\]:
+:cite:`Hatt2016`:
 
 .. math:: F_{\mathit{ngt.busyness}}=\frac{\sum_{i=1}^{N_g}p_i\,s_i}{\sum_{i_{1}=1}^{N_g}\sum_{i_{2}=1}^{N_g} \left| i_{1} \, p_{i_{1}}-i_{2} \, p_{i_{2}}\right|},\qquad \text{$p_{i_{1}}\neq 0$ \text{and} $p_{i_{2}}\neq 0$}
 
@@ -2800,7 +2800,7 @@ Complexity
 ~~~~~~~~~~
 
 Complex textures are non-uniform and rapid changes in grey levels are
-common \[40_\]. Texture *complexity* is
+common :cite:`Amadasun1989`. Texture *complexity* is
 defined as:
 
 .. math:: F_{\mathit{ntg.complexity}}=\frac{1}{N_{v,c}}\sum_{i_{1}=1}^{N_g}\sum_{i_{2}=1}^{N_g} \left| i_{1} - i_{2}\right| \frac{p_{i_{1}}\, s_{i_{1}} + p_{i_{2}}\,s_{i_{2}}}{p_{i_{1}} + p_{i_{2}}}, \qquad \text{$p_{i_{1}}\neq 0$ \text{and} $p_{i_{2}}\neq 0$}
@@ -2811,7 +2811,7 @@ likewise :math:`s_{i_{1}}=s_{i_{2}}` for :math:`i_{1}=i_{2}`.
 Strength
 ~~~~~~~~
 
-\[40_\] defined texture *strength* as:
+:cite:`Amadasun1989` defined texture *strength* as:
 
 .. math:: F_{\mathit{ngt.strength}}=\frac{\sum_{i_{1}=1}^{N_g}\sum_{i_{2}=1}^{N_g}\left( p_{i_{1}} + p_{i_{2}} \right) \left( i_{1} - i_{2}\right)^2 }{\sum_{i=1}^{N_g}s_i},\qquad \text{$p_{i_{1}}\neq 0$ \text{and} $p_{i_{2}}\neq 0$}
 
@@ -2821,7 +2821,7 @@ As before, :math:`p_{i_{1}}=p_{i_{2}}` for :math:`i_{1}=i_{2}`. If
 Neighbouring grey level dependence based features
 -------------------------------------------------
 
-\[41_\] defined the neighbouring grey level
+:cite:`Sun1983` defined the neighbouring grey level
 dependence matrix (NGLDM) as an alternative to the grey level
 co-occurrence matrix. The NGLDM aims to capture the coarseness of the
 overall texture and is rotationally invariant.
@@ -2868,7 +2868,7 @@ with dependence :math:`j`, regardless of grey level. A two dimensional
 example is shown in Table [figNGLDM1].
 
 The definition we actually use deviates from the original by
-\[41_\]. Because regions of interest are rarely
+:cite:`Sun1983`. Because regions of interest are rarely
 cuboid, omission of neighbourhoods which contain voxels outside the ROI
 mask may lead to inconsistent results, especially for larger distance
 :math:`\delta`. Hence the neighbourhoods of all voxels in the within the
@@ -2934,13 +2934,13 @@ Note on feature references
 The NGLDM is structured similarly to the GLRLM, GLSZM and GLDZM. NGLDM
 feature definitions are therefore based on the definitions of GLRLM
 features, and references may be found in Section [sect\_glrlm], except
-for the features originally defined by \[41_\].
+for the features originally defined by :cite:`Sun1983`.
 
 Low dependence emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises low neighbouring grey level dependence counts.
-\[41_\] refer to this feature as *small number
+:cite:`Sun1983` refer to this feature as *small number
 emphasis*. It is defined as:
 
 .. math:: F_{\mathit{ngl.lde}} = \frac{1}{N_s} \sum_{j=1}^{N_n} \frac{s_{.j}}{j^2}
@@ -2949,7 +2949,7 @@ High dependence emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature emphasises high neighbouring grey level dependence counts.
-\[41_\] refer to this feature as *large number
+:cite:`Sun1983` refer to this feature as *large number
 emphasis*. It is defined as:
 
 .. math:: F_{\mathit{ngl.hde}} = \frac{1}{N_s} \sum_{j=1}^{N_n} j^2 s_{.j}
@@ -3029,7 +3029,7 @@ It is defined as:
 
 When calculating *grey level non-uniformity normalised* using a single
 3D NGLDM matrix, it is equivalent to the *intensity histogram
-uniformity* feature \[4_\].
+uniformity* feature :cite:`VanGriethuysen2017`.
 
 Dependence count non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3037,7 +3037,7 @@ Dependence count non-uniformity
 This features assesses the distribution of neighbouring grey level
 dependence counts over the different dependence counts. The feature
 value is low when dependence counts are equally distributed.
-\[41_\] refer to this feature as *number
+:cite:`Sun1983` refer to this feature as *number
 non-uniformity*. It is defined as:
 
 .. math:: F_{\mathit{ngl.dcnu}}= \frac{1}{N_s} \sum_{j=1}^{N_n} s_{.j}^2
@@ -3089,20 +3089,20 @@ Dependence count entropy
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature is referred to as *entropy* by
-\[41_\]. Let :math:`p_{ij} = s_{ij}/N_s`.
+:cite:`Sun1983`. Let :math:`p_{ij} = s_{ij}/N_s`.
 *Dependence count entropy* is then defined as:
 
 .. math:: F_{\mathit{ngl.dc.entr}} = - \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} p_{ij} \log_2 p_{ij}
 
 This definition remedies an error in the definition of
-\[41_\], where the term within the logarithm is
+:cite:`Sun1983`, where the term within the logarithm is
 dependence count :math:`s_{ij}` instead of count probability
 :math:`p_{ij}`.
 
 Dependence count energy
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This feature is called *second moment* by \[41_\].
+This feature is called *second moment* by :cite:`Sun1983`.
 Let :math:`p_{ij} = s_{ij}/N_s`. Then *dependence count energy* is
 defined as:
 
@@ -3113,45 +3113,3 @@ where squared dependence count :math:`s_{ij}^2` is divided by
 :math:`N_s` only, thus leaving a major volume dependency. In the
 definition given here, :math:`s_{ij}^2` is normalised by :math:`N_s^2`
 through the use of count probability :math:`p_{ij}`.
-
-.. [1] `Aerts, Hugo J. W. L., Rios-Velazquez, Emmanuel, Leijenaar, Ralph T. H., Parmar, Chintan, Grossmann, Patrick, Cavalho, Sara, et al.; *Decoding tumour phenotype by noninvasive imaging using a quantitative radiomics approach.*; Nature communications; 2014; 5; 4006 <http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=4059926\&tool=pmcentrez\&rendertype=abstract>`_
-.. [2] `Hatt, Mathieu, Tixier, Florent, Pierce, Larry, Kinahan, Paul E., Le Rest, Catherine Cheze, Visvikis, Dimitris; *Characterization of PET/CT images using texture analysis: the past, the present\ldots any future?*; European journal of nuclear medicine and molecular imaging; 2017; 44 (1); 151--165 <http://link.springer.com/10.1007/s00259-016-3427-0>`_
-.. [3] `Depeursinge, Adrien, Foncubierta-Rodriguez, Antonio, Van De Ville, Dimitri, M\"uller, Henning; *Three-dimensional solid texture analysis in biomedical imaging: review and opportunities.*; Medical image analysis; 2014; 18 (1); 176--96 <http://dx.doi.org/10.1016/j.media.2013.10.005>`_
-.. [4] van Griethuysen, Joost JM, Fedorov, Andriy, Parmar, Chintan, Hosny, Ahmed, Aucoin, Nicole, Narayan, Vivek, et al.; *Computational radiomics system to decode the radiographic phenotype*; Cancer research; 2017; 77 (21); e104--e107
-.. [5] `Lorensen, William E., Cline, Harvey E.; *Marching cubes: A high resolution 3D surface construction algorithm*; ACM SIGGRAPH Computer Graphics; 1987; 21 (4); 163--169 <http://portal.acm.org/citation.cfm?doid=37401.37422>`_
-.. [6] `Lewiner, Thomas, Lopes, H\'elio, Vieira, Ant\^onio Wilson, Tavares, Geovan; *Efficient Implementation of Marching Cubes' Cases with Topological Guarantees*; Journal of Graphics Tools; 2003; 8 (2); 1--15 <http://www.tandfonline.com/doi/abs/10.1080/10867651.2003.10487582>`_
-.. [7] `Stelldinger, Peer, Latecki, Longin Jan, Siqueira, Marcelo; *Topological equivalence between a 3D object and the reconstruction of its digital image.*; IEEE transactions on pattern analysis and machine intelligence; 2007; 29 (1); 126--40 <http://www.ncbi.nlm.nih.gov/pubmed/17108388>`_
-.. [8] `Zhang, Cha, Chen, Tsuhan; *Efficient feature extraction for 2D/3D objects in mesh representation*; 2001; 2; 935--938 <http://ieeexplore.ieee.org/document/958278/>`_
-.. [9] `Apostolova, Ivayla, Steffen, Ingo G., Wedel, Florian, Lougovski, Alexandr, Marnitz, Simone, Derlin, Thorsten, et al.; *Asphericity of pretherapeutic tumour FDG uptake provides independent prognostic value in head-and-neck cancer.*; European radiology; 2014; 24 (9); 2077--87 <http://www.ncbi.nlm.nih.gov/pubmed/24965509>`_
-.. [10] `Solomon, Chris, Breckon, Toby; *Features*; 2011; 235--262 <http://doi.wiley.com/10.1002/9780470689776.ch9>`_
-.. [11] `Heiberger, Richard M, Holland, Burt; *Statistical Analysis and Data Display*; 2015 <http://link.springer.com/10.1007/978-1-4939-2122-5>`_
-.. [12] `El Naqa, Issam, Grigsby, Perry W., Apte, Aditya, Kidd, Elizabeth, Donnelly, Eric, Khullar, Divya, et al.; *Exploring feature-based approaches in PET images for predicting cancer treatment outcomes.*; Pattern recognition; 2009; 42 (6); 1162--1171 <http://www.ncbi.nlm.nih.gov/pubmed/20161266>`_
-.. [13] `van Dijk, Lisanne V., Brouwer, Charlotte L., van der Schaaf, Arjen, Burgerhof, Johannes G.M., Beukinga, Roelof J., Langendijk, Johannes A., et al.; *CT image biomarkers to improve patient-specific prediction of radiation-induced xerostomia and sticky saliva*; Radiotherapy and Oncology; 2017; 122 (2); 185--191 <http://dx.doi.org/10.1016/j.radonc.2016.07.007>`_
-.. [14] `O'Rourke, Joseph; *Finding minimal enclosing boxes*; International Journal of Computer and Information Sciences; 1985; 14 (3); 183--199 <http://link.springer.com/10.1007/BF00991005>`_
-.. [15] `Barequet, Gill, Har-Peled, Sariel; *Efficiently Approximating the Minimum-Volume Bounding Box of a Point Set in Three Dimensions*; Journal of Algorithms; 2001; 38 (1); 91--109 <http://www.sciencedirect.com/science/article/pii/S0196677400911271>`_
-.. [16] `Chan, C.K., Tan, S.T.; *Determination of the minimum bounding box of an arbitrary solid: an iterative approach*; Computers and Structures; 2001; 79 (15); 1433--1449 <http://linkinghub.elsevier.com/retrieve/pii/S0045794901000463>`_
-.. [17] `Mazurowski, Maciej A., Czarnek, Nicholas M., Collins, Leslie M., Peters, Katherine B., Clark, Kal; *Predicting outcomes in glioblastoma patients using computerized analysis of tumor shape: preliminary data*; 2016; 9785; 97852T <http://proceedings.spiedigitallibrary.org/proceeding.aspx?doi=10.1117/12.2217098>`_
-.. [18] `Todd, Michael J., Yıldırım, E. Alper; *On Khachiyan's algorithm for the computation of minimum-volume enclosing ellipsoids*; Discrete Applied Mathematics; 2007; 155 (13); 1731--1744 <https://doi.org/10.1016/j.dam.2007.02.013>`_
-.. [19] `Ahipa\csao\uglu, Selin Damla; *Fast algorithms for the minimum volume estimator*; Journal of Global Optimization; 2015; 62 (2); 351--370 <http://link.springer.com/10.1007/s10898-014-0233-8>`_
-.. [20] `Khachiyan, Leonid G.; *Rounding of Polytopes in the Real Number Model of Computation*; Mathematics of Operations Research; 1996; 21 (2); 307--320 <http://pubsonline.informs.org/doi/abs/10.1287/moor.21.2.307>`_
-.. [21] `Vaidya, Manushka, Creach, Kimberly M., Frye, Jennifer, Dehdashti, Farrokh, Bradley, Jeffrey D., El Naqa, Issam; *Combined PET/CT image characteristics for radiotherapy tumor response in lung cancer.*; Radiotherapy and oncology; 2012; 102 (2); 239--45 <http://dx.doi.org/10.1016/j.radonc.2011.10.014>`_
-.. [22] Moran, Patrick A. P.; *Notes on continuous stochastic phenomena*; Biometrika; 1950; 37; 17--23
-.. [23] `Dale, Mark R. T., Dixon, Philip, Fortin, Marie-Jos\'ee, Legendre, Pierre, Myers, Donald E., Rosenberg, Michael S.; *Conceptual and mathematical relationships among methods for spatial analysis*; Ecography; 2002; 25 (5); 558--577 <http://dx.doi.org/10.1034/j.1600-0587.2002.250506.x>`_
-.. [24] `Da Silva, Erick Corr\^ea, Silva, Arist\'ofanes Corr\^ea, De Paiva, Anselmo Cardoso, Nunes, Rodolfo Acatauassu; *Diagnosis of lung nodule using Moran's index and Geary's coefficient in computerized tomography images*; Pattern Analysis and Applications; 2008; 11 (1); 89--99 <https://doi.org/10.1007/s10044-007-0081-y>`_
-.. [25] `Geary, Roy C.; *The Contiguity Ratio and Statistical Mapping*; The Incorporated Statistician; 1954; 5 (3); 115--145 <http://www.jstor.org/stable/2986645?origin=crossref>`_
-.. [26] `Wahl, Richard L., Jacene, Heather, Kasamon, Yvette, Lodge, Martin A.; *From RECIST to PERCIST: Evolving Considerations for PET response criteria in solid tumors.*; Journal of nuclear medicine; 2009; 50 Suppl 1 (5); 122S--50S <http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2755245\&tool=pmcentrez\&rendertype=abstract>`_
-.. [27] `Frings, Virginie, van Velden, Floris H. P., Velasquez, Linda M., Hayes, Wendy, van de Ven, Peter M., Hoekstra, Otto S., et al.; *Repeatability of metabolically active tumor volume measurements with FDG PET/CT in advanced gastrointestinal malignancies: a multicenter study.*; Radiology; 2014; 273 (2); 539--48 <http://www.ncbi.nlm.nih.gov/pubmed/24865311>`_
-.. [28] `van Velden, Floris H. P., Cheebsumon, Patsuree, Yaqub, Maqsood, Smit, Egbert F., Hoekstra, Otto S., Lammertsma, Adriaan A., et al.; *Evaluation of a cumulative SUV-volume histogram method for parameterizing heterogeneous intratumoural FDG uptake in non-small cell lung cancer PET studies.*; European journal of nuclear medicine and molecular imaging; 2011; 38 (9); 1636--47 <http://www.ncbi.nlm.nih.gov/pubmed/21617975>`_
-.. [29] `Haralick, Robert M., Shanmugam, K., Dinstein, Its'Hak; *Textural Features for Image Classification*; IEEE Transactions on Systems, Man, and Cybernetics; 1973; 3 (6); 610--621 <http://www.scopus.com/inward/record.url?eid=2-s2.0-0015680481\&partnerID=tZOtx3y1>`_
-.. [30] `Unser, M; *Sum and difference histograms for texture classification.*; IEEE transactions on pattern analysis and machine intelligence; 1986; 8 (1); 118--125 <https://doi.org/10.1109/TPAMI.1986.4767760>`_
-.. [31] Depeursinge, Adrien, Fageot, Julien; *Biomedical Texture Operators and Aggregation Functions*; 2017; 63--101
-.. [32] `Haralick, Robert M.; *Statistical and structural approaches to texture*; Proceedings of the IEEE; 1979; 67 (5); 786--804 <http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1455597>`_
-.. [33] `Clausi, David A.; *An analysis of co-occurrence texture statistics as a function of grey level quantization*; Canadian Journal of Remote Sensing; 2002; 28 (1); 45--62 <https://doi.org/10.5589/m02-004>`_
-.. [34] Soh, L-K, Tsatsoulis, C; *Texture analysis of SAR sea ice imagery using gray level co-occurrence matrices*; IEEE Transactions on Geoscience and Remote Sensing; 1999; 37 (2); 780--795
-.. [35] `Galloway, Mary M.; *Texture analysis using gray level run lengths*; Computer Graphics and Image Processing; 1975; 4 (2); 172--179 <http://www.sciencedirect.com/science/article/pii/S0146664X75800086>`_
-.. [36] `Chu, A., Sehgal, C. M., Greenleaf, J. F.; *Use of gray value distribution of run lengths for texture analysis*; Pattern Recognition Letters; 1990; 11 (6); 415--419 <https://doi.org/10.1016/0167-8655(90)90112-F>`_
-.. [37] `Dasarathy, Belur V., Holder, Edwin B.; *Image characterizations based on joint gray level-run length distributions*; Pattern Recognition Letters; 1991; 12 (8); 497--502 <https://doi.org/10.1016/0167-8655(91)80014-2>`_
-.. [38] `Albregtsen, F., Nielsen, B., Danielsen, H.E.; *Adaptive gray level run length features from class distance matrices*; 2000; 3; 738--741 <http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=903650>`_
-.. [39] `Thibault, Guillaume, Angulo, Jes\'us, Meyer, Fernand; *Advanced statistical matrices for texture characterization: application to cell classification.*; IEEE transactions on bio-medical engineering; 2014; 61 (3); 630--7 <http://www.ncbi.nlm.nih.gov/pubmed/24108747>`_
-.. [40] `Amadasun, Moses, King, Robert; *Textural features corresponding to textural properties*; IEEE Transactions on Systems, Man and Cybernetics; 1989; 19 (5); 1264--1273 <https://doi.org/10.1109/21.44046>`_
-.. [41] `Sun, Chengjun, Wee, William G.; *Neighboring gray level dependence matrix for texture classification*; Computer Vision, Graphics, and Image Processing; 1983; 23 (3); 341--352 <http://linkinghub.elsevier.com/retrieve/pii/0734189X83900324>`_
