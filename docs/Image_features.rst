@@ -150,18 +150,7 @@ reasonable approximation of the surface area and volume
 values depend upon the meshing algorithm and small differences may occur
 between meshing implementations.
 
-.. figure:: ./Figures/MorphMesh.pdf
-   :alt: Meshing algorithms draw faces and vertices to cover the ROI.
-   One face, spanned by vertices :math:`\mathbf{a}`, :math:`\mathbf{b}`
-   and :math:`\mathbf{c}`, is highlighted. Moreover, the vertices define
-   the three edges :math:`\mathbf{ab}=\mathbf{b}-\mathbf{a}`,
-   :math:`\mathbf{bc}=\mathbf{c}-\mathbf{b}` and
-   :math:`\mathbf{ca}=\mathbf{a}-\mathbf{c}`. The face normal
-   :math:`\mathbf{n}` is determined using the right-hand rule, and
-   calculated as
-   :math:`\mathbf{n}=\left(\mathbf{ab} \times \mathbf{bc}\right) / \| \mathbf{ab} \times \mathbf{bc}\|`,
-   i.e. the outer product of edge :math:`\mathbf{ab}` with edge
-   :math:`\mathbf{bc}`, normalised by its length.
+.. figure:: ./Figures/MorphMesh.png
 
    Meshing algorithms draw faces and vertices to cover the ROI. One
    face, spanned by vertices :math:`\mathbf{a}`, :math:`\mathbf{b}` and

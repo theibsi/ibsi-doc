@@ -26,10 +26,10 @@ def main():
     '.. toctree::',
     '   :hidden:',
     '',
-    '   Home < self >',
+    '   Home <self>',
     '',
     '.. toctree::',
-    '   :maxdepth: 2'
+    '   :maxdepth: 2',
     ''
     ]
 
@@ -42,7 +42,7 @@ def main():
     print('Storing section %s' % section[0])
     with open(section[0].replace(' ', '_')+'.rst', mode='wb') as out_fs:
       out_fs.write(out_str)
-    index.append('  %s <%s>' % (section[0], section[0].replace(' ', '_')))
+    index.append('   %s <%s>' % (section[0], section[0].replace(' ', '_')))
 
   index.append('')
 
@@ -252,19 +252,9 @@ def parse_tex_figures(tex_source):
   for match in re.finditer(r'\\begin\{figure\}.*\n(?P<fig_data>(.+\n)+)\\end\{figure\}', tex_data):
     figure_data = match.groupdict()['fig_data']
     fig_elements = {}
-    fig_name = None
 
     if r'\centering' in figure_data:
       fig_elements['align'] = 'center'
-    if r'\includegraphics' in figure_data:
-
-      graphics_sec = re.search(r'\\includegraphics(\[.*scale=(?P<scale>0\.\d+)\])?\{(?P<fig_name>.+)\}', figure_data)
-
-      fig_name = graphics_sec.groupdict()['fig_name']
-      scale = graphics_sec.groupdict().get('scale')
-      if scale:
-        fig_elements['scale'] = str(int(float(scale) * 100))
-
     caption = re.search(r'\\caption\{(.+)\}', figure_data)
     if caption:
       fig_elements['caption'] = caption.group(1)
@@ -272,8 +262,14 @@ def parse_tex_figures(tex_source):
     if label:
       fig_elements['label'] = label.group(1)
 
-    if fig_name:
-      figures[fig_name] = fig_elements
+    for graphics_sec in re.finditer(r'\\includegraphics(\[.*scale=(?P<scale>0\.\d+)\])?\{(?P<fig_name>.+)\}', figure_data):
+      fig_name = graphics_sec.groupdict()['fig_name']
+
+      figures[fig_name] = fig_elements.copy()
+
+      scale = graphics_sec.groupdict().get('scale')
+      if scale:
+        figures[fig_name]['scale'] = str(int(float(scale) * 100))
 
   return figures
 
@@ -289,8 +285,7 @@ def fix_figures(section_lines, figures):
 
     if line.startswith('.. figure:: '):
       fig_name = line.replace('.. figure:: ', '')
-      if fig_name in figures:
-        fig_start = line_idx
+      fig_start = line_idx
     elif fig_start is not None:
       if indent is None:
         indent = re.match('\s*', line).group()
@@ -304,9 +299,9 @@ def fix_figures(section_lines, figures):
 
         fig_start = None
 
-  for r in replacements:
+  for r in replacements[::-1]:
     fig = []
-    fig_data = figures[r[2]]
+    fig_data = figures.get(r[2], {})
     if 'label' in fig_data:
       fig.append(u'.. _%s:' % fig_data['label'])
 
@@ -317,6 +312,7 @@ def fix_figures(section_lines, figures):
         fig.append(u'   :%s: %s' % (k, fig_data[k].strip()))
 
     section_lines[r[0]:r[1]] = fig
+
 
 if __name__ == '__main__':
   os.chdir(r'..\docs')

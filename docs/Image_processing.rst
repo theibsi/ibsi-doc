@@ -163,20 +163,20 @@ Note that the example represents a relatively naive implementation that
 will not consistently assign voxel centers positioned on the polygon
 itself to the interior.
 
-.. figure:: ./Figures/pointGrid.pdf
-   :alt: Simple algorithm to determine which pixels are inside a 2D
-   polygon. The suggested implementation consists of four steps: (1)
-   Omit edges that will not intersect with the current row of voxel
-   centers. (2) Calculate intersection points of edges I and II with the
-   ray for the current row. (3) Determine the number of intersections
-   crossed from ray origin to the row voxel centers. (4) Apply
-   *even-odd* rule to determine whether voxel centers are inside the
-   polygon.
-
 .. _figImagePointGrid:
 .. figure:: ./Figures/pointGrid.png
    :scale: 75
    :align: center
+
+   Simple algorithm to determine which pixels are inside a 2D polygon.
+   The suggested implementation consists of four steps: (1) Omit edges
+   that will not intersect with the current row of voxel centers. (2)
+   Calculate intersection points of edges I and II with the ray for the
+   current row. (3) Determine the number of intersections crossed from
+   ray origin to the row voxel centers. (4) Apply *even-odd* rule to
+   determine whether voxel centers are inside the polygon.
+
+Interpolation
 -------------
 
 Texture feature sets require interpolation to isotropic voxel spacing to
@@ -396,8 +396,11 @@ the considered axis are located at grid coordinates:
 
 Naturally, the above description applies to each grid axis.
 
-.. figure:: ./Figures/InterpolationGrids.pdf
-   :alt: Different interpolation mesh grids based on an original
+.. _figMeshGrids:
+.. figure:: ./Figures/InterpolationGrids.png
+   :align: center
+
+   Different interpolation mesh grids based on an original
    :math:`4\times 4` grid with :math:`(3.00, 3.00)` mm spacing. The
    desired interpolation spacing is :math:`(2.00, 2.00)` mm. *Fit to
    original grid* creates an interpolation mesh grid that overlaps with
@@ -406,18 +409,10 @@ Naturally, the above description applies to each grid axis.
    original grid. *Align grid centers* creates an interpolation grid
    that is centered on the center of original and interpolation grids.
 
-   Different interpolation mesh grids based on an original
-   :math:`4\times 4` grid with :math:`(3.00, 3.00)` mm spacing. The
-   desired interpolation spacing is :math:`(2.00, 2.00)` mm. *Fit to
-   original grid* creates an interpolation mesh grid that overlaps with
-   the corners of the original grid. *Align grid origins* creates an
-.. _figMeshGrids:
-.. figure:: ./Figures/InterpolationGrids.png
+.. _figReSegmentationExample:
+.. figure:: ./Figures/VoxelReSegmentationv2.png
+   :scale: 90
    :align: center
-   Pixels outside this range are marked for removal from the intensity
-   mask. (3a) Resulting morphological mask, which is identical to the
-   original ROI. (3b) Re-segmented intensity mask. Note that due to
-   re-segmentation, intensity and morphological masks are different.
 
    Example showing how intensity and morphological masks may differ due
    to re-segmentation. (1) The original region of interest (ROI) is
@@ -430,10 +425,15 @@ Naturally, the above description applies to each grid axis.
 
 Re-segmentation
 ---------------
-.. _figReSegmentationExample:
-.. figure:: ./Figures/VoxelReSegmentationv2.png
-   :scale: 90
-   :align: center
+
+Re-segmentation entails updating the ROI mask :math:`\mathbf{R}` based
+on corresponding voxel intensities :math:`\mathbf{X}_{gl}`.
+Re-segmentation may be performed to exclude voxels from a previously
+segmented ROI, and is performed after interpolation. An example use
+would be the exclusion of air or bone voxels from an ROI defined on CT
+imaging. Two common re-segmentation methods are described in this
+section. Combining multiple re-segmentation methods is possible.
+
 Intensity and morphological masks of an ROI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -505,10 +505,9 @@ often required to make calculation of texture features tractable
 as well. An example of discretisation is shown in figure
 [figImageDiscretisation].
 
-.. figure:: ./Figures/ImageDiscretisation.pdf
-   :alt: The image volume contained in the region of interest (ROI) is
-   discretised. Here, intensities from the original ROI volume were
-   assigned to 3 intensity bins to create a discretised volume.
+.. _figImageDiscretisation:
+.. figure:: ./Figures/ImageDiscretisation.png
+   :align: center
 
    The image volume contained in the region of interest (ROI) is
    discretised. Here, intensities from the original ROI volume were
@@ -531,9 +530,10 @@ In the *fixed bin number* method, intensities :math:`X_{gl}` are
 discretised to a fixed number of :math:`N_g` bins. It is defined as
 follows:
 
-.. _figImageDiscretisation:
-.. figure:: ./Figures/ImageDiscretisation.png
-   :align: center
+.. math::
+
+   X_{d,k} = \begin{cases}
+   \floor*{N_g \frac{X_{gl,k}-X_{gl,min}}{X_{gl,max}-X_{gl,min}}} + 1 & X_{gl,k}<X_{gl,max}\\
    N_g & X_{gl,k}=X_{gl,max}
    \end{cases}
 
