@@ -15,8 +15,9 @@ def main():
   output_lines = output.replace('\r', '').split('\n')
   hdr_chars = ['=', '-']
   index = [
-    'Welcome to the documentation of the IBSI',
-    '========================================',
+    '',
+    'Contents',
+    '--------',
     '',
     '.. toctree::',
     '   :hidden:',
@@ -43,7 +44,11 @@ def main():
 
     with open(dest_name + '.rst', mode='wb') as out_fs:
       out_fs.write(out_str)
-    index.append('   %s <%s>' % (section[0], dest_name))
+
+    if cnt == 1:
+      index.insert(0, '.. include:: %s.rst' % str(dest_name))
+    else:
+      index.append('   %s <%s>' % (section[0], dest_name))
 
   index.append('   References')
   index.append('')

@@ -1,5 +1,7 @@
-Welcome to the documentation of the IBSI
-========================================
+.. include:: 01_The_image_biomarker_standardisation_initiative.rst
+
+Contents
+--------
 
 .. toctree::
    :hidden:
@@ -9,7 +11,6 @@ Welcome to the documentation of the IBSI
 .. toctree::
    :maxdepth: 2
 
-   The image biomarker standardisation initiative <01_The_image_biomarker_standardisation_initiative>
    Introduction <02_Introduction>
    Image processing <03_Image_processing>
    Image features <04_Image_features>
