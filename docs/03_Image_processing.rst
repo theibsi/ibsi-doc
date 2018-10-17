@@ -42,7 +42,6 @@ described in detail within this chapter.
 
 .. _figImageProc:
 .. figure:: ./Figures/Processing_simplifiedv6.png
-   :scale: 90
    :align: center
 
    Image processing scheme for image feature calculation. Depending on
@@ -165,7 +164,6 @@ itself to the interior.
 
 .. _figImagePointGrid:
 .. figure:: ./Figures/pointGrid.png
-   :scale: 75
    :align: center
 
    Simple algorithm to determine which pixels are inside a 2D polygon.
@@ -411,7 +409,6 @@ Naturally, the above description applies to each grid axis.
 
 .. _figReSegmentationExample:
 .. figure:: ./Figures/VoxelReSegmentationv2.png
-   :scale: 90
    :align: center
 
    Example showing how intensity and morphological masks may differ due
@@ -613,15 +610,33 @@ discretisation choice has a substantial impact on intensity
 distributions, feature values and reproducibility
 :cite:`Hatt2015,Leijenaar2015a,vanVelden2016,Desseroit2017,Hatt2016,Shafiq-ul-Hassan2017,Altazi2017`.
 
-to 0.8
+.. list-table::
+   :widths: auto
 
-| **Imaging intensity units\ :math:`^{(1)}`** & **Re-segmentation
-  range** & **FBN\ :math:`^{(2)}`** &\ **FBS\ :math:`^{(3)}`**
-| & :math:`[a,b]` & &
-| & :math:`[a,\infty)` & &
-| & none & &
-| & & &
-| arbitrary & none & &
+   * -  Imaging intensity units\ :math:`^{(1)}`
+     -  Re-segmentation  range
+     -  FBN\ :math:`^{(2)}`
+     -  FBS\ :math:`^{(3)}`
+   * -  
+     -  :math:`[a,b]` 
+     -  
+     - 
+   * -  
+     -  :math:`[a,\infty)` 
+     -  
+     - 
+   * -  
+     -  none 
+     -  
+     - 
+   * -  
+     -  
+     -  
+     - 
+   * -  arbitrary 
+     -  none 
+     -  
+     - 
 
 Feature calculation
 -------------------

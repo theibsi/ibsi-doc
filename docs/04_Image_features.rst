@@ -44,20 +44,69 @@ calculations. For more details on image processing, see figure
 Below is an overview table that summarises image processing requirements
 for the different feature families.
 
-| @X[5,l,p] X[c,p] X[c,p] X[c,p] X[c,p]@ & & &
-| **Feature family** & **count** & **morph.** & **int.** & **discr.**
+.. list-table::
+   :widths: auto
 
-| morphology & 29 & & &
-| local intensity & 2 & & &
-| intensity-based statistics & 18 & & &
-| intensity histogram & 23 & & &
-| intensity-volume histogram & 5 & & & ()
-| grey level co-occurrence matrix & 25 & & &
-| grey level run length matrix & 16 & & &
-| grey level size zone matrix & 16 & & &
-| grey level distance zone matrix & 16 & & &
-| neighbourhood grey tone difference matrix & 5 & & &
-| neighbouring grey level dependence matrix & 17 & & &
+   * -  **Feature family** 
+     -  **count** 
+     -  **morph.** 
+     -  **int.** 
+     -  **discr.**
+   * -  morphology 
+     -  29 
+     -  
+     -  
+     - 
+   * -  local intensity 
+     -  2 
+     -  
+     -  
+     - 
+   * -  intensity-based statistics 
+     -  18 
+     -  
+     -  
+     - 
+   * -  intensity histogram 
+     -  23 
+     -  
+     -  
+     - 
+   * -  intensity-volume histogram 
+     -  5 
+     -  
+     -  
+     -  ()
+   * -  grey level co-occurrence matrix 
+     -  25 
+     -  
+     -  
+     - 
+   * -  grey level run length matrix 
+     -  16 
+     -  
+     -  
+     - 
+   * -  grey level size zone matrix 
+     -  16 
+     -  
+     -  
+     - 
+   * -  grey level distance zone matrix 
+     -  16 
+     -  
+     -  
+     - 
+   * -  neighbourhood grey tone difference matrix 
+     -  5 
+     -  
+     -  
+     - 
+   * -  neighbouring grey level dependence matrix 
+     -  17 
+     -  
+     -  
+     - 
 
 Aside from image processing requirements there are two other concepts
 which were not explicitly introduced, but which play an important role

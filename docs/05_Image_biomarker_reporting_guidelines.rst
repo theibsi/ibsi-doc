@@ -15,69 +15,53 @@ from the image processing and feature calculation steps described within
 this document. An earlier version was reported elsewhere
 :cite:`vallieres2017responsible`.
 
-@p5cmp9.5cm@
+.. list-table::
+   :widths: auto
 
-| 
-| imaging & Describe which type of imaging was acquired, e.g. CT, PET.
-| acquisition & Describe image acquisition details, i.e. scanner vendor,
-  method of image acquisition (e.g. dynamic, contrast-enhanced),
-  contrast agents, molecular labels and stainings, as well as image
-  acquisition parameters (e.g. MR TE times, CT tube voltage and
-  current).
-| reconstruction & Describe how images were reconstructed from the
-  acquired data, e.g. (iterative) reconstruction algorithm parameters
-  and voxel dimensions.
-| approach & Describe whether the image volume is analysed
-  slice-by-slice (2D), or as a volume (3D).
-| process workflow & Describe the sequence of image processing steps
-  used for the analysis, preferably schematically.
-| software & Describe which software (if any) or in-house code was used
-  to perform image processing and feature extraction.
-| data availability & Describe whether and where (image) data, ROIs and
-  software code is made available.
-| procedure & Describe how data was converted from reconstructed image
-  data, e.g. by calculation of standard uptake values for PET.
-  References to algorithms should be provided, or otherwise described in
-  detail.
-| procedure & Describe post-processing steps and parameters, e.g.
-  field-of-view illumination correction in microscopy, noise correction
-  in MRI and partial volume effect correction in PET. References to
-  algorithms should be provided, or otherwise described in detail.
-| ROI & Describe which regions of interest were delineated and used for
-  analysis, e.g. specific organs, specific cells, primary tumours.
-| procedure & Describe how regions of interest were delineated in the
-  image. Specify if segmentation was performed manually, semi-automated
-  or fully automated, by how many users/experts, and how consensus was
-  formed (if applicable). Algorithms and settings used should be listed.
-| voxel dimensions & Specify original and interpolated voxel dimensions.
-| image interpolation method & Specify interpolation method used, e.g.
-  *trilinear interpolation*. Specify how original and interpolation
-  grids were aligned.
-| image intensity rounding & Specify rounding procedures for non-integer
-  interpolated grey levels (if applicable).
-| ROI interpolation method & Specify interpolation method used to
-  interpolate ROI morphological and intensity masks.
-| ROI partial volume & Specify minimum partial volume fraction required
-  to include an interpolated ROI mask voxel in the interpolated ROI (if
-  applicable).
-| ROI mask criteria & Specify which criteria were used to include or
-  exclude voxels from an ROI mask (if applicable).
-| discretisation method & Specify which method is being used for
-  discretising image intensities. References to the method should be
-  provided, or otherwise described in detail.
-| discretisation parameters & Specify discretisation parameters for
-  discretisation, e.g. number of bins or bin width.
-| feature set & Report which features were calculated. References to
-  feature definitions should be provided, or otherwise described in
-  detail.
-| feature parameters & Describe specific settings used for feature
-  calculation, e.g. the distance setting and matrix merging method for
-  the grey level co-occurrence matrix.
-| standardisation & State whether image processing and feature
-  calculation were tested on the digital phantom and the radiomics
-  phantom data. State whether the feature values calculated match the
-  IBSI benchmark values; otherwise state which ones do not match
-  benchmark values, and indicate why.
+   * -  imaging 
+     -  Describe which type of imaging was acquired, e.g. CT, PET.
+   * -  acquisition 
+     -  Describe image acquisition details, i.e. scanner vendor,  method of image acquisition (e.g. dynamic, contrast-enhanced),  contrast agents, molecular labels and stainings, as well as image  acquisition parameters (e.g. MR TE times, CT tube voltage and  current).
+   * -  reconstruction 
+     -  Describe how images were reconstructed from the  acquired data, e.g. (iterative) reconstruction algorithm parameters  and voxel dimensions.
+   * -  approach 
+     -  Describe whether the image volume is analysed  slice-by-slice (2D), or as a volume (3D).
+   * -  process workflow 
+     -  Describe the sequence of image processing steps  used for the analysis, preferably schematically.
+   * -  software 
+     -  Describe which software (if any) or in-house code was used  to perform image processing and feature extraction.
+   * -  data availability 
+     -  Describe whether and where (image) data, ROIs and  software code is made available.
+   * -  procedure 
+     -  Describe how data was converted from reconstructed image  data, e.g. by calculation of standard uptake values for PET.  References to algorithms should be provided, or otherwise described in  detail.
+   * -  procedure 
+     -  Describe post-processing steps and parameters, e.g.  field-of-view illumination correction in microscopy, noise correction  in MRI and partial volume effect correction in PET. References to  algorithms should be provided, or otherwise described in detail.
+   * -  ROI 
+     -  Describe which regions of interest were delineated and used for  analysis, e.g. specific organs, specific cells, primary tumours.
+   * -  procedure 
+     -  Describe how regions of interest were delineated in the  image. Specify if segmentation was performed manually, semi-automated  or fully automated, by how many users/experts, and how consensus was  formed (if applicable). Algorithms and settings used should be listed.
+   * -  voxel dimensions 
+     -  Specify original and interpolated voxel dimensions.
+   * -  image interpolation method 
+     -  Specify interpolation method used, e.g.  *trilinear interpolation*. Specify how original and interpolation  grids were aligned.
+   * -  image intensity rounding 
+     -  Specify rounding procedures for non-integer  interpolated grey levels (if applicable).
+   * -  ROI interpolation method 
+     -  Specify interpolation method used to  interpolate ROI morphological and intensity masks.
+   * -  ROI partial volume 
+     -  Specify minimum partial volume fraction required  to include an interpolated ROI mask voxel in the interpolated ROI (if  applicable).
+   * -  ROI mask criteria 
+     -  Specify which criteria were used to include or  exclude voxels from an ROI mask (if applicable).
+   * -  discretisation method 
+     -  Specify which method is being used for  discretising image intensities. References to the method should be  provided, or otherwise described in detail.
+   * -  discretisation parameters 
+     -  Specify discretisation parameters for  discretisation, e.g. number of bins or bin width.
+   * -  feature set 
+     -  Report which features were calculated. References to  feature definitions should be provided, or otherwise described in  detail.
+   * -  feature parameters 
+     -  Describe specific settings used for feature  calculation, e.g. the distance setting and matrix merging method for  the grey level co-occurrence matrix.
+   * -  standardisation 
+     -  State whether image processing and feature  calculation were tested on the digital phantom and the radiomics  phantom data. State whether the feature values calculated match the  IBSI benchmark values; otherwise state which ones do not match  benchmark values, and indicate why.
 
 Feature nomenclature
 --------------------
@@ -138,18 +122,42 @@ Abbreviating feature families
 The following is a list of the feature families in the document and
 their suggested abbreviations:
 
-| to 0.99 **feature family** &
-| morphology & MORPH &
-| local intensity & LI &
-| intensity-based statistics & IS, STAT &
-| intensity histogram & IH &
-| intensity-volume histogram & IVH &
-| grey level co-occurrence matrix & GLCM, CM &
-| grey level run length matrix & GLRLM, RLM &
-| grey level size zone matrix & GLSZM, SZM&
-| grey level distance zone matrix & GLDZM, DZM &
-| neighbourhood grey tone difference matrix & NGTDM &
-| neighbouring grey level dependence matrix & NGLDM &
+.. list-table::
+   :widths: auto
+
+   * -  morphology 
+     -  MORPH 
+     - 
+   * -  local intensity 
+     -  LI 
+     - 
+   * -  intensity-based statistics 
+     -  IS, STAT 
+     - 
+   * -  intensity histogram 
+     -  IH 
+     - 
+   * -  intensity-volume histogram 
+     -  IVH 
+     - 
+   * -  grey level co-occurrence matrix 
+     -  GLCM, CM 
+     - 
+   * -  grey level run length matrix 
+     -  GLRLM, RLM 
+     - 
+   * -  grey level size zone matrix 
+     -  GLSZM, SZM
+     - 
+   * -  grey level distance zone matrix 
+     -  GLDZM, DZM 
+     - 
+   * -  neighbourhood grey tone difference matrix 
+     -  NGTDM 
+     - 
+   * -  neighbouring grey level dependence matrix 
+     -  NGLDM 
+     - 
 
 Abbreviating feature aggregation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -157,18 +165,42 @@ Abbreviating feature aggregation
 The following is a list of feature families and the possible aggregation
 methods:
 
-| to 0.99
-| – & features are 3D by definition &
-| 2D & averaged over slices (rare) &
-| –, 3D & calculated over the volume (default) &
-| 2D:avg & averaged over slices and directions &
-| 2D:mrg, 2D:smrg & merged directions per slice and averaged&
-| 2D:vmrg & merged over all slices (rare)&
-| 3D:avg & averaged over 3D directions&
-| 3D:mrg & merged 3D directions&
-| 2D, 2D:avg & averaged over slices &
-| 2D:mrg & merged over all slices (rare) &
-| 3D & calculated from single 3D matrix &
+.. list-table::
+   :widths: auto
+
+   * -  – 
+     -  features are 3D by definition 
+     - 
+   * -  2D 
+     -  averaged over slices (rare) 
+     - 
+   * -  –, 3D 
+     -  calculated over the volume (default) 
+     - 
+   * -  2D:avg 
+     -  averaged over slices and directions 
+     - 
+   * -  2D:mrg, 2D:smrg 
+     -  merged directions per slice and averaged
+     - 
+   * -  2D:vmrg 
+     -  merged over all slices (rare)
+     - 
+   * -  3D:avg 
+     -  averaged over 3D directions
+     - 
+   * -  3D:mrg 
+     -  merged 3D directions
+     - 
+   * -  2D, 2D:avg 
+     -  averaged over slices 
+     - 
+   * -  2D:mrg 
+     -  merged over all slices (rare) 
+     - 
+   * -  3D 
+     -  calculated from single 3D matrix 
+     - 
 
 In the list above, ’–’ signifies an empty entry which does not need to
 be added to the subscript. The following examples highlight the
@@ -196,12 +228,21 @@ notation. Note that # is the interpolation spacing, including units, and
 *dim* is 2D for interpolation with the slice plane and 3D for volumetric
 interpolation.
 
-| to 0.8 **interpolation method** & **notation**
-| none & INT:–
-| nearest neighbour interpolation & NNB:\ *dim*:#
-| linear interpolation & LIN:\ *dim*:#
-| cubic convolution interpolation & CCI:\ *dim*:#
-| cubic spline interpolation & CSI:\ *dim*:#, SI3:\ *dim*:#
+.. list-table::
+   :widths: auto
+
+   * -  to 0.8 **interpolation method** 
+     -  **notation**
+   * -  none 
+     -  INT:–
+   * -  nearest neighbour interpolation 
+     -  NNB:\ *dim*:#
+   * -  linear interpolation 
+     -  LIN:\ *dim*:#
+   * -  cubic convolution interpolation 
+     -  CCI:\ *dim*:#
+   * -  cubic spline interpolation 
+     -  CSI:\ *dim*:#, SI3:\ *dim*:#
 
 The dimension attribute and interpolation spacing may be omitted if this
 is clear from the context. The following examples highlight the
@@ -227,10 +268,18 @@ Describing re-segmentation
 
 Re-segmentation can be noted as follows:
 
-| to 0.8 **re-segmentation method** & **notation**
-| none & RS:– &
-| range & RS:[#,#] &
-| outlier filtering & RS:#\ :math:`\sigma` &
+.. list-table::
+   :widths: auto
+
+   * -  none 
+     -  RS:– 
+     - 
+   * -  range 
+     -  RS:[#,#] 
+     - 
+   * -  outlier filtering 
+     -  RS:#\ :math:`\sigma` 
+     - 
 
 In the table above # signify numbers. A re-segmentation range can be
 half-open, i.e. RS:[#,\ :math:`\infty`). Re-segmentation methods may
@@ -260,12 +309,27 @@ The following is a list of discretisation methods and the suggested
 notation. Note that # is the value of the relevant discretisation
 parameter, e.g. number of bins or bin size, including units.
 
-| to 0.8 **discretisation method** & **notation** &
-| none & DIS:– &
-| fixed bin size & FBS:# &
-| fixed bin number & FBN:# &
-| histogram equalisation & EQ:#&
-| Lloyd-Max, minimum mean squared & LM:#, MMS:# &
+.. list-table::
+   :widths: auto
+
+   * -  to 0.8 **discretisation method** 
+     -  **notation** 
+     - 
+   * -  none 
+     -  DIS:– 
+     - 
+   * -  fixed bin size 
+     -  FBS:# 
+     - 
+   * -  fixed bin number 
+     -  FBN:# 
+     - 
+   * -  histogram equalisation 
+     -  EQ:#
+     - 
+   * -  Lloyd-Max, minimum mean squared 
+     -  LM:#, MMS:# 
+     - 
 
 In the table above, # signify numbers such as the number of bins or
 their width. Histogram equalisation of the ROI intensities can be
@@ -289,53 +353,95 @@ Abbreviating feature-specific parameters
 Some features and feature families require additional parameters, which
 may be varied. These are the following:
 
-to 0.99
+.. list-table::
+   :widths: auto
 
-| 
-| –, SYM & symmetrical co-occurrence matrices &
-| ASYM & asymmetrical co-occurrence matrices (not recommended) &
-| :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# & Chebyshev
-  (:math:`\ell_{\infty}`) norm with distance # (default) &
-| :math:`\delta`-:math:`2`:# & Euclidean (:math:`\ell_{2}`) norm with
-  distance # &
-| :math:`\delta`-:math:`1`:# & Manhattan (:math:`\ell_{1}`) norm with
-  distance # &
-| –, w:1 & no weighting (default) &
-| w:f & weighting with function :math:`f` &
-| –, w:1 & no weighting (default) &
-| w:f & weighting with function :math:`f` &
-| :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# & Chebyshev
-  (:math:`\ell_{\infty}`) norm with distance (default) # &
-| :math:`\delta`-:math:`2`:# & Euclidean (:math:`\ell_{2}`) norm with
-  distance # &
-| :math:`\delta`-:math:`1`:# & Manhattan (:math:`\ell_{1}`) norm with
-  distance # &
-| :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# & Chebyshev
-  (:math:`\ell_{\infty}`) norm with distance (default) # &
-| :math:`\delta`-:math:`2`:# & Euclidean (:math:`\ell_{2}`) norm with
-  distance # &
-| :math:`\delta`-:math:`1`:# & Manhattan (:math:`\ell_{1}`) norm with
-  distance # &
-| –, :math:`l`-:math:`\infty`:# & Chebyshev (:math:`\ell_{\infty}`) norm
-  &
-| :math:`l`-:math:`2`:# & Euclidean (:math:`\ell_{2}`) norm &
-| :math:`l`-:math:`1`:# & Manhattan (:math:`\ell_{1}`) norm (default) &
-| :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# & Chebyshev
-  (:math:`\ell_{\infty}`) norm with distance # (default) &
-| :math:`\delta`-:math:`2`:# & Euclidean (:math:`\ell_{2}`) norm with
-  distance # &
-| :math:`\delta`-:math:`1`:# & Manhattan (:math:`\ell_{1}`) norm with
-  distance # &
-| –, w:1 & no weighting (default) &
-| w:f & weighting with function :math:`f` &
-| :math:`\alpha`:# & dependence coarseness parameter with value # &
-| :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# & Chebyshev
-  (:math:`\ell_{\infty}`) norm with distance # (default) &
-| :math:`\delta`-:math:`2`:# & Euclidean (:math:`\ell_{2}`) norm with
-  distance # &
-| :math:`\delta`-:math:`1`:# & Manhattan (:math:`\ell_{1}`) norm with
-  distance # &
-| –, w:1 & no weighting (default) &
-| w:f & weighting with function :math:`f` &
+   * -  –, SYM 
+     -  symmetrical co-occurrence matrices 
+     - 
+   * -  ASYM 
+     -  asymmetrical co-occurrence matrices (not recommended) 
+     - 
+   * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
+     -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
+     - 
+   * -  :math:`\delta`-:math:`2`:# 
+     -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
+     - 
+   * -  :math:`\delta`-:math:`1`:# 
+     -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
+     - 
+   * -  –, w:1 
+     -  no weighting (default) 
+     - 
+   * -  w:f 
+     -  weighting with function :math:`f` 
+     - 
+   * -  –, w:1 
+     -  no weighting (default) 
+     - 
+   * -  w:f 
+     -  weighting with function :math:`f` 
+     - 
+   * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
+     -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance (default) # 
+     - 
+   * -  :math:`\delta`-:math:`2`:# 
+     -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
+     - 
+   * -  :math:`\delta`-:math:`1`:# 
+     -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
+     - 
+   * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
+     -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance (default) # 
+     - 
+   * -  :math:`\delta`-:math:`2`:# 
+     -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
+     - 
+   * -  :math:`\delta`-:math:`1`:# 
+     -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
+     - 
+   * -  –, :math:`l`-:math:`\infty`:# 
+     -  Chebyshev (:math:`\ell_{\infty}`) norm  
+     - 
+   * -  :math:`l`-:math:`2`:# 
+     -  Euclidean (:math:`\ell_{2}`) norm 
+     - 
+   * -  :math:`l`-:math:`1`:# 
+     -  Manhattan (:math:`\ell_{1}`) norm (default) 
+     - 
+   * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
+     -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
+     - 
+   * -  :math:`\delta`-:math:`2`:# 
+     -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
+     - 
+   * -  :math:`\delta`-:math:`1`:# 
+     -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
+     - 
+   * -  –, w:1 
+     -  no weighting (default) 
+     - 
+   * -  w:f 
+     -  weighting with function :math:`f` 
+     - 
+   * -  :math:`\alpha`:# 
+     -  dependence coarseness parameter with value # 
+     - 
+   * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
+     -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
+     - 
+   * -  :math:`\delta`-:math:`2`:# 
+     -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
+     - 
+   * -  :math:`\delta`-:math:`1`:# 
+     -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
+     - 
+   * -  –, w:1 
+     -  no weighting (default) 
+     - 
+   * -  w:f 
+     -  weighting with function :math:`f` 
+     - 
 
 In the above table, # represents numbers.

@@ -60,7 +60,6 @@ following should be taken into account for calculating image features:
 
 .. _figTestVolume:
 .. figure:: ./Figures/testVolumev3.png
-   :scale: 60
    :align: center
 
    Exploded view of the test volume. The number in each voxel
@@ -262,26 +261,102 @@ should be taken into account when calculating image features:
    the “arbitrary intensity units” case where re-segmentation range is
    not used. For details, please consult section [sect\_ivh].
 
-| to 0.99 & config. A & config. B & config. C & config. D & config. E
-| Sample & ``PAT1`` & ``PAT1`` & ``PAT1`` & ``PAT1`` & ``PAT1``
-| ROI & ``GTV-1`` & ``GTV-1`` & ``GTV-1`` & ``GTV-1`` & ``GTV-1``
-| Approach & 2D & 2D & 3D & 3D & 3D
-| Interpolation & no & yes & yes & yes & yes
-| Voxel dimension (mm)& & :math:`2\times 2` & :math:`2\times 2\times 2`
-  & :math:`2\times 2\times 2` & :math:`2\times 2\times 2`
-| Interpolation method & & bilinear & trilinear & trilinear & tricubic
-  spline
-| Grey level rounding & & nearest integer & nearest integer & nearest
-  integer & nearest integer
-| ROI interp. method & & bilinear & trilinear & trilinear & trilinear
-| ROI partial volume & & :math:`0.5` & :math:`0.5` & :math:`0.5` &
-  :math:`0.5`
-| Re-segmentation & & & & &
-| Range (HU) & :math:`\left[-500,400\right]` &
-  :math:`\left[-500,400\right]` & :math:`\left[-1000,400\right]` & no &
-  :math:`\left[-500,400\right]`
-| Outliers & no & no & no & :math:`3\sigma` & :math:`3\sigma`
-| Discretisation & & & & &
-| Texture and IH & FBS: 25 HU & FBN: 32 bins & FBS: 25 HU & FBN: 32 bins
-  & FBN: 32 bins
-| IVH & no & no & FBS: 2.5 HU & no & FBN: 1000 bins
+.. list-table::
+   :widths: auto
+
+   * -  to 0.99 
+     -  config. A 
+     -  config. B 
+     -  config. C 
+     -  config. D 
+     -  config. E
+   * -  Sample 
+     -  ``PAT1`` 
+     -  ``PAT1`` 
+     -  ``PAT1`` 
+     -  ``PAT1`` 
+     -  ``PAT1``
+   * -  ROI 
+     -  ``GTV-1`` 
+     -  ``GTV-1`` 
+     -  ``GTV-1`` 
+     -  ``GTV-1`` 
+     -  ``GTV-1``
+   * -  Approach 
+     -  2D 
+     -  2D 
+     -  3D 
+     -  3D 
+     -  3D
+   * -  Interpolation 
+     -  no 
+     -  yes 
+     -  yes 
+     -  yes 
+     -  yes
+   * -  Voxel dimension (mm)
+     -  
+     -  :math:`2\times 2` 
+     -  :math:`2\times 2\times 2`  
+     -  :math:`2\times 2\times 2` 
+     -  :math:`2\times 2\times 2`
+   * -  Interpolation method 
+     -  
+     -  bilinear 
+     -  trilinear 
+     -  trilinear 
+     -  tricubic  spline
+   * -  Grey level rounding 
+     -  
+     -  nearest integer 
+     -  nearest integer 
+     -  nearest  integer 
+     -  nearest integer
+   * -  ROI interp. method 
+     -  
+     -  bilinear 
+     -  trilinear 
+     -  trilinear 
+     -  trilinear
+   * -  ROI partial volume 
+     -  
+     -  :math:`0.5` 
+     -  :math:`0.5` 
+     -  :math:`0.5` 
+     -   :math:`0.5`
+   * -  Re-segmentation 
+     -  
+     -  
+     -  
+     -  
+     - 
+   * -  Range (HU) 
+     -  :math:`\left[-500,400\right]` 
+     -   :math:`\left[-500,400\right]` 
+     -  :math:`\left[-1000,400\right]` 
+     -  no 
+     -   :math:`\left[-500,400\right]`
+   * -  Outliers 
+     -  no 
+     -  no 
+     -  no 
+     -  :math:`3\sigma` 
+     -  :math:`3\sigma`
+   * -  Discretisation 
+     -  
+     -  
+     -  
+     -  
+     - 
+   * -  Texture and IH 
+     -  FBS: 25 HU 
+     -  FBN: 32 bins 
+     -  FBS: 25 HU 
+     -  FBN: 32 bins  
+     -  FBN: 32 bins
+   * -  IVH 
+     -  no 
+     -  no 
+     -  FBS: 2.5 HU 
+     -  no 
+     -  FBN: 1000 bins

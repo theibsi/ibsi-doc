@@ -79,196 +79,120 @@ Contact
 IBSI contributors
 -----------------
 
-to 0.99
+.. list-table::
+   :widths: auto
 
-| Mahmoud A. Abdalah & Department of Cancer Imaging and Metabolism,
-  Moffitt Cancer Center, Tampa (FL), USA
-| Hugo J.W.L. Aerts & Dana-Farber Cancer Institute, Brigham and Women’s
-  Hospital, and Harvard Medical School, Harvard University, Boston (MA),
-  USA
-| Vincent Andrearczyk & Institute of Information Systems, University of
-  Applied Sciences Western Switzerland (HES-SO), Switzerland
-| Aditya Apte & Department of Medical Physics, Memorial Sloan Kettering
-  Cancer Center, New York (NY), USA
-| Saeed Ashrafinia & Department of Electrical and Computer Engineering,
-  Johns Hopkins University, Baltimore (MD), USA *and* Department of
-  Radiology and Radiological Science, Johns Hopkins University,
-  Baltimore (MD), USA
-| Roelof J. Beukinga & Department of Nuclear Medicine and Molecular
-  Imaging, University of Groningen, University Medical Center Groningen
-  (UMCG), Groningen, the Netherlands
-| Ronald Boellaard & Department of Nuclear Medicine and Molecular
-  Imaging, University of Groningen, University Medical Center Groningen
-  (UMCG), Groningen, the Netherlands *and* Radiology and Nuclear
-  Medicine, VU University Medical Centre (VUMC), Amsterdam, The
-  Netherlands
-| Marta Bogowicz & Department of Radiation Oncology, University Hospital
-  Zurich, University of Zurich, Switzerland
-| Luca Boldrini & Polo Scienze Oncologiche ed Ematologiche, Istituto di
-  Radiologia, Università Cattolica del Sacro Cuore, Fondazione
-  Policlinico Universitario Agostino Gemelli, Roma, Italia
-| Adrien Depeursinge & Institute of Information Systems, University of
-  Applied Sciences Western Switzerland (HES-SO), Switzerland *and*
-  Biomedical Imaging Group, Ecole polytechnique federale de Lausanne
-  (EPFL), Switzerland
-| Marie-Charlotte Desseroit & Laboratory of Medical Information
-  Processing (LaTIM) - team ACTION (image-guided therapeutic action in
-  oncology), INSERM, UMR 1101, IBSAM, UBO, UBL, Brest, France
-| Nicola Dinapoli & Polo Scienze Oncologiche ed Ematologiche, Università
-  Cattolica del Sacro Cuore, Fondazione Policlinico Universitario
-  Agostino Gemelli, Roma, Italia
-| Cuong Viet Dinh & Department of Radiation Oncology, the Netherlands
-  Cancer Institute (NKI), Amsterdam, the Netherlands
-| Sebastian Echegaray & Department of Radiology, Stanford University
-  School of Medicine, Stanford (CA), USA
-| Issam El Naqa & Department of Radiation Oncology, Physics Division,
-  University of Michigan *and* Medical Physics Unit, McGill University,
-  Montréal, Québec, Canada
-| Hesham Elhalawani & Division of Radiation Oncology, MD Anderson Cancer
-  Center, Houston (TX), USA
-| Andriy Y. Fedorov & Surgical Planning Laboratory, Brigham and Women’s
-  Hospital and Harvard Medical School, Harvard University, Boston (MA),
-  USA
-| Roberto Gatta & Polo Scienze Oncologiche ed Ematologiche, Università
-  Cattolica del Sacro Cuore, Fondazione Policlinico Universitario
-  Agostino Gemelli, Roma, Italia
-| Robert J. Gillies & Department of Cancer Imaging and Metabolism,
-  Moffitt Cancer Center, Tampa (FL), USA
-| Matthias Guckenberger & Department of Radiation Oncology, University
-  Hospital Zurich, University of Zurich, Switzerland
-| Nils Gählert & Department of Medical Image Computing, German Cancer
-  Research Center (DKFZ), Heidelberg, Germany
-| Michael Götz & Department of Medical Image Computing, German Cancer
-  Research Center (DKFZ), Heidelberg, Germany
-| Mathieu Hatt & Laboratory of Medical Information Processing (LaTIM) -
-  team ACTION (image-guided therapeutic action in oncology), INSERM, UMR
-  1101, IBSAM, UBO, UBL, Brest, France
-| Fabian Isensee & Department of Medical Image Computing, German Cancer
-  Research Center (DKFZ), Heidelberg, Germany
-| Jayashree Kalpathy-Cramer & Athinoula A. Martinos Center for
-  Biomedical Imaging, Massachusetts General Hospital (MGH) and Harvard
-  Medical School, Harvard University, Cambridge (MA), USA
-| Philippe Lambin & Department of Radiation Oncology (The D-Lab),
-  GROW-School for Oncology and Developmental Biology, Maastricht
-  University Medical Centre+, Maastricht, The Netherlands
-| Stefan Leger & OncoRay – National Center for Radiation Research in
-  Oncology, Faculty of Medicine and University Hospital Carl Gustav
-  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -
-  Rossendorf, Dresden, Germany *and* German Cancer Consortium (DKTK),
-  Partner Site Dresden, and German Cancer Research Center (DKFZ),
-  Heidelberg, Germany
-| Ralph T.H. Leijenaar & Department of Radiation Oncology (The D-Lab),
-  GROW-School for Oncology and Developmental Biology, Maastricht
-  University Medical Centre+, Maastricht, The Netherlands
-| Jacopo Lenkowicz & Polo Scienze Oncologiche ed Ematologiche, Istituto
-  di Radiologia, Università Cattolica del Sacro Cuore, Fondazione
-  Policlinico Universitario Agostino Gemelli, Roma, Italia
-| Fiona Lippert & Section for Biomedical Physics, Department of
-  Radiation Oncology, University of Tübingen, Germany
-| Are Losnegrd & Department of Clinical Medicine, University of Bergen,
-  Bergen, Norway
-| Steffen Löck & OncoRay – National Center for Radiation Research in
-  Oncology, Faculty of Medicine and University Hospital Carl Gustav
-  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -
-  Rossendorf, Dresden, Germany *and* German Cancer Consortium (DKTK),
-  Partner Site Dresden, and German Cancer Research Center (DKFZ),
-  Heidelberg, Germany *and* Department of Radiotherapy and Radiation
-  Oncology, Faculty of Medicine and University Hospital Carl Gustav
-  Carus, Technische Universität Dresden, Dresden, Germany
-| Dennis S. Mackin & Department of Radiation Physics, University of
-  Texas MD Anderson Cancer Center, Houston (TX), USA
-| Klaus H. Maier-Hein & Department of Medical Image Computing, German
-  Cancer Research Center (DKFZ), Heidelberg, Germany
-| Todd McNutt & Department of Radiation Oncology, Johns Hopkins
-  University, Baltimore (MD), USA
-| Olivier Morin & Department of Radiation Oncology, University of
-  California, San Francisco (CA), USA
-| Henning Müller & Institute of Information Systems, University of
-  Applied Sciences Western Switzerland (HES-SO), Switzerland *and*
-  University of Geneva, Switzerland
-| Sandy Napel & Department of Radiology, Stanford University School of
-  Medicine, Stanford (CA), USA *and* Department of Electrical
-  Engineering, Stanford University, Stanford (CA), USA *and* Department
-  of Medicine (Biomedical Informatics Research), Stanford University
-  School of Medicine, Stanford (CA), USA
-| Arman Rahmim & Department of Electrical and Computer Engineering,
-  Johns Hopkins University, Baltimore (MD), USA *and* Department of
-  Radiology and Radiological Science, Johns Hopkins University,
-  Baltimore (MD), USA
-| Arvind U.K. Rao & Department of Bioinformatics and Computational
-  Biology, The University of Texas MD Anderson Cancer Center, Houston
-  (TX), USA
-| Christian Richter & OncoRay – National Center for Radiation Research
-  in Oncology, Faculty of Medicine and University Hospital Carl Gustav
-  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -
-  Rossendorf, Dresden, Germany *and* German Cancer Consortium (DKTK),
-  Partner Site Dresden, and German Cancer Research Center (DKFZ),
-  Heidelberg, Germany *and* Helmholtz-Zentrum Dresden - Rossendorf,
-  Institute of Radiooncology – OncoRay, Dresden, Germany
-| Nanna M. Sijtsema & Department of Radiation Oncology, University of
-  Groningen, University Medical Center Groningen (UMCG), Groningen, The
-  Netherlands
-| Jairo Socarras Fernandez & Section for Biomedical Physics, Department
-  of Radiation Oncology, University of Tübingen, Germany
-| Emiliano Spezi & School of Engineering, Cardiff University, Cardiff,
-  United Kingdom *and* Department of Medical Physics, Velindre Cancer
-  Centre, Cardiff, UK
-| Roel J.H.M Steenbakkers & Department of Radiation Oncology, University
-  of Groningen, University Medical Center Groningen (UMCG), Groningen,
-  The Netherlands
-| Stephanie Tanadini-Lang & Department of Radiation Oncology, University
-  Hospital Zurich, University of Zurich, Switzerland
-| Daniela Thorwarth & Section for Biomedical Physics, Department of
-  Radiation Oncology, University of Tübingen, Germany
-| Esther G.C. Troost & OncoRay – National Center for Radiation Research
-  in Oncology, Faculty of Medicine and University Hospital Carl Gustav
-  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -
-  Rossendorf, Dresden, Germany *and* National Center for Tumor Diseases
-  (NCT), Partner Site Dresden, Germany: German Cancer Research Center
-  (DKFZ), Heidelberg, Germany; Faculty of Medicine and University
-  Hospital Carl Gustav Carus, Technische Universität Dresden, Dresden,
-  Germany, and; Helmholtz Association / Helmholtz-Zentrum Dresden -
-  Rossendorf (HZDR), Dresden, Germany *and* German Cancer Consortium
-  (DKTK), Partner Site Dresden, and German Cancer Research Center
-  (DKFZ), Heidelberg, Germany *and* Department of Radiotherapy and
-  Radiation Oncology, Faculty of Medicine and University Hospital Carl
-  Gustav Carus, Technische Universität Dresden, Dresden, Germany *and*
-  Helmholtz-Zentrum Dresden - Rossendorf, Institute of Radiooncology –
-  OncoRay, Dresden, Germany
-| Taman Upadhaya & Department of Nuclear Medicine, CHU Milétrie,
-  Poitiers, France *and* Laboratory of Medical Information Processing
-  (LaTIM) - team ACTION (image-guided therapeutic action in oncology),
-  INSERM, UMR 1101, IBSAM, UBO, UBL, Brest, France
-| Vincenzo Valentini & Polo Scienze Oncologiche ed Ematologiche,
-  Istituto di Radiologia, Università Cattolica del Sacro Cuore,
-  Fondazione Policlinico Universitario Agostino Gemelli, Roma, Italia
-| Martin Vallières & Laboratory of Medical Information Processing
-  (LaTIM) - team ACTION (image-guided therapeutic action in oncology),
-  INSERM, UMR 1101, IBSAM, UBO, UBL, Brest, France *and* Medical Physics
-  Unit, McGill University, Montréal, Québec, Canada
-| Uulke A. van der Heide & Department of Radiation Oncology, the
-  Netherlands Cancer Institute (NKI), Amsterdam, the Netherlands
-| Lisanne V. van Dijk & Department of Radiation Oncology, University of
-  Groningen, University Medical Center Groningen (UMCG), Groningen, The
-  Netherlands
-| Joost van Griethuysen & Department of Radiology, the Netherlands
-  Cancer Institute (NKI), Amsterdam, the Netherlands *and* GROW-School
-  for Oncology and Developmental Biology, Maastricht University Medical
-  Center, Maastricht, The Netherlands *and* Department of Radiation
-  Oncology, Dana-Farber Cancer Institute, Brigham and Women’s Hospital,
-  Harvard Medical School, Boston, MA
-| Floris H.P. van Velden & Department of Radiology, Leiden University
-  Medical Center (LUMC), Leiden, the Netherlands
-| Philip Whybra & School of Engineering, Cardiff University, Cardiff,
-  United Kingdom
-| Alex Zwanenburg & OncoRay – National Center for Radiation Research in
-  Oncology, Faculty of Medicine and University Hospital Carl Gustav
-  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -
-  Rossendorf, Dresden, Germany *and* National Center for Tumor Diseases
-  (NCT), Partner Site Dresden, Germany: German Cancer Research Center
-  (DKFZ), Heidelberg, Germany; Faculty of Medicine and University
-  Hospital Carl Gustav Carus, Technische Universität Dresden, Dresden,
-  Germany, and; Helmholtz Association / Helmholtz-Zentrum Dresden -
-  Rossendorf (HZDR), Dresden, Germany *and* German Cancer Consortium
-  (DKTK), Partner Site Dresden, and German Cancer Research Center
-  (DKFZ), Heidelberg, Germany
+   * -  Mahmoud A. Abdalah 
+     -  Department of Cancer Imaging and Metabolism,  Moffitt Cancer Center, Tampa (FL), USA
+   * -  Hugo J.W.L. Aerts 
+     -  Dana-Farber Cancer Institute, Brigham and Women’s  Hospital, and Harvard Medical School, Harvard University, Boston (MA),  USA
+   * -  Vincent Andrearczyk 
+     -  Institute of Information Systems, University of  Applied Sciences Western Switzerland (HES-SO), Switzerland
+   * -  Aditya Apte 
+     -  Department of Medical Physics, Memorial Sloan Kettering  Cancer Center, New York (NY), USA
+   * -  Saeed Ashrafinia 
+     -  Department of Electrical and Computer Engineering,  Johns Hopkins University, Baltimore (MD), USA *and* Department of  Radiology and Radiological Science, Johns Hopkins University,  Baltimore (MD), USA
+   * -  Roelof J. Beukinga 
+     -  Department of Nuclear Medicine and Molecular  Imaging, University of Groningen, University Medical Center Groningen  (UMCG), Groningen, the Netherlands
+   * -  Ronald Boellaard 
+     -  Department of Nuclear Medicine and Molecular  Imaging, University of Groningen, University Medical Center Groningen  (UMCG), Groningen, the Netherlands *and* Radiology and Nuclear  Medicine, VU University Medical Centre (VUMC), Amsterdam, The  Netherlands
+   * -  Marta Bogowicz 
+     -  Department of Radiation Oncology, University Hospital  Zurich, University of Zurich, Switzerland
+   * -  Luca Boldrini 
+     -  Polo Scienze Oncologiche ed Ematologiche, Istituto di  Radiologia, Università Cattolica del Sacro Cuore, Fondazione  Policlinico Universitario Agostino Gemelli, Roma, Italia
+   * -  Adrien Depeursinge 
+     -  Institute of Information Systems, University of  Applied Sciences Western Switzerland (HES-SO), Switzerland *and*  Biomedical Imaging Group, Ecole polytechnique federale de Lausanne  (EPFL), Switzerland
+   * -  Marie-Charlotte Desseroit 
+     -  Laboratory of Medical Information  Processing (LaTIM) - team ACTION (image-guided therapeutic action in  oncology), INSERM, UMR 1101, IBSAM, UBO, UBL, Brest, France
+   * -  Nicola Dinapoli 
+     -  Polo Scienze Oncologiche ed Ematologiche, Università  Cattolica del Sacro Cuore, Fondazione Policlinico Universitario  Agostino Gemelli, Roma, Italia
+   * -  Cuong Viet Dinh 
+     -  Department of Radiation Oncology, the Netherlands  Cancer Institute (NKI), Amsterdam, the Netherlands
+   * -  Sebastian Echegaray 
+     -  Department of Radiology, Stanford University  School of Medicine, Stanford (CA), USA
+   * -  Issam El Naqa 
+     -  Department of Radiation Oncology, Physics Division,  University of Michigan *and* Medical Physics Unit, McGill University,  Montréal, Québec, Canada
+   * -  Hesham Elhalawani 
+     -  Division of Radiation Oncology, MD Anderson Cancer  Center, Houston (TX), USA
+   * -  Andriy Y. Fedorov 
+     -  Surgical Planning Laboratory, Brigham and Women’s  Hospital and Harvard Medical School, Harvard University, Boston (MA),  USA
+   * -  Roberto Gatta 
+     -  Polo Scienze Oncologiche ed Ematologiche, Università  Cattolica del Sacro Cuore, Fondazione Policlinico Universitario  Agostino Gemelli, Roma, Italia
+   * -  Robert J. Gillies 
+     -  Department of Cancer Imaging and Metabolism,  Moffitt Cancer Center, Tampa (FL), USA
+   * -  Matthias Guckenberger 
+     -  Department of Radiation Oncology, University  Hospital Zurich, University of Zurich, Switzerland
+   * -  Nils Gählert 
+     -  Department of Medical Image Computing, German Cancer  Research Center (DKFZ), Heidelberg, Germany
+   * -  Michael Götz 
+     -  Department of Medical Image Computing, German Cancer  Research Center (DKFZ), Heidelberg, Germany
+   * -  Mathieu Hatt 
+     -  Laboratory of Medical Information Processing (LaTIM) -  team ACTION (image-guided therapeutic action in oncology), INSERM, UMR  1101, IBSAM, UBO, UBL, Brest, France
+   * -  Fabian Isensee 
+     -  Department of Medical Image Computing, German Cancer  Research Center (DKFZ), Heidelberg, Germany
+   * -  Jayashree Kalpathy-Cramer 
+     -  Athinoula A. Martinos Center for  Biomedical Imaging, Massachusetts General Hospital (MGH) and Harvard  Medical School, Harvard University, Cambridge (MA), USA
+   * -  Philippe Lambin 
+     -  Department of Radiation Oncology (The D-Lab),  GROW-School for Oncology and Developmental Biology, Maastricht  University Medical Centre+, Maastricht, The Netherlands
+   * -  Stefan Leger 
+     -  OncoRay – National Center for Radiation Research in  Oncology, Faculty of Medicine and University Hospital Carl Gustav  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -  Rossendorf, Dresden, Germany *and* German Cancer Consortium (DKTK),  Partner Site Dresden, and German Cancer Research Center (DKFZ),  Heidelberg, Germany
+   * -  Ralph T.H. Leijenaar 
+     -  Department of Radiation Oncology (The D-Lab),  GROW-School for Oncology and Developmental Biology, Maastricht  University Medical Centre+, Maastricht, The Netherlands
+   * -  Jacopo Lenkowicz 
+     -  Polo Scienze Oncologiche ed Ematologiche, Istituto  di Radiologia, Università Cattolica del Sacro Cuore, Fondazione  Policlinico Universitario Agostino Gemelli, Roma, Italia
+   * -  Fiona Lippert 
+     -  Section for Biomedical Physics, Department of  Radiation Oncology, University of Tübingen, Germany
+   * -  Are Losnegrd 
+     -  Department of Clinical Medicine, University of Bergen,  Bergen, Norway
+   * -  Steffen Löck 
+     -  OncoRay – National Center for Radiation Research in  Oncology, Faculty of Medicine and University Hospital Carl Gustav  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -  Rossendorf, Dresden, Germany *and* German Cancer Consortium (DKTK),  Partner Site Dresden, and German Cancer Research Center (DKFZ),  Heidelberg, Germany *and* Department of Radiotherapy and Radiation  Oncology, Faculty of Medicine and University Hospital Carl Gustav  Carus, Technische Universität Dresden, Dresden, Germany
+   * -  Dennis S. Mackin 
+     -  Department of Radiation Physics, University of  Texas MD Anderson Cancer Center, Houston (TX), USA
+   * -  Klaus H. Maier-Hein 
+     -  Department of Medical Image Computing, German  Cancer Research Center (DKFZ), Heidelberg, Germany
+   * -  Todd McNutt 
+     -  Department of Radiation Oncology, Johns Hopkins  University, Baltimore (MD), USA
+   * -  Olivier Morin 
+     -  Department of Radiation Oncology, University of  California, San Francisco (CA), USA
+   * -  Henning Müller 
+     -  Institute of Information Systems, University of  Applied Sciences Western Switzerland (HES-SO), Switzerland *and*  University of Geneva, Switzerland
+   * -  Sandy Napel 
+     -  Department of Radiology, Stanford University School of  Medicine, Stanford (CA), USA *and* Department of Electrical  Engineering, Stanford University, Stanford (CA), USA *and* Department  of Medicine (Biomedical Informatics Research), Stanford University  School of Medicine, Stanford (CA), USA
+   * -  Arman Rahmim 
+     -  Department of Electrical and Computer Engineering,  Johns Hopkins University, Baltimore (MD), USA *and* Department of  Radiology and Radiological Science, Johns Hopkins University,  Baltimore (MD), USA
+   * -  Arvind U.K. Rao 
+     -  Department of Bioinformatics and Computational  Biology, The University of Texas MD Anderson Cancer Center, Houston  (TX), USA
+   * -  Christian Richter 
+     -  OncoRay – National Center for Radiation Research  in Oncology, Faculty of Medicine and University Hospital Carl Gustav  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -  Rossendorf, Dresden, Germany *and* German Cancer Consortium (DKTK),  Partner Site Dresden, and German Cancer Research Center (DKFZ),  Heidelberg, Germany *and* Helmholtz-Zentrum Dresden - Rossendorf,  Institute of Radiooncology – OncoRay, Dresden, Germany
+   * -  Nanna M. Sijtsema 
+     -  Department of Radiation Oncology, University of  Groningen, University Medical Center Groningen (UMCG), Groningen, The  Netherlands
+   * -  Jairo Socarras Fernandez 
+     -  Section for Biomedical Physics, Department  of Radiation Oncology, University of Tübingen, Germany
+   * -  Emiliano Spezi 
+     -  School of Engineering, Cardiff University, Cardiff,  United Kingdom *and* Department of Medical Physics, Velindre Cancer  Centre, Cardiff, UK
+   * -  Roel J.H.M Steenbakkers 
+     -  Department of Radiation Oncology, University  of Groningen, University Medical Center Groningen (UMCG), Groningen,  The Netherlands
+   * -  Stephanie Tanadini-Lang 
+     -  Department of Radiation Oncology, University  Hospital Zurich, University of Zurich, Switzerland
+   * -  Daniela Thorwarth 
+     -  Section for Biomedical Physics, Department of  Radiation Oncology, University of Tübingen, Germany
+   * -  Esther G.C. Troost 
+     -  OncoRay – National Center for Radiation Research  in Oncology, Faculty of Medicine and University Hospital Carl Gustav  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -  Rossendorf, Dresden, Germany *and* National Center for Tumor Diseases  (NCT), Partner Site Dresden, Germany: German Cancer Research Center  (DKFZ), Heidelberg, Germany; Faculty of Medicine and University  Hospital Carl Gustav Carus, Technische Universität Dresden, Dresden,  Germany, and; Helmholtz Association / Helmholtz-Zentrum Dresden -  Rossendorf (HZDR), Dresden, Germany *and* German Cancer Consortium  (DKTK), Partner Site Dresden, and German Cancer Research Center  (DKFZ), Heidelberg, Germany *and* Department of Radiotherapy and  Radiation Oncology, Faculty of Medicine and University Hospital Carl  Gustav Carus, Technische Universität Dresden, Dresden, Germany *and*  Helmholtz-Zentrum Dresden - Rossendorf, Institute of Radiooncology –  OncoRay, Dresden, Germany
+   * -  Taman Upadhaya 
+     -  Department of Nuclear Medicine, CHU Milétrie,  Poitiers, France *and* Laboratory of Medical Information Processing  (LaTIM) - team ACTION (image-guided therapeutic action in oncology),  INSERM, UMR 1101, IBSAM, UBO, UBL, Brest, France
+   * -  Vincenzo Valentini 
+     -  Polo Scienze Oncologiche ed Ematologiche,  Istituto di Radiologia, Università Cattolica del Sacro Cuore,  Fondazione Policlinico Universitario Agostino Gemelli, Roma, Italia
+   * -  Martin Vallières 
+     -  Laboratory of Medical Information Processing  (LaTIM) - team ACTION (image-guided therapeutic action in oncology),  INSERM, UMR 1101, IBSAM, UBO, UBL, Brest, France *and* Medical Physics  Unit, McGill University, Montréal, Québec, Canada
+   * -  Uulke A. van der Heide 
+     -  Department of Radiation Oncology, the  Netherlands Cancer Institute (NKI), Amsterdam, the Netherlands
+   * -  Lisanne V. van Dijk 
+     -  Department of Radiation Oncology, University of  Groningen, University Medical Center Groningen (UMCG), Groningen, The  Netherlands
+   * -  Joost van Griethuysen 
+     -  Department of Radiology, the Netherlands  Cancer Institute (NKI), Amsterdam, the Netherlands *and* GROW-School  for Oncology and Developmental Biology, Maastricht University Medical  Center, Maastricht, The Netherlands *and* Department of Radiation  Oncology, Dana-Farber Cancer Institute, Brigham and Women’s Hospital,  Harvard Medical School, Boston, MA
+   * -  Floris H.P. van Velden 
+     -  Department of Radiology, Leiden University  Medical Center (LUMC), Leiden, the Netherlands
+   * -  Philip Whybra 
+     -  School of Engineering, Cardiff University, Cardiff,  United Kingdom
+   * -  Alex Zwanenburg 
+     -  OncoRay – National Center for Radiation Research in  Oncology, Faculty of Medicine and University Hospital Carl Gustav  Carus, Technische Universität Dresden, Helmholtz-Zentrum Dresden -  Rossendorf, Dresden, Germany *and* National Center for Tumor Diseases  (NCT), Partner Site Dresden, Germany: German Cancer Research Center  (DKFZ), Heidelberg, Germany; Faculty of Medicine and University  Hospital Carl Gustav Carus, Technische Universität Dresden, Dresden,  Germany, and; Helmholtz Association / Helmholtz-Zentrum Dresden -  Rossendorf (HZDR), Dresden, Germany *and* German Cancer Consortium  (DKTK), Partner Site Dresden, and German Cancer Research Center  (DKFZ), Heidelberg, Germany

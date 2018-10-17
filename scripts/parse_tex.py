@@ -12,7 +12,11 @@ def main():
   if output is None or output == '':
     raise ValueError('Empty output was returned!')
 
-  output_lines = output.replace('\r', '').split('\n')
+  output = output.replace('\r', '')
+
+  output = correct_tables(output)
+
+  output_lines = output.split('\n')
   hdr_chars = ['=', '-']
   index = [
     '',
@@ -292,7 +296,7 @@ def fix_figures(section_lines, figures):
 
     fig.append(u'.. figure:: ' + r[2].replace('.pdf', '.png'))
 
-    for k in ('scale', 'align'):
+    for k in ('align',):  # ('scale', 'align'):
       if k in fig_data:
         fig.append(u'   :%s: %s' % (k, fig_data[k].strip()))
 
@@ -313,6 +317,33 @@ def fix_numbered_lists(section_lines):
         indent = m.groupdict()['indent']
         if indent != '   ':
           section_lines[line_idx] = '   ' + line[len(indent):]
+
+
+def correct_tables(total_output):
+  pattern = r'(^\n|(\| \n)|(\|? ?to 0\.\d+\n)|(@\S+@\n))*(?P<table_data>(^\| [^\&\n]*( ?\&[^\&\n]*)+\n(  (\S+\s)+)*\n*)+)'
+
+  replacements = {}
+
+  for match in re.finditer(pattern, total_output, flags=re.MULTILINE):
+    table = match.groupdict()['table_data']
+    rows = table.split('|')[1:]
+    rows = [r.replace('\n', '').split('&') for r in rows]
+
+    rows = [r for r in rows if len(r) == len(rows[-1])]
+
+    new_table = '\n.. list-table::\n   :widths: auto\n'
+
+    for r in rows:
+      new_table += '\n   * - %s' % '\n     - '.join(r)
+
+    new_table += '\n\n'
+
+    replacements[(match.start(), match.end())] = new_table
+
+  for r in sorted(replacements, key=lambda x: x[0], reverse=True):
+    total_output = total_output[:r[0]] + replacements[r] + total_output[r[1]:]
+
+  return total_output
 
 
 if __name__ == '__main__':
