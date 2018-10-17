@@ -36,6 +36,7 @@ def main():
     fix_math_indent(section)
     fix_math_formula(section)
     fix_figures(section, figures)
+    fix_numbered_lists(section)
 
     out_str = u'\n'.join(section).encode('utf-8')
     print('Storing section %s' % section[0])
@@ -296,6 +297,22 @@ def fix_figures(section_lines, figures):
         fig.append(u'   :%s: %s' % (k, fig_data[k].strip()))
 
     section_lines[r[0]:r[1]] = fig
+
+
+def fix_numbered_lists(section_lines):
+  is_list = False
+  for line_idx in range(len(section_lines)):
+    line = section_lines[line_idx]
+    if line.startswith('#. '):
+      is_list = True
+    elif is_list:
+      if line == '':
+        is_list = False
+      else:
+        m = re.match(r'(?P<indent>\s*)\S', line)
+        indent = m.groupdict()['indent']
+        if indent != '   ':
+          section_lines[line_idx] = '   ' + line[len(indent):]
 
 
 if __name__ == '__main__':

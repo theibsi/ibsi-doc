@@ -123,7 +123,7 @@ based on ROI voxel representations of the volume. Three voxel
 representations of the volume are conceivable:
 
 #. The volume is represented by a collection of voxels with each voxel
-taking up a certain volume ().
+   taking up a certain volume ().
 
 #. The volume is represented by a voxel point set :math:`\mathbf{X}_{c}`
    that consists of coordinates of the voxel centers ().
@@ -1944,7 +1944,7 @@ example was previously shown in Figure [figGLCMCalcApproaches]. A
 feature may be aggregated as follows:
 
 #. Features are computed from each 2D directional matrix and averaged
-over 2D directions and slices ().
+   over 2D directions and slices ().
 
 #. Features are computed from a single matrix after merging 2D
    directional matrices per slice, and then averaged over slices ().
@@ -2174,7 +2174,7 @@ feature value. A schematic example is shown in Figure
 #. Features are computed from 2D matrices and averaged over slices ().
 
 #. The feature is computed from a single matrix after merging all 2D
-matrices ().
+   matrices ().
 
 #. The feature is computed from a 3D matrix ().
 
@@ -2399,7 +2399,7 @@ easy solution. Determining distance iteratively in 6 or 4-connectedness
 is a relatively efficient solution, implemented as follows:
 
 #. The ROI mask is morphologically eroded using the appropriate (6 or
-4-connected) structure element.
+   4-connected) structure element.
 
 #. All eroded ROI voxels are updated in the distance map by adding 1.
 
@@ -2893,7 +2893,7 @@ feature value. A schematic example was previously shown in Figure
 #. Features are computed from 2D matrices and averaged over slices ().
 
 #. The feature is computed from a single matrix after merging all 2D
-matrices ().
+   matrices ().
 
 #. The feature is computed from a 3D matrix ().
 
