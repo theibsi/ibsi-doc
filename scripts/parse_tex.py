@@ -333,7 +333,20 @@ def correct_tables(total_output):
 
     new_table = '\n.. list-table::\n   :widths: auto\n'
 
+    headers = True
+    hdrlines = 0
     for r in rows:
+      if headers:
+        if all([c.strip().startswith('**') and c.strip().endswith('**') for c in r]):
+          hdrlines += 1
+        else:
+          headers = False
+
+    if hdrlines > 0:
+      new_table += '   :header-rows: %i\n' % hdrlines
+    for r_idx, r in enumerate(rows):
+      if r_idx < hdrlines:
+        r = [c.strip()[2:-2] for c in r]
       new_table += '\n   * - %s' % '\n     - '.join(r)
 
     new_table += '\n\n'

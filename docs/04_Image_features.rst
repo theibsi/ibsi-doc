@@ -46,12 +46,13 @@ for the different feature families.
 
 .. list-table::
    :widths: auto
+   :header-rows: 1
 
-   * -  **Feature family** 
-     -  **count** 
-     -  **morph.** 
-     -  **int.** 
-     -  **discr.**
+   * - Feature family
+     - count
+     - morph.
+     - int.
+     - discr.
    * -  morphology 
      -  29 
      -  

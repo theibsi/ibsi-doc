@@ -612,11 +612,12 @@ distributions, feature values and reproducibility
 
 .. list-table::
    :widths: auto
+   :header-rows: 1
 
-   * -  Imaging intensity units\ :math:`^{(1)}`
-     -  Re-segmentation  range
-     -  FBN\ :math:`^{(2)}`
-     -  FBS\ :math:`^{(3)}`
+   * - Imaging intensity units\ :math:`^{(1)}`
+     - Re-segmentation  range
+     - FBN\ :math:`^{(2)}`
+     - FBS\ :math:`^{(3)}`
    * -  
      -  :math:`[a,b]` 
      -  
