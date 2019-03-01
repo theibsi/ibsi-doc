@@ -1,3 +1,5 @@
+.. _chap_app_diagnostic:
+
 Radiomics phantom diagnostic features
 =====================================
 

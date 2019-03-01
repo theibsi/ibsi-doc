@@ -55,10 +55,10 @@ and guidelines.
 
 This reference manual is divided into several chapters that describe
 processing of acquired imaging for high-throughput image biomarker
-extraction (**Chapter [chap\_img\_proc]**); define a diverse set of
-image biomarkers (**Chapter [chap\_image\_features]**); describe
+extraction (:ref:`chap_img_proc`); define a diverse set of
+image biomarkers (:ref:`chap_image_features`); describe
 guidelines for reporting on high-throughput image biomarker extraction
-and an image biomarker nomenclature (**Chapter
-[chap\_report\_guidelines]**); describe the benchmark data sets
-(**Chapter [chap\_benchmark sets]**); and the associated benchmark
-values for software verification (**Chapter [chap\_benchmarks]**).
+and an image biomarker nomenclature 
+(:ref:`chap_report_guidelines`); describe the benchmark data sets
+(:ref:`chap_benchmark_sets`); and the associated benchmark
+values for software verification (:ref:`chap_benchmarks`).

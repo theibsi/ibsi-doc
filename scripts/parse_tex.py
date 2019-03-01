@@ -8,13 +8,18 @@ from six.moves import range
 def main():
   tex_source = r'..\ibsi-reference-manual\IBSIWorkDocument.tex'
   output = parse_input(tex_source)
-  figures = parse_tex_figures(tex_source)
   if output is None or output == '':
     raise ValueError('Empty output was returned!')
+
+  tex_data = read_tex_source(tex_source)
+
+  figures = parse_tex_figures(tex_data)
+  chap_labels = get_chapter_labels(tex_data)
 
   output = output.replace('\r', '')
 
   output = correct_tables(output)
+  output = parse_chapter_refs(output, chap_labels)
 
   output_lines = output.split('\n')
   hdr_chars = ['=', '-']
@@ -42,18 +47,23 @@ def main():
     fix_figures(section, figures)
     fix_numbered_lists(section)
 
-    out_str = u'\n'.join(section).encode('utf-8')
     print('Storing section %s' % section[0])
-
     dest_name = '%-.2i_' % cnt + section[0].replace(' ', '_')
-
-    with open(dest_name + '.rst', mode='wb') as out_fs:
-      out_fs.write(out_str)
 
     if cnt == 1:
       index.insert(0, '.. include:: %s.rst' % str(dest_name))
     else:
       index.append('   %s <%s>' % (section[0], dest_name))
+
+    # Check if this chapter has a label in the source. If so, also add a label in the rst document
+    section_title = section[0].lower()
+    if section_title in chap_labels:
+      section.insert(0, '.. _%s:\n' % chap_labels[section_title])
+
+    out_str = u'\n'.join(section).encode('utf-8')
+
+    with open(dest_name + '.rst', mode='wb') as out_fs:
+      out_fs.write(out_str)
 
   index.append('   References')
   index.append('')
@@ -221,22 +231,30 @@ def fix_math_formula(section_lines):
       section_lines[line_idx] = line
 
 
-def parse_tex_figures(tex_source):
+def read_tex_source(tex_source):
+  """
+  Read the source Tex document. Raises a ValueError if the file is not found.
+
+  :param tex_source: Tex base file of the IBSI document
+  :return: string of the file contents
+  """
+  if not os.path.isfile(tex_source):
+    raise ValueError('Tex source file (%s) is not found!' % tex_source)
+
+  with open(tex_source, mode='r') as tex_fs:
+    return tex_fs.read()
+
+
+def parse_tex_figures(tex_data):
   """
   Figures in Tex are not parsed correctly by pandoc.
 
   For example, \label and \scale are ignored, and caption is copied to alt:
 
-  :param tex_source: Tex base file of the IBSI document
+  :param tex_data: Source document contents (result of py:func:`read_tex_source`)
   :return: a dictionary containing the Tex defined filename as key, and the replacement lines as value (list)
   """
-
-  if not os.path.isfile(tex_source):
-    raise ValueError('Tex source file (%s) is not found!' % tex_source)
-
   figures = {}
-  with open(tex_source, mode='r') as tex_fs:
-    tex_data = tex_fs.read()
 
   for match in re.finditer(r'\\begin\{figure\}.*\n(?P<fig_data>(.+\n)+)\\end\{figure\}', tex_data):
     figure_data = match.groupdict()['fig_data']
@@ -357,6 +375,43 @@ def correct_tables(total_output):
     total_output = total_output[:r[0]] + replacements[r] + total_output[r[1]:]
 
   return total_output
+
+
+def get_chapter_labels(tex_data):
+  """
+
+  :param tex_data: Source document contents (result of py:func:`read_tex_source`)
+  :return:
+  """
+  chap_labels = {}
+
+  for match in re.finditer(r'\\chapter.?\{(?P<Chapter>(\w+)( \w+)*)\}\\label\{(?P<Label>(\w+)([ _]\w+)*)\}', tex_data):
+    chap_labels[match.groupdict()['Chapter'].lower()] = match.groupdict()['Label'].replace(' ', '_')
+  return chap_labels
+
+
+def parse_chapter_refs(output, chapter_labels):
+  refs = chapter_labels.viewvalues()
+
+  replacements = {}
+  for match in re.finditer(r'\(\*\*Chapter[ \n]\[(?P<chapter>chap(\\_\w+)+( \w+)?)\]\*\*\)', output):
+    chapter_ref = match.groupdict()['chapter'].replace(r'\_', '_').replace(' ', '_')
+    if chapter_ref not in refs:
+      print("Skipping ref %s (could not find corresponding chapter)" % chapter_ref)
+      chapter_ref = None
+    match_str = match.group()
+    replacements[match_str] = chapter_ref
+
+  for r in replacements:
+    if replacements[r] is None:
+      r_str = ''
+    else:
+      r_str = '(:ref:`%s`)' % replacements[r]
+    if '\n' in r:
+      r_str = '\n' + r_str
+    output = output.replace(r, r_str)
+  return output
+
 
 
 if __name__ == '__main__':

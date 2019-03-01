@@ -1,3 +1,5 @@
+.. _chap_image_features:
+
 Image features
 ==============
 

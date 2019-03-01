@@ -1,3 +1,5 @@
+.. _chap_benchmark_sets:
+
 Benchmarking data sets
 ======================
 

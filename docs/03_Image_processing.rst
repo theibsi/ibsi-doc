@@ -1,3 +1,5 @@
+.. _chap_img_proc:
+
 Image processing
 ================
 
