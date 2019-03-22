@@ -20,6 +20,15 @@ $ git checkout -b <branch_name>
 ```
 
 Now the repository is switched to the new branch and you can make your changes.
+
+To check your changes, you can build a local version of the site. To do that:
+
+```
+$ cd docs/
+$ make html
+```
+Then, go to `docs/_build/html` and open `index.html`
+
 After you're done, we need to stage and commit these changes to the repository:
 
 ```
