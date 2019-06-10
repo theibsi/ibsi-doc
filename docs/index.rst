@@ -10,6 +10,7 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
 
    Introduction <02_Introduction>
    Image processing <03_Image_processing>
