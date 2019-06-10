@@ -39,7 +39,7 @@ Image processing may be conducted using a wide variety of schemes. We
 therefore designed a general image processing scheme for image feature
 calculation based on schemes used within scientific literature
 :cite:`Hatt2016`. The image processing scheme is shown in
-figure [figImageProc]. The processing steps referenced in the figure are
+:numref:`figImageProc`. The processing steps referenced in the figure are
 described in detail within this chapter.
 
 .. _figImageProc:
@@ -57,8 +57,8 @@ described in detail within this chapter.
    run length matrix; GLSZM: grey level size zone matrix; NGTDM:
    neighbourhood grey tone difference matrix; NGLDM: Neighbouring grey
    level dependence matrix; GLDZM: grey level distance zone matrix;
-   \*Discretisation of IVH differs from IH and texture features, see
-   section [sect\_ivh].
+   \*Discretisation of IVH differs from IH and texture features (see 
+   :ref:`sect_ivh`).
 
 Data conversion
 ---------------

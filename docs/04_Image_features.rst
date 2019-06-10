@@ -1259,6 +1259,8 @@ The *minimum histogram gradient grey level*
 the discretised grey level corresponding to the *minimum histogram
 gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was minimal.
 
+.. _sect_ivh:
+
 Intensity-volume histogram features
 -----------------------------------
 
