@@ -623,7 +623,7 @@ distributions, feature values and reproducibility
    Checkmarks (✔) represent recommended combinations of resegmentation range and discretisation algorithm, whereas crossmarks (✕) represent non-recommended combinations. 
    :sup:`(1)` PET and CT are examples of imaging modalities with calibrated intensity units (e.g. SUV and HU, respectively), and raw MRI data of arbitrary intensity units. 
    :sup:`(2)` Fixed bin number (FBN) discretisation uses the actual range of intensities in the analysed ROI (re-segmented or not), and not the re-segmentation range itself (when defined). 
-   :sup:`(3)` Fixed bin size (FBS) discretisation uses the lower bound of the re-segmentation range as the min- imum set value. When the re-segmentation range is not or cannot be defined (e.g. arbitrary intensity units), the use of the FBS algorithm is not recommended.
+   :sup:`(3)` Fixed bin size (FBS) discretisation uses the lower bound of the re-segmentation range as the minimum set value. When the re-segmentation range is not or cannot be defined (e.g. arbitrary intensity units), the use of the FBS algorithm is not recommended.
    :widths: auto
    :header-rows: 1
 

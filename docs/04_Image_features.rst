@@ -210,6 +210,7 @@ reasonable approximation of the surface area and volume
 values depend upon the meshing algorithm and small differences may occur
 between meshing implementations.
 
+.. _figMorphMesh:
 .. figure:: ./Figures/MorphMesh.png
 
    Meshing algorithms draw faces and vertices to cover the ROI. One
@@ -238,7 +239,7 @@ mask.
 
 The closed mesh drawn by the meshing algorithm consists of
 :math:`N_{fc}` triangle faces spanned by :math:`N_{vx}` vertex points.
-An example triangle face is drawn in Figure [figMorphMesh]. The set of
+An example triangle face is drawn in :numref:`figMorphMesh`. The set of
 vertex points is then :math:`\mathbf{X}_{vx}`.
 
 The calculation of the mesh volume requires that all faces have the same
@@ -323,7 +324,7 @@ summing over the triangular face surface areas
 
 .. math:: A_k = \frac{|\mathbf{ab} \times \mathbf{ac}|}{2}
 
-As in Figure [figMorphMesh], edge
+As in :numref:`figMorphMesh`, edge
 :math:`\mathbf{ab}=\mathbf{b}-\mathbf{a}` is the vector from vertex
 :math:`\mathbf{a}` to vertex :math:`\mathbf{b}`, and edge
 :math:`\mathbf{ac}=\mathbf{c}-\mathbf{a}` the vector from vertex
