@@ -33,23 +33,28 @@ using wavelet or Gabor filters). To calculate features, it is assumed
 that an image segmentation mask exists, which identifies the voxels
 located within a region of interest (ROI). The ROI itself consists of
 two masks, an intensity mask and a morphological mask. These masks may
-be identical, but not necessarily so, as described in Section
-[ref\_resegmentation].
+be identical, but not necessarily so, as described in the section on
+:ref:`re_segmentation`.
 
 Several feature families require additional image processing steps
 before feature calculation. Notably intensity histogram and texture
 feature families require prior discretisation of intensities into grey
 level bins. Other feature families do not require discretisation before
-calculations. For more details on image processing, see figure
-[figImageProc] in the previous chapter.
+calculations. For more details on image processing, see
+:numref:`figImageProc` in the previous chapter.
 
 Below is an overview table that summarises image processing requirements
 for the different feature families.
 
-.. list-table::
+.. list-table:: Feature families and required image processing. For each feature family, the number of features in the document, the required input of a morphological (morph.) and/or intensity (int.) ROI mask, as well as the requirement of image discretisation (discr.) is provided. :sup:`a` The entire image volume should be available when computing local intensity features. :sup:`b` Image discretisation for the intensity-volume histogram is performed with finer discretisation than required for e.g. textural features.
    :widths: auto
-   :header-rows: 1
+   :header-rows: 2
 
+   * -
+     -
+     - ROI mask
+     -
+     -
    * - Feature family
      - count
      - morph.
@@ -57,59 +62,59 @@ for the different feature families.
      - discr.
    * -  morphology 
      -  29 
-     -  
-     -  
-     - 
+     -  ✔
+     -  ✔
+     -  ✕
    * -  local intensity 
      -  2 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔ :sup:`a`
+     -  ✕
    * -  intensity-based statistics 
      -  18 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✕
    * -  intensity histogram 
      -  23 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  intensity-volume histogram 
      -  5 
-     -  
-     -  
-     -  ()
+     -  ✕
+     -  ✔
+     -  ✔ :sup:`b`
    * -  grey level co-occurrence matrix 
      -  25 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  grey level run length matrix 
      -  16 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  grey level size zone matrix 
      -  16 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  grey level distance zone matrix 
      -  16 
-     -  
-     -  
-     - 
+     -  ✔
+     -  ✔
+     -  ✔
    * -  neighbourhood grey tone difference matrix 
      -  5 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  neighbouring grey level dependence matrix 
      -  17 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
 
 Aside from image processing requirements there are two other concepts
 which were not explicitly introduced, but which play an important role

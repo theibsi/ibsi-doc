@@ -422,6 +422,9 @@ Naturally, the above description applies to each grid axis.
    original ROI. (3b) Re-segmented intensity mask. Note that due to
    re-segmentation, intensity and morphological masks are different.
 
+
+.. _re_segmentation:
+
 Re-segmentation
 ---------------
 
@@ -618,9 +621,9 @@ distributions, feature values and reproducibility
 .. list-table:: 
    Recommendations for the possible combinations of different imaging intensity definitions, resegmentation ranges and discretisation algorithms.
    Checkmarks (✔) represent recommended combinations of resegmentation range and discretisation algorithm, whereas crossmarks (✕) represent non-recommended combinations. 
-   :math:`^{(1)}` PET and CT are examples of imaging modalities with calibrated intensity units (e.g. SUV and HU, respectively), and raw MRI data of arbitrary intensity units. 
-   :math:`^{(2)}` Fixed bin number (FBN) discretisation uses the actual range of intensities in the analysed ROI (re-segmented or not), and not the re-segmentation range itself (when defined). 
-   :math:`^{(3)}` Fixed bin size (FBS) discretisation uses the lower bound of the re-segmentation range as the min- imum set value. When the re-segmentation range is not or cannot be defined (e.g. arbitrary intensity units), the use of the FBS algorithm is not recommended.
+   :sup:`(1)` PET and CT are examples of imaging modalities with calibrated intensity units (e.g. SUV and HU, respectively), and raw MRI data of arbitrary intensity units. 
+   :sup:`(2)` Fixed bin number (FBN) discretisation uses the actual range of intensities in the analysed ROI (re-segmented or not), and not the re-segmentation range itself (when defined). 
+   :sup:`(3)` Fixed bin size (FBS) discretisation uses the lower bound of the re-segmentation range as the min- imum set value. When the re-segmentation range is not or cannot be defined (e.g. arbitrary intensity units), the use of the FBS algorithm is not recommended.
    :widths: auto
    :header-rows: 1
 
