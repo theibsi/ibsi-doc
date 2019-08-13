@@ -62,6 +62,9 @@ described in detail within this chapter.
 
 Data conversion
 ---------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">23XZ</p>
 
 Some imaging modalities require conversion of raw image data into a more
 meaningful presentation, e.g. standardised uptake values
@@ -71,6 +74,9 @@ outside the scope of the current work.
 
 Image post-acquisition processing
 ---------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">PCDE</p>
 
 Images are post-processed to enhance image quality. For instance,
 magnetic resonance imaging (MRI) contains both Gaussian and Rician noise
@@ -96,6 +102,9 @@ cases, additional post-acquisition processing may not be required.
 
 Segmentation
 ------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OQYT</p>
 
 High-throughput image analysis, within the feature-based paradigm,
 relies on the definition of regions of interest (ROI). ROIs are used to
@@ -178,6 +187,9 @@ itself to the interior.
 
 Interpolation
 -------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VTM2</p>
 
 Texture feature sets require interpolation to isotropic voxel spacing to
 be rotationally invariant, and to allow comparison between image data
@@ -260,6 +272,9 @@ particular algorithm.
 
 Rounding image intensities after interpolation 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">68QD</p>
 
 Image intensities may require rounding after interpolation, or the
 application of cut-off values. For example, in CT images intensities
@@ -269,6 +284,9 @@ rounded to the nearest integer.
 
 Partial volume effects in the ROI mask
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">E8H9</p>
 
 If the image on which the ROI mask was defined, is interpolated after
 the ROI was segmented, the ROI mask :math:`\mathbf{R}` should likewise
@@ -297,6 +315,9 @@ least be full precision (``32-bit``) to avoid rounding errors.
 
 Interpolation grid
 ^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">UMPJ</p>
 
 Interpolated voxel centers lie on the intersections of a regularly
 spaced grid. Grid intersections are represented by two coordinate
@@ -351,6 +372,9 @@ implementing *align grid centers* are described below.
 
 Interpolation grid dimensions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">026Q</p>
 
 The dimensions of the interpolation grid are determined as follows. Let
 :math:`n_a` be the number of points along one axis of the original grid
@@ -370,6 +394,9 @@ internally.
 
 Interpolation grid position
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QCY4</p>
 
 For the *align grid centers* method, the positions of the interpolation
 grid points are determined as follows. As before, let :math:`n_a` and
@@ -427,6 +454,9 @@ Naturally, the above description applies to each grid axis.
 
 Re-segmentation
 ---------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IF9H</p>
 
 Re-segmentation entails updating the ROI mask :math:`\mathbf{R}` based
 on corresponding voxel intensities :math:`\mathbf{X}_{gl}`.
@@ -438,6 +468,9 @@ section. Combining multiple re-segmentation methods is possible.
 
 Intensity and morphological masks of an ROI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">ECJF</p>
 
 Conventionally, an ROI consists of a single mask. However,
 re-segmentation may lead to exclusion of internal voxels, or divide the
@@ -457,6 +490,9 @@ two-dimensional example is shown in :numref:`figReSegmentationExample`.
 
 Range re-segmentation
 ^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">USB3</p>
 
 Re-segmentation may be performed to remove voxels from the intensity
 mask that fall outside of a specified range. An example is the exclusion
@@ -478,6 +514,9 @@ re-segmentation ranges and discretisation algorithms are provided in
 
 Intensity outlier filtering
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7ACA</p>
 
 ROI voxels with outlier intensities may be removed from the intensity
 mask. One method for defining outliers was suggested by
@@ -490,6 +529,9 @@ excluded from the intensity mask.
 
 ROI extraction
 --------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1OBP</p>
 
 Many feature families require that the ROI is isolated from the
 surrounding voxels. The ROI intensity mask is used to extract the image
@@ -500,6 +542,9 @@ retain their original intensity.
 
 Intensity discretisation
 ------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">4R0B</p>
 
 Discretisation or quantisation of image intensities inside the ROI is
 often required to make calculation of texture features tractable
@@ -527,6 +572,9 @@ calculations of texture features, where for some features grey level
 
 Fixed bin number
 ^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">K15C</p>
 
 In the *fixed bin number* method, intensities :math:`X_{gl}` are
 discretised to a fixed number of :math:`N_g` bins. It is defined as
@@ -557,6 +605,9 @@ values across multiple analysed ROIs (e.g. across different samples).
 
 Fixed bin size
 ^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">Q3RU</p>
 
 *Fixed bin size* discretisation is conceptually simple. A new bin is
 assigned for every intensity interval with width :math:`w_b`; i.e.

@@ -15,6 +15,7 @@ def main():
   tex_data = read_tex_source(tex_source)
   features_tex = read_tex_source(os.path.join(tex_source, '..', 'Chapters', 'FeatureDef.tex'))
   feature_class_codes, feature_codes = parse_feature_ids(features_tex)
+  other_codes = parse_other_ids(tex_data)
 
   figures = parse_tex_figures(tex_data)
   chap_labels = get_chapter_labels(tex_data)
@@ -42,7 +43,7 @@ def main():
     ]
 
   cnt = 0
-  for section, code_dict in split_sections(output_lines, feature_class_codes, feature_codes, hdr_chars):
+  for section, code_dict in split_sections(output_lines, feature_class_codes, feature_codes, other_codes, hdr_chars):
 
     for line in sorted(code_dict.keys(), reverse=True):
       section.insert(line + 2, '.. raw:: html\n\n  <p style="color:grey;font-style:italic;text-align:right">%s</p>' % code_dict[line][0])
@@ -100,7 +101,7 @@ def parse_input(source_file):
     os.chdir(current_dir)
 
 
-def split_sections(output_lines, feature_class_codes, feature_codes, header_chars=None):
+def split_sections(output_lines, feature_class_codes, feature_codes, other_codes, header_chars=None):
   if header_chars is None:
     header_chars = []
   current_level = -1
@@ -109,6 +110,7 @@ def split_sections(output_lines, feature_class_codes, feature_codes, header_char
 
   class_idx = 0
   feature_idx = 0
+  code_idx = 0
 
   code_dict = {}
 
@@ -126,6 +128,9 @@ def split_sections(output_lines, feature_class_codes, feature_codes, header_char
       elif feature_idx < len(feature_codes) and title == feature_codes[feature_idx][1]:
         code_dict[line_idx - 1 - start_line] = feature_codes[feature_idx]
         feature_idx += 1
+      elif code_idx < len(other_codes) and title == other_codes[code_idx][1]:
+        code_dict[line_idx - 1 - start_line] = other_codes[code_idx]
+        code_idx += 1
 
       header_char = line[0]
 
@@ -324,6 +329,24 @@ def parse_feature_ids(features_tex):
       feature_codes.append((d['FeatureCode'], feature_name, d['FeatureLabel']))
 
   return class_codes, feature_codes
+
+
+def parse_other_ids(source_tex):
+  feat_pattern = re.compile(
+    r'\\(sub)*section((\[.+\])|\*)\{(?P<FeatureName>.+)\\id\{(?P<FeatureCode>\w{4})\}\}( ?\\label\{(?P<FeatureLabel>.+)\})?'
+  )
+  other_codes = []
+  for match in feat_pattern.finditer(source_tex):
+    g = match.group(0)
+    d = match.groupdict()
+
+    feature_name = d['FeatureName']
+
+    feature_name = feature_name.replace('\\textsuperscript{th}', '\\ :sup:`th`')
+
+    other_codes.append((d['FeatureCode'], feature_name, d['FeatureLabel']))
+
+  return other_codes
 
 
 def fix_figures(section_lines, figures):

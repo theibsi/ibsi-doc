@@ -124,6 +124,9 @@ defined below.
 
 Grid distances
 ^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">MPUJ</p>
 
 Grid distance is an important concept that is used by several feature
 families, particularly texture features. Grid distances can be measured
@@ -155,6 +158,9 @@ An example of how the above norms differ in practice is shown in figure
 
 Feature aggregation
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5QB6</p>
 
 Features from some families may be calculated from, e.g. slices. As a
 consequence, multip le values for the same feature may be computed.
@@ -165,6 +171,9 @@ the family description.
 
 Distance weighting
 ^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">6CK8</p>
 
 Distance weighting is not a default operation for any of the texture
 families, but is implemented in software such as PyRadiomics
