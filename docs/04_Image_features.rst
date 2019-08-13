@@ -33,23 +33,28 @@ using wavelet or Gabor filters). To calculate features, it is assumed
 that an image segmentation mask exists, which identifies the voxels
 located within a region of interest (ROI). The ROI itself consists of
 two masks, an intensity mask and a morphological mask. These masks may
-be identical, but not necessarily so, as described in Section
-[ref\_resegmentation].
+be identical, but not necessarily so, as described in the section on
+:ref:`re_segmentation`.
 
 Several feature families require additional image processing steps
 before feature calculation. Notably intensity histogram and texture
 feature families require prior discretisation of intensities into grey
 level bins. Other feature families do not require discretisation before
-calculations. For more details on image processing, see figure
-[figImageProc] in the previous chapter.
+calculations. For more details on image processing, see
+:numref:`figImageProc` in the previous chapter.
 
 Below is an overview table that summarises image processing requirements
 for the different feature families.
 
-.. list-table::
+.. list-table:: Feature families and required image processing. For each feature family, the number of features in the document, the required input of a morphological (morph.) and/or intensity (int.) ROI mask, as well as the requirement of image discretisation (discr.) is provided. :sup:`a` The entire image volume should be available when computing local intensity features. :sup:`b` Image discretisation for the intensity-volume histogram is performed with finer discretisation than required for e.g. textural features.
    :widths: auto
-   :header-rows: 1
+   :header-rows: 2
 
+   * -
+     -
+     - ROI mask
+     -
+     -
    * - Feature family
      - count
      - morph.
@@ -57,59 +62,59 @@ for the different feature families.
      - discr.
    * -  morphology 
      -  29 
-     -  
-     -  
-     - 
+     -  ✔
+     -  ✔
+     -  ✕
    * -  local intensity 
      -  2 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔ :sup:`a`
+     -  ✕
    * -  intensity-based statistics 
      -  18 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✕
    * -  intensity histogram 
      -  23 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  intensity-volume histogram 
      -  5 
-     -  
-     -  
-     -  ()
+     -  ✕
+     -  ✔
+     -  ✔ :sup:`b`
    * -  grey level co-occurrence matrix 
      -  25 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  grey level run length matrix 
      -  16 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  grey level size zone matrix 
      -  16 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  grey level distance zone matrix 
      -  16 
-     -  
-     -  
-     - 
+     -  ✔
+     -  ✔
+     -  ✔
    * -  neighbourhood grey tone difference matrix 
      -  5 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
    * -  neighbouring grey level dependence matrix 
      -  17 
-     -  
-     -  
-     - 
+     -  ✕
+     -  ✔
+     -  ✔
 
 Aside from image processing requirements there are two other concepts
 which were not explicitly introduced, but which play an important role
@@ -205,6 +210,7 @@ reasonable approximation of the surface area and volume
 values depend upon the meshing algorithm and small differences may occur
 between meshing implementations.
 
+.. _figMorphMesh:
 .. figure:: ./Figures/MorphMesh.png
 
    Meshing algorithms draw faces and vertices to cover the ROI. One
@@ -233,7 +239,7 @@ mask.
 
 The closed mesh drawn by the meshing algorithm consists of
 :math:`N_{fc}` triangle faces spanned by :math:`N_{vx}` vertex points.
-An example triangle face is drawn in Figure [figMorphMesh]. The set of
+An example triangle face is drawn in :numref:`figMorphMesh`. The set of
 vertex points is then :math:`\mathbf{X}_{vx}`.
 
 The calculation of the mesh volume requires that all faces have the same
@@ -318,7 +324,7 @@ summing over the triangular face surface areas
 
 .. math:: A_k = \frac{|\mathbf{ab} \times \mathbf{ac}|}{2}
 
-As in Figure [figMorphMesh], edge
+As in :numref:`figMorphMesh`, edge
 :math:`\mathbf{ab}=\mathbf{b}-\mathbf{a}` is the vector from vertex
 :math:`\mathbf{a}` to vertex :math:`\mathbf{b}`, and edge
 :math:`\mathbf{ac}=\mathbf{c}-\mathbf{a}` the vector from vertex
@@ -1258,6 +1264,8 @@ The *minimum histogram gradient grey level*
 :cite:`VanDijk2016` :math:`F_{\mathit{ih.min.grad.gl}}` is
 the discretised grey level corresponding to the *minimum histogram
 gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was minimal.
+
+.. _sect_ivh:
 
 Intensity-volume histogram features
 -----------------------------------

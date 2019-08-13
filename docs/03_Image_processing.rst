@@ -39,7 +39,7 @@ Image processing may be conducted using a wide variety of schemes. We
 therefore designed a general image processing scheme for image feature
 calculation based on schemes used within scientific literature
 :cite:`Hatt2016`. The image processing scheme is shown in
-figure [figImageProc]. The processing steps referenced in the figure are
+:numref:`figImageProc`. The processing steps referenced in the figure are
 described in detail within this chapter.
 
 .. _figImageProc:
@@ -57,8 +57,8 @@ described in detail within this chapter.
    run length matrix; GLSZM: grey level size zone matrix; NGTDM:
    neighbourhood grey tone difference matrix; NGLDM: Neighbouring grey
    level dependence matrix; GLDZM: grey level distance zone matrix;
-   \*Discretisation of IVH differs from IH and texture features, see
-   section [sect\_ivh].
+   \*Discretisation of IVH differs from IH and texture features (see 
+   :ref:`sect_ivh`).
 
 Data conversion
 ---------------
@@ -131,8 +131,8 @@ inside a 2D polygon is the *crossing number* algorithm, for which
 several implementations exist :cite:`Schirra2008`. The main
 concept behind this algorithm is that for any point inside the polygon,
 any line originating outside the polygon will cross the polygon an
-uneven number of times. A simple example is shown in figure
-[figImagePointGrid]. The implementation in the example makes use of the
+uneven number of times. A simple example is shown in
+:numref:`figImagePointGrid`. The implementation in the example makes use of the
 fact that the ROI mask is a regular grid to scan entire rows at a time.
 The example implementation consists of the following steps:
 
@@ -312,8 +312,8 @@ between world coordinates and grid coordinates are necessary, and are
 treated in more detail after assessing grid alignment methods.
 
 Grid alignment affects feature values and is non-trivial. Three common
-grid alignments may be identified, and are shown in figure
-[figMeshGrids]:
+grid alignments may be identified, and are shown in
+:numref:`figMeshGrids`:
 
 #. **Fit to original grid** (). In this case the interpolation grid is
    deformed so that the voxel centers at the grid intersections overlap
@@ -422,6 +422,9 @@ Naturally, the above description applies to each grid axis.
    original ROI. (3b) Re-segmented intensity mask. Note that due to
    re-segmentation, intensity and morphological masks are different.
 
+
+.. _re_segmentation:
+
 Re-segmentation
 ---------------
 
@@ -450,7 +453,7 @@ The intensity mask () can be re-segmented and will contain only the
 selected voxels. For many feature families, only this is important.
 However, for morphological and grey level distance zone matrix (GLDZM)
 feature families, both intensity and morphological masks are used. A
-two-dimensional example is shown in figure [figReSegmentationExample].
+two-dimensional example is shown in :numref:`figReSegmentationExample`.
 
 Range re-segmentation
 ^^^^^^^^^^^^^^^^^^^^^
@@ -471,7 +474,7 @@ specified intensity range (e.g. intensity-volume histogram features)
 and/or that employs *fixed bin size* discretisation. Recommendations for
 the possible combinations of different imaging intensity definitions,
 re-segmentation ranges and discretisation algorithms are provided in
-Table [table\_discretisation].
+:numref:`table\_discretisation`.
 
 Intensity outlier filtering
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -501,8 +504,8 @@ Intensity discretisation
 Discretisation or quantisation of image intensities inside the ROI is
 often required to make calculation of texture features tractable
 :cite:`Yip2016`, and possesses noise-suppressing properties
-as well. An example of discretisation is shown in figure
-[figImageDiscretisation].
+as well. An example of discretisation is shown in
+:numref:`figImageDiscretisation`.
 
 .. _figImageDiscretisation:
 .. figure:: ./Figures/ImageDiscretisation.png
@@ -520,7 +523,7 @@ particular characteristics (as described below) that may make them
 better suited for specific purposes. Note that the lowest bin always has
 value :math:`1`, and not :math:`0`. This ensures consistency for
 calculations of texture features, where for some features grey level
-:math:`0` is not allowed .
+:math:`0` is not allowed.
 
 Fixed bin number
 ^^^^^^^^^^^^^^^^
@@ -540,7 +543,9 @@ In short, the intensity :math:`X_{gl,k}` of voxel :math:`k` is
 corrected by the lowest occurring intensity :math:`X_{gl,min}` in the
 ROI, divided by the bin width
 :math:`\left(X_{gl,max}-X_{gl,min}\right)/N_g`, and subsequently rounded
-down to the nearest integer (floor function). The *fixed bin number*
+down to the nearest integer (floor function). 
+
+The *fixed bin number*
 method breaks the relationship between image intensity and physiological
 meaning (if any). However, it introduces a normalising effect which may
 be beneficial when intensity units are arbitrary (e.g. raw MRI data and
@@ -607,12 +612,18 @@ The discretisation method that leads to optimal feature inter- and
 intra-sample reproducibility is modality-dependent. Usage
 recommendations for the possible combinations of different imaging
 intensity definitions, re-segmentation ranges and discretisation
-algorithms are provided in Table [table\_discretisation]. Overall, the
+algorithms are provided in :numref:`table\_discretisation`. Overall, the
 discretisation choice has a substantial impact on intensity
 distributions, feature values and reproducibility
 :cite:`Hatt2015,Leijenaar2015a,vanVelden2016,Desseroit2017,Hatt2016,Shafiq-ul-Hassan2017,Altazi2017`.
 
-.. list-table::
+.. _table_discretisation:
+.. list-table:: 
+   Recommendations for the possible combinations of different imaging intensity definitions, resegmentation ranges and discretisation algorithms.
+   Checkmarks (✔) represent recommended combinations of resegmentation range and discretisation algorithm, whereas crossmarks (✕) represent non-recommended combinations. 
+   :sup:`(1)` PET and CT are examples of imaging modalities with calibrated intensity units (e.g. SUV and HU, respectively), and raw MRI data of arbitrary intensity units. 
+   :sup:`(2)` Fixed bin number (FBN) discretisation uses the actual range of intensities in the analysed ROI (re-segmented or not), and not the re-segmentation range itself (when defined). 
+   :sup:`(3)` Fixed bin size (FBS) discretisation uses the lower bound of the re-segmentation range as the minimum set value. When the re-segmentation range is not or cannot be defined (e.g. arbitrary intensity units), the use of the FBS algorithm is not recommended.
    :widths: auto
    :header-rows: 1
 
@@ -622,24 +633,24 @@ distributions, feature values and reproducibility
      - FBS\ :math:`^{(3)}`
    * -  
      -  :math:`[a,b]` 
-     -  
-     - 
-   * -  
+     -  ✔
+     -  ✔
+   * -  calibrated
      -  :math:`[a,\infty)` 
-     -  
-     - 
+     -  ✔
+     -  ✔
    * -  
      -  none 
-     -  
-     - 
-   * -  
-     -  
-     -  
-     - 
+     -  ✔
+     -  ✕
+   * -
+     -
+     -
+     -
    * -  arbitrary 
      -  none 
-     -  
-     - 
+     -  ✔
+     -  ✕
 
 Feature calculation
 -------------------
