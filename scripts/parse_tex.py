@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import re
 
@@ -12,6 +13,8 @@ def main():
     raise ValueError('Empty output was returned!')
 
   tex_data = read_tex_source(tex_source)
+  features_tex = read_tex_source(os.path.join(tex_source, '..', 'Chapters', 'FeatureDef.tex'))
+  feature_class_codes, feature_codes = parse_feature_ids(features_tex)
 
   figures = parse_tex_figures(tex_data)
   chap_labels = get_chapter_labels(tex_data)
@@ -39,7 +42,11 @@ def main():
     ]
 
   cnt = 0
-  for section in split_sections(output_lines, hdr_chars):
+  for section, code_dict in split_sections(output_lines, feature_class_codes, feature_codes, hdr_chars):
+
+    for line in sorted(code_dict.keys(), reverse=True):
+      section.insert(line + 2, '.. raw:: html\n\n  <p style="color:grey;font-style:italic;text-align:right">%s</p>' % code_dict[line][0])
+
     cnt += 1
     process_citations(section)
     fix_math_indent(section)
@@ -93,12 +100,17 @@ def parse_input(source_file):
     os.chdir(current_dir)
 
 
-def split_sections(output_lines, header_chars=None):
+def split_sections(output_lines, feature_class_codes, feature_codes, header_chars=None):
   if header_chars is None:
     header_chars = []
   current_level = -1
   start_line = -1
   corrected_header_chars = {}
+
+  class_idx = 0
+  feature_idx = 0
+
+  code_dict = {}
 
   for line_idx in range(len(output_lines)):
     line = output_lines[line_idx]
@@ -106,6 +118,15 @@ def split_sections(output_lines, header_chars=None):
       continue
     if line == line[0] * len(line) and len(line) == len(output_lines[line_idx - 1]):
       # Section header!
+      title = output_lines[line_idx - 1].replace(u'’', "'")
+
+      if class_idx < len(feature_class_codes) and title == feature_class_codes[class_idx][1]:
+        code_dict[line_idx - 1 - start_line] = feature_class_codes[class_idx]
+        class_idx += 1
+      elif feature_idx < len(feature_codes) and title == feature_codes[feature_idx][1]:
+        code_dict[line_idx - 1 - start_line] = feature_codes[feature_idx]
+        feature_idx += 1
+
       header_char = line[0]
 
       # Check if the header character is correct
@@ -141,10 +162,11 @@ def split_sections(output_lines, header_chars=None):
       if current_level == 0:
         # Yes it does! return the previous section and continue
         if start_line > -1:
-          yield output_lines[start_line: line_idx - 1]  # Line above header line is Title, don't include that in the previous section
+          yield output_lines[start_line: line_idx - 1], code_dict  # Line above header line is Title, don't include that in the previous section
         start_line = line_idx - 1
+        code_dict = {}
 
-  yield output_lines[start_line:]  # return the remainder of the document
+  yield output_lines[start_line:], code_dict  # return the remainder of the document
 
 
 def process_citations(section_lines):
@@ -279,6 +301,29 @@ def parse_tex_figures(tex_data):
         figures[fig_name]['scale'] = str(int(float(scale) * 100))
 
   return figures
+
+
+def parse_feature_ids(features_tex):
+  feat_pattern = re.compile(
+    r'\\(sub)?section\[.+\]\{(?P<FeatureName>.+)\\id\{(?P<FeatureCode>\w{4})\}\}( ?\\label\{(?P<FeatureLabel>.+)\})?'
+  )
+  feature_codes = []
+  class_codes = []
+  for match in feat_pattern.finditer(features_tex):
+    g = match.group(0)
+    is_class = match.group(1) is None
+    d = match.groupdict()
+
+    feature_name = d['FeatureName']
+
+    feature_name = feature_name.replace('\\textsuperscript{th}', '\\ :sup:`th`')
+
+    if is_class:
+      class_codes.append((d['FeatureCode'], feature_name, d['FeatureLabel']))
+    else:
+      feature_codes.append((d['FeatureCode'], feature_name, d['FeatureLabel']))
+
+  return class_codes, feature_codes
 
 
 def fix_figures(section_lines, figures):

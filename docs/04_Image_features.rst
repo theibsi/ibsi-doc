@@ -173,6 +173,9 @@ put more emphasis on local intensities.
 
 Morphological features
 ----------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HCUG</p>
 
 Morphological features describe geometric aspects of a region of
 interest (ROI), such as area and volume. Morphological features are
@@ -275,6 +278,9 @@ per slice.
 
 Volume 
 ~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">RNU0</p>
 
 The *volume* :math:`V` is calculated from the ROI mesh as follows
 :cite:`Zhang2001`. A tetrahedron is formed by each face
@@ -298,6 +304,9 @@ For positron emission tomography, *volume* is equivalent to the
 
 Approximate volume
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">YEKZ</p>
 
 In clinical practice, volumes are commonly determined by counting
 voxels. For volumes consisting of a large number of voxels (1000s), the
@@ -316,6 +325,9 @@ the ROI, and :math:`V_k` the volume of voxel :math:`k`.
 
 Surface area
 ~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">C0JK</p>
 
 The *surface area* :math:`A` is also calculated from the ROI mesh by
 summing over the triangular face surface areas
@@ -335,6 +347,9 @@ area* :math:`A` is then:
 
 Surface to volume ratio
 ~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">2PR5</p>
 
 The *surface to volume ratio* is given as
 :cite:`Aerts2014`:
@@ -343,6 +358,9 @@ The *surface to volume ratio* is given as
 
 Compactness 1
 ~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SKGS</p>
 
 Several features (*compactness 1* and *2*, *spherical disproportion*,
 *sphericity* and *asphericity*) quantify the deviation of the ROI volume
@@ -360,6 +378,9 @@ quantity.
 
 Compactness 2
 ~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">BQWJ</p>
 
 *Compactness 2* :cite:`Aerts2014` also quantifies how
 sphere-like the volume is:
@@ -371,6 +392,9 @@ By definition
 
 Spherical disproportion 
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">KRCK</p>
 
 *Spherical disproportion* :cite:`Aerts2014` likewise
 describes how sphere-like the volume is:
@@ -382,6 +406,9 @@ By definition
 
 Sphericity 
 ~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QCFX</p>
 
 *Sphericity* :cite:`Aerts2014` is a further measure to
 describe how sphere-like the volume is:
@@ -393,6 +420,9 @@ By definition
 
 Asphericity 
 ~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">25C7</p>
 
 *Asphericity* :cite:`Apostolova2014` also describes how
 much the ROI deviates from a perfect sphere, with perfectly spherical
@@ -405,6 +435,9 @@ By definition
 
 Centre of mass shift 
 ~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">KLMA</p>
 
 The distance between the ROI volume centroid and the intensity-weighted
 ROI volume is an abstraction of the spatial distribution of low/high
@@ -429,6 +462,9 @@ The distance between the two centres of mass is then:
 
 Maximum 3D diameter 
 ~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">L0JK</p>
 
 The *maximum 3D diameter* :cite:`Aerts2014` is the distance
 between the two most distant vertices in the ROI mesh vertex set
@@ -450,6 +486,9 @@ features
 
 Major axis length 
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TDIC</p>
 
 Principal component analysis (PCA) can be used to determine the main
 orientation of the ROI :cite:`Solomon2011`. On a three
@@ -480,6 +519,9 @@ largest eigenvalue obtained by PCA on the point set of voxel centers
 
 Minor axis length 
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">P9VJ</p>
 
 The *minor axis length* of the ROI provides a measure of how far the
 volume extends along the second largest axis. The *minor axis length* is
@@ -491,6 +533,9 @@ largest eigenvalue obtained by PCA, as described in Section
 
 Least axis length 
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7J51</p>
 
 The least axis is the axis along which the object is least extended. The
 *least axis length* is twice the semi-axis length :math:`c`, determined
@@ -501,6 +546,9 @@ using the smallest eigenvalue obtained by PCA, as described in Section
 
 Elongation 
 ~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">Q3CK</p>
 
 The ratio of the major and minor principal axis lengths could be viewed
 as the extent to which a volume is longer than it is wide, i.e. is
@@ -512,6 +560,9 @@ smaller values express greater elongation of the ROI volume.
 
 Flatness
 ~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">N17B</p>
 
 The ratio of the major and least axis lengths could be viewed as the
 extent to which a volume is flat relative to its length. For
@@ -523,6 +574,9 @@ objects which are increasingly flatter.
 
 Volume density - axis-aligned bounding box
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">PBX1</p>
 
 Volume density is the fraction of the ROI volume and a comparison
 volume. Here the comparison volume is that of the axis-aligned bounding
@@ -539,6 +593,9 @@ This feature is also called *extent*
 
 Area density - axis-aligned bounding box
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">R59B</p>
 
 Conceptually similar to the *volume density - axis-aligned bounding box*
 feature, *area density* considers the ratio of the ROI surface area and
@@ -552,6 +609,9 @@ Thus:
 
 Volume density - oriented minimum bounding box
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">ZH1A</p>
 
 The volume of an axis-aligned bounding box is generally not the smallest
 obtainable volume enclosing the ROI. By orienting the box along a
@@ -573,6 +633,9 @@ box.
 
 Area density - oriented minimum bounding box
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IQYR</p>
 
 The *area density* is estimated as:
 
@@ -584,6 +647,9 @@ feature.
 
 Volume density - approximate enclosing ellipsoid
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">6BDE</p>
 
 The eigenvectors and eigenvalues from PCA of the ROI voxel center point
 set :math:`\mathbf{X}_{c}` can be used to describe an ellipsoid
@@ -597,6 +663,9 @@ The *volume density* is then:
 
 Area density - approximate enclosing ellipsoid
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">RDD2</p>
 
 The surface area of an ellipsoid can generally not be evaluated in an
 elementary form. However, it is possible to approximate the surface
@@ -618,6 +687,9 @@ The *area density* is then approximated as:
 
 Volume density - minimum volume enclosing ellipsoid
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SWZ1</p>
 
 The approximate ellipsoid may not enclose the ROI or be the smallest
 enclosing ellipsoid. The minimum volume enclosing ellipsoid is generally
@@ -640,6 +712,9 @@ default tolerance :math:`\tau=0.001` as stopping criterion.
 
 Area density - minimum volume enclosing ellipsoid
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">BRI8</p>
 
 The surface area of an ellipsoid does not have a general elementary
 form, but should be approximated as noted in Section
@@ -650,6 +725,9 @@ MVEE be :math:`A_{\mathit{mvee}}`. Then:
 
 Volume density - convex hull
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">R3ER</p>
 
 The convex hull encloses ROI mesh vertex set :math:`\mathbf{X}_{vx}` and
 consists of the vertex set :math:`\mathbf{X}_{vx,convex}` and
@@ -665,6 +743,9 @@ This feature is also called *solidity*
 
 Area density - convex hull
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7T7F</p>
 
 The area of the convex hull :math:`A_{convex}` is the sum of the areas
 of the faces of the convex hull, as in the calculation of the *area*
@@ -675,6 +756,9 @@ the one used in the *volume density - convex hull* feature. Then:
 
 Integrated intensity
 ~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">99N0</p>
 
 *Integrated intensity* is the average grey level multiplied by the
 volume. In the context of :sup:`18`\ F-FDG-PET, this feature is called
@@ -686,6 +770,9 @@ volume. In the context of :sup:`18`\ F-FDG-PET, this feature is called
 
 Moran’s I index
 ~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">N365</p>
 
 Moran’s *I* index is an indicator of spatial autocorrelation
 :cite:`Moran1950,Dale2002`. It is defined as:
@@ -708,6 +795,9 @@ the calculation tractable, at the cost of accuracy.
 
 Geary’s C measure
 ~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NPT7</p>
 
 Geary’s *C* measure assesses spatial autocorrelation, similar to Moran’s
 *I* index :cite:`Geary1954,Dale2002`. In contrast to
@@ -730,6 +820,9 @@ calculation feasible for large ROIs.
 
 Local intensity features
 ------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9ST6</p>
 
 Voxel intensities within a defined neighbourhood around a center voxel
 are used to compute local intensity features. Unlike many other feature
@@ -746,6 +839,9 @@ per slice.
 
 Local intensity peak 
 ~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VJGA</p>
 
 The *local intensity peak* was originally devised for reducing variance
 in determining standardised uptake values :cite:`Wahl2009`.
@@ -766,6 +862,9 @@ the highest *local intensity peak* is chosen.
 
 Global intensity peak 
 ~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">0F91</p>
 
 The *global intensity peak* feature :math:`F_{\mathit{loc.peak.global}}`
 is similar to the *local intensity peak*
@@ -791,6 +890,9 @@ becomes a spherical mean filter by dividing the labels by :math:`N_s`.
 
 Intensity-based statistical features
 ------------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">UHIW</p>
 
 The intensity-based statistical features describe how grey levels within
 the region of interest (ROI) are distributed. The features in this set
@@ -811,6 +913,9 @@ is not recommended.
 
 Mean
 ~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">Q4LE</p>
 
 The *mean* grey level of :math:`\mathbf{X}_{gl}` is calculated as:
 
@@ -818,6 +923,9 @@ The *mean* grey level of :math:`\mathbf{X}_{gl}` is calculated as:
 
 Variance
 ~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">ECT3</p>
 
 The grey level *variance* of :math:`\mathbf{X}_{gl}` is defined as:
 
@@ -825,6 +933,9 @@ The grey level *variance* of :math:`\mathbf{X}_{gl}` is defined as:
 
 Skewness
 ~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">KE2A</p>
 
 The *skewness* of the grey level distribution of :math:`\mathbf{X}_{gl}`
 is defined as:
@@ -836,6 +947,9 @@ Here :math:`\mu=F_{\mathit{stat.mean}}`. If the grey level *variance*
 
 Kurtosis
 ~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IPH6</p>
 
 *Kurtosis*, or technically excess kurtosis, is a measure of peakedness
 in the grey level distribution :math:`\mathbf{X}_{gl}`:
@@ -849,18 +963,27 @@ distributions. If the grey level *variance*
 
 Median
 ~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">Y12H</p>
 
 The *median* :math:`F_{\mathit{stat.median}}` is the sample median of
 :math:`\mathbf{X}_{gl}`.
 
 Minimum grey level
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1GSF</p>
 
 The *minimum grey level* :math:`F_{\mathit{stat.min}}` is equal to the
 lowest grey level present in :math:`\mathbf{X}_{gl}`.
 
 10\ :sup:`th` percentile
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QG58</p>
 
 :math:`P_{10}` is the 10\ :sup:`th` percentile of
 :math:`\mathbf{X}_{gl}`. :math:`P_{10}` is more robust to grey level
@@ -869,6 +992,9 @@ outliers than the *minimum grey level* and is defined as
 
 90\ :sup:`th` percentile
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8DWT</p>
 
 :math:`P_{90}` is the 90\ :sup:`th` percentile of
 :math:`\mathbf{X}_{gl}`. :math:`P_{90}` is more robust to grey level
@@ -877,12 +1003,18 @@ outliers than the *maximum grey level* and is defined as
 
 Maximum grey level
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">84IY</p>
 
 The *maximum grey level* :math:`F_{\mathit{stat.max}}` is equal to the
 highest grey level present in :math:`\mathbf{X}_{gl}`.
 
 Interquartile range
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SALO</p>
 
 The *interquartile range* (IQR) of :math:`\mathbf{X}_{gl}` is defined
 as:
@@ -894,6 +1026,9 @@ as:
 
 Range
 ~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">2OJQ</p>
 
 The *range* of grey levels is defined as:
 
@@ -901,6 +1036,9 @@ The *range* of grey levels is defined as:
 
 Mean absolute deviation
 ~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">4FUA</p>
 
 *Mean absolute deviation* is a measure of dispersion from the mean of
 :math:`\mathbf{X}_{gl}`:
@@ -911,6 +1049,9 @@ Here :math:`\mu=F_{\mathit{stat.mean}}`.
 
 Robust mean absolute deviation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1128</p>
 
 The *mean absolute deviation* feature may be influenced by outliers. To
 increase robustness, the set of grey levels can be restricted to those
@@ -931,6 +1072,9 @@ The robust mean absolute deviation is then:
 
 Median absolute deviation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">N72L</p>
 
 *Median absolute deviation* is similar in concept to *mean absolute
 deviation*, but measures dispersion from the median instead of mean.
@@ -942,6 +1086,9 @@ Here, median :math:`M = F_{\mathit{stat.median}}`.
 
 Coefficient of variation
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7TET</p>
 
 The *coefficient of variation* measures the dispersion of the
 :math:`\mathbf{X}_{gl}` distribution. It is defined as:
@@ -954,6 +1101,9 @@ of the grey level distribution, respectively.
 
 Quartile coefficient of dispersion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9S40</p>
 
 The *quartile coefficient of dispersion* is a more robust alternative to
 *coefficient of variance*. It is defined as:
@@ -965,6 +1115,9 @@ The *quartile coefficient of dispersion* is a more robust alternative to
 
 Energy
 ~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">N8CA</p>
 
 *Energy* :cite:`Aerts2014` of :math:`\mathbf{X}_{gl}` is
 defined as:
@@ -973,6 +1126,9 @@ defined as:
 
 Root mean square
 ~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5ZWQ</p>
 
 The *root mean square* feature :cite:`Aerts2014`, which
 also called the *quadratic mean*, of :math:`\mathbf{X}_{gl}` is defined
@@ -982,6 +1138,9 @@ as:
 
 Intensity histogram features
 ----------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">ZVCW</p>
 
 An intensity histogram is generated by discretising the original set of
 grey levels :math:`\mathbf{X}_{gl}` into grey level bins. Approaches to
@@ -1006,6 +1165,9 @@ not recommended.
 
 Intensity histogram mean
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">X6K6</p>
 
 The *mean* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}` is
 calculated as:
@@ -1018,6 +1180,9 @@ An equivalent formulation is:
 
 Intensity histogram variance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">CH89</p>
 
 The *variance* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}`
 is defined as:
@@ -1031,6 +1196,9 @@ to:
 
 Intensity histogram skewness
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">88K1</p>
 
 The *skewness* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}`
 is defined as:
@@ -1047,6 +1215,9 @@ If the discretised grey level variance :math:`F_{\mathit{ih.var}} = 0`,
 
 Intensity histogram kurtosis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">C3I7</p>
 
 *Kurtosis* :cite:`Aerts2014`, or technically excess
 kurtosis, is calculated as measure of peakedness of the distribution
@@ -1065,12 +1236,18 @@ kurtosis on 0 for normal distributions. If the discretised grey level
 
 Intensity histogram median
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">WIFQ</p>
 
 The *median* :math:`F_{\mathit{ih.median}}` is the sample median of
 :math:`\mathbf{X}_{d}` :cite:`Aerts2014`.
 
 Intensity histogram minimum grey level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1PR8</p>
 
 The *minimum grey level* :cite:`Aerts2014`
 :math:`F_{\mathit{ih.min}}` is equal to the lowest discretised grey
@@ -1080,18 +1257,27 @@ deviate for *fixed bin size* discretisation.
 
 Intensity histogram 10\ :sup:`th` percentile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GPMT</p>
 
 :math:`P_{10}` is the 10\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`
 and is defined as :math:`F_{\mathit{ih.P10}}`.
 
 Intensity histogram 90\ :sup:`th` percentile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OZ0C</p>
 
 :math:`P_{90}` is the 90\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`
 and is defined as :math:`F_{\mathit{ih.P90}}`.
 
 Intensity histogram maximum grey level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">3NCY</p>
 
 The *maximum grey level* :cite:`Aerts2014`
 :math:`F_{\mathit{ih.max}}` is equal to the highest discretised grey
@@ -1100,6 +1286,9 @@ by definition.
 
 Intensity histogram mode
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">AMMC</p>
 
 The *mode* of :math:`\mathbf{X}_{d}` :math:`F_{\mathit{ih.mode}}` is the
 most common discretised grey level present, i.e. :math:`i` for which
@@ -1111,6 +1300,9 @@ to the left of the mean is selected.
 
 Intensity histogram interquartile range
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">WR0O</p>
 
 The *interquartile range* (IQR) of :math:`\mathbf{X}_{d}` is defined as:
 
@@ -1122,6 +1314,9 @@ interquartile range of :math:`\mathbf{X}_{d}` is always an integer.
 
 Intensity histogram range
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5Z3W</p>
 
 The *range* of grey levels :cite:`Aerts2014` in the
 histogram is defined as:
@@ -1134,6 +1329,9 @@ histogram. For *fixed bin number* discretisation
 
 Intensity histogram mean absolute deviation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">D2ZX</p>
 
 The *mean absolute deviation* :cite:`Aerts2014` is a
 measure of dispersion from the mean of :math:`\mathbf{X}_{d}`:
@@ -1144,6 +1342,9 @@ Here :math:`\mu=F_{\mathit{ih.mean}}`.
 
 Intensity histogram robust mean absolute deviation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">WRZB</p>
 
 *Intensity histogram mean absolute deviation* may be affected by
 outliers. To increase robustness, the set of discretised grey levels
@@ -1165,6 +1366,9 @@ corresponding to the 10\ :sup:`th` and 90\ :sup:`th` percentiles of
 
 Intensity histogram median absolute deviation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">4RNL</p>
 
 *Histogram median absolute deviation* is conceptually similar to
 *histogram mean absolute deviation*, but measures dispersion from the
@@ -1176,6 +1380,9 @@ Here, median :math:`M = F_{\mathit{ih.median}}`.
 
 Intensity histogram coefficient of variation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">CWYJ</p>
 
 The *coefficient of variation* measures the dispersion of the histogram.
 It is defined as:
@@ -1188,6 +1395,9 @@ the discretised grey level distribution, respectively.
 
 Intensity histogram quartile coefficient of dispersion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SLWD</p>
 
 The *quartile coefficient of dispersion* is a more robust alternative to
 *coefficient of variance*. It is defined as:
@@ -1199,6 +1409,9 @@ The *quartile coefficient of dispersion* is a more robust alternative to
 
 Intensity histogram entropy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TLU2</p>
 
 *Entropy* :cite:`Aerts2014` is an information-theoretic
 concept that gives a metric for the information contained within
@@ -1209,6 +1422,9 @@ which is defined as:
 
 Intensity histogram uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">BJ5W</p>
 
 *Uniformity* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}` is
 defined as:
@@ -1219,6 +1435,9 @@ Note that this feature is sometimes also referred to as *energy*.
 
 Maximum histogram gradient
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">12CE</p>
 
 The histogram gradient :math:`\mathbf{H}'` of intensity histogram
 :math:`\mathbf{H}` can be calculated as:
@@ -1244,6 +1463,9 @@ is:
 
 Maximum histogram gradient grey level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8E6O</p>
 
 The *maximum histogram gradient grey level*
 :cite:`VanDijk2016` :math:`F_{\mathit{ih.max.grad.gl}}` is
@@ -1252,6 +1474,9 @@ gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was maximal.
 
 Minimum histogram gradient
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VQB3</p>
 
 The *minimum histogram gradient* :cite:`VanDijk2016` is:
 
@@ -1259,6 +1484,9 @@ The *minimum histogram gradient* :cite:`VanDijk2016` is:
 
 Minimum histogram gradient grey level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">RHQZ</p>
 
 The *minimum histogram gradient grey level*
 :cite:`VanDijk2016` :math:`F_{\mathit{ih.min.grad.gl}}` is
@@ -1269,6 +1497,9 @@ gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was minimal.
 
 Intensity-volume histogram features
 -----------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">P88C</p>
 
 The (cumulative) intensity-volume histogram (IVH) of the voxel grey
 level set :math:`\mathbf{X}_{gl}` of the ROI intensity mask describes
@@ -1415,6 +1646,9 @@ is not recommended.
 
 Volume at intensity fraction
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">BC2M</p>
 
 The *volume at intensity fraction* :math:`V_x` is the largest volume
 fraction :math:`\nu` that has an intensity fraction :math:`\gamma` of at
@@ -1428,6 +1662,9 @@ features are defined as :math:`F_{\mathit{ivh.V10}}` and
 
 Intensity at volume fraction
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GBPN</p>
 
 The *intensity at volume fraction* :math:`I_x` is the minimum
 discretised grey level :math:`i` present in at most :math:`x\%` of the
@@ -1438,6 +1675,9 @@ features are defined as :math:`F_{\mathit{ivh.I10}}` and
 
 Volume fraction difference between intensity fractions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">DDTU</p>
 
 This feature is the difference between the volume fractions at two
 different intensity fractions, e.g. :math:`V_{10}-V_{90}`
@@ -1446,6 +1686,9 @@ feature is defined as :math:`F_{\mathit{ivh.V10minusV90}}`.
 
 Intensity fraction difference between volume fractions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">CNV2</p>
 
 This feature is the difference between discretised grey levels at two
 different fractional volumes, e.g. :math:`I_{10} - I_{90}`
@@ -1454,6 +1697,9 @@ feature is defined as :math:`F_{\mathit{ivh.I10minusI90}}`.
 
 Area under the IVH curve
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9CMM</p>
 
 The *area under the IVH curve* :math:`F_{\mathit{ivh.auc}}` was defined
 by :cite:`VanVelden2011`. The *area under the IVH curve*
@@ -1463,6 +1709,9 @@ under the IVH curve* :math:`F_{\mathit{ivh.auc}}=0`.
 
 Grey level co-occurrence based features
 ---------------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">LFYI</p>
 
 In image analysis, texture is one of the defining sets of features.
 Texture features were originally designed to assess surface texture in
@@ -1637,6 +1886,9 @@ exceptions, we recommend against using distance weighting for GLCM.
 
 Joint maximum
 ~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GYBY</p>
 
 *Joint maximum* :cite:`Haralick1979` is the probability
 corresponding to the most common grey level co-occurrence in the GLCM:
@@ -1645,6 +1897,9 @@ corresponding to the most common grey level co-occurrence in the GLCM:
 
 Joint average
 ~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">60VM</p>
 
 *Joint average* :cite:`Unser1986` is the grey level
 weighted sum of joint probabilities:
@@ -1653,6 +1908,9 @@ weighted sum of joint probabilities:
 
 Joint variance
 ~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">UR99</p>
 
 The *joint variance* :cite:`Unser1986`, which is also
 called *sum of squares* :cite:`Haralick1973`, is defined
@@ -1665,6 +1923,9 @@ Here :math:`\mu` is equal to the value of
 
 Joint entropy
 ~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TU9B</p>
 
 *Joint entropy* :cite:`Haralick1973` is defined as:
 
@@ -1672,6 +1933,9 @@ Joint entropy
 
 Difference average
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TF7R</p>
 
 The *difference average* :cite:`Unser1986` for the diagonal
 probabilities is defined as:
@@ -1683,6 +1947,9 @@ feature :cite:`VanGriethuysen2017`.
 
 Difference variance
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">D3YU</p>
 
 The *difference variance* for the diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -1693,6 +1960,9 @@ Here :math:`\mu` is equal to the value of *difference average*.
 
 Difference entropy
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NTRS</p>
 
 The *difference entropy* for the diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -1701,6 +1971,9 @@ The *difference entropy* for the diagonal probabilities
 
 Sum average
 ~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">ZGXS</p>
 
 The *sum average* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -1713,6 +1986,9 @@ By definition,
 
 Sum variance
 ~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OEEB</p>
 
 The *sum variance* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -1725,6 +2001,9 @@ is mathematically identical to the *cluster tendency* feature
 
 Sum entropy
 ~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">P6QZ</p>
 
 The *sum entropy* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -1733,6 +2012,9 @@ The *sum entropy* for the cross-diagonal probabilities
 
 Angular second moment
 ~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8ZQL</p>
 
 The *angular second moment* :cite:`Haralick1973`, which
 represents the energy of :math:`\mathbf{P}_{\Delta}`, is defined as:
@@ -1745,6 +2027,9 @@ This feature is also called *energy*
 
 Contrast
 ~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">ACUI</p>
 
 *Contrast* assesses grey level variations
 :cite:`Haralick1973`. Hence elements of
@@ -1760,6 +2045,9 @@ to the above formulation of *contrast*.
 
 Dissimilarity
 ~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8S9J</p>
 
 *Dissimilarity* :cite:`Clausi2002` is conceptually similar
 to the *contrast* feature, and is defined as:
@@ -1771,6 +2059,9 @@ feature :cite:`VanGriethuysen2017`.
 
 Inverse difference
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IB1Z</p>
 
 *Inverse difference* is a measure of homogeneity
 :cite:`Clausi2002`. Grey level co-occurrences with a large
@@ -1787,6 +2078,9 @@ probabilities :cite:`VanGriethuysen2017`:
 
 Normalised inverse difference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NDRX</p>
 
 :cite:`Clausi2002` suggested normalising *inverse
 difference* to improve classification ability. The normalised feature is
@@ -1806,6 +2100,9 @@ probabilities :cite:`VanGriethuysen2017`:
 
 Inverse difference moment
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">WF0Z</p>
 
 *Inverse difference moment* :cite:`Haralick1973` is similar
 in concept to the *inverse difference* feature, but with lower weights
@@ -1823,6 +2120,9 @@ This feature is also called *homogeneity*
 
 Normalised inverse difference moment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1QCO</p>
 
 :cite:`Clausi2002` suggested normalising *inverse
 difference moment* to improve classification performance. This leads to
@@ -1837,6 +2137,9 @@ probabilities :cite:`VanGriethuysen2017`:
 
 Inverse variance
 ~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">E8JP</p>
 
 The *inverse variance* :cite:`Aerts2014` feature is defined
 as:
@@ -1851,6 +2154,9 @@ instead of :math:`k=0`\ :cite:`VanGriethuysen2017`:
 
 Correlation
 ~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NI2N</p>
 
 *Correlation* :cite:`Haralick1973` is defined as:
 
@@ -1877,6 +2183,9 @@ Again, simplifying due to matrix symmetry yields:
 
 Autocorrelation
 ~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QWB0</p>
 
 :cite:`soh1999texture` defined *autocorrelation* as:
 
@@ -1884,6 +2193,9 @@ Autocorrelation
 
 Cluster tendency
 ~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">DG8W</p>
 
 *Cluster tendency* :cite:`Aerts2014` is defined as:
 
@@ -1901,6 +2213,9 @@ feature :cite:`VanGriethuysen2017`.
 
 Cluster shade
 ~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7NFM</p>
 
 *Cluster shade* :cite:`Unser1986` is defined as:
 
@@ -1916,6 +2231,9 @@ formulated as:
 
 Cluster prominence
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">AE86</p>
 
 *Cluster prominence* :cite:`Unser1986` is defined as:
 
@@ -1930,6 +2248,9 @@ formulated as:
 
 First measure of information correlation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">R8DG</p>
 
 *Information theoretic correlation* is estimated using two different
 measures :cite:`Haralick1973`. For symmetric
@@ -1949,6 +2270,9 @@ to the entropy of the column marginal probability.
 
 Second measure of information correlation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">JN9H</p>
 
 The *second measure of information theoretic correlation*
 :cite:`Haralick1973` is estimated as follows for symmetric
@@ -1964,6 +2288,9 @@ As earlier,
 
 Grey level run length based features
 ------------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TP0I</p>
 
 The grey level run length matrix (GLRLM) was introduced by
 :cite:`Galloway1975` to define various texture features.
@@ -2045,6 +2372,9 @@ use, and we caution against it due to potential reproducibility issues.
 
 Short runs emphasis
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">22OV</p>
 
 This feature emphasises short run lengths
 :cite:`Galloway1975`. It is defined as:
@@ -2053,6 +2383,9 @@ This feature emphasises short run lengths
 
 Long runs emphasis
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">W4KF</p>
 
 This feature emphasises long run lengths
 :cite:`Galloway1975`. It is defined as:
@@ -2061,6 +2394,9 @@ This feature emphasises long run lengths
 
 Low grey level run emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">V3SW</p>
 
 This feature is a grey level analogue to *short runs emphasis*
 :cite:`Chu1990`. Instead of short run lengths, low grey
@@ -2070,6 +2406,9 @@ levels are emphasised. The feature is defined as:
 
 High grey level run emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">G3QZ</p>
 
 The *high grey level run emphasis* feature is a grey level analogue to
 *long runs emphasis* :cite:`Chu1990`. The feature
@@ -2079,6 +2418,9 @@ emphasises high grey levels, and is defined as:
 
 Short run low grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HTZT</p>
 
 This feature emphasises runs in the upper left quadrant of the GLRLM,
 where short run lengths and low grey levels are located
@@ -2088,6 +2430,9 @@ where short run lengths and low grey levels are located
 
 Short run high grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GD3A</p>
 
 This feature emphasises runs in the lower left quadrant of the GLRLM,
 where short run lengths and high grey levels are located
@@ -2097,6 +2442,9 @@ where short run lengths and high grey levels are located
 
 Long run low grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IVPO</p>
 
 This feature emphasises runs in the upper right quadrant of the GLRLM,
 where long run lengths and low grey levels are located
@@ -2106,6 +2454,9 @@ where long run lengths and low grey levels are located
 
 Long run high grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">3KUM</p>
 
 This feature emphasises runs in the lower right quadrant of the GLRLM,
 where long run lengths and high grey levels are located
@@ -2115,6 +2466,9 @@ where long run lengths and high grey levels are located
 
 Grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">R5YN</p>
 
 This feature assesses the distribution of runs over the grey values
 :cite:`Galloway1975`. The feature value is low when runs
@@ -2124,6 +2478,9 @@ are equally distributed along grey levels. The feature is defined as:
 
 Normalised grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OVBL</p>
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -2132,6 +2489,9 @@ It is defined as:
 
 Run length non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">W92Y</p>
 
 This features assesses the distribution of runs over the run lengths
 :cite:`Galloway1975`. The feature value is low when runs
@@ -2141,6 +2501,9 @@ are equally distributed along run lengths. It is defined as:
 
 Normalised run length non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IC23</p>
 
 This is normalised version of the *run length non-uniformity* feature.
 It is defined as:
@@ -2149,6 +2512,9 @@ It is defined as:
 
 Run percentage
 ~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9ZK5</p>
 
 This feature measures the fraction of the number of realised runs and
 the maximum number of potential runs :cite:`Galloway1975`.
@@ -2163,6 +2529,9 @@ matrices to allow proper normalisation.
 
 Grey level variance
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8CE5</p>
 
 This feature estimates the variance in runs over the grey levels. Let
 :math:`p_{ij} = r_{ij}/N_s` be the joint probability estimate for
@@ -2175,6 +2544,9 @@ Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i\,p_{ij}`.
 
 Run length variance
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SXLW</p>
 
 This feature estimates the variance in runs over the run lengths. As
 before let :math:`p_{ij} = r_{ij}/N_s`. The feature is defined as:
@@ -2186,6 +2558,9 @@ Mean run length is defined as
 
 Run entropy
 ~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HJ9O</p>
 
 *Run entropy* was investigated by :cite:`Albregtsen2000`.
 Again, let :math:`p_{ij} = r_{ij}/N_s`. The entropy is then defined as:
@@ -2194,6 +2569,9 @@ Again, let :math:`p_{ij} = r_{ij}/N_s`. The entropy is then defined as:
 
 Grey level size zone based features
 -----------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9SAK</p>
 
 The grey level size zone matrix (GLSZM) counts the number of groups (or
 zones) of linked voxels :cite:`Thibault2014`. Voxels are
@@ -2285,6 +2663,9 @@ prior to feature calculation.|
 
 Small zone emphasis
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5QRC</p>
 
 This feature emphasises small zones. It is defined as:
 
@@ -2292,6 +2673,9 @@ This feature emphasises small zones. It is defined as:
 
 Large zone emphasis
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">48P8</p>
 
 This feature emphasises large zones. It is defined as:
 
@@ -2299,6 +2683,9 @@ This feature emphasises large zones. It is defined as:
 
 Low grey level zone emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">XMSY</p>
 
 This feature is a grey level analogue to *small zone emphasis*. Instead
 of small zone sizes, low grey levels are emphasised. The feature is
@@ -2308,6 +2695,9 @@ defined as:
 
 High grey level zone emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5GN9</p>
 
 The *high grey level zone emphasis* feature is a grey level analogue to
 *large zone emphasis*. The feature emphasises high grey levels, and is
@@ -2317,6 +2707,9 @@ defined as:
 
 Small zone low grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5RAI</p>
 
 This feature emphasises zone counts within the upper left quadrant of
 the GLSZM, where small zone sizes and low grey levels are located. It is
@@ -2326,6 +2719,9 @@ defined as:
 
 Small zone high grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HW1V</p>
 
 This feature emphasises zone counts in the lower left quadrant of the
 GLSZM, where small zone sizes and high grey levels are located. The
@@ -2335,6 +2731,9 @@ feature is defined as:
 
 Large zone low grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">YH51</p>
 
 This feature emphasises zone counts in the upper right quadrant of the
 GLSZM, where large zone sizes and low grey levels are located. The
@@ -2344,6 +2743,9 @@ feature is defined as:
 
 Large zone high grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">J17V</p>
 
 This feature emphasises zone counts in the lower right quadrant of the
 GLSZM, where large zone sizes and high grey levels are located. The
@@ -2353,6 +2755,9 @@ feature is defined as:
 
 Grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">JNSA</p>
 
 This feature assesses the distribution of zone counts over the grey
 values. The feature value is low when zone counts are equally
@@ -2362,6 +2767,9 @@ distributed along grey levels. The feature is defined as:
 
 Normalised grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">Y1RO</p>
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -2370,6 +2778,9 @@ It is defined as:
 
 Zone size non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">4JP3</p>
 
 This features assesses the distribution of zone counts over the
 different zone sizes. *Zone size non-uniformity* is low when zone counts
@@ -2379,6 +2790,9 @@ are equally distributed along zone sizes. It is defined as:
 
 Normalised zone size non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VB3A</p>
 
 This is a normalised version of *zone size non-uniformity*. It is
 defined as:
@@ -2387,6 +2801,9 @@ defined as:
 
 Zone percentage
 ~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">P30P</p>
 
 This feature measures the fraction of the number of realised zones and
 the maximum number of potential zones. Highly uniform ROIs produce a low
@@ -2396,6 +2813,9 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 
 Grey level variance
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">BYLV</p>
 
 This feature estimates the variance in zone counts over the grey levels.
 Let :math:`p_{ij} = s_{ij}/N_s` be the joint probability estimate for
@@ -2408,6 +2828,9 @@ Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} i\,p_{ij}`.
 
 Zone size variance
 ~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">3NSA</p>
 
 This feature estimates the variance in zone counts over the different
 zone sizes. As before let :math:`p_{ij} = s_{ij}/N_s`. The feature is
@@ -2420,6 +2843,9 @@ Mean zone size is defined as
 
 Zone size entropy
 ~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GU8N</p>
 
 Let :math:`p_{ij} = s_{ij}/N_s`. *Zone size entropy* is then defined as:
 
@@ -2427,6 +2853,9 @@ Let :math:`p_{ij} = s_{ij}/N_s`. *Zone size entropy* is then defined as:
 
 Grey level distance zone based features
 ---------------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VMDZ</p>
 
 The grey level distance zone matrix (GLDZM) counts the number of groups
 (or zones) of linked voxels which share a specific discretised grey
@@ -2552,6 +2981,9 @@ This feature emphasises large distances. It is defined as:
 
 Low grey level zone emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">S1RA</p>
 
 This feature is a grey level analogue to *small distance emphasis*.
 Instead of small zone distances, low grey levels are emphasised. The
@@ -2561,6 +2993,9 @@ feature is defined as:
 
 High grey level zone emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">K26C</p>
 
 The *high grey level zone emphasis* feature is a grey level analogue to
 *large distance emphasis*. The feature emphasises high grey levels, and
@@ -2570,6 +3005,9 @@ is defined as:
 
 Small distance low grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">RUVG</p>
 
 This feature emphasises runs in the upper left quadrant of the GLDZM,
 where small zone distances and low grey levels are located. It is
@@ -2579,6 +3017,9 @@ defined as:
 
 Small distance high grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">DKNJ</p>
 
 This feature emphasises runs in the lower left quadrant of the GLDZM,
 where small zone distances and high grey levels are located. *Small
@@ -2588,6 +3029,9 @@ distance high grey level emphasis* is defined as:
 
 Large distance low grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">A7WM</p>
 
 This feature emphasises runs in the upper right quadrant of the GLDZM,
 where large zone distances and low grey levels are located. The feature
@@ -2597,6 +3041,9 @@ is defined as:
 
 Large distance high grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">KLTH</p>
 
 This feature emphasises runs in the lower right quadrant of the GLDZM,
 where large zone distances and high grey levels are located. The *large
@@ -2606,6 +3053,9 @@ distance high grey level emphasis* feature is defined as:
 
 Grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VFT7</p>
 
 This feature measures the distribution of zone counts over the grey
 values. *Grey level non-uniformity* is low when zone counts are equally
@@ -2615,6 +3065,9 @@ distributed along grey levels. The feature is defined as:
 
 Normalised grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7HP3</p>
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -2623,6 +3076,9 @@ It is defined as:
 
 Zone distance non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">V294</p>
 
 *Zone distance non-uniformity* measures the distribution of zone counts
 over the different zone distances. *Zone distance non-uniformity* is low
@@ -2633,6 +3089,9 @@ defined as:
 
 Zone distance non-uniformity normalised
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IATH</p>
 
 This is a normalised version of the *zone distance non-uniformity*
 feature. It is defined as:
@@ -2641,6 +3100,9 @@ feature. It is defined as:
 
 Zone percentage
 ~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VIWW</p>
 
 This feature measures the fraction of the number of realised zones and
 the maximum number of potential zones. Highly uniform ROIs produce a low
@@ -2650,6 +3112,9 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 
 Grey level variance
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QK93</p>
 
 This feature estimates the variance in zone counts over the grey levels.
 Let :math:`p_{ij} = d_{ij}/N_s` be the joint probability estimate for
@@ -2662,6 +3127,9 @@ Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} i\,p_{ij}`.
 
 Zone distance variance
 ~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7WT1</p>
 
 This feature estimates the variance in zone counts for the different
 zone distances. As before let :math:`p_{ij} = d_{ij}/N_s`. The feature
@@ -2674,6 +3142,9 @@ Mean zone size is defined as
 
 Zone distance entropy
 ~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GBDU</p>
 
 Again, let :math:`p_{ij} = d_{ij}/N_s`. Zone distance entropy is then
 defined as:
@@ -2682,6 +3153,9 @@ defined as:
 
 Neighbourhood grey tone difference based features
 -------------------------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IPET</p>
 
 :cite:`Amadasun1989` introduced an alternative to the grey
 level co-occurrence matrix. The neighbourhood grey tone difference
@@ -2807,6 +3281,9 @@ reproducibility issues.
 
 Coarseness
 ~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QCDE</p>
 
 Grey level differences in coarse textures are generally small due to
 large-scale patterns. Summing differences gives an indication of the
@@ -2824,6 +3301,9 @@ consistency.
 
 Contrast
 ~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">65HE</p>
 
 *Contrast* depends on the dynamic range of the grey levels as well as
 the spatial frequency of intensity changes
@@ -2840,6 +3320,9 @@ measure for intensity changes within the volume. If :math:`N_{g,p}=1`,
 
 Busyness
 ~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NQ30</p>
 
 Textures with large changes in grey levels between neighbouring voxels
 are said to be busy :cite:`Amadasun1989`. *Busyness* was
@@ -2858,6 +3341,9 @@ If :math:`N_{g,p}=1`, :math:`F_{\mathit{ngt.busyness}}=0`.
 
 Complexity
 ~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HDEZ</p>
 
 Complex textures are non-uniform and rapid changes in grey levels are
 common :cite:`Amadasun1989`. Texture *complexity* is
@@ -2870,6 +3356,9 @@ likewise :math:`s_{i_{1}}=s_{i_{2}}` for :math:`i_{1}=i_{2}`.
 
 Strength
 ~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1X9X</p>
 
 :cite:`Amadasun1989` defined texture *strength* as:
 
@@ -2880,6 +3369,9 @@ As before, :math:`p_{i_{1}}=p_{i_{2}}` for :math:`i_{1}=i_{2}`. If
 
 Neighbouring grey level dependence based features
 -------------------------------------------------
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">REK0</p>
 
 :cite:`Sun1983` defined the neighbouring grey level
 dependence matrix (NGLDM) as an alternative to the grey level
@@ -2998,6 +3490,9 @@ for the features originally defined by :cite:`Sun1983`.
 
 Low dependence emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SODN</p>
 
 This feature emphasises low neighbouring grey level dependence counts.
 :cite:`Sun1983` refer to this feature as *small number
@@ -3007,6 +3502,9 @@ emphasis*. It is defined as:
 
 High dependence emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IMOQ</p>
 
 This feature emphasises high neighbouring grey level dependence counts.
 :cite:`Sun1983` refer to this feature as *large number
@@ -3016,6 +3514,9 @@ emphasis*. It is defined as:
 
 Low grey level count emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TL9H</p>
 
 This feature is a grey level analogue to *low dependence emphasis*.
 Instead of low neighbouring grey level dependence counts, low grey
@@ -3025,6 +3526,9 @@ levels are emphasised. The feature is defined as:
 
 High grey level count emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OAE7</p>
 
 The *high grey level count emphasis* feature is a grey level analogue to
 *high dependence emphasis*. The feature emphasises high grey levels, and
@@ -3034,6 +3538,9 @@ is defined as:
 
 Low dependence low grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">EQ3F</p>
 
 This feature emphasises neighbouring grey level dependence counts in the
 upper left quadrant of the NGLDM, where low dependence counts and low
@@ -3043,6 +3550,9 @@ grey levels are located. It is defined as:
 
 Low dependence high grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">JA6D</p>
 
 This feature emphasises neighbouring grey level dependence counts in the
 lower left quadrant of the NGLDM, where low dependence counts and high
@@ -3052,6 +3562,9 @@ grey levels are located. The feature is defined as:
 
 High dependence low grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NBZI</p>
 
 This feature emphasises neighbouring grey level dependence counts in the
 upper right quadrant of the NGLDM, where high dependence counts and low
@@ -3061,6 +3574,9 @@ grey levels are located. The feature is defined as:
 
 High dependence high grey level emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9QMG</p>
 
 The *high dependence high grey level emphasis* feature emphasises
 neighbouring grey level dependence counts in the lower right quadrant of
@@ -3071,6 +3587,9 @@ located. The feature is defined as:
 
 Grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">FP8K</p>
 
 *Grey level non-uniformity* assesses the distribution of neighbouring
 grey level dependence counts over the grey values. The feature value is
@@ -3081,6 +3600,9 @@ The feature is defined as:
 
 Normalised grey level non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5SPA</p>
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -3093,6 +3615,9 @@ uniformity* feature :cite:`VanGriethuysen2017`.
 
 Dependence count non-uniformity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">Z87G</p>
 
 This features assesses the distribution of neighbouring grey level
 dependence counts over the different dependence counts. The feature
@@ -3104,6 +3629,9 @@ non-uniformity*. It is defined as:
 
 Dependence count non-uniformity normalised
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OKJI</p>
 
 This is a normalised version of the *dependence count non-uniformity*
 feature. It is defined as:
@@ -3112,6 +3640,9 @@ feature. It is defined as:
 
 Dependence count percentage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">6XV8</p>
 
 This feature measures the fraction of the number of realised
 neighbourhoods and the maximum number of potential neighbourhoods.
@@ -3123,6 +3654,9 @@ case under our definition. It is defined as:
 
 Grey level variance
 ~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1PFV</p>
 
 This feature estimates the variance in dependence counts over the grey
 levels. Let :math:`p_{ij} = s_{ij}/N_s` be the joint probability
@@ -3135,6 +3669,9 @@ Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} i\,p_{ij}`.
 
 Dependence count variance
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">DNX2</p>
 
 This feature estimates the variance in dependence counts over the
 different possible dependence counts. As before let
@@ -3147,6 +3684,9 @@ Mean dependence count is defined as
 
 Dependence count entropy
 ~~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">FCBV</p>
 
 This feature is referred to as *entropy* by
 :cite:`Sun1983`. Let :math:`p_{ij} = s_{ij}/N_s`.
@@ -3161,6 +3701,9 @@ dependence count :math:`s_{ij}` instead of count probability
 
 Dependence count energy
 ~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">CAS9</p>
 
 This feature is called *second moment* by :cite:`Sun1983`.
 Let :math:`p_{ij} = s_{ij}/N_s`. Then *dependence count energy* is
