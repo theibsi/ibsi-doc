@@ -1,4 +1,4 @@
-.. include:: 01_The_image_biomarker_standardisation_initiative.rst
+.. include:: The_image_biomarker_standardisation_initiative.rst
 
 Contents
 --------
@@ -12,10 +12,10 @@ Contents
    :maxdepth: 2
    :numbered: 2
 
-   Introduction <02_Introduction>
-   Image processing <03_Image_processing>
-   Image features <04_Image_features>
-   Image biomarker reporting guidelines <05_Image_biomarker_reporting_guidelines>
-   Benchmark data sets <06_Benchmark_data_sets>
-   Digital phantom texture matrices <07_Digital_phantom_texture_matrices>
+   Introduction <01_Introduction>
+   Image processing <02_Image_processing>
+   Image features <03_Image_features>
+   Image biomarker reporting guidelines <04_Image_biomarker_reporting_guidelines>
+   Benchmark data sets <05_Benchmark_data_sets>
+   Digital phantom texture matrices <06_Digital_phantom_texture_matrices>
    References

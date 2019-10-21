@@ -48,7 +48,6 @@ def main():
     for line in sorted(code_dict.keys(), reverse=True):
       section.insert(line + 2, '.. raw:: html\n\n  <p style="color:grey;font-style:italic;text-align:right">%s</p>' % code_dict[line][0])
 
-    cnt += 1
     process_citations(section)
     fix_math_indent(section)
     fix_math_formula(section)
@@ -56,7 +55,12 @@ def main():
     fix_numbered_lists(section)
 
     print('Storing section %s' % section[0])
-    dest_name = '%-.2i_' % cnt + section[0].replace(' ', '_')
+
+    dest_name = section[0].replace(' ', '_')
+    if cnt > 0:
+      dest_name = '%-.2i_' % cnt + dest_name
+
+    cnt += 1
 
     if cnt == 1:
       index.insert(0, '.. include:: %s.rst' % str(dest_name))
