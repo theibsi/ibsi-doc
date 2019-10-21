@@ -16,8 +16,6 @@ Contents
    Image processing <03_Image_processing>
    Image features <04_Image_features>
    Image biomarker reporting guidelines <05_Image_biomarker_reporting_guidelines>
-   Benchmarking data sets <06_Benchmarking_data_sets>
-   Benchmarks <07_Benchmarks>
-   Digital phantom texture matrices <08_Digital_phantom_texture_matrices>
-   Radiomics phantom diagnostic features <09_Radiomics_phantom_diagnostic_features>
+   Benchmark data sets <06_Benchmark_data_sets>
+   Digital phantom texture matrices <07_Digital_phantom_texture_matrices>
    References

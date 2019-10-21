@@ -3,30 +3,37 @@
 Image features
 ==============
 
-General considerations
-----------------------
+In this chapter we will describe a set of quantitative image features
+together with the benchmark values established by the IBSI. This feature
+set builds upon the feature sets proposed by
+:cite:`Aerts2014` and :cite:`Hatt2016`, which
+are themselves largely derived from earlier works. References to earlier
+work are provided whenever they could be identified.
 
-In this chapter we will describe a set of quantitative image features.
-The feature set presented here largely builds upon the feature sets
-proposed by :cite:`Aerts2014` and
-:cite:`Hatt2016`, which are themselves largely derived from
-earlier works. References to earlier work are provided whenever they
-could be identified.
+Benchmark tables were derived for each feature. A benchmark table
+contains the values that should be obtained for the benchmark data sets
+(see Chapter [chap\_benchmark sets]), within a tolerance margin.
+Consensus on each value is also noted. Consensus can have four levels,
+depending on the number of teams that were able to produce the same
+value: weak (:math:`<3` matches), moderate (:math:`3` to :math:`5`
+matches), strong (:math:`6` to :math:`9` matches), and very strong
+(:math:`\geq 10` matches). No provide benchmark values are provided if
+consensus was weak or if no absolute majority for a benchmark value
+existed.
 
 The set of features can be divided into a number of families, of which
 intensity-based statistical, intensity histogram-based, intensity-volume
 histogram-based, morphological features, local intensity, and texture
 matrix-based features are treated here. All texture matrices are
 rotationally and translationally invariant. Illumination invariance of
-texture matrices may be achieved by particular discretisation schemes,
-e.g. *histogram matching*. None of the texture matrices are scale
-invariant, a property which can be useful in many (biomedical)
-applications for scale optimization. What the presented texture matrices
-lack, however, is directionality in combination with rotation
-invariance. These may be achieved by local binary patterns and steerable
-filters, which however fall beyond the scope of the current work. For
-these and other texture features, see
-:cite:`Depeursinge2014`.
+texture matrices may be achieved by particular image post-acquisition
+schemes, e.g. *histogram matching*. None of the texture matrices are
+scale invariant, a property which can be useful in many (biomedical)
+applications. What the presented texture matrices lack, however, is
+directionality in combination with rotation invariance. These may be
+achieved by local binary patterns and steerable filters, which however
+fall beyond the scope of the current work. For these and other texture
+features, see :cite:`Depeursinge2014`.
 
 Features are calculated on the base image, as well as images transformed
 using wavelet or Gabor filters). To calculate features, it is assumed
@@ -116,14 +123,12 @@ for the different feature families.
      -  ✔
      -  ✔
 
-Aside from image processing requirements there are two other concepts
-which were not explicitly introduced, but which play an important role
-for many features: distance and feature aggregation. In addition,
-distance weighting for texture features is described. All three are
-defined below.
+Though image processing parameters affect feature values, three other
+concepts influence feature values for many features: distance, feature
+aggregation and distance weighting. These are described below.
 
 Grid distances
-^^^^^^^^^^^^^^
+--------------
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">MPUJ</p>
@@ -157,7 +162,7 @@ An example of how the above norms differ in practice is shown in figure
 120pt [fig:chebyshev\_distance]
 
 Feature aggregation
-^^^^^^^^^^^^^^^^^^^
+-------------------
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">5QB6</p>
@@ -170,7 +175,7 @@ Feature aggregation methods depend on the family, and are detailed in
 the family description.
 
 Distance weighting
-^^^^^^^^^^^^^^^^^^
+------------------
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">6CK8</p>
@@ -207,20 +212,20 @@ at the ROI edge well, and also to avoid inconsistencies in feature
 values introduced by mixing representations in small voxel volumes.
 
 Mesh-based representation
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 A mesh-based representation of the outer surface allows consistent
 evaluation of the surface volume and area independent of size.
 Voxel-based representations lead to partial volume effects and
-over-estimation of surface area. The surface of the ROI volume is
+over-estimation of the surface area. The surface of the ROI volume is
 translated into a triangle mesh using a meshing algorithm. While
 multiple meshing algorithms exist, we suggest the use of the *Marching
 Cubes* algorithm :cite:`Lorensen1987,Lewiner2003` because
 of its widespread availability in different programming languages and
 reasonable approximation of the surface area and volume
-:cite:`Stelldinger2007`. In practice, mesh-derived feature
+:cite:`Stelldinger2007`. In practice, mesh-based feature
 values depend upon the meshing algorithm and small differences may occur
-between meshing implementations.
+between implementations :raw-latex:`\citep{Limkin2019-jt}`.
 
 .. _figMorphMesh:
 .. figure:: ./Figures/MorphMesh.png
@@ -266,7 +271,7 @@ consistent orientation of the face normals. Algorithm implementations
 may return consistently orientated faces by default.
 
 ROI morphological and intensity masks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 The ROI consists of a morphological and an intensity mask. The
 morphological mask is used to calculate many of the morphological
@@ -280,20 +285,36 @@ digital phantom, but differ due to re-segmentation of the intensity
 mask.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 By definition, morphological features are calculated in 3D (), and not
 per slice.
 
-Volume 
-~~~~~~~
+Units of measurement
+--------------------
+
+By definition, morphological features are computed using the unit of
+length as defined in the DICOM standard, i.e. millimeter for most
+medical imaging modalities [1]_.
+
+If the unit of length is not defined by a standard, but is explicitly
+defined as meta data, this definition should be used. In this case, care
+should be taken that this definition is consistent across all data in
+the cohort.
+
+If a feature value should be expressed as a different unit of length,
+e.g. cm instead of mm, such conversions should take place after
+computing the value using the standard units.
+
+Volume (mesh)
+^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">RNU0</p>
 
-The *volume* :math:`V` is calculated from the ROI mesh as follows
-:cite:`Zhang2001`. A tetrahedron is formed by each face
-:math:`k` and the origin. By placing the origin vertex of each
+The mesh-based *volume* :math:`V` is calculated from the ROI mesh as
+follows :cite:`Zhang2001`. A tetrahedron is formed by each
+face :math:`k` and the origin. By placing the origin vertex of each
 tetrahedron at :math:`(0,0,0)`, the signed volume of the tetrahedron is:
 
 .. math:: V_k = \frac{\mathbf{a}\cdot\left(\mathbf{b}\times\mathbf{c}\right)}{6}
@@ -308,32 +329,69 @@ value:
 
 .. math:: F_{\mathit{morph.vol}} = V = \left|\sum_{k=1}^{N_{fc}}V_k\right|
 
-For positron emission tomography, *volume* is equivalent to the
-*metabolically active tumour volume* (MATV).
+In positron emission tomography, the *volume* of the ROI commonly
+receives a name related to the radioactive tracer, e.g. *metabolically
+active tumour volume* (MATV) for :sup:`18`\ F-FDG.
 
-Approximate volume
-~~~~~~~~~~~~~~~~~~
++----------------+------------------------------+---------------------------+-----------------+
+| **data**       | **value**                    | **tol.**                  | **consensus**   |
++================+==============================+===========================+=================+
+| dig. phantom   | 556                          | 4                         | very strong     |
++----------------+------------------------------+---------------------------+-----------------+
+| config. A      | :math:`3.58 \times 10^{5}`   | :math:`5 \times 10^{3}`   | very strong     |
++----------------+------------------------------+---------------------------+-----------------+
+| config. B      | :math:`3.58 \times 10^{5}`   | :math:`5 \times 10^{3}`   | very strong     |
++----------------+------------------------------+---------------------------+-----------------+
+| config. C      | :math:`3.67 \times 10^{5}`   | :math:`6 \times 10^{3}`   | strong          |
++----------------+------------------------------+---------------------------+-----------------+
+| config. D      | :math:`3.67 \times 10^{5}`   | :math:`6 \times 10^{3}`   | strong          |
++----------------+------------------------------+---------------------------+-----------------+
+| config. E      | :math:`3.67 \times 10^{5}`   | :math:`6 \times 10^{3}`   | strong          |
++----------------+------------------------------+---------------------------+-----------------+
+
+Table: Benchmark table for the *volume (mesh)* feature.
+
+Volume (voxel counting)
+^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">YEKZ</p>
 
 In clinical practice, volumes are commonly determined by counting
 voxels. For volumes consisting of a large number of voxels (1000s), the
-differences between *approximate volume* and mesh-based *volume* are
+differences between *voxel counting* and *mesh-based* approaches are
 usually negligible. However for volumes with a low number of voxels (10s
-to 100s), *approximate volume* will overestimate volume compared to
-mesh-based *volume*. It is therefore only used as a reference feature,
+to 100s), *voxel counting* will overestimate volume compared to the
+*mesh-based* approach. It is therefore only used as a reference feature,
 and not in the calculation of other morphological features.
 
-*Approximate volume* is defined as:
+*Voxel counting volume* is defined as:
 
 .. math:: F_{\mathit{morph.approx.vol}} = \sum_{k=1}^{N_v} V_k
 
 Here :math:`N_v` is the number of voxels in the morphological mask of
 the ROI, and :math:`V_k` the volume of voxel :math:`k`.
 
-Surface area
-~~~~~~~~~~~~
++----------------+------------------------------+---------------------------+-----------------+
+| **data**       | **value**                    | **tol.**                  | **consensus**   |
++================+==============================+===========================+=================+
+| dig. phantom   | 592                          | 4                         | very strong     |
++----------------+------------------------------+---------------------------+-----------------+
+| config. A      | :math:`3.59 \times 10^{5}`   | :math:`5 \times 10^{3}`   | strong          |
++----------------+------------------------------+---------------------------+-----------------+
+| config. B      | :math:`3.58 \times 10^{5}`   | :math:`5 \times 10^{3}`   | strong          |
++----------------+------------------------------+---------------------------+-----------------+
+| config. C      | :math:`3.68 \times 10^{5}`   | :math:`6 \times 10^{3}`   | strong          |
++----------------+------------------------------+---------------------------+-----------------+
+| config. D      | :math:`3.68 \times 10^{5}`   | :math:`6 \times 10^{3}`   | strong          |
++----------------+------------------------------+---------------------------+-----------------+
+| config. E      | :math:`3.68 \times 10^{5}`   | :math:`6 \times 10^{3}`   | strong          |
++----------------+------------------------------+---------------------------+-----------------+
+
+Table: Benchmark table for the *volume (voxel counting)* feature.
+
+Surface area (mesh)
+^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">C0JK</p>
@@ -354,8 +412,26 @@ area* :math:`A` is then:
 
 .. math:: F_{\mathit{morph.area}} = A = \sum_{k=1}^{N_{fc}} A_k
 
++----------------+------------------------------+------------+-----------------+
+| **data**       | **value**                    | **tol.**   | **consensus**   |
++================+==============================+============+=================+
+| dig. phantom   | 388                          | 3          | very strong     |
++----------------+------------------------------+------------+-----------------+
+| config. A      | :math:`3.57 \times 10^{4}`   | 300        | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. B      | :math:`3.37 \times 10^{4}`   | 300        | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. C      | :math:`3.43 \times 10^{4}`   | 400        | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. D      | :math:`3.43 \times 10^{4}`   | 400        | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. E      | :math:`3.43 \times 10^{4}`   | 400        | strong          |
++----------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *surface area (mesh)* feature.
+
 Surface to volume ratio
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">2PR5</p>
@@ -365,8 +441,28 @@ The *surface to volume ratio* is given as
 
 .. math:: F_{\mathit{morph.av}} = \frac{A}{V}
 
+Note that this feature is not dimensionless.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.698       | 0.004      | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.0996      | 0.0005     | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.0944      | 0.0005     | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.0934      | 0.0007     | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.0934      | 0.0007     | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.0934      | 0.0007     | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *surface to volume ratio* feature.
+
 Compactness 1
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">SKGS</p>
@@ -381,26 +477,62 @@ sphere-like the volume is. It is defined as:
 
 .. math:: F_{\mathit{morph.comp.1}} = \frac{V}{\pi^{1/2} A^{3/2}}
 
-Some definitions use :math:`A^{2/3}` instead of :math:`A^{3/2}`
-:cite:`Aerts2014`, but this does not lead to dimensionless
-quantity.
+*Compactness 1* is sometimes :cite:`Aerts2014` defined
+using :math:`A^{2/3}` instead of :math:`A^{3/2}`, but this does not lead
+to a dimensionless quantity.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.0411      | 0.0003     | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.03        | 0.0001     | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.0326      | 0.0001     | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.0326      | 0.0002     | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.0326      | 0.0002     | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.0326      | 0.0002     | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *compactness 1* feature.
 
 Compactness 2
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">BQWJ</p>
 
-*Compactness 2* :cite:`Aerts2014` also quantifies how
-sphere-like the volume is:
+Like *Compactness 1*, *Compactness 2* :cite:`Aerts2014`
+quantifies how sphere-like the volume is:
 
 .. math:: F_{\mathit{morph.comp.2}} = 36\pi\frac{V^2}{A^3}
 
 By definition
 :math:`F_{\mathit{morph.comp.1}} = 1/6\pi \left(F_{\mathit{morph.comp.2}}\right)^{1/2}`.
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.599       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.319       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.377       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.378       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.378       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.378       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *compactness 2* feature.
+
 Spherical disproportion 
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">KRCK</p>
@@ -413,8 +545,26 @@ describes how sphere-like the volume is:
 By definition
 :math:`F_{\mathit{morph.sph.dispr}} = \left(F_{\mathit{morph.comp.2}}\right)^{-1/3}`.
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.19        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 1.46        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 1.38        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 1.38        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 1.38        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 1.38        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *spherical disproportion* feature.
+
 Sphericity 
-~~~~~~~~~~~
+^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">QCFX</p>
@@ -427,8 +577,26 @@ describe how sphere-like the volume is:
 By definition
 :math:`F_{\mathit{morph.sphericity}} = \left(F_{\mathit{morph.comp.2}}\right)^{1/3}`.
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.843       | 0.005      | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.683       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.722       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.723       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.723       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.723       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *sphericity* feature.
+
 Asphericity 
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">25C7</p>
@@ -442,8 +610,26 @@ volumes having an asphericity of 0. Asphericity is defined as:
 By definition
 :math:`F_{\mathit{morph.asphericity}} = \left(F_{\mathit{morph.comp.2}}\right)^{-1/3}-1`
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.186       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.463       | 0.002      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.385       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.383       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.383       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.383       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *asphericity* feature.
+
 Centre of mass shift 
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">KLMA</p>
@@ -469,8 +655,26 @@ The distance between the two centres of mass is then:
 
 .. math:: F_{\mathit{morph.com}} = ||\overrightarrow{CoM}_{geom}-\overrightarrow{CoM}_{gl}||_2
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.672       | 0.004      | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 52.9        | 28.7       | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 63.1        | 29.6       | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 45.6        | 2.8        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 64.9        | 2.8        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 68.5        | 2.1        | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *centre of mass shift* feature.
+
 Maximum 3D diameter 
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">L0JK</p>
@@ -493,8 +697,26 @@ convex hull is later used for the calculation of other morphological
 features
 ([feat\_morph\_vol\_dens\_conv\_hull]-[feat\_morph\_area\_dens\_conv\_hull]).
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 13.1        | 0.1        | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 125         | 1          | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 125         | 1          | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 125         | 1          | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 125         | 1          | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 125         | 1          | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *maximum 3D diameter* feature.
+
 Major axis length 
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">TDIC</p>
@@ -526,8 +748,26 @@ largest eigenvalue obtained by PCA on the point set of voxel centers
 
 .. math:: F_{\mathit{morph.pca.major}} = 2a = 4\sqrt{\lambda_{\mathit{major}}}
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 11.4        | 0.1        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 92.7        | 0.4        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 92.6        | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 93.3        | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 93.3        | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 93.3        | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *major axis length* feature.
+
 Minor axis length 
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">P9VJ</p>
@@ -540,8 +780,26 @@ largest eigenvalue obtained by PCA, as described in Section
 
 .. math:: F_{\mathit{morph.pca.minor}}= 2b =4\sqrt{\lambda_{\mathit{minor}}}
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 9.31        | 0.06       | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 81.5        | 0.4        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 81.3        | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 82          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 82          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 82          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *minor axis length* feature.
+
 Least axis length 
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">7J51</p>
@@ -553,8 +811,26 @@ using the smallest eigenvalue obtained by PCA, as described in Section
 
 .. math:: F_{\mathit{morph.pca.least}}= 2c =4\sqrt{\lambda_{\mathit{least}}}
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 8.54        | 0.05       | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 70.1        | 0.3        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 70.2        | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 70.9        | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 70.9        | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 70.9        | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *least axis length* feature.
+
 Elongation 
-~~~~~~~~~~~
+^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">Q3CK</p>
@@ -567,8 +843,26 @@ smaller values express greater elongation of the ROI volume.
 
 .. math:: F_{\mathit{morph.pca.elongation}} =\sqrt{\frac{\lambda_{minor}}{\lambda_{major}}}
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.816       | 0.005      | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.879       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.878       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.879       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.879       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.879       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *elongation* feature.
+
 Flatness
-~~~~~~~~
+^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">N17B</p>
@@ -581,8 +875,26 @@ objects which are increasingly flatter.
 
 .. math:: F_{\mathit{morph.pca.flatness}} = \sqrt{\frac{\lambda_{least}}{\lambda_{major}}}
 
-Volume density - axis-aligned bounding box
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.749       | 0.005      | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.756       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.758       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.76        | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.76        | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.76        | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *flatness* feature.
+
+Volume density (axis-aligned bounding box)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">PBX1</p>
@@ -600,24 +912,59 @@ frame.
 This feature is also called *extent*
 :cite:`ElNaqa2009,Solomon2011`.
 
-Area density - axis-aligned bounding box
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.869       | 0.005      | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.486       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.477       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.478       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.478       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.478       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *volume density (AABB)* feature.
+
+Area density (axis-aligned bounding box)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">R59B</p>
 
-Conceptually similar to the *volume density - axis-aligned bounding box*
-feature, *area density* considers the ratio of the ROI surface area and
-the surface area :math:`A_{aabb}` of the axis-aligned bounding box
-enclosing the ROI mesh vertex set :math:`\mathbf{X}_{vx}`
+Conceptually similar to the *volume density (AABB)* feature, *area
+density* considers the ratio of the ROI surface area and the surface
+area :math:`A_{aabb}` of the axis-aligned bounding box enclosing the ROI
+mesh vertex set :math:`\mathbf{X}_{vx}`
 :cite:`VanDijk2016`. The bounding box is identical to the
-one used in the *volume density - axis-aligned bounding box* feature.
-Thus:
+one used for computing the *volume density (AABB)* feature. Thus:
 
 .. math:: F_{\mathit{morph.a.dens.aabb}} = \frac{A}{A_{aabb}}
 
-Volume density - oriented minimum bounding box
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.866       | 0.005      | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.725       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.678       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.678       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.678       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.678       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *area density (AABB)* feature.
+
+Volume density (oriented minimum bounding box)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">ZH1A</p>
@@ -625,53 +972,108 @@ Volume density - oriented minimum bounding box
 The volume of an axis-aligned bounding box is generally not the smallest
 obtainable volume enclosing the ROI. By orienting the box along a
 different set of axes, a smaller enclosing volume may be attainable. The
-oriented minimum bounding box of the ROI mesh vertex set
+oriented minimum bounding box (OMBB) of the ROI mesh vertex set
 :math:`\mathbf{X}_{vx}` or :math:`\mathbf{X}_{vx,convex}` encloses the
 vertex set and has the smallest possible volume. A 3D rotating callipers
 technique was devised by :cite:`ORourke1985` to derive the
-oriented minimum bounding box. Due to computational complexity of the
-rotating callipers technique, the oriented minimum bounding box is
-commonly approximated at lower complexity, see e.g.
-:cite:`Barequet2001` and :cite:`Chan2001`.
-Thus:
+oriented minimum bounding box. Due to computational complexity of this
+technique, the oriented minimum bounding box is commonly approximated at
+lower complexity, see e.g. :cite:`Barequet2001` and
+:cite:`Chan2001`. Thus:
 
 .. math:: F_{\mathit{morph.v.dens.ombb}} = \frac{V}{V_{ombb}}
 
 Here :math:`V_{ombb}` is the volume of the oriented minimum bounding
 box.
 
-Area density - oriented minimum bounding box
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.869       | 0.005      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. A      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. B      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. C      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. D      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. E      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *volume density (OMBB)* feature. Unset
+values () indicate the lack of reliable benchmark values.
+
+Area density (oriented minimum bounding box)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">IQYR</p>
 
-The *area density* is estimated as:
+The *area density (OMBB)* is estimated as:
 
 .. math:: F_{\mathit{morph.a.dens.ombb}} = \frac{A}{A_{ombb}}
 
 Here :math:`A_{ombb}` is the surface area of the same bounding box as
-calculated for the *volume density - oriented minimum bounding box*
-feature.
+calculated for the *volume density (OMBB)* feature.
 
-Volume density - approximate enclosing ellipsoid
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.866       | 0.005      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. A      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. B      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. C      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. D      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.69        | 0.002      | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *area density (OMBB)* feature. Unset
+values () indicate the lack of reliable benchmark values.
+
+Volume density (approximate enclosing ellipsoid)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">6BDE</p>
 
 The eigenvectors and eigenvalues from PCA of the ROI voxel center point
 set :math:`\mathbf{X}_{c}` can be used to describe an ellipsoid
-approximating the point cloud :cite:`Mazurowski2016`. The
-volume of an ellipsoid is :math:`V_{\mathit{aee}}=4 \pi\,a\,b\,c /3`,
-with :math:`a`, :math:`b`, and :math:`c` being the lengths of the
-ellipsoid’s semi-principal axes, see Section [feat\_morph\_pca\_major].
-The *volume density* is then:
+approximating the point cloud :cite:`Mazurowski2016`, i.e.
+the approximate enclosing ellipsoid (AEE). The volume of this ellipsoid
+is :math:`V_{\mathit{aee}}=4 \pi\,a\,b\,c /3`, with :math:`a`,
+:math:`b`, and :math:`c` being the lengths of the ellipsoid’s
+semi-principal axes, see Section [feat\_morph\_pca\_major]. The *volume
+density (AEE)* is then:
 
 .. math:: F_{\mathit{morph.v.dens.aee}} = \frac{3V}{4\pi abc}
 
-Area density - approximate enclosing ellipsoid
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.17        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. A      | 1.29        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 1.29        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 1.29        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 1.29        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 1.29        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *volume density (AEE)* feature.
+
+Area density (approximate enclosing ellipsoid)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">RDD2</p>
@@ -679,48 +1081,86 @@ Area density - approximate enclosing ellipsoid
 The surface area of an ellipsoid can generally not be evaluated in an
 elementary form. However, it is possible to approximate the surface
 using an infinite series. We use the same semi-principal axes as for the
-*volume density - approximate ellipsoid* feature and define:
+*volume density (AEE)* feature and define:
 
 .. math:: A_{\mathit{aee}}\left(a,b,c\right)=4\pi\,a\,b\sum_{\nu=0}^{\infty}\frac{\left(\alpha\,\beta\right)^{\nu}}{1-4\nu^2}P_{\nu}\left(\frac{\alpha^2+\beta^2}{2\alpha\beta}\right)
 
 Here :math:`\alpha=\sqrt{1-b^2/a^2}` and :math:`\beta=\sqrt{1-c^2/a^2}`
 are eccentricities of the ellipsoid and :math:`P_{\nu}` is the Legendre
-polynomial function for degree :math:`\nu`. Though infinite, the series
-converges, and calculation may be stopped early. Gains in precision past
-:math:`\nu=20` are limited, and as a default we stop calculations at
-this polynomial degree.
+polynomial function for degree :math:`\nu`. The Legendre polynomial
+series, though infinite, converges, and approximation may be stopped
+early when the incremental gains in precision become limited. By
+default, we stop the series after :math:`\nu=20`.
 
-The *area density* is then approximated as:
+The *area density (AEE)* is then approximated as:
 
 .. math:: F_{\mathit{morph.a.dens.aee}} = \frac{A}{A_{\mathit{aee}}}
 
-Volume density - minimum volume enclosing ellipsoid
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.36        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. A      | 1.71        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. B      | 1.62        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. C      | 1.62        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. D      | 1.62        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. E      | 1.62        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *area density (AEE)* feature.
+
+Volume density (minimum volume enclosing ellipsoid)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">SWZ1</p>
 
-The approximate ellipsoid may not enclose the ROI or be the smallest
-enclosing ellipsoid. The minimum volume enclosing ellipsoid is generally
-approximated to make calculation more feasible. Various algorithms have
-been described, e.g. :cite:`Todd2007,Ahipasaoglu2015`,
-which are usually elaborations on Khachiyan’s barycentric coordinate
-descent method :cite:`Khachiyan1996`.
+The minimum volume enclosing ellipsoid (MVEE), unlike the approximate
+enclosing ellipsoid, is the smallest ellipsoid that encloses the ROI.
+Direct computation of the MVEE is usually unfeasible, and is therefore
+approximated. Various approximation algorithms have been described, e.g.
+:cite:`Todd2007,Ahipasaoglu2015`, which are usually
+elaborations on Khachiyan’s barycentric coordinate descent method
+:cite:`Khachiyan1996`.
 
-The minimum volume enclosing ellipsoid (MVEE) encloses the ROI mesh
-vertex set :math:`\mathbf{X}_{vx}`, and by definition
-:math:`\mathbf{X}_{vx,convex}` as well. Use of the convex mesh set
-:math:`\mathbf{X}_{vx,convex}` is recommended due to its sparsity
-compared to the full vertex set. The volume of the MVEE is defined by
-its semi-axes lengths :math:`V_{\mathit{mvee}}=4 \pi\,a\,b\,c /3`. Then:
+The MVEE encloses the ROI mesh vertex set :math:`\mathbf{X}_{vx}`, and
+by definition :math:`\mathbf{X}_{vx,convex}` as well. Use of the convex
+mesh set :math:`\mathbf{X}_{vx,convex}` is recommended due to its
+sparsity compared to the full vertex set. The volume of the MVEE is
+defined by its semi-axes lengths
+:math:`V_{\mathit{mvee}}=4 \pi\,a\,b\,c /3`. Then:
 
 .. math:: F_{\mathit{morph.v.dens.mvee}} = \frac{V}{V_{\mathit{mvee}}}
 
 For Khachiyan’s barycentric coordinate descent-based methods we use a
 default tolerance :math:`\tau=0.001` as stopping criterion.
 
-Area density - minimum volume enclosing ellipsoid
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. A      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. B      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. C      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. D      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. E      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *volume density (MVEE)* feature. Unset
+values () indicate the lack of reliable benchmark values.
+
+Area density (minimum volume enclosing ellipsoid)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">BRI8</p>
@@ -732,8 +1172,27 @@ MVEE be :math:`A_{\mathit{mvee}}`. Then:
 
 .. math:: F_{\mathit{morph.a.dens.mvee}} = \frac{A}{A_{\mathit{mvee}}}
 
-Volume density - convex hull
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. A      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. B      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. C      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. D      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+| config. E      |             |            | weak            |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *area density (MVEE)* feature. Unset
+values () indicate the lack of reliable benchmark values.
+
+Volume density (convex hull)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">R3ER</p>
@@ -741,44 +1200,101 @@ Volume density - convex hull
 The convex hull encloses ROI mesh vertex set :math:`\mathbf{X}_{vx}` and
 consists of the vertex set :math:`\mathbf{X}_{vx,convex}` and
 corresponding faces, see section [feat\_morph\_max\_3d\_diam]. The
-volume of the ROI mesh convex hull set :math:`V_{convex}` is calculated
-as for the *volume* feature ([feat\_morph\_volume]). The *volume
-density* can then be calculated as follows:
+volume of the ROI mesh convex hull set :math:`V_{convex}` is computed in
+the same way as that of the *volume (mesh)* feature
+([feat\_morph\_volume]). The *volume density* can then be calculated as
+follows:
 
 .. math:: F_{\mathit{morph.v.dens.conv.hull}} = \frac{V}{V_{convex}}
 
 This feature is also called *solidity*
 :cite:`ElNaqa2009,Solomon2011`.
 
-Area density - convex hull
-~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.961       | 0.006      | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.827       | 0.001      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.829       | 0.001      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.834       | 0.002      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.834       | 0.002      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.834       | 0.002      | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *volume density (convex hull)* feature.
+
+Area density (convex hull)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">7T7F</p>
 
 The area of the convex hull :math:`A_{convex}` is the sum of the areas
-of the faces of the convex hull, as in the calculation of the *area*
-feature (section [feat\_morph\_area]). The convex hull is identical to
-the one used in the *volume density - convex hull* feature. Then:
+of the faces of the convex hull, and is computed in the same way as the
+*surface area (mesh)* feature (section [feat\_morph\_area]). The convex
+hull is identical to the one used in the *volume density (convex hull)*
+feature. Then:
 
 .. math:: F_{\mathit{morph.a.dens.conv.hull}} = \frac{A}{A_{convex}}
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.03        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 1.18        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. B      | 1.12        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. C      | 1.13        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. D      | 1.13        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. E      | 1.13        | 0.01       | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *area density (convex hull)* feature.
+
 Integrated intensity
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">99N0</p>
 
-*Integrated intensity* is the average grey level multiplied by the
-volume. In the context of :sup:`18`\ F-FDG-PET, this feature is called
-*total lesion glycolysis* :cite:`Vaidya2012`. Thus:
+*Integrated intensity* is the average intensity in the ROI, multiplied
+by the volume. In the context of :sup:`18`\ F-FDG-PET, this feature is
+often called *total lesion glycolysis* :cite:`Vaidya2012`.
+Thus:
 
 .. math:: F_{\mathit{morph.integ.int}}=V\;\frac{1}{N_{v,gl}}\sum_{k=1}^{N_{v,gl}} X_{gl,k}
 
 :math:`N_{v,gl}` is the number of voxels in the ROI intensity mask.
 
++----------------+-------------------------------+------------------------------+-----------------+
+| **data**       | **value**                     | **tol.**                     | **consensus**   |
++================+===============================+==============================+=================+
+| dig. phantom   | :math:`1.2 \times 10^{3}`     | 10                           | moderate        |
++----------------+-------------------------------+------------------------------+-----------------+
+| config. A      | :math:`4.81 \times 10^{6}`    | :math:`3.2 \times 10^{5}`    | strong          |
++----------------+-------------------------------+------------------------------+-----------------+
+| config. B      | :math:`4.12 \times 10^{6}`    | :math:`3.2 \times 10^{5}`    | strong          |
++----------------+-------------------------------+------------------------------+-----------------+
+| config. C      | :math:`-1.8 \times 10^{7}`    | :math:`1.4 \times 10^{6}`    | strong          |
++----------------+-------------------------------+------------------------------+-----------------+
+| config. D      | :math:`-8.64 \times 10^{6}`   | :math:`1.56 \times 10^{6}`   | strong          |
++----------------+-------------------------------+------------------------------+-----------------+
+| config. E      | :math:`-8.31 \times 10^{6}`   | :math:`1.6 \times 10^{6}`    | strong          |
++----------------+-------------------------------+------------------------------+-----------------+
+
+Table: Benchmark table for the *integrated intensity* feature.
+
 Moran’s I index
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">N365</p>
@@ -802,15 +1318,33 @@ index may be computationally expensive due to :math:`O(n^2)` behaviour.
 Approximation by repeated subsampling of the ROI may be required to make
 the calculation tractable, at the cost of accuracy.
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.0397      | 0.0003     | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.0322      | 0.0002     | moderate        |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.0329      | 0.0001     | moderate        |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.0824      | 0.0003     | moderate        |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.0622      | 0.0013     | moderate        |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.0596      | 0.0014     | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *Moran’s I index* feature.
+
 Geary’s C measure
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">NPT7</p>
 
 Geary’s *C* measure assesses spatial autocorrelation, similar to Moran’s
 *I* index :cite:`Geary1954,Dale2002`. In contrast to
-Moran’s *I* index, Geary’s *C* measure directly assesses grey level
+Moran’s *I* index, Geary’s *C* measure directly assesses intensity
 differences between voxels and is more sensitive to local spatial
 autocorrelation. This measure is defined as:
 
@@ -827,6 +1361,24 @@ Just as Moran’s *I*, Geary’s *C* measure exhibits :math:`O(n^2)`
 behaviour and an approximation scheme may be required to make
 calculation feasible for large ROIs.
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.974       | 0.006      | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.863       | 0.001      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.862       | 0.001      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.846       | 0.001      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.851       | 0.001      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.853       | 0.001      | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *Geary’s C measure* feature.
+
 Local intensity features
 ------------------------
 .. raw:: html
@@ -836,18 +1388,18 @@ Local intensity features
 Voxel intensities within a defined neighbourhood around a center voxel
 are used to compute local intensity features. Unlike many other feature
 sets, local features do not draw solely on intensities within the ROI.
-While only voxels within the ROI intensity map are used as a center
-voxel, the corresponding local neighbourhood draws upon all voxels
-regardless of being in an ROI.
+While only voxels within the ROI intensity map can be used as a center
+voxel, the local neighbourhood draws upon all voxels regardless of being
+in an ROI.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 By definition, local intensity features are calculated in 3D (), and not
 per slice.
 
 Local intensity peak 
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">VJGA</p>
@@ -869,8 +1421,26 @@ In case the maximum intensity is found in multiple voxels within the
 ROI, *local intensity peak* is calculated for each of these voxels, and
 the highest *local intensity peak* is chosen.
 
++----------------+------------------+------------+-----------------+
+| **data**       | **value**        | **tol.**   | **consensus**   |
++================+==================+============+=================+
+| dig. phantom   | 2.6              |            | strong          |
++----------------+------------------+------------+-----------------+
+| config. A      | :math:`-`\ 277   | 10         | moderate        |
++----------------+------------------+------------+-----------------+
+| config. B      | 178              | 10         | moderate        |
++----------------+------------------+------------+-----------------+
+| config. C      | 169              | 10         | moderate        |
++----------------+------------------+------------+-----------------+
+| config. D      | 201              | 10         | strong          |
++----------------+------------------+------------+-----------------+
+| config. E      | 181              | 13         | moderate        |
++----------------+------------------+------------+-----------------+
+
+Table: Benchmark table for the *local intensity peak* feature.
+
 Global intensity peak 
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">0F91</p>
@@ -897,13 +1467,31 @@ otherwise. Subsequent summation of the voxel labels yields :math:`N_s`,
 the number of voxels within the 1 cm\ :sup:`3` sphere. The filter then
 becomes a spherical mean filter by dividing the labels by :math:`N_s`.
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 3.1         |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 189         | 5          | moderate        |
++----------------+-------------+------------+-----------------+
+| config. B      | 178         | 5          | moderate        |
++----------------+-------------+------------+-----------------+
+| config. C      | 180         | 5          | moderate        |
++----------------+-------------+------------+-----------------+
+| config. D      | 201         | 5          | moderate        |
++----------------+-------------+------------+-----------------+
+| config. E      | 181         | 5          | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *global intensity peak* feature.
+
 Intensity-based statistical features
 ------------------------------------
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">UHIW</p>
 
-The intensity-based statistical features describe how grey levels within
+The intensity-based statistical features describe how intensities within
 the region of interest (ROI) are distributed. The features in this set
 do not require discretisation, and may be used to describe a continuous
 intensity distribution. Intensity-based statistical features are not
@@ -914,113 +1502,284 @@ intensity mask is denoted as
 :math:`\mathbf{X}_{gl}=\left\lbrace X_{gl,1},X_{gl,2},\ldots,X_{gl,N_v}\right\rbrace`.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 We recommend calculating intensity-based statistical features using the
-3D volume (). Computing features per slice and subsequently averaging ()
-is not recommended.
+3D volume (). An approach that computes intensity-based statistical
+features per slice and subsequently averages them () is not recommended.
 
-Mean
-~~~~
+Mean intensity
+^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">Q4LE</p>
 
-The *mean* grey level of :math:`\mathbf{X}_{gl}` is calculated as:
+The *mean intensity* of :math:`\mathbf{X}_{gl}` is calculated as:
 
 .. math:: F_{\mathit{stat.mean}} = \frac{1}{N_v}\sum_{k=1}^{N_v} X_{gl,k}
 
-Variance
-~~~~~~~~
++----------------+-------------------+------------+-----------------+
+| **data**       | **value**         | **tol.**   | **consensus**   |
++================+===================+============+=================+
+| dig. phantom   | 2.15              |            | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. A      | 13.4              | 1.1        | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. B      | 11.5              | 1.1        | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. C      | :math:`-`\ 49     | 2.9        | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. D      | :math:`-`\ 23.5   | 3.9        | strong          |
++----------------+-------------------+------------+-----------------+
+| config. E      | :math:`-`\ 22.6   | 4.1        | strong          |
++----------------+-------------------+------------+-----------------+
+
+Table: Benchmark table for the *mean* feature.
+
+Intensity variance
+^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">ECT3</p>
 
-The grey level *variance* of :math:`\mathbf{X}_{gl}` is defined as:
+The *intensity variance* of :math:`\mathbf{X}_{gl}` is defined as:
 
 .. math:: F_{\mathit{stat.var}} = \frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{gl,k}-\mu \right)^2
 
-Skewness
-~~~~~~~~
+Note that we do not apply a bias correction when computing the variance.
+
++----------------+------------------------------+-----------------------------+-----------------+
+| **data**       | **value**                    | **tol.**                    | **consensus**   |
++================+==============================+=============================+=================+
+| dig. phantom   | 3.05                         |                             | very strong     |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. A      | :math:`1.42 \times 10^{4}`   | 400                         | very strong     |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. B      | :math:`1.44 \times 10^{4}`   | 400                         | very strong     |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. C      | :math:`5.06 \times 10^{4}`   | :math:`1.4 \times 10^{3}`   | strong          |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. D      | :math:`3.28 \times 10^{4}`   | :math:`2.1 \times 10^{3}`   | strong          |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. E      | :math:`3.51 \times 10^{4}`   | :math:`2.2 \times 10^{3}`   | strong          |
++----------------+------------------------------+-----------------------------+-----------------+
+
+Table: Benchmark table for the *variance* feature.
+
+Intensity skewness
+^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">KE2A</p>
 
-The *skewness* of the grey level distribution of :math:`\mathbf{X}_{gl}`
+The *skewness* of the intensity distribution of :math:`\mathbf{X}_{gl}`
 is defined as:
 
 .. math:: F_{\mathit{stat.skew}} = \frac{\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{gl,k}-\mu \right) ^3}{\left(\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{gl,k}-\mu \right)^2\right)^{3/2}}
 
-Here :math:`\mu=F_{\mathit{stat.mean}}`. If the grey level *variance*
+Here :math:`\mu=F_{\mathit{stat.mean}}`. If the *intensity variance*
 :math:`F_{\mathit{stat.var}} = 0`, :math:`F_{\mathit{stat.skew}}=0`.
 
-Kurtosis
-~~~~~~~~
++----------------+-------------------+------------+-----------------+
+| **data**       | **value**         | **tol.**   | **consensus**   |
++================+===================+============+=================+
+| dig. phantom   | 1.08              |            | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. A      | :math:`-`\ 2.47   | 0.05       | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. B      | :math:`-`\ 2.49   | 0.05       | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. C      | :math:`-`\ 2.14   | 0.05       | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. D      | :math:`-`\ 2.28   | 0.06       | strong          |
++----------------+-------------------+------------+-----------------+
+| config. E      | :math:`-`\ 2.3    | 0.07       | strong          |
++----------------+-------------------+------------+-----------------+
+
+Table: Benchmark table for the *skewness* feature.
+
+(Excess) intensity kurtosis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">IPH6</p>
 
 *Kurtosis*, or technically excess kurtosis, is a measure of peakedness
-in the grey level distribution :math:`\mathbf{X}_{gl}`:
+in the intensity distribution :math:`\mathbf{X}_{gl}`:
 
 .. math:: F_{\mathit{stat.kurt}} = \frac{\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{gl,k}-\mu \right) ^4}{\left(\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{gl,k}-\mu \right)^2\right)^{2}} -3
 
 Here :math:`\mu=F_{\mathit{stat.mean}}`. Note that kurtosis is
 corrected by a Fisher correction of -3 to center it on 0 for normal
-distributions. If the grey level *variance*
+distributions. If the *intensity variance*
 :math:`F_{\mathit{stat.var}} = 0`, :math:`F_{\mathit{stat.kurt}}=0`.
 
-Median
-~~~~~~
++----------------+--------------------+------------+-----------------+
+| **data**       | **value**          | **tol.**   | **consensus**   |
++================+====================+============+=================+
+| dig. phantom   | :math:`-`\ 0.355   |            | very strong     |
++----------------+--------------------+------------+-----------------+
+| config. A      | 5.96               | 0.24       | very strong     |
++----------------+--------------------+------------+-----------------+
+| config. B      | 5.93               | 0.24       | very strong     |
++----------------+--------------------+------------+-----------------+
+| config. C      | 3.53               | 0.23       | very strong     |
++----------------+--------------------+------------+-----------------+
+| config. D      | 4.35               | 0.32       | strong          |
++----------------+--------------------+------------+-----------------+
+| config. E      | 4.44               | 0.33       | strong          |
++----------------+--------------------+------------+-----------------+
+
+Table: Benchmark table for the *(excess) kurtosis* feature.
+
+Median intensity
+^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">Y12H</p>
 
-The *median* :math:`F_{\mathit{stat.median}}` is the sample median of
-:math:`\mathbf{X}_{gl}`.
+The *median intensity* :math:`F_{\mathit{stat.median}}` is the sample
+median of :math:`\mathbf{X}_{gl}`.
 
-Minimum grey level
-~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 46          | 0.3        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 45          | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 40          | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 42          | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 43          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *median* feature.
+
+Minimum intensity
+^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">1GSF</p>
 
-The *minimum grey level* :math:`F_{\mathit{stat.min}}` is equal to the
-lowest grey level present in :math:`\mathbf{X}_{gl}`.
+The *minimum intensity* is equal to the lowest intensity present in
+:math:`\mathbf{X}_{gl}`, i.e:
 
-10\ :sup:`th` percentile
-~~~~~~~~~~~~~~~~~~~~~~~~
+.. math:: F_{\mathit{stat.min}} = \text{min}(\mathbf{X}_{gl})
+
++----------------+------------------+------------+-----------------+
+| **data**       | **value**        | **tol.**   | **consensus**   |
++================+==================+============+=================+
+| dig. phantom   | 1                |            | very strong     |
++----------------+------------------+------------+-----------------+
+| config. A      | :math:`-`\ 500   |            | very strong     |
++----------------+------------------+------------+-----------------+
+| config. B      | :math:`-`\ 500   |            | very strong     |
++----------------+------------------+------------+-----------------+
+| config. C      | :math:`-`\ 939   | 4          | strong          |
++----------------+------------------+------------+-----------------+
+| config. D      | :math:`-`\ 724   | 12         | strong          |
++----------------+------------------+------------+-----------------+
+| config. E      | :math:`-`\ 743   | 13         | strong          |
++----------------+------------------+------------+-----------------+
+
+Table: Benchmark table for the *minimum* feature.
+
+10\ :sup:`th` intensity percentile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">QG58</p>
 
 :math:`P_{10}` is the 10\ :sup:`th` percentile of
-:math:`\mathbf{X}_{gl}`. :math:`P_{10}` is more robust to grey level
-outliers than the *minimum grey level* and is defined as
-:math:`F_{\mathit{stat.P10}}`.
+:math:`\mathbf{X}_{gl}`. :math:`P_{10}` is a more robust alternative to
+the *minimum intensity*.
 
-90\ :sup:`th` percentile
-~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+------------------+------------+-----------------+
+| **data**       | **value**        | **tol.**   | **consensus**   |
++================+==================+============+=================+
+| dig. phantom   | 1                |            | very strong     |
++----------------+------------------+------------+-----------------+
+| config. A      | :math:`-`\ 129   | 8          | strong          |
++----------------+------------------+------------+-----------------+
+| config. B      | :math:`-`\ 136   | 8          | strong          |
++----------------+------------------+------------+-----------------+
+| config. C      | :math:`-`\ 424   | 14         | very strong     |
++----------------+------------------+------------+-----------------+
+| config. D      | :math:`-`\ 304   | 20         | strong          |
++----------------+------------------+------------+-----------------+
+| config. E      | :math:`-`\ 310   | 21         | strong          |
++----------------+------------------+------------+-----------------+
+
+Table: Benchmark table for the *10th percentile* feature.
+
+90\ :sup:`th` intensity percentile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">8DWT</p>
 
 :math:`P_{90}` is the 90\ :sup:`th` percentile of
-:math:`\mathbf{X}_{gl}`. :math:`P_{90}` is more robust to grey level
-outliers than the *maximum grey level* and is defined as
-:math:`F_{\mathit{stat.P90}}`.
+:math:`\mathbf{X}_{gl}`. :math:`P_{90}` is a more robust alternative to
+the *maximum intensity*.
 
-Maximum grey level
-~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 4           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 95          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 91          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 86          | 0.1        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 86          | 0.1        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 93          | 0.2        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *90th percentile* feature.
+
+Note that the *90\ :sup:`th` intensity percentile* obtained for the
+digital phantom may differ from the above benchmark value depending on
+the implementation used to compute it. For example, some implementations
+were found to produce a value of 4.2 instead of 4 for this feature.
+
+Maximum intensity
+^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">84IY</p>
 
-The *maximum grey level* :math:`F_{\mathit{stat.max}}` is equal to the
-highest grey level present in :math:`\mathbf{X}_{gl}`.
+The *maximum intensity* is equal to the highest intensity present in
+:math:`\mathbf{X}_{gl}`, i.e:
 
-Interquartile range
-~~~~~~~~~~~~~~~~~~~
+.. math:: F_{\mathit{stat.max}} = \text{max}(\mathbf{X}_{gl})
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 6           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 377         | 9          | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 391         | 9          | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 393         | 10         | very strong     |
++----------------+-------------+------------+-----------------+
+| config. D      | 521         | 22         | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 345         | 9          | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *maximum* feature.
+
+Intensity interquartile range
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">SALO</p>
@@ -1033,18 +1792,54 @@ as:
 :math:`P_{25}` and :math:`P_{75}` are the 25\ :sup:`th` and
 75\ :sup:`th` percentiles of :math:`\mathbf{X}_{gl}`, respectively.
 
-Range
-~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 3           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 56          | 0.5        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 52          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 67          | 4.9        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. D      | 57          | 4.1        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 62          | 3.5        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *interquartile range* feature.
+
+Intensity range
+^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">2OJQ</p>
 
-The *range* of grey levels is defined as:
+The *intensity range* is defined as:
 
 .. math:: F_{\mathit{stat.range}} = \text{max}(\mathbf{X}_{gl}) - \text{min}(\mathbf{X}_{gl})
 
-Mean absolute deviation
-~~~~~~~~~~~~~~~~~~~~~~~
++----------------+------------------------------+------------+-----------------+
+| **data**       | **value**                    | **tol.**   | **consensus**   |
++================+==============================+============+=================+
+| dig. phantom   | 5                            |            | very strong     |
++----------------+------------------------------+------------+-----------------+
+| config. A      | 877                          | 9          | very strong     |
++----------------+------------------------------+------------+-----------------+
+| config. B      | 891                          | 9          | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. C      | :math:`1.33 \times 10^{3}`   | 20         | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. D      | :math:`1.24 \times 10^{3}`   | 40         | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. E      | :math:`1.09 \times 10^{3}`   | 30         | strong          |
++----------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *range* feature.
+
+Intensity-based mean absolute deviation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">4FUA</p>
@@ -1056,94 +1851,222 @@ Mean absolute deviation
 
 Here :math:`\mu=F_{\mathit{stat.mean}}`.
 
-Robust mean absolute deviation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.55        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 73.6        | 1.4        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 74.4        | 1.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 158         | 4          | very strong     |
++----------------+-------------+------------+-----------------+
+| config. D      | 123         | 6          | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 125         | 6          | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *mean absolute deviation* feature.
+
+Intensity-based robust mean absolute deviation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">1128</p>
 
-The *mean absolute deviation* feature may be influenced by outliers. To
-increase robustness, the set of grey levels can be restricted to those
-which lie closer to the center of the distribution. Let
+The *intensity-based mean absolute deviation* feature may be influenced
+by outliers. To increase robustness, the set of intensities can be
+restricted to those which lie closer to the center of the distribution.
+Let
 
 .. math:: \mathbf{X}_{gl,10-90}= \left\lbrace x \in \mathbf{X}_{gl} | P_{10}\left(\mathbf{X}_{gl}\right)\leq x \leq P_{90}\left(\mathbf{X}_{gl}\right)\right\rbrace
 
-Thus :math:`\mathbf{X}_{gl,10-90}` is the set of
-:math:`N_{v,10-90}\leq N_v` voxels in :math:`\mathbf{X}_{gl}` whose grey
-levels are equal to, or lie between, the values corresponding to the
-10\ :sup:`th` and 90\ :sup:`th` percentiles of :math:`\mathbf{X}_{gl}`.
-The robust mean absolute deviation is then:
+Then :math:`\mathbf{X}_{gl,10-90}` is the set of
+:math:`N_{v,10-90}\leq N_v` voxels in :math:`\mathbf{X}_{gl}` whose
+intensities fall in the interval bounded by the 10\ :sup:`th` and
+90\ :sup:`th` percentiles of :math:`\mathbf{X}_{gl}`. The robust mean
+absolute deviation is then:
 
 .. math:: F_{\mathit{stat.rmad}} = \frac{1}{N_{v,10-90}}\sum_{k=1}^{N_{v,10-90}} \left|X_{gl,10-90,k}-\overline{X}_{gl,10-90}\right|
 
 :math:`\overline{X}_{gl,10-90}` denotes the sample mean of
 :math:`\mathbf{X_{gl,10-90}}`.
 
-Median absolute deviation
-~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.11        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 27.7        | 0.8        | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 27.3        | 0.8        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 66.8        | 3.5        | very strong     |
++----------------+-------------+------------+-----------------+
+| config. D      | 46.8        | 3.6        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 46.5        | 3.7        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *robust mean absolute deviation* feature.
+
+Intensity-based median absolute deviation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">N72L</p>
 
-*Median absolute deviation* is similar in concept to *mean absolute
-deviation*, but measures dispersion from the median instead of mean.
-Thus:
+*Median absolute deviation* is similar in concept to the
+*intensity-based mean absolute deviation*, but measures dispersion from
+the median intensity instead of the mean intensity. Thus:
 
 .. math:: F_{\mathit{stat.medad}} = \frac{1}{N_v}\sum_{k=1}^{N_v} \left| X_{gl,k}-M\right|
 
 Here, median :math:`M = F_{\mathit{stat.median}}`.
 
-Coefficient of variation
-~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.15        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 64.3        | 1          | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 63.8        | 1          | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 119         | 4          | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 94.7        | 3.8        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 97.9        | 3.9        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *median absolute deviation* feature.
+
+Intensity-based coefficient of variation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">7TET</p>
 
-The *coefficient of variation* measures the dispersion of the
-:math:`\mathbf{X}_{gl}` distribution. It is defined as:
+The *coefficient of variation* measures the dispersion of
+:math:`\mathbf{X}_{gl}`. It is defined as:
 
 .. math:: F_{\mathit{stat.cov}}=\frac{\sigma}{\mu}
 
 Here :math:`\sigma={F_{\mathit{stat.var}}}^{1/2}` and
 :math:`\mu=F_{\mathit{stat.mean}}` are the standard deviation and mean
-of the grey level distribution, respectively.
+of the intensity distribution, respectively.
 
-Quartile coefficient of dispersion
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------------+------------+-----------------+
+| **data**       | **value**         | **tol.**   | **consensus**   |
++================+===================+============+=================+
+| dig. phantom   | 0.812             |            | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. A      | 8.9               | 4.98       | strong          |
++----------------+-------------------+------------+-----------------+
+| config. B      | 10.4              | 5.2        | strong          |
++----------------+-------------------+------------+-----------------+
+| config. C      | :math:`-`\ 4.59   | 0.29       | strong          |
++----------------+-------------------+------------+-----------------+
+| config. D      | :math:`-`\ 7.7    | 1.01       | strong          |
++----------------+-------------------+------------+-----------------+
+| config. E      | :math:`-`\ 8.28   | 0.95       | strong          |
++----------------+-------------------+------------+-----------------+
+
+Table: Benchmark table for the *coefficient of variation* feature.
+
+Intensity-based quartile coefficient of dispersion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">9S40</p>
 
 The *quartile coefficient of dispersion* is a more robust alternative to
-*coefficient of variance*. It is defined as:
+the *intensity-based coefficient of variance*. It is defined as:
 
 .. math:: F_{\mathit{stat.qcod}} = \frac{P_{75}-P_{25}}{P_{75}+P_{25}}
 
 :math:`P_{25}` and :math:`P_{75}` are the 25\ :sup:`th` and
 75\ :sup:`th` percentile of :math:`\mathbf{X}_{gl}`, respectively.
 
-Energy
-~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.6         |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.636       | 0.008      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.591       | 0.008      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 1.03        | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.74        | 0.011      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.795       | 0.337      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *quartile coefficient of dispersion*
+feature.
+
+Intensity-based energy
+^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">N8CA</p>
 
-*Energy* :cite:`Aerts2014` of :math:`\mathbf{X}_{gl}` is
-defined as:
+The *energy* :cite:`Aerts2014` of :math:`\mathbf{X}_{gl}`
+is defined as:
 
 .. math:: F_{\mathit{stat.energy}} = \sum_{k=1}^{N_v} X_{gl,k}^2
 
-Root mean square
-~~~~~~~~~~~~~~~~
++----------------+------------------------------+-----------------------------+-----------------+
+| **data**       | **value**                    | **tol.**                    | **consensus**   |
++================+==============================+=============================+=================+
+| dig. phantom   | 567                          |                             | very strong     |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. A      | :math:`1.65 \times 10^{9}`   | :math:`2 \times 10^{7}`     | very strong     |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. B      | :math:`3.98 \times 10^{8}`   | :math:`1.1 \times 10^{7}`   | strong          |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. C      | :math:`2.44 \times 10^{9}`   | :math:`1.2 \times 10^{8}`   | strong          |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. D      | :math:`1.48 \times 10^{9}`   | :math:`1.4 \times 10^{8}`   | strong          |
++----------------+------------------------------+-----------------------------+-----------------+
+| config. E      | :math:`1.58 \times 10^{9}`   | :math:`1.4 \times 10^{8}`   | strong          |
++----------------+------------------------------+-----------------------------+-----------------+
+
+Table: Benchmark table for the *energy* feature.
+
+Root mean square intensity
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">5ZWQ</p>
 
-The *root mean square* feature :cite:`Aerts2014`, which
-also called the *quadratic mean*, of :math:`\mathbf{X}_{gl}` is defined
-as:
+The *root mean square intensity* feature :cite:`Aerts2014`,
+which is also called the *quadratic mean*, of :math:`\mathbf{X}_{gl}` is
+defined as:
 
 .. math:: F_{\mathit{stat.rms}} = \sqrt{\frac{\sum_{k=1}^{N_v} X_{gl,k}^2}{N_v}}
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 2.77        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 120         | 2          | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 121         | 2          | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 230         | 4          | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 183         | 7          | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 189         | 7          | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *root mean square* feature.
 
 Intensity histogram features
 ----------------------------
@@ -1151,29 +2074,29 @@ Intensity histogram features
 
   <p style="color:grey;font-style:italic;text-align:right">ZVCW</p>
 
-An intensity histogram is generated by discretising the original set of
-grey levels :math:`\mathbf{X}_{gl}` into grey level bins. Approaches to
-discretisation are described in Section [discretisation].
+An intensity histogram is generated by discretising the original
+intensity distribution :math:`\mathbf{X}_{gl}` into intensity bins.
+Approaches to discretisation are described in Section [discretisation].
 
 Let
 :math:`\mathbf{X}_{d}=\left\lbrace X_{d,1},X_{d,2},\ldots,X_{d,N_v}\right\rbrace`
-be the set of :math:`N_g` discretised grey levels of the :math:`N_v`
+be the set of :math:`N_g` discretised intensities of the :math:`N_v`
 voxels in the ROI intensity mask. Let
 :math:`\mathbf{H}=\left\lbrace n_1, n_2,\ldots, n_{N_g}\right\rbrace` be
-the histogram with frequency count :math:`n_i` of each discretised grey
-level :math:`i` in :math:`\mathbf{X}_{d}`. The occurrence probability
-:math:`p_i` for each grey level bin :math:`i` is then approximated as
-:math:`p_i=n_i/N_v`.
+the histogram with frequency count :math:`n_i` of each discretised
+intensity :math:`i` in :math:`\mathbf{X}_{d}`. The occurrence
+probability :math:`p_i` for each discretised intensity :math:`i` is then
+approximated as :math:`p_i=n_i/N_v`.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 We recommend calculating intensity histogram features using the 3D
-volume (). Computing features per slice and subsequently averaging () is
-not recommended.
+volume (). An approach that computes features per slice and subsequently
+averages () is not recommended.
 
-Intensity histogram mean
-~~~~~~~~~~~~~~~~~~~~~~~~
+Mean discretised intensity
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">X6K6</p>
@@ -1183,12 +2106,30 @@ calculated as:
 
 .. math:: F_{\mathit{ih.mean}} = \frac{1}{N_v}\sum_{k=1}^{N_v} X_{d,k}
 
-An equivalent formulation is:
+An equivalent definition is:
 
 .. math:: F_{\mathit{ih.mean}} = \sum_{i=1}^{N_g}i\,p_i
 
-Intensity histogram variance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 2.15        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 21.1        | 0.1        | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 18.9        | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 38.6        | 0.2        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 18.5        | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 21.7        | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *mean* feature.
+
+Discretised intensity variance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">CH89</p>
@@ -1198,13 +2139,33 @@ is defined as:
 
 .. math:: F_{\mathit{ih.var}} = \frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{d,k}-\mu \right)^2
 
-Here :math:`\mu=F_{\mathit{ih.mean}}`. This formulation is equivalent
+Here :math:`\mu=F_{\mathit{ih.mean}}`. This definition is equivalent
 to:
 
 .. math:: F_{\mathit{ih.var}} = \sum_{i=1}^{N_g}\left(i-\mu\right)^2 p_i
 
-Intensity histogram skewness
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Note that no bias-correction is applied when computing the variance.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 3.05        |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 22.8        | 0.6        | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 18.7        | 0.2        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 81.1        | 2.1        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 21.7        | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 30.4        | 0.8        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *variance* feature.
+
+Discretised intensity skewness
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">88K1</p>
@@ -1214,37 +2175,74 @@ is defined as:
 
 .. math:: F_{\mathit{ih.skew}} = \frac{\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{d,k}-\mu \right) ^3}{\left(\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{d,k}-\mu \right)^2\right)^{3/2}}
 
-Here :math:`\mu=F_{\mathit{ih.mean}}`. This formulation is equivalent
+Here :math:`\mu=F_{\mathit{ih.mean}}`. This definition is equivalent
 to:
 
 .. math:: F_{\mathit{ih.skew}} = \frac{\sum_{i=1}^{N_g}\left(i-\mu\right)^3 p_i}{\left(\sum_{i=1}^{N_g}\left(i-\mu\right)^2 p_i\right)^{3/2}}
 
-If the discretised grey level variance :math:`F_{\mathit{ih.var}} = 0`,
-:math:`F_{\mathit{ih.skew}}=0`.
+If the *discretised intensity variance*
+:math:`F_{\mathit{ih.var}} = 0`, :math:`F_{\mathit{ih.skew}}=0`.
 
-Intensity histogram kurtosis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------------+------------+-----------------+
+| **data**       | **value**         | **tol.**   | **consensus**   |
++================+===================+============+=================+
+| dig. phantom   | 1.08              |            | very strong     |
++----------------+-------------------+------------+-----------------+
+| config. A      | :math:`-`\ 2.46   | 0.05       | strong          |
++----------------+-------------------+------------+-----------------+
+| config. B      | :math:`-`\ 2.47   | 0.05       | strong          |
++----------------+-------------------+------------+-----------------+
+| config. C      | :math:`-`\ 2.14   | 0.05       | strong          |
++----------------+-------------------+------------+-----------------+
+| config. D      | :math:`-`\ 2.27   | 0.06       | strong          |
++----------------+-------------------+------------+-----------------+
+| config. E      | :math:`-`\ 2.29   | 0.07       | strong          |
++----------------+-------------------+------------+-----------------+
+
+Table: Benchmark table for the *skewness* feature.
+
+(Excess) discretised intensity kurtosis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">C3I7</p>
 
 *Kurtosis* :cite:`Aerts2014`, or technically excess
-kurtosis, is calculated as measure of peakedness of the distribution
-:math:`\mathbf{X}_{d}`:
+kurtosis, measures the peakedness of the :math:`\mathbf{X}_{d}`
+distribution:
 
 .. math:: F_{\mathit{ih.kurt}} = \frac{\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{d,k}-\mu \right) ^4}{\left(\frac{1}{N_v}\sum_{k=1}^{N_v} \left( X_{d,k}-\mu \right)^2\right)^{2}} -3
 
-Here :math:`\mu=F_{\mathit{ih.mean}}`. The alternative, but equivalent,
-formulation is:
+Here :math:`\mu=F_{\mathit{ih.mean}}`. An alternative, but equivalent,
+definition is:
 
 .. math:: F_{\mathit{ih.kurt}} = \frac{\sum_{i=1}^{N_g}\left(i-\mu\right)^4 p_i}{\left(\sum_{i=1}^{N_g}\left(i-\mu\right)^2 p_i\right)^{2}} -3
 
 Note that kurtosis is corrected by a Fisher correction of -3 to center
-kurtosis on 0 for normal distributions. If the discretised grey level
-:math:`F_{\mathit{ih.var}} = 0`, :math:`F_{\mathit{ih.kurt}}=0`.
+kurtosis on 0 for normal distributions. If the *discretised intensity
+variance* :math:`F_{\mathit{ih.var}} = 0`,
+:math:`F_{\mathit{ih.kurt}}=0`.
 
-Intensity histogram median
-~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+--------------------+------------+-----------------+
+| **data**       | **value**          | **tol.**   | **consensus**   |
++================+====================+============+=================+
+| dig. phantom   | :math:`-`\ 0.355   |            | very strong     |
++----------------+--------------------+------------+-----------------+
+| config. A      | 5.9                | 0.24       | strong          |
++----------------+--------------------+------------+-----------------+
+| config. B      | 5.84               | 0.24       | strong          |
++----------------+--------------------+------------+-----------------+
+| config. C      | 3.52               | 0.23       | strong          |
++----------------+--------------------+------------+-----------------+
+| config. D      | 4.31               | 0.32       | strong          |
++----------------+--------------------+------------+-----------------+
+| config. E      | 4.4                | 0.33       | strong          |
++----------------+--------------------+------------+-----------------+
+
+Table: Benchmark table for the *(excess) kurtosis* feature.
+
+Median discretised intensity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">WIFQ</p>
@@ -1252,95 +2250,230 @@ Intensity histogram median
 The *median* :math:`F_{\mathit{ih.median}}` is the sample median of
 :math:`\mathbf{X}_{d}` :cite:`Aerts2014`.
 
-Intensity histogram minimum grey level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 22          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 20          | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 42          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 20          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 24          | 0.2        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *median* feature.
+
+Minimum discretised intensity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
   <p style="color:grey;font-style:italic;text-align:right">1PR8</p>
 
-The *minimum grey level* :cite:`Aerts2014`
-:math:`F_{\mathit{ih.min}}` is equal to the lowest discretised grey
-level present in :math:`\mathbf{X}_{d}`. For *fixed bin number*
-discretisation :math:`F_{\mathit{ih.min}}=1` by definition, but it may
-deviate for *fixed bin size* discretisation.
+The *minimum discretised intensity* :cite:`Aerts2014` is
+equal to the lowest discretised intensity present in
+:math:`\mathbf{X}_{d}`, i.e.:
 
-Intensity histogram 10\ :sup:`th` percentile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
+.. math:: F_{\mathit{ih.min}} = \text{min}(\mathbf{X}_{d})
 
-  <p style="color:grey;font-style:italic;text-align:right">GPMT</p>
+For *fixed bin number* discretisation :math:`F_{\mathit{ih.min}}=1` by
+definition, but :math:`F_{\mathit{ih.min}}>1` is possible for *fixed bin
+size* discretisation.
 
-:math:`P_{10}` is the 10\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`
-and is defined as :math:`F_{\mathit{ih.P10}}`.
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 1           |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 1           |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 3           | 0.16       | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 1           |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 1           |            | strong          |
++----------------+-------------+------------+-----------------+
 
-Intensity histogram 90\ :sup:`th` percentile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
+Table: Benchmark table for the *minimum* feature.
 
-  <p style="color:grey;font-style:italic;text-align:right">OZ0C</p>
+10\ :sup:`th` discretised intensity percentile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:math:`P_{10}` is the 10\ :sup:`th` percentile of
+:math:`\mathbf{X}_{d}`.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 15          | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 14          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 24          | 0.7        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 11          | 0.7        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 13          | 0.7        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *10th percentile* feature.
+
+90\ :sup:`th` discretised intensity percentile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :math:`P_{90}` is the 90\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`
 and is defined as :math:`F_{\mathit{ih.P90}}`.
 
-Intensity histogram maximum grey level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 4           |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 24          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 22          | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 44          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 21          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 25          | 0.2        | strong          |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">3NCY</p>
+Table: Benchmark table for the *90th percentile* feature.
 
-The *maximum grey level* :cite:`Aerts2014`
-:math:`F_{\mathit{ih.max}}` is equal to the highest discretised grey
-level present in :math:`\mathbf{X}_{d}`. :math:`F_{\mathit{ih.max}}=N_g`
-by definition.
+Note that the *90\ :sup:`th` discretised intensity percentile* obtained
+for the digital phantom may differ from the above benchmark value
+depending on the implementation used to compute it. For example, some
+implementations were found to produce a value of 4.2 instead of 4 for
+this feature.
+
+Maximum discretised intensity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The *maximum discretised intensity* :cite:`Aerts2014` is
+equal to the highest discretised intensity present in
+:math:`\mathbf{X}_{d}`, i.e.:
+
+.. math:: F_{\mathit{ih.max}} = \text{max}(\mathbf{X}_{d})
+
+By definition, :math:`F_{\mathit{ih.max}}=N_g`.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 6           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 36          | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 32          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 56          | 0.5        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 32          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 32          |            | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *maximum* feature.
 
 Intensity histogram mode
-~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">AMMC</p>
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *mode* of :math:`\mathbf{X}_{d}` :math:`F_{\mathit{ih.mode}}` is the
-most common discretised grey level present, i.e. :math:`i` for which
-count :math:`n_i` is maximal. The mode may not be uniquely defined. When
-multiple bins contain the highest grey level count, the bin closest to
-the histogram mean is chosen as :math:`F_{\mathit{ih.mode}}`. In
-pathological cases with two such bins equidistant to the mean, the bin
-to the left of the mean is selected.
+most common discretised intensity present, i.e. the value :math:`i` for
+with the highest count :math:`n_i`. The mode may not be uniquely
+defined. When the highest count is found in multiple bins, the value
+:math:`i` of the bin closest to the *mean discretised intensity* is
+chosen as *intensity histogram mode*. In pathological cases with two
+such bins equidistant to the mean, the bin to the left of the mean is
+selected.
 
-Intensity histogram interquartile range
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 23          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 20          | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 43          | 0.1        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 20          | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 24          | 0.1        | strong          |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">WR0O</p>
+Table: Benchmark table for the *mode* feature.
+
+Discretised intensity interquartile range
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *interquartile range* (IQR) of :math:`\mathbf{X}_{d}` is defined as:
 
 .. math:: F_{\mathit{ih.iqr}} = P_{75}-P_{25}
 
 :math:`P_{25}` and :math:`P_{75}` are the 25\ :sup:`th` and
-75\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`, respectively. The
-interquartile range of :math:`\mathbf{X}_{d}` is always an integer.
+75\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`, respectively.
 
-Intensity histogram range
-~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 3           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 2           |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 2           |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 3           | 0.21       | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 2           | 0.06       | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 1           | 0.06       | strong          |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">5Z3W</p>
+Table: Benchmark table for the *interquartile range* feature.
 
-The *range* of grey levels :cite:`Aerts2014` in the
-histogram is defined as:
+Discretised intensity range
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The *discretised intensity range* :cite:`Aerts2014` is
+defined as:
 
 .. math:: F_{\mathit{ih.range}} = \text{max}(\mathbf{X}_{d}) - \text{min}(\mathbf{X}_{d})
 
-The *intensity histogram range* is therefore equal to the width of the
-histogram. For *fixed bin number* discretisation
-:math:`F_{\mathit{ih.range}}=N_g` by definition.
+For *fixed bin number* discretisation, the *discretised intensity
+range* equals :math:`N_g` by definition.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 5           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 35          | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 31          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 53          | 0.6        | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 31          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 31          |            | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *range* feature.
 
 Intensity histogram mean absolute deviation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">D2ZX</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *mean absolute deviation* :cite:`Aerts2014` is a
 measure of dispersion from the mean of :math:`\mathbf{X}_{d}`:
@@ -1349,14 +2482,29 @@ measure of dispersion from the mean of :math:`\mathbf{X}_{d}`:
 
 Here :math:`\mu=F_{\mathit{ih.mean}}`.
 
-Intensity histogram robust mean absolute deviation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.55        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 2.94        | 0.06       | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 2.67        | 0.03       | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 6.32        | 0.15       | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 3.15        | 0.05       | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 3.69        | 0.1        | strong          |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">WRZB</p>
+Table: Benchmark table for the *mean absolute deviation* feature.
+
+Intensity histogram robust mean absolute deviation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Intensity histogram mean absolute deviation* may be affected by
-outliers. To increase robustness, the set of discretised grey levels
+outliers. To increase robustness, the set of discretised intensities
 under consideration can be restricted to those which are closer to the
 center of the distribution. Let
 
@@ -1364,20 +2512,35 @@ center of the distribution. Let
 
 In short, :math:`\mathbf{X}_{d,10-90}` is the set of
 :math:`N_{v,10-90}\leq N_v` voxels in :math:`\mathbf{X}_{d}` whose
-discretised grey levels are equal to, or lie between, the values
-corresponding to the 10\ :sup:`th` and 90\ :sup:`th` percentiles of
-:math:`\mathbf{X}_{d}`. The robust mean absolute deviation is then:
+discretised intensities fall in the interval bounded by the
+10\ :sup:`th` and 90\ :sup:`th` percentiles of :math:`\mathbf{X}_{d}`.
+The robust mean absolute deviation is then:
 
 .. math:: F_{\mathit{ih.rmad}} = \frac{1}{N_{v,10-90}}\sum_{k=1}^{N_{v,10-90}} \left|X_{d,10-90,k}-\overline{X}_{d,10-90}\right|
 
 :math:`\overline{X}_{d,10-90}` denotes the sample mean of
 :math:`\mathbf{X}_{d,10-90}`.
 
-Intensity histogram median absolute deviation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.11        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 1.18        | 0.04       | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 1.03        | 0.03       | moderate        |
++----------------+-------------+------------+-----------------+
+| config. C      | 2.59        | 0.14       | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 1.33        | 0.06       | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 1.46        | 0.09       | moderate        |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">4RNL</p>
+Table: Benchmark table for the *robust mean absolute deviation* feature.
+
+Intensity histogram median absolute deviation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Histogram median absolute deviation* is conceptually similar to
 *histogram mean absolute deviation*, but measures dispersion from the
@@ -1387,40 +2550,86 @@ median instead of mean. Thus:
 
 Here, median :math:`M = F_{\mathit{ih.median}}`.
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.15        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 2.58        | 0.05       | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 2.28        | 0.02       | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 4.75        | 0.12       | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 2.41        | 0.04       | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 2.89        | 0.07       | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *median absolute deviation* feature.
+
 Intensity histogram coefficient of variation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  <p style="color:grey;font-style:italic;text-align:right">CWYJ</p>
-
-The *coefficient of variation* measures the dispersion of the histogram.
-It is defined as:
+The *coefficient of variation* measures the dispersion of the
+discretised intensity distribution. It is defined as:
 
 .. math:: F_{\mathit{ih.cov}}=\frac{\sigma}{\mu}
 
 Here :math:`\sigma={F_{\mathit{ih.var}}}^{1/2}` and
 :math:`\mu=F_{\mathit{ih.mean}}` are the standard deviation and mean of
-the discretised grey level distribution, respectively.
+the discretised intensity distribution, respectively.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.812       |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.227       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.229       | 0.004      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.234       | 0.005      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.252       | 0.006      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.254       | 0.006      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *coefficient of variation* feature.
 
 Intensity histogram quartile coefficient of dispersion
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">SLWD</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *quartile coefficient of dispersion* is a more robust alternative to
-*coefficient of variance*. It is defined as:
+the *intensity histogram coefficient of variance*. It is defined as:
 
 .. math:: F_{\mathit{ih.qcod}} = \frac{P_{75}-P_{25}}{P_{75}+P_{25}}
 
 :math:`P_{25}` and :math:`P_{75}` are the 25\ :sup:`th` and
 75\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`, respectively.
 
-Intensity histogram entropy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.6         |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.0455      |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.05        | 0.0005     | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.0361      | 0.0027     | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.05        | 0.0021     | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.0213      | 0.0015     | strong          |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">TLU2</p>
+Table: Benchmark table for the *quartile coefficient of dispersion*
+feature.
+
+Discretised intensity entropy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Entropy* :cite:`Aerts2014` is an information-theoretic
 concept that gives a metric for the information contained within
@@ -1429,24 +2638,61 @@ which is defined as:
 
 .. math:: F_{\mathit{ih.entropy}} = - \sum_{i=1}^{N_g} p_i \log_2 p_i
 
-Intensity histogram uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
+Note that *entropy* can only be meaningfully defined for discretised
+intensities as it will tend to :math:`-\log_2 N_v` for continuous
+intensity distributions.
 
-  <p style="color:grey;font-style:italic;text-align:right">BJ5W</p>
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1.27        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 3.36        | 0.03       | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 3.16        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 3.73        | 0.04       | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 2.94        | 0.01       | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 3.22        | 0.02       | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *entropy* feature.
+
+Discretised intensity uniformity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Uniformity* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}` is
 defined as:
 
 .. math:: F_{\mathit{ih.uniformity}} = \sum_{i=1}^{N_g} p_i^2
 
-Note that this feature is sometimes also referred to as *energy*.
+For histograms where most intensities are contained in a single bin,
+*uniformity* approaches :math:`1`. The lower bound is :math:`1/N_{g}`.
+
+Note that this feature is sometimes referred to as *energy*.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.512       |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.15        | 0.002      | very strong     |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.174       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.14        | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.229       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.184       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *uniformity* feature.
 
 Maximum histogram gradient
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">12CE</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The histogram gradient :math:`\mathbf{H}'` of intensity histogram
 :math:`\mathbf{H}` can be calculated as:
@@ -1463,44 +2709,111 @@ Histogram :math:`\mathbf{H}` should be non-sparse, i.e. bins where
 :math:`n_i=0` should not be omitted. Ostensibly, the histogram gradient
 can be calculated in different ways. The method above has the advantages
 of being easy to implement and leading to a gradient :math:`\mathbf{H}'`
-with same size as :math:`\mathbf{H}`. This helps avoid ambiguity
-concerning correspondence between the discretised grey level and the
-bin. The *maximum histogram gradient* :cite:`VanDijk2016`
-is:
+with same size as :math:`\mathbf{H}`. This helps maintain a direct
+correspondence between the discretised intensities in :math:`\mathbf{H}`
+and the bins of :math:`\mathbf{H}'`. The *maximum histogram gradient*
+:cite:`VanDijk2016` is:
 
 .. math:: F_{\mathit{ih.max.grad}} = \text{max}\left(\mathbf{H}'\right)
 
-Maximum histogram gradient grey level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+------------------------------+------------+-----------------+
+| **data**       | **value**                    | **tol.**   | **consensus**   |
++================+==============================+============+=================+
+| dig. phantom   | 8                            |            | very strong     |
++----------------+------------------------------+------------+-----------------+
+| config. A      | :math:`1.1 \times 10^{4}`    | 100        | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. B      | :math:`3.22 \times 10^{3}`   | 50         | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. C      | :math:`4.75 \times 10^{3}`   | 30         | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. D      | :math:`7.26 \times 10^{3}`   | 200        | strong          |
++----------------+------------------------------+------------+-----------------+
+| config. E      | :math:`6.01 \times 10^{3}`   | 130        | strong          |
++----------------+------------------------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">8E6O</p>
+Table: Benchmark table for the *maximum histogram gradient* feature.
 
-The *maximum histogram gradient grey level*
+Maximum histogram gradient intensity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The *maximum histogram gradient intensity*
 :cite:`VanDijk2016` :math:`F_{\mathit{ih.max.grad.gl}}` is
-the discretised grey level corresponding to the *maximum histogram
-gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was maximal.
+the discretised intensity corresponding to the *maximum histogram
+gradient*, i.e. the value :math:`i` in :math:`\mathbf{H}` for which
+:math:`\mathbf{H}'` is maximal.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 3           |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 21          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 19          | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 41          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 19          | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 23          | 0.2        | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *maximum histogram gradient intensity*
+feature.
 
 Minimum histogram gradient
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">VQB3</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *minimum histogram gradient* :cite:`VanDijk2016` is:
 
 .. math:: F_{\mathit{ih.min.grad}} = \text{min}\left(\mathbf{H}'\right)
 
-Minimum histogram gradient grey level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------------------------+------------+-----------------+
+| **data**       | **value**                     | **tol.**   | **consensus**   |
++================+===============================+============+=================+
+| dig. phantom   | :math:`-`\ 50                 |            | very strong     |
++----------------+-------------------------------+------------+-----------------+
+| config. A      | :math:`-1.01 \times 10^{4}`   | 100        | strong          |
++----------------+-------------------------------+------------+-----------------+
+| config. B      | :math:`-3.02 \times 10^{3}`   | 50         | strong          |
++----------------+-------------------------------+------------+-----------------+
+| config. C      | :math:`-4.68 \times 10^{3}`   | 50         | strong          |
++----------------+-------------------------------+------------+-----------------+
+| config. D      | :math:`-6.67 \times 10^{3}`   | 230        | strong          |
++----------------+-------------------------------+------------+-----------------+
+| config. E      | :math:`-6.11 \times 10^{3}`   | 180        | strong          |
++----------------+-------------------------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">RHQZ</p>
+Table: Benchmark table for the *minimum histogram gradient* feature.
 
-The *minimum histogram gradient grey level*
+Minimum histogram gradient intensity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The *minimum histogram gradient intensity*
 :cite:`VanDijk2016` :math:`F_{\mathit{ih.min.grad.gl}}` is
-the discretised grey level corresponding to the *minimum histogram
-gradient*, i.e. :math:`i` for which :math:`\mathbf{H}'` was minimal.
+the discretised intensity corresponding to the *minimum histogram
+gradient*, i.e. the value :math:`i` in :math:`\mathbf{H}` for which
+:math:`\mathbf{H}'` is minimal.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 1           |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      | 24          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 22          | 0.3        | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 44          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 22          | 0.4        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 25          | 0.2        | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *minimum histogram gradient intensity*
+feature.
 
 .. _sect_ivh:
 
@@ -1510,33 +2823,33 @@ Intensity-volume histogram features
 
   <p style="color:grey;font-style:italic;text-align:right">P88C</p>
 
-The (cumulative) intensity-volume histogram (IVH) of the voxel grey
-level set :math:`\mathbf{X}_{gl}` of the ROI intensity mask describes
-the relationship between discretised grey level :math:`i` and the
-fraction of the volume containing at least grey level :math:`i`,
-:math:`\nu` :cite:`ElNaqa2009`. Dependent on the imaging
-modality, the calculation of IVH features requires discretising
-:math:`\mathbf{X}_{gl}` to generate a discretised grey level voxel set
-:math:`\mathbf{X}_{d,gl}`. Moreover, the total range :math:`\mathbf{G}`
-of discretised grey level values with discretisation interval
-:math:`w_d` should be provided or determined. The total range determines
-the range of discretised grey level values to be included in the IVH,
-whereas the discretisation interval determines the difference between
-adjacent discretised grey levels in the IVH. For images with definite
-intensity units, the discretisation interval matches the bin width for
-discretisation. However, it differs for images with arbitrary intensity
-units. For consistency of IVH metric comparisons, it is recommended to
-use a range :math:`\mathbf{G}` as defined by the re-segmentation range
-whenever it is possible for imaging modalities with definite intensity
-units (both discrete and continuous cases).
+The (cumulative) intensity-volume histogram (IVH) of the set
+:math:`\mathbf{X}_{gl}` of voxel intensities in the ROI intensity mask
+describes the relationship between discretised intensity :math:`i` and
+the fraction of the volume containing at least intensity :math:`i`,
+:math:`\nu` :cite:`ElNaqa2009`.
 
-Definite intensity units – discrete case
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Depending on the imaging modality, the calculation of IVH features
+requires discretising :math:`\mathbf{X}_{gl}` to generate a new voxel
+set :math:`\mathbf{X}_{d,gl}` with discretised intensities. Moreover,
+the total range :math:`\mathbf{G}` of discretised intensities and the
+discretisation interval :math:`w_d` should be provided or determined.
+The total range :math:`\mathbf{G}` determines the range of discretised
+intensities to be included in the IVH, whereas the discretisation
+interval determines the intensity difference between adjacent
+discretised intensities in the IVH.
+
+Recommendations for discretisation parameters differ depending on what
+type of data the image represents, and how it is represented. These
+recommendations are described below.
+
+Discrete calibrated image intensities
+-------------------------------------
 
 Some imaging modalities by default generate voxels with calibrated,
 discrete intensities – for example CT. In this case, the discretised ROI
-voxel set :math:`\mathbf{X}_{d,gl}=\mathbf{X}_{gl}` (i.e. no
-discretisation required). If a re-segmentation range is provided (see
+voxel set :math:`\mathbf{X}_{d,gl}=\mathbf{X}_{gl}`, i.e. no
+discretisation required. If a re-segmentation range is provided (see
 Section [ref\_resegmentation]), the total range :math:`\mathbf{G}` is
 equal to the re-segmentation range. In the case of a half-open
 re-segmentation range, the upper limit of the range is
@@ -1544,21 +2857,21 @@ re-segmentation range, the upper limit of the range is
 :math:`\mathbf{G}=[\text{min}(\mathbf{X}_{gl}),\text{max}(\mathbf{X}_{gl})]`.
 The discretisation interval is :math:`w_d=1`.
 
-Definite intensity units – continuous case
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Continuous calibrated image intensities
+---------------------------------------
 
 Imaging with calibrated, continuous intensities such as PET requires
 discretisation to determine the IVH, while preserving the quantitative
 intensity information. The use of a *fixed bin size* discretisation
-method is thus recommended, see Section [discretisation]. Proper use of
-this method requires to set the minimum grey level :math:`X_{gl,min}`,
-the maximum grey level :math:`X_{gl,max}` and the bin width :math:`w_b`
-prior to discretisation. If a re-segmentation range is defined (see
-Section [ref\_resegmentation]), :math:`X_{gl,min}` is set to the lower
-bound of the re-segmentation range and :math:`X_{gl,max}` to the upper
-bound; otherwise :math:`X_{gl,min} = \text{min}(\mathbf{X}_{gl})` and
+method is thus recommended, see Section [discretisation]. This method
+requires a minimum intensity :math:`X_{gl,min}`, a maximum intensity
+:math:`X_{gl,max}` and the bin width :math:`w_b`. If a re-segmentation
+range is defined (see Section [ref\_resegmentation]), :math:`X_{gl,min}`
+is set to the lower bound of the re-segmentation range and
+:math:`X_{gl,max}` to the upper bound; otherwise
+:math:`X_{gl,min} = \text{min}(\mathbf{X}_{gl})` and
 :math:`X_{gl,max} = \text{max}(\mathbf{X}_{gl})` (i.e. the minimum and
-maximum grey levels in the imaging volume prior to discretisation). The
+maximum intensities in the imaging volume prior to discretisation). The
 bin width :math:`w_b` is modality dependent, but should be small
 relative to the intensity range, e.g. 0.10 SUV for :sup:`18`\ F-FDG-PET.
 
@@ -1575,12 +2888,12 @@ The total range is then
 the discretisation interval matches the bin width, i.e. :math:`w_d=w_b`.
 
 Arbitrary intensity units
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
-Some imaging modalities such as raw MRI data have arbitrary intensities.
-In such cases, a *fixed bin number* discretisation method with
-:math:`N_g=1000` bins is recommended, see Section [discretisation]. The
-discretisation bin width is
+Some imaging modalities, such as many MRI sequences, produce arbitrary
+intensities. In such cases, a *fixed bin number* discretisation method
+with :math:`N_g=1000` bins is recommended, see Section [discretisation].
+The discretisation bin width is
 :math:`w_b=\left(X_{gl,max}-X_{gl,min}\right)/N_g`, with
 :math:`X_{gl,max}=\text{max}\left(\mathbf{X}_{gl}\right)` and
 :math:`X_{gl,min}=\text{min}\left(\mathbf{X}_{gl}\right)`, as
@@ -1592,36 +2905,34 @@ consequentially the discretisation interval is :math:`w_d=1` and the
 total range is :math:`\mathbf{G}=[1,N_g]`
 
 Calculating the IV histogram
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 We use :math:`\mathbf{X}_{d,gl}` to calculate fractional volumes and
-fractional grey levels.
+fractional intensities.
 
 As voxels for the same image stack generally all have the same
-dimensions, we may define fractional volume :math:`\nu` for discrete
-grey level :math:`i` in the range :math:`\mathbf{G}` with discretisation
-interval :math:`w_d` as:
+dimensions, we may define fractional volume :math:`\nu` for discretised
+intensity :math:`i`:
 
 .. math:: \nu_i = 1 - \frac{1}{N_v}\sum_{k=1}^{N_v}\left[X_{d,gl,k}< i\right]
 
 Here :math:`\left[\ldots\right]` is an Iverson bracket, yielding
 :math:`1` if the condition is true and :math:`0` otherwise. In essence,
-we count the voxels containing a discretised grey level smaller than
+we count the voxels containing a discretised intensity smaller than
 :math:`i`, divide by the total number of voxels, and then subtract this
 volume fraction to find :math:`\nu_i`.
 
-The grey level fraction :math:`\gamma` for discrete grey level :math:`i`
-in the range :math:`\mathbf{G}` with discretisation interval :math:`w_d`
-is calculated as:
+The intensity fraction :math:`\gamma` for discretised intensity
+:math:`i` in the range :math:`\mathbf{G}` is calculated as:
 
 .. math:: \gamma_i=\frac{i-\text{min}\left(\mathbf{G}\right)} {\text{max}\left(\mathbf{G}\right) - \text{min}\left(\mathbf{G}\right)}
 
-Note that we evaluate grey levels that may actually be absent in
-:math:`\mathbf{X}_{d,gl}`. For the digital phantom of the benchmark data
-sets (Chapter [chap\_benchmark sets]) grey levels 2 and 5 are absent,
-but still evaluated to determine both the fractional volume and the grey
-level fraction. An example IVH for the digital phantom is shown in Table
-[TableAUC-CVH].
+Note that intensity fractions are also calculated for discretised
+intensities that are absent in :math:`\mathbf{X}_{d,gl}`. For example
+intensities 2 and 5 are absent in the digital phantom (see Chapter
+[chap\_benchmark sets]), but are still evaluated to determine both the
+fractional volume and the intensity fraction. An example IVH for the
+digital phantom is shown in Table [TableAUC-CVH].
 
 +-------------+------------------+---------------+
 | :math:`i`   | :math:`\gamma`   | :math:`\nu`   |
@@ -1639,25 +2950,22 @@ level fraction. An example IVH for the digital phantom is shown in Table
 | 6           | 1.0              | 0.095         |
 +-------------+------------------+---------------+
 
-Table: Example intensity-volume histogram evaluated at discrete grey
-levels :math:`i` of the digital phantom. The total range
+Table: Example intensity-volume histogram evaluated at discrete
+intensities :math:`i` of the digital phantom. The total range
 :math:`\mathbf{G}=[1,6]`, with discretisation interval :math:`w=1`. Thus
-:math:`\gamma` is the fractional grey level and :math:`\nu` is the
-corresponding volume fraction that contains grey level :math:`i` or
+:math:`\gamma` is the intensity fraction and :math:`\nu` is the
+corresponding volume fraction that contains intensity :math:`i` or
 greater.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 We recommend calculating intensity-volume histogram features using the
 3D volume (). Computing features per slice and subsequently averaging ()
 is not recommended.
 
 Volume at intensity fraction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">BC2M</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *volume at intensity fraction* :math:`V_x` is the largest volume
 fraction :math:`\nu` that has an intensity fraction :math:`\gamma` of at
@@ -1669,52 +2977,171 @@ indicate the volume fraction receiving at least 10 Gy planned dose.
 features are defined as :math:`F_{\mathit{ivh.V10}}` and
 :math:`F_{\mathit{ivh.V90}}`, respectively.
 
-Intensity at volume fraction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.324       |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.978       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.977       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.998       | 0.001      | moderate        |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.972       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.975       | 0.002      | strong          |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">GBPN</p>
+Table: Benchmark table for the *volume fraction at 10% intensity*
+feature.
+
++----------------+-------------------------------+-------------------------------+-----------------+
+| **data**       | **value**                     | **tol.**                      | **consensus**   |
++================+===============================+===============================+=================+
+| dig. phantom   | 0.0946                        |                               | very strong     |
++----------------+-------------------------------+-------------------------------+-----------------+
+| config. A      | :math:`6.98 \times 10^{-5}`   | :math:`1.03 \times 10^{-5}`   | strong          |
++----------------+-------------------------------+-------------------------------+-----------------+
+| config. B      | :math:`7.31 \times 10^{-5}`   | :math:`1.03 \times 10^{-5}`   | strong          |
++----------------+-------------------------------+-------------------------------+-----------------+
+| config. C      | 0.000152                      | :math:`2 \times 10^{-5}`      | strong          |
++----------------+-------------------------------+-------------------------------+-----------------+
+| config. D      | :math:`9 \times 10^{-5}`      | 0.000415                      | strong          |
++----------------+-------------------------------+-------------------------------+-----------------+
+| config. E      | 0.000157                      | 0.000248                      | strong          |
++----------------+-------------------------------+-------------------------------+-----------------+
+
+Table: Benchmark table for the *volume fraction at 90% intensity*
+feature.
+
+Intensity at volume fraction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *intensity at volume fraction* :math:`I_x` is the minimum
-discretised grey level :math:`i` present in at most :math:`x\%` of the
+discretised intensity :math:`i` present in at most :math:`x\%` of the
 volume. :cite:`ElNaqa2009` defined both :math:`I_{10}` and
 :math:`I_{90}` as features. In the context of this work, these two
 features are defined as :math:`F_{\mathit{ivh.I10}}` and
 :math:`F_{\mathit{ivh.I90}}`, respectively.
 
-Volume fraction difference between intensity fractions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 5           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 96          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 92          |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 88.8        | 0.2        | moderate        |
++----------------+-------------+------------+-----------------+
+| config. D      | 87          | 0.1        | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 770         | 5          | moderate        |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">DDTU</p>
+Table: Benchmark table for the *intensity at 10% volume* feature.
+
++----------------+------------------+------------+-----------------+
+| **data**       | **value**        | **tol.**   | **consensus**   |
++================+==================+============+=================+
+| dig. phantom   | 2                |            | very strong     |
++----------------+------------------+------------+-----------------+
+| config. A      | :math:`-`\ 128   | 8          | strong          |
++----------------+------------------+------------+-----------------+
+| config. B      | :math:`-`\ 135   | 8          | strong          |
++----------------+------------------+------------+-----------------+
+| config. C      | :math:`-`\ 421   | 14         | strong          |
++----------------+------------------+------------+-----------------+
+| config. D      | :math:`-`\ 303   | 20         | strong          |
++----------------+------------------+------------+-----------------+
+| config. E      | 399              | 17         | moderate        |
++----------------+------------------+------------+-----------------+
+
+Table: Benchmark table for the *intensity at 90% volume* feature.
+
+Volume fraction difference between intensity fractions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature is the difference between the volume fractions at two
 different intensity fractions, e.g. :math:`V_{10}-V_{90}`
 :cite:`ElNaqa2009`. In the context of this work, this
 feature is defined as :math:`F_{\mathit{ivh.V10minusV90}}`.
 
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.23        |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 0.978       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 0.977       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.997       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.971       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.974       | 0.001      | strong          |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *volume fraction difference between 10%
+and 90% intensity* feature.
+
 Intensity fraction difference between volume fractions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  <p style="color:grey;font-style:italic;text-align:right">CNV2</p>
-
-This feature is the difference between discretised grey levels at two
+This feature is the difference between discretised intensities at two
 different fractional volumes, e.g. :math:`I_{10} - I_{90}`
 :cite:`ElNaqa2009`. In the context of this work, this
 feature is defined as :math:`F_{\mathit{ivh.I10minusI90}}`.
 
-Area under the IVH curve
-~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 3           |            | very strong     |
++----------------+-------------+------------+-----------------+
+| config. A      | 224         | 8          | strong          |
++----------------+-------------+------------+-----------------+
+| config. B      | 227         | 8          | strong          |
++----------------+-------------+------------+-----------------+
+| config. C      | 510         | 14         | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 390         | 20         | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 371         | 13         | moderate        |
++----------------+-------------+------------+-----------------+
 
-  <p style="color:grey;font-style:italic;text-align:right">9CMM</p>
+Table: Benchmark table for the *intensity difference between 10% and 90%
+volume* feature.
+
+Area under the IVH curve
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *area under the IVH curve* :math:`F_{\mathit{ivh.auc}}` was defined
 by :cite:`VanVelden2011`. The *area under the IVH curve*
 can be approximated by calculating the Riemann sum using the trapezoidal
-rule. Note that if there is only one grey level in the ROI, the *area
-under the IVH curve* :math:`F_{\mathit{ivh.auc}}=0`.
+rule. Note that if there is only one discretised intensity in the ROI,
+we define the *area under the IVH curve* :math:`F_{\mathit{ivh.auc}}=0`.
+
++----------------+-------------+------------+-----------------+
+| **data**       | **value**   | **tol.**   | **consensus**   |
++================+=============+============+=================+
+| dig. phantom   | 0.32        |            | strong          |
++----------------+-------------+------------+-----------------+
+| config. A      |             |            | moderate        |
++----------------+-------------+------------+-----------------+
+| config. B      |             |            | moderate        |
++----------------+-------------+------------+-----------------+
+| config. C      | 0.681       | 0.003      | strong          |
++----------------+-------------+------------+-----------------+
+| config. D      | 0.563       | 0.012      | strong          |
++----------------+-------------+------------+-----------------+
+| config. E      | 0.663       | 0.006      | moderate        |
++----------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *area under the IVH curve* feature. Unset
+values () indicate the lack of reliable benchmark values.
 
 Grey level co-occurrence based features
 ---------------------------------------
@@ -1730,16 +3157,16 @@ discretised before calculation of texture features, see Section
 [discretisation].
 
 The grey level co-occurrence matrix (GLCM) is a matrix that expresses
-how combinations of discretised grey levels of neighbouring pixels, or
-voxels in a 3D volume, are distributed along one of the image
-directions. Generally, the neighbourhood for GLCM is a 26-connected
-neighbourhood in 3D and a 8-connected neighbourhood in 2D. Thus, in 3D
-there are 13 unique direction vectors within the neighbourhood for
-Chebyshev distance :math:`\delta=1`, i.e. :math:`(0,0,1)`,
-:math:`(0,1,0)`, :math:`(1,0,0)`, :math:`(0,1,1)`, :math:`(0,1,-1)`,
-:math:`(1,0,1)`, :math:`(1,0,-1)`, :math:`(1,1,0)`, :math:`(1,-1,0)`,
-:math:`(1,1,1)`, :math:`(1,1,-1)`, :math:`(1,-1,1)` and
-:math:`(1,-1,-1)`, whereas in 2D the direction vectors are
+how combinations of discretised intensities (grey levels) of
+neighbouring pixels, or voxels in a 3D volume, are distributed along one
+of the image directions. Generally, the neighbourhood for GLCM is a
+26-connected neighbourhood in 3D and a 8-connected neighbourhood in 2D.
+Thus, in 3D there are 13 unique direction vectors within the
+neighbourhood for Chebyshev distance :math:`\delta=1`, i.e.
+:math:`(0,0,1)`, :math:`(0,1,0)`, :math:`(1,0,0)`, :math:`(0,1,1)`,
+:math:`(0,1,-1)`, :math:`(1,0,1)`, :math:`(1,0,-1)`, :math:`(1,1,0)`,
+:math:`(1,-1,0)`, :math:`(1,1,1)`, :math:`(1,1,-1)`, :math:`(1,-1,1)`
+and :math:`(1,-1,-1)`, whereas in 2D the direction vectors are
 :math:`(1,0,0)`, :math:`(1,1,0)`, :math:`(0,1,0)` and :math:`(-1,1,0)`.
 
 A GLCM is calculated for each direction vector, as follows. Let
@@ -1797,7 +3224,7 @@ voxels at :math:`(0,0,3)`, :math:`(0,3,0)`, :math:`(3,0,0)`,
 considered.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 To improve rotational invariance, GLCM feature values are computed by
 aggregating information from the different underlying directional
@@ -1812,6 +3239,10 @@ aggregated as follows:
 #. Features are computed from a single matrix after merging 2D
    directional matrices per slice, and then averaged over slices ().
 
+#. Features are computed from a single matrix after merging 2D
+   directional matrices per direction, and then averaged over directions
+   ().
+
 #. The feature is computed from a single matrix after merging all 2D
    directional matrices ().
 
@@ -1821,7 +3252,7 @@ aggregated as follows:
 #. The feature is computed from a single matrix after merging all 3D
    directional matrices ().
 
-In methods 2,3 and 5, matrices are merged by summing the co-occurrence
+In methods 2,3,4 and 6, matrices are merged by summing the co-occurrence
 counts in each matrix element :math:`(i,j)` over the different matrices.
 Probability distributions are subsequently calculated for the merged
 GLCM, which is then used to calculate GLCM features. Feature values may
@@ -1834,27 +3265,13 @@ dependent strongly on the aggregation method.
 0.45 |Approaches to calculating grey level co-occurrence matrix-based
 features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated
 for direction :math:`\Delta` in slice :math:`k` (if applicable), and
-:math:`f_{\Delta k}` is the corresponding feature value. In (b), (c) and
+:math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and
 (e) the matrices are merged prior to feature calculation.|
 
 0.45 |Approaches to calculating grey level co-occurrence matrix-based
 features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated
 for direction :math:`\Delta` in slice :math:`k` (if applicable), and
-:math:`f_{\Delta k}` is the corresponding feature value. In (b), (c) and
-(e) the matrices are merged prior to feature calculation.|
-
-| 
-
-0.45 |Approaches to calculating grey level co-occurrence matrix-based
-features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated
-for direction :math:`\Delta` in slice :math:`k` (if applicable), and
-:math:`f_{\Delta k}` is the corresponding feature value. In (b), (c) and
-(e) the matrices are merged prior to feature calculation.|
-
-0.45 |Approaches to calculating grey level co-occurrence matrix-based
-features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated
-for direction :math:`\Delta` in slice :math:`k` (if applicable), and
-:math:`f_{\Delta k}` is the corresponding feature value. In (b), (c) and
+:math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and
 (e) the matrices are merged prior to feature calculation.|
 
 | 
@@ -1862,11 +3279,31 @@ for direction :math:`\Delta` in slice :math:`k` (if applicable), and
 0.45 |Approaches to calculating grey level co-occurrence matrix-based
 features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated
 for direction :math:`\Delta` in slice :math:`k` (if applicable), and
-:math:`f_{\Delta k}` is the corresponding feature value. In (b), (c) and
+:math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and
+(e) the matrices are merged prior to feature calculation.|
+
+0.45 |Approaches to calculating grey level co-occurrence matrix-based
+features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated
+for direction :math:`\Delta` in slice :math:`k` (if applicable), and
+:math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and
+(e) the matrices are merged prior to feature calculation.|
+
+| 
+
+0.45 |Approaches to calculating grey level co-occurrence matrix-based
+features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated
+for direction :math:`\Delta` in slice :math:`k` (if applicable), and
+:math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and
+(e) the matrices are merged prior to feature calculation.|
+
+0.45 |Approaches to calculating grey level co-occurrence matrix-based
+features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated
+for direction :math:`\Delta` in slice :math:`k` (if applicable), and
+:math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and
 (e) the matrices are merged prior to feature calculation.|
 
 Distances and distance weighting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 The default neighbourhood includes all voxels within Chebyshev distance
 :math:`1`. The corresponding direction vectors are multiplied by the
@@ -1894,10 +3331,7 @@ weighting. Weighting may furthermore have no effect for distance
 exceptions, we recommend against using distance weighting for GLCM.
 
 Joint maximum
-~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">GYBY</p>
+^^^^^^^^^^^^^
 
 *Joint maximum* :cite:`Haralick1979` is the probability
 corresponding to the most common grey level co-occurrence in the GLCM:
@@ -1905,10 +3339,7 @@ corresponding to the most common grey level co-occurrence in the GLCM:
 .. math:: F_{\mathit{cm.joint.max}}=\text{max}(p_{ij})
 
 Joint average
-~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">60VM</p>
+^^^^^^^^^^^^^
 
 *Joint average* :cite:`Unser1986` is the grey level
 weighted sum of joint probabilities:
@@ -1916,10 +3347,7 @@ weighted sum of joint probabilities:
 .. math:: F_{\mathit{cm.joint.avg}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\, p_{ij}
 
 Joint variance
-~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">UR99</p>
+^^^^^^^^^^^^^^
 
 The *joint variance* :cite:`Unser1986`, which is also
 called *sum of squares* :cite:`Haralick1973`, is defined
@@ -1931,20 +3359,14 @@ Here :math:`\mu` is equal to the value of
 :math:`F_{\mathit{cm.joint.avg}}`, which was defined above.
 
 Joint entropy
-~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">TU9B</p>
+^^^^^^^^^^^^^
 
 *Joint entropy* :cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.joint.entr}}=-\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{ij} \log_2 p_{ij}
 
 Difference average
-~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">TF7R</p>
+^^^^^^^^^^^^^^^^^^
 
 The *difference average* :cite:`Unser1986` for the diagonal
 probabilities is defined as:
@@ -1955,10 +3377,7 @@ By definition *difference average* is equivalent to the *dissimilarity*
 feature :cite:`VanGriethuysen2017`.
 
 Difference variance
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">D3YU</p>
+^^^^^^^^^^^^^^^^^^^
 
 The *difference variance* for the diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -1968,10 +3387,7 @@ The *difference variance* for the diagonal probabilities
 Here :math:`\mu` is equal to the value of *difference average*.
 
 Difference entropy
-~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">NTRS</p>
+^^^^^^^^^^^^^^^^^^
 
 The *difference entropy* for the diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -1979,10 +3395,7 @@ The *difference entropy* for the diagonal probabilities
 .. math:: F_{\mathit{cm.diff.entr}}=-\sum_{k=0}^{N_g-1} p_{i-j,k} \log_2 p_{i-j,k}
 
 Sum average
-~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">ZGXS</p>
+^^^^^^^^^^^
 
 The *sum average* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -1994,10 +3407,7 @@ By definition,
 :cite:`VanGriethuysen2017`.
 
 Sum variance
-~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">OEEB</p>
+^^^^^^^^^^^^
 
 The *sum variance* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -2009,10 +3419,7 @@ is mathematically identical to the *cluster tendency* feature
 :cite:`VanGriethuysen2017`.
 
 Sum entropy
-~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">P6QZ</p>
+^^^^^^^^^^^
 
 The *sum entropy* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -2020,10 +3427,7 @@ The *sum entropy* for the cross-diagonal probabilities
 .. math:: F_{\mathit{cm.sum.entr}}=-\sum_{k=2}^{2N_g} p_{i+j,k} \log_2 p_{i+j,k}
 
 Angular second moment
-~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">8ZQL</p>
+^^^^^^^^^^^^^^^^^^^^^
 
 The *angular second moment* :cite:`Haralick1973`, which
 represents the energy of :math:`\mathbf{P}_{\Delta}`, is defined as:
@@ -2035,10 +3439,7 @@ This feature is also called *energy*
 :cite:`Clausi2002`.
 
 Contrast
-~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">ACUI</p>
+^^^^^^^^
 
 *Contrast* assesses grey level variations
 :cite:`Haralick1973`. Hence elements of
@@ -2053,10 +3454,7 @@ is seemingly more complex, but rearranging and simplifying terms leads
 to the above formulation of *contrast*.
 
 Dissimilarity
-~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">8S9J</p>
+^^^^^^^^^^^^^
 
 *Dissimilarity* :cite:`Clausi2002` is conceptually similar
 to the *contrast* feature, and is defined as:
@@ -2067,10 +3465,7 @@ By definition *dissimilarity* is equivalent to the *difference average*
 feature :cite:`VanGriethuysen2017`.
 
 Inverse difference
-~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">IB1Z</p>
+^^^^^^^^^^^^^^^^^^
 
 *Inverse difference* is a measure of homogeneity
 :cite:`Clausi2002`. Grey level co-occurrences with a large
@@ -2086,10 +3481,7 @@ probabilities :cite:`VanGriethuysen2017`:
 .. math:: F_{\mathit{cm.inv.diff}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k}
 
 Normalised inverse difference
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">NDRX</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :cite:`Clausi2002` suggested normalising *inverse
 difference* to improve classification ability. The normalised feature is
@@ -2108,10 +3500,7 @@ probabilities :cite:`VanGriethuysen2017`:
 .. math:: F_{\mathit{cm.inv.diff.norm}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k/N_g}
 
 Inverse difference moment
-~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">WF0Z</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Inverse difference moment* :cite:`Haralick1973` is similar
 in concept to the *inverse difference* feature, but with lower weights
@@ -2128,10 +3517,7 @@ This feature is also called *homogeneity*
 :cite:`Unser1986`.
 
 Normalised inverse difference moment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">1QCO</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :cite:`Clausi2002` suggested normalising *inverse
 difference moment* to improve classification performance. This leads to
@@ -2145,10 +3531,7 @@ probabilities :cite:`VanGriethuysen2017`:
 .. math:: F_{\mathit{cm.inv.diff.mom.norm}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+\left(k/N_g\right)^2}
 
 Inverse variance
-~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">E8JP</p>
+^^^^^^^^^^^^^^^^
 
 The *inverse variance* :cite:`Aerts2014` feature is defined
 as:
@@ -2162,10 +3545,7 @@ instead of :math:`k=0`\ :cite:`VanGriethuysen2017`:
 .. math:: F_{\mathit{cm.inv.var}}=\sum_{k=1}^{N_g-1} \frac{p_{i-j,k}}{k^2}
 
 Correlation
-~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">NI2N</p>
+^^^^^^^^^^^
 
 *Correlation* :cite:`Haralick1973` is defined as:
 
@@ -2191,20 +3571,14 @@ Again, simplifying due to matrix symmetry yields:
 .. math:: F_{\mathit{cm.corr}}=\frac{1}{\sigma_{i.}^2} \sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i-\mu_{i.}\right) \left(j-\mu_{i.}\right)p_{ij}
 
 Autocorrelation
-~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">QWB0</p>
+^^^^^^^^^^^^^^^
 
 :cite:`soh1999texture` defined *autocorrelation* as:
 
 .. math:: F_{\mathit{cm.auto.corr}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\,j\,p_{ij}
 
 Cluster tendency
-~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">DG8W</p>
+^^^^^^^^^^^^^^^^
 
 *Cluster tendency* :cite:`Aerts2014` is defined as:
 
@@ -2221,10 +3595,7 @@ formulated as:
 feature :cite:`VanGriethuysen2017`.
 
 Cluster shade
-~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">7NFM</p>
+^^^^^^^^^^^^^
 
 *Cluster shade* :cite:`Unser1986` is defined as:
 
@@ -2239,10 +3610,7 @@ formulated as:
 .. math:: F_{\mathit{cm.clust.shade}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-2\mu_{i.}\right)^3 p_{ij}
 
 Cluster prominence
-~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">AE86</p>
+^^^^^^^^^^^^^^^^^^
 
 *Cluster prominence* :cite:`Unser1986` is defined as:
 
@@ -2255,11 +3623,8 @@ formulated as:
 
 .. math:: F_{\mathit{cm.clust.prom}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-2\mu_{i.}\right)^4 p_{ij}
 
-First measure of information correlation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">R8DG</p>
+Information correlation 1
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Information theoretic correlation* is estimated using two different
 measures :cite:`Haralick1973`. For symmetric
@@ -2277,11 +3642,8 @@ to the entropy of the column marginal probability.
 
 .. math:: \mathit{HXY}_1 = -\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{ij} \log_2 \left(p_{i.} p_{.j}\right)
 
-Second measure of information correlation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">JN9H</p>
+Information correlation 2
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *second measure of information theoretic correlation*
 :cite:`Haralick1973` is estimated as follows for symmetric
@@ -2330,7 +3692,7 @@ the runs over the grey values :math:`i` for run length :math:`j` is
 :math:`r_{.j}=\sum_{i=1}^{N_g} r_{ij}`.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 To improve rotational invariance, GLRLM feature values are computed by
 aggregating information from the different underlying directional
@@ -2345,6 +3707,10 @@ feature may be aggregated as follows:
 #. Features are computed from a single matrix after merging 2D
    directional matrices per slice, and then averaged over slices ().
 
+#. Features are computed from a single matrix after merging 2D
+   directional matrices per direction, and then averaged over directions
+   ().
+
 #. The feature is computed from a single matrix after merging all 2D
    directional matrices ().
 
@@ -2354,14 +3720,14 @@ feature may be aggregated as follows:
 #. The feature is computed from a single matrix after merging all 3D
    directional matrices ().
 
-In methods 2,3 and 5, matrices are merged by summing the run counts of
+In methods 2,3,4 and 6 matrices are merged by summing the run counts of
 each matrix element :math:`(i,j)` over the different matrices. Note that
 when matrices are merged, :math:`N_v` should likewise be summed to
 retain consistency. Feature values may dependent strongly on the
 aggregation method.
 
 Distance weighting
-^^^^^^^^^^^^^^^^^^
+------------------
 
 GLRLMs may be weighted for distance by multiplying the run lengths with
 a weighting factor :math:`w`. By default :math:`w=1`, but :math:`w` may
@@ -2380,10 +3746,7 @@ use, and we caution against it due to potential reproducibility issues.
 | 
 
 Short runs emphasis
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">22OV</p>
+^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises short run lengths
 :cite:`Galloway1975`. It is defined as:
@@ -2391,10 +3754,7 @@ This feature emphasises short run lengths
 .. math:: F_{\mathit{rlm.sre}} = \frac{1}{N_s} \sum_{j=1}^{N_r} \frac{r_{.j}}{j^2}
 
 Long runs emphasis
-~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">W4KF</p>
+^^^^^^^^^^^^^^^^^^
 
 This feature emphasises long run lengths
 :cite:`Galloway1975`. It is defined as:
@@ -2402,10 +3762,7 @@ This feature emphasises long run lengths
 .. math:: F_{\mathit{rlm.lre}} = \frac{1}{N_s} \sum_{j=1}^{N_r} j^2 r_{.j}
 
 Low grey level run emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">V3SW</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature is a grey level analogue to *short runs emphasis*
 :cite:`Chu1990`. Instead of short run lengths, low grey
@@ -2414,10 +3771,7 @@ levels are emphasised. The feature is defined as:
 .. math:: F_{\mathit{rlm.lgre}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{r_{i.}}{i^2}
 
 High grey level run emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">G3QZ</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *high grey level run emphasis* feature is a grey level analogue to
 *long runs emphasis* :cite:`Chu1990`. The feature
@@ -2426,10 +3780,7 @@ emphasises high grey levels, and is defined as:
 .. math:: F_{\mathit{rlm.hgre}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 r_{i.}
 
 Short run low grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">HTZT</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises runs in the upper left quadrant of the GLRLM,
 where short run lengths and low grey levels are located
@@ -2438,10 +3789,7 @@ where short run lengths and low grey levels are located
 .. math:: F_{\mathit{rlm.srlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{r_{ij}}{i^2 j^2}
 
 Short run high grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">GD3A</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises runs in the lower left quadrant of the GLRLM,
 where short run lengths and high grey levels are located
@@ -2450,10 +3798,7 @@ where short run lengths and high grey levels are located
 .. math:: F_{\mathit{rlm.srhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{i^2 r_{ij}}{j^2}
 
 Long run low grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">IVPO</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises runs in the upper right quadrant of the GLRLM,
 where long run lengths and low grey levels are located
@@ -2462,10 +3807,7 @@ where long run lengths and low grey levels are located
 .. math:: F_{\mathit{rlm.lrlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{j^2 r_{ij}}{i^2}
 
 Long run high grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">3KUM</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises runs in the lower right quadrant of the GLRLM,
 where long run lengths and high grey levels are located
@@ -2474,10 +3816,7 @@ where long run lengths and high grey levels are located
 .. math:: F_{\mathit{rlm.lrhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i^2 j^2 r_{ij}
 
 Grey level non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">R5YN</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature assesses the distribution of runs over the grey values
 :cite:`Galloway1975`. The feature value is low when runs
@@ -2486,10 +3825,7 @@ are equally distributed along grey levels. The feature is defined as:
 .. math:: F_{\mathit{rlm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} r_{i.}^2
 
 Normalised grey level non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">OVBL</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -2497,10 +3833,7 @@ It is defined as:
 .. math:: F_{\mathit{rlm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} r_{i.}^2
 
 Run length non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">W92Y</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This features assesses the distribution of runs over the run lengths
 :cite:`Galloway1975`. The feature value is low when runs
@@ -2509,10 +3842,7 @@ are equally distributed along run lengths. It is defined as:
 .. math:: F_{\mathit{rlm.rlnu}}= \frac{1}{N_s} \sum_{j=1}^{N_r} r_{.j}^2
 
 Normalised run length non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">IC23</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is normalised version of the *run length non-uniformity* feature.
 It is defined as:
@@ -2520,10 +3850,7 @@ It is defined as:
 .. math:: F_{\mathit{rlm.rlnu.norm}}= \frac{1}{N_s^2} \sum_{j=1}^{N_r} r_{.j}^2
 
 Run percentage
-~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">9ZK5</p>
+^^^^^^^^^^^^^^
 
 This feature measures the fraction of the number of realised runs and
 the maximum number of potential runs :cite:`Galloway1975`.
@@ -2537,10 +3864,7 @@ As noted before, when this feature is calculated using a merged GLRLM,
 matrices to allow proper normalisation.
 
 Grey level variance
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">8CE5</p>
+^^^^^^^^^^^^^^^^^^^
 
 This feature estimates the variance in runs over the grey levels. Let
 :math:`p_{ij} = r_{ij}/N_s` be the joint probability estimate for
@@ -2552,10 +3876,7 @@ finding discretised grey level :math:`i` with run length :math:`j`.
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i\,p_{ij}`.
 
 Run length variance
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">SXLW</p>
+^^^^^^^^^^^^^^^^^^^
 
 This feature estimates the variance in runs over the run lengths. As
 before let :math:`p_{ij} = r_{ij}/N_s`. The feature is defined as:
@@ -2566,10 +3887,7 @@ Mean run length is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} j\,p_{ij}`.
 
 Run entropy
-~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">HJ9O</p>
+^^^^^^^^^^^
 
 *Run entropy* was investigated by :cite:`Albregtsen2000`.
 Again, let :math:`p_{ij} = r_{ij}/N_s`. The entropy is then defined as:
@@ -2612,7 +3930,7 @@ discretised grey level :math:`i`, regardless of size. Likewise, let
 in Table [figGLSZM1].
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Three methods can be used to aggregate GLSZMs and arrive at a single
 feature value. A schematic example is shown in Figure
@@ -2632,7 +3950,7 @@ consistency. Feature values may dependent strongly on the aggregation
 method.
 
 Distances
-^^^^^^^^^
+---------
 
 The default neighbourhood for GLSZM is constructed using Chebyshev
 distance :math:`\delta=1`. Manhattan or Euclidean norms may also be used
@@ -2644,7 +3962,7 @@ different neighbourhoods for determining voxel linkage is non-standard
 use, and we caution against it due to potential reproducibility issues.
 
 Note on feature references
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 GLSZM feature definitions are based on the definitions of GLRLM features
 :cite:`Thibault2014`. Hence, references may be found in the
@@ -2671,30 +3989,21 @@ feature value. In (b) the matrices from the different slices are merged
 prior to feature calculation.|
 
 Small zone emphasis
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">5QRC</p>
+^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises small zones. It is defined as:
 
 .. math:: F_{\mathit{szm.sze}} = \frac{1}{N_s} \sum_{j=1}^{N_z} \frac{s_{.j}}{j^2}
 
 Large zone emphasis
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">48P8</p>
+^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises large zones. It is defined as:
 
 .. math:: F_{\mathit{szm.lze}} = \frac{1}{N_s} \sum_{j=1}^{N_z} j^2 s_{.j}
 
 Low grey level zone emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">XMSY</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature is a grey level analogue to *small zone emphasis*. Instead
 of small zone sizes, low grey levels are emphasised. The feature is
@@ -2703,10 +4012,7 @@ defined as:
 .. math:: F_{\mathit{szm.lgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{s_{i.}}{i^2}
 
 High grey level zone emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">5GN9</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *high grey level zone emphasis* feature is a grey level analogue to
 *large zone emphasis*. The feature emphasises high grey levels, and is
@@ -2715,10 +4021,7 @@ defined as:
 .. math:: F_{\mathit{szm.hgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 s_{i.}
 
 Small zone low grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">5RAI</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises zone counts within the upper left quadrant of
 the GLSZM, where small zone sizes and low grey levels are located. It is
@@ -2727,10 +4030,7 @@ defined as:
 .. math:: F_{\mathit{szm.szlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{s_{ij}}{i^2 j^2}
 
 Small zone high grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">HW1V</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises zone counts in the lower left quadrant of the
 GLSZM, where small zone sizes and high grey levels are located. The
@@ -2739,10 +4039,7 @@ feature is defined as:
 .. math:: F_{\mathit{szm.szhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{i^2 s_{ij}}{j^2}
 
 Large zone low grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">YH51</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises zone counts in the upper right quadrant of the
 GLSZM, where large zone sizes and low grey levels are located. The
@@ -2751,10 +4048,7 @@ feature is defined as:
 .. math:: F_{\mathit{szm.lzlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{j^2 s_{ij}}{i^2}
 
 Large zone high grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">J17V</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises zone counts in the lower right quadrant of the
 GLSZM, where large zone sizes and high grey levels are located. The
@@ -2763,10 +4057,7 @@ feature is defined as:
 .. math:: F_{\mathit{szm.lzhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} i^2 j^2 s_{ij}
 
 Grey level non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">JNSA</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature assesses the distribution of zone counts over the grey
 values. The feature value is low when zone counts are equally
@@ -2775,10 +4066,7 @@ distributed along grey levels. The feature is defined as:
 .. math:: F_{\mathit{szm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} s_{i.}^2
 
 Normalised grey level non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">Y1RO</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -2786,10 +4074,7 @@ It is defined as:
 .. math:: F_{\mathit{szm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} s_{i.}^2
 
 Zone size non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">4JP3</p>
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 This features assesses the distribution of zone counts over the
 different zone sizes. *Zone size non-uniformity* is low when zone counts
@@ -2798,10 +4083,7 @@ are equally distributed along zone sizes. It is defined as:
 .. math:: F_{\mathit{szm.zsnu}}= \frac{1}{N_s} \sum_{j=1}^{N_z} s_{.j}^2
 
 Normalised zone size non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">VB3A</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a normalised version of *zone size non-uniformity*. It is
 defined as:
@@ -2809,10 +4091,7 @@ defined as:
 .. math:: F_{\mathit{szm.zsnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_z} s_{.j}^2
 
 Zone percentage
-~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">P30P</p>
+^^^^^^^^^^^^^^^
 
 This feature measures the fraction of the number of realised zones and
 the maximum number of potential zones. Highly uniform ROIs produce a low
@@ -2821,10 +4100,7 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 .. math:: F_{\mathit{szm.z.perc}}=\frac{N_s}{N_v}
 
 Grey level variance
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">BYLV</p>
+^^^^^^^^^^^^^^^^^^^
 
 This feature estimates the variance in zone counts over the grey levels.
 Let :math:`p_{ij} = s_{ij}/N_s` be the joint probability estimate for
@@ -2836,10 +4112,7 @@ The feature is then defined as:
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} i\,p_{ij}`.
 
 Zone size variance
-~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">3NSA</p>
+^^^^^^^^^^^^^^^^^^
 
 This feature estimates the variance in zone counts over the different
 zone sizes. As before let :math:`p_{ij} = s_{ij}/N_s`. The feature is
@@ -2851,10 +4124,7 @@ Mean zone size is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} j\,p_{ij}`.
 
 Zone size entropy
-~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">GU8N</p>
+^^^^^^^^^^^^^^^^^
 
 Let :math:`p_{ij} = s_{ij}/N_s`. *Zone size entropy* is then defined as:
 
@@ -2923,14 +4193,14 @@ distance :math:`j`, regardless of grey level. A two dimensional example
 is shown in Table [figGLDZM1].
 
 Morphological and intensity masks.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 The GLDZM is special in that it uses both ROI masks. The distance map is
 determined using the morphological ROI mask, whereas the intensity mask
 is used for determining the zones, as with the GLSZM.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Three methods can be used to aggregate GLDZMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
@@ -2950,7 +4220,7 @@ consistency. Feature values may dependent strongly on the aggregation
 method.
 
 Distances
-^^^^^^^^^
+---------
 
 In addition to the use of different distance norms to determine voxel
 linkage, as described in section [sect\_glszm], different distance norms
@@ -2968,31 +4238,28 @@ norms is non-standard use, and we caution against it due to potential
 reproducibility issues.
 
 Note on feature references
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 GLDZM feature definitions are based on the definitions of GLRLM features
 :cite:`Thibault2014`. Hence, references may be found in the
 section on GLRLM ([sect\_glrlm]).
 
 Small distance emphasis
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises small distances. It is defined as:
 
 .. math:: F_{\mathit{dzm.sde}} = \frac{1}{N_s} \sum_{j=1}^{N_d} \frac{d_{.j}}{j^2}
 
 Large distance emphasis
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises large distances. It is defined as:
 
 .. math:: F_{\mathit{dzm.lde}} = \frac{1}{N_s} \sum_{j=1}^{N_d} j^2 d_{.j}
 
 Low grey level zone emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">S1RA</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature is a grey level analogue to *small distance emphasis*.
 Instead of small zone distances, low grey levels are emphasised. The
@@ -3001,10 +4268,7 @@ feature is defined as:
 .. math:: F_{\mathit{dzm.lgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{d_{i.}}{i^2}
 
 High grey level zone emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">K26C</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *high grey level zone emphasis* feature is a grey level analogue to
 *large distance emphasis*. The feature emphasises high grey levels, and
@@ -3013,10 +4277,7 @@ is defined as:
 .. math:: F_{\mathit{dzm.hgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 d_{i.}
 
 Small distance low grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">RUVG</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises runs in the upper left quadrant of the GLDZM,
 where small zone distances and low grey levels are located. It is
@@ -3025,10 +4286,7 @@ defined as:
 .. math:: F_{\mathit{dzm.sdlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{d_{ij}}{i^2 j^2}
 
 Small distance high grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">DKNJ</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises runs in the lower left quadrant of the GLDZM,
 where small zone distances and high grey levels are located. *Small
@@ -3037,10 +4295,7 @@ distance high grey level emphasis* is defined as:
 .. math:: F_{\mathit{dzm.sdhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{i^2 d_{ij}}{j^2}
 
 Large distance low grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">A7WM</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises runs in the upper right quadrant of the GLDZM,
 where large zone distances and low grey levels are located. The feature
@@ -3049,10 +4304,7 @@ is defined as:
 .. math:: F_{\mathit{dzm.ldlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{j^2 d_{ij}}{i^2}
 
 Large distance high grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">KLTH</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises runs in the lower right quadrant of the GLDZM,
 where large zone distances and high grey levels are located. The *large
@@ -3061,10 +4313,7 @@ distance high grey level emphasis* feature is defined as:
 .. math:: F_{\mathit{dzm.ldhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} i^2 j^2 d_{ij}
 
 Grey level non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">VFT7</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature measures the distribution of zone counts over the grey
 values. *Grey level non-uniformity* is low when zone counts are equally
@@ -3073,10 +4322,7 @@ distributed along grey levels. The feature is defined as:
 .. math:: F_{\mathit{dzm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} d_{i.}^2
 
 Normalised grey level non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">7HP3</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -3084,10 +4330,7 @@ It is defined as:
 .. math:: F_{\mathit{dzm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} d_{i.}^2
 
 Zone distance non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">V294</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Zone distance non-uniformity* measures the distribution of zone counts
 over the different zone distances. *Zone distance non-uniformity* is low
@@ -3096,11 +4339,8 @@ defined as:
 
 .. math:: F_{\mathit{dzm.zdnu}}= \frac{1}{N_s} \sum_{j=1}^{N_d} d_{.j}^2
 
-Zone distance non-uniformity normalised
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">IATH</p>
+Normalised zone distance non-uniformity 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a normalised version of the *zone distance non-uniformity*
 feature. It is defined as:
@@ -3108,10 +4348,7 @@ feature. It is defined as:
 .. math:: F_{\mathit{dzm.zdnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_d} d_{.j}^2
 
 Zone percentage
-~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">VIWW</p>
+^^^^^^^^^^^^^^^
 
 This feature measures the fraction of the number of realised zones and
 the maximum number of potential zones. Highly uniform ROIs produce a low
@@ -3120,10 +4357,7 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 .. math:: F_{\mathit{dzm.z.perc}}=\frac{N_s}{N_v}
 
 Grey level variance
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">QK93</p>
+^^^^^^^^^^^^^^^^^^^
 
 This feature estimates the variance in zone counts over the grey levels.
 Let :math:`p_{ij} = d_{ij}/N_s` be the joint probability estimate for
@@ -3135,10 +4369,7 @@ finding zones with discretised grey level :math:`i` at distance
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} i\,p_{ij}`.
 
 Zone distance variance
-~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">7WT1</p>
+^^^^^^^^^^^^^^^^^^^^^^
 
 This feature estimates the variance in zone counts for the different
 zone distances. As before let :math:`p_{ij} = d_{ij}/N_s`. The feature
@@ -3150,10 +4381,7 @@ Mean zone size is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} j\,p_{ij}`.
 
 Zone distance entropy
-~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">GBDU</p>
+^^^^^^^^^^^^^^^^^^^^^
 
 Again, let :math:`p_{ij} = d_{ij}/N_s`. Zone distance entropy is then
 defined as:
@@ -3238,7 +4466,7 @@ number of discretised grey levels with :math:`p_i>0`. In the above
 example, :math:`N_g=4` and :math:`N_{g,p}=3`.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Three methods can be used to aggregate NGTDMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
@@ -3259,7 +4487,7 @@ different slices. Note that when NGTDMs are merged, :math:`N_{v,c}` and
 may dependent strongly on the aggregation method.
 
 Distances and distance weighting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 The default neighbourhood is defined using the Chebyshev norm. Manhattan
 or Euclidean norms may be used as well. This requires a more general
@@ -3289,10 +4517,7 @@ non-standard use, and we caution against them due to potential
 reproducibility issues.
 
 Coarseness
-~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">QCDE</p>
+^^^^^^^^^^
 
 Grey level differences in coarse textures are generally small due to
 large-scale patterns. Summing differences gives an indication of the
@@ -3309,10 +4534,7 @@ but an explicit, though arbitrary, maximum value should allow for more
 consistency.
 
 Contrast
-~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">65HE</p>
+^^^^^^^^
 
 *Contrast* depends on the dynamic range of the grey levels as well as
 the spatial frequency of intensity changes
@@ -3328,10 +4550,7 @@ measure for intensity changes within the volume. If :math:`N_{g,p}=1`,
 :math:`F_{\mathit{ngt.contrast}}=0`.
 
 Busyness
-~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">NQ30</p>
+^^^^^^^^
 
 Textures with large changes in grey levels between neighbouring voxels
 are said to be busy :cite:`Amadasun1989`. *Busyness* was
@@ -3349,10 +4568,7 @@ always evaluate to 0. Therefore we use a slightly different definition
 If :math:`N_{g,p}=1`, :math:`F_{\mathit{ngt.busyness}}=0`.
 
 Complexity
-~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">HDEZ</p>
+^^^^^^^^^^
 
 Complex textures are non-uniform and rapid changes in grey levels are
 common :cite:`Amadasun1989`. Texture *complexity* is
@@ -3364,10 +4580,7 @@ As before, :math:`p_{i_{1}}=p_{i_{2}}` for :math:`i_{1}=i_{2}`, and
 likewise :math:`s_{i_{1}}=s_{i_{2}}` for :math:`i_{1}=i_{2}`.
 
 Strength
-~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">1X9X</p>
+^^^^^^^^
 
 :cite:`Amadasun1989` defined texture *strength* as:
 
@@ -3445,7 +4658,7 @@ choice for neighbourhood radius :math:`\delta` is Chebyshev distance
 :math:`\delta=1` but larger values are possible as well.
 
 Aggregating features
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Three methods can be used to aggregate NGLDMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
@@ -3465,7 +4678,7 @@ be summed to retain consistency. Feature values may dependent strongly
 on the aggregation method.
 
 Distances and distance weighting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 Default neighbourhoods are constructed using the Chebyshev norm, but
 other norms can be used as well. For this purpose it is useful to
@@ -3490,7 +4703,7 @@ non-standard use, and we caution against them due to potential
 reproducibility issues.
 
 Note on feature references
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 The NGLDM is structured similarly to the GLRLM, GLSZM and GLDZM. NGLDM
 feature definitions are therefore based on the definitions of GLRLM
@@ -3498,10 +4711,7 @@ features, and references may be found in Section [sect\_glrlm], except
 for the features originally defined by :cite:`Sun1983`.
 
 Low dependence emphasis
-~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">SODN</p>
+^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises low neighbouring grey level dependence counts.
 :cite:`Sun1983` refer to this feature as *small number
@@ -3510,10 +4720,7 @@ emphasis*. It is defined as:
 .. math:: F_{\mathit{ngl.lde}} = \frac{1}{N_s} \sum_{j=1}^{N_n} \frac{s_{.j}}{j^2}
 
 High dependence emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">IMOQ</p>
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises high neighbouring grey level dependence counts.
 :cite:`Sun1983` refer to this feature as *large number
@@ -3522,10 +4729,7 @@ emphasis*. It is defined as:
 .. math:: F_{\mathit{ngl.hde}} = \frac{1}{N_s} \sum_{j=1}^{N_n} j^2 s_{.j}
 
 Low grey level count emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">TL9H</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature is a grey level analogue to *low dependence emphasis*.
 Instead of low neighbouring grey level dependence counts, low grey
@@ -3534,10 +4738,7 @@ levels are emphasised. The feature is defined as:
 .. math:: F_{\mathit{ngl.lgce}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{s_{i.}}{i^2}
 
 High grey level count emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">OAE7</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *high grey level count emphasis* feature is a grey level analogue to
 *high dependence emphasis*. The feature emphasises high grey levels, and
@@ -3546,10 +4747,7 @@ is defined as:
 .. math:: F_{\mathit{ngl.hgce}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 s_{i.}
 
 Low dependence low grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">EQ3F</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises neighbouring grey level dependence counts in the
 upper left quadrant of the NGLDM, where low dependence counts and low
@@ -3558,10 +4756,7 @@ grey levels are located. It is defined as:
 .. math:: F_{\mathit{ngl.ldlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{s_{ij}}{i^2 j^2}
 
 Low dependence high grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">JA6D</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises neighbouring grey level dependence counts in the
 lower left quadrant of the NGLDM, where low dependence counts and high
@@ -3570,10 +4765,7 @@ grey levels are located. The feature is defined as:
 .. math:: F_{\mathit{ngl.ldhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{i^2 s_{ij}}{j^2}
 
 High dependence low grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">NBZI</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises neighbouring grey level dependence counts in the
 upper right quadrant of the NGLDM, where high dependence counts and low
@@ -3582,10 +4774,7 @@ grey levels are located. The feature is defined as:
 .. math:: F_{\mathit{ngl.hdlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{j^2 s_{ij}}{i^2}
 
 High dependence high grey level emphasis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">9QMG</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *high dependence high grey level emphasis* feature emphasises
 neighbouring grey level dependence counts in the lower right quadrant of
@@ -3595,10 +4784,7 @@ located. The feature is defined as:
 .. math:: F_{\mathit{ngl.hdhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} i^2 j^2 s_{ij}
 
 Grey level non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">FP8K</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Grey level non-uniformity* assesses the distribution of neighbouring
 grey level dependence counts over the grey values. The feature value is
@@ -3608,25 +4794,19 @@ The feature is defined as:
 .. math:: F_{\mathit{ngl.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} s_{i.}^2
 
 Normalised grey level non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">5SPA</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
 
 .. math:: F_{\mathit{ngl.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} s_{i.}^2
 
-When calculating *grey level non-uniformity normalised* using a single
-3D NGLDM matrix, it is equivalent to the *intensity histogram
-uniformity* feature :cite:`VanGriethuysen2017`.
+The *normalised grey level non-uniformity* computed from a single 3D
+NGLDM matrix is equivalent to the *intensity histogram uniformity*
+feature :cite:`VanGriethuysen2017`.
 
 Dependence count non-uniformity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">Z87G</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This features assesses the distribution of neighbouring grey level
 dependence counts over the different dependence counts. The feature
@@ -3636,22 +4816,13 @@ non-uniformity*. It is defined as:
 
 .. math:: F_{\mathit{ngl.dcnu}}= \frac{1}{N_s} \sum_{j=1}^{N_n} s_{.j}^2
 
-Dependence count non-uniformity normalised
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">OKJI</p>
-
 This is a normalised version of the *dependence count non-uniformity*
 feature. It is defined as:
 
 .. math:: F_{\mathit{ngl.dcnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_n} s_{.j}^2
 
 Dependence count percentage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">6XV8</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature measures the fraction of the number of realised
 neighbourhoods and the maximum number of potential neighbourhoods.
@@ -3662,10 +4833,7 @@ case under our definition. It is defined as:
 .. math:: F_{\mathit{ngl.dc.perc}}=\frac{N_s}{N_v}
 
 Grey level variance
-~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">1PFV</p>
+^^^^^^^^^^^^^^^^^^^
 
 This feature estimates the variance in dependence counts over the grey
 levels. Let :math:`p_{ij} = s_{ij}/N_s` be the joint probability
@@ -3677,10 +4845,7 @@ estimate for finding discretised grey level :math:`i` with dependence
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} i\,p_{ij}`.
 
 Dependence count variance
-~~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">DNX2</p>
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature estimates the variance in dependence counts over the
 different possible dependence counts. As before let
@@ -3692,10 +4857,7 @@ Mean dependence count is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} j\,p_{ij}`.
 
 Dependence count entropy
-~~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">FCBV</p>
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature is referred to as *entropy* by
 :cite:`Sun1983`. Let :math:`p_{ij} = s_{ij}/N_s`.
@@ -3709,10 +4871,7 @@ dependence count :math:`s_{ij}` instead of count probability
 :math:`p_{ij}`.
 
 Dependence count energy
-~~~~~~~~~~~~~~~~~~~~~~~
-.. raw:: html
-
-  <p style="color:grey;font-style:italic;text-align:right">CAS9</p>
+^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature is called *second moment* by :cite:`Sun1983`.
 Let :math:`p_{ij} = s_{ij}/N_s`. Then *dependence count energy* is

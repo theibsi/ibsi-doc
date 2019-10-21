@@ -7,19 +7,19 @@ processes, or pharmacologic responses to a therapeutic
 intervention*” :cite:`Atkinson2001`. Biomarkers may be
 measured from a wide variety of sources, such as tissue samples, cell
 plating, and imaging. The latter are often referred to as imaging
-biomarkers. Imaging biomarkers consist of both qualitative biomarkers,
-which require expert interpretation, and quantitative biomarkers which
-are based on mathematical definitions. Calculation of quantitative
-imaging biomarkers can be automated, which enables high-throughput
-analyses. We refer to such (high-throughput) quantitative biomarkers as
-image biomarkers to differentiate them from qualitative imaging
-biomarkers. Image biomarkers characterise the contents of (regions of)
-an image, such as *volume* or *mean intensity*. Because of the
-historically close relationship with the computer vision field, image
-biomarkers are also referred to as image features. The term *features*,
-instead of biomarkers, will be used throughout the remainder of the
-reference manual, as the contents are generally applicable and not
-limited to life sciences and medicine only.
+biomarkers :cite:`OConnor2016`. Imaging biomarkers consist
+of both qualitative biomarkers, which require expert interpretation, and
+quantitative biomarkers which are based on mathematical definitions.
+Calculation of quantitative imaging biomarkers can be automated, which
+enables high-throughput analyses. We refer to such (high-throughput)
+quantitative biomarkers as image biomarkers to differentiate them from
+qualitative imaging biomarkers. Image biomarkers characterise the
+contents of (regions of) an image, such as *volume* or *mean intensity*.
+Because of the historically close relationship with the computer vision
+field, image biomarkers are also referred to as image features. The term
+*features*, instead of biomarkers, will be used throughout the remainder
+of the reference manual, as the contents are generally applicable and
+not limited to life sciences and medicine only.
 
 This work focuses specifically on the (high-throughput) extraction of
 image biomarkers from acquired, reconstructed and stored imaging.
@@ -59,6 +59,5 @@ extraction (:ref:`chap_img_proc`); define a diverse set of
 image biomarkers (:ref:`chap_image_features`); describe
 guidelines for reporting on high-throughput image biomarker extraction
 and an image biomarker nomenclature 
-(:ref:`chap_report_guidelines`); describe the benchmark data sets
-(:ref:`chap_benchmark_sets`); and the associated benchmark
-values for software verification (:ref:`chap_benchmarks`).
+(:ref:`chap_report_guidelines`); and describe the benchmark data sets
+(:ref:`chap_benchmark_sets`).

@@ -57,7 +57,7 @@ described in detail within this chapter.
    run length matrix; GLSZM: grey level size zone matrix; NGTDM:
    neighbourhood grey tone difference matrix; NGLDM: Neighbouring grey
    level dependence matrix; GLDZM: grey level distance zone matrix;
-   \*Discretisation of IVH differs from IH and texture features (see 
+   \*Discretisation of IVH differs from IH and texture features (see
    :ref:`sect_ivh`).
 
 Data conversion
@@ -464,7 +464,9 @@ Re-segmentation may be performed to exclude voxels from a previously
 segmented ROI, and is performed after interpolation. An example use
 would be the exclusion of air or bone voxels from an ROI defined on CT
 imaging. Two common re-segmentation methods are described in this
-section. Combining multiple re-segmentation methods is possible.
+section. Combining multiple re-segmentation methods is possible. In this
+case, the intersection of the intensity ranges defined by the
+re-segmentation methods is used.
 
 Intensity and morphological masks of an ROI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -591,7 +593,7 @@ In short, the intensity :math:`X_{gl,k}` of voxel :math:`k` is
 corrected by the lowest occurring intensity :math:`X_{gl,min}` in the
 ROI, divided by the bin width
 :math:`\left(X_{gl,max}-X_{gl,min}\right)/N_g`, and subsequently rounded
-down to the nearest integer (floor function). 
+down to the nearest integer (floor function).
 
 The *fixed bin number*
 method breaks the relationship between image intensity and physiological
@@ -669,11 +671,11 @@ distributions, feature values and reproducibility
 :cite:`Hatt2015,Leijenaar2015a,vanVelden2016,Desseroit2017,Hatt2016,Shafiq-ul-Hassan2017,Altazi2017`.
 
 .. _table_discretisation:
-.. list-table:: 
+.. list-table::
    Recommendations for the possible combinations of different imaging intensity definitions, resegmentation ranges and discretisation algorithms.
-   Checkmarks (✔) represent recommended combinations of resegmentation range and discretisation algorithm, whereas crossmarks (✕) represent non-recommended combinations. 
-   :sup:`(1)` PET and CT are examples of imaging modalities with calibrated intensity units (e.g. SUV and HU, respectively), and raw MRI data of arbitrary intensity units. 
-   :sup:`(2)` Fixed bin number (FBN) discretisation uses the actual range of intensities in the analysed ROI (re-segmented or not), and not the re-segmentation range itself (when defined). 
+   Checkmarks (✔) represent recommended combinations of resegmentation range and discretisation algorithm, whereas crossmarks (✕) represent non-recommended combinations.
+   :sup:`(1)` PET and CT are examples of imaging modalities with calibrated intensity units (e.g. SUV and HU, respectively), and raw MRI data of arbitrary intensity units.
+   :sup:`(2)` Fixed bin number (FBN) discretisation uses the actual range of intensities in the analysed ROI (re-segmented or not), and not the re-segmentation range itself (when defined).
    :sup:`(3)` Fixed bin size (FBS) discretisation uses the lower bound of the re-segmentation range as the minimum set value. When the re-segmentation range is not or cannot be defined (e.g. arbitrary intensity units), the use of the FBS algorithm is not recommended.
    :widths: auto
    :header-rows: 1
