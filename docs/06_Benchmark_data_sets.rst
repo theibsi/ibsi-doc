@@ -1,11 +1,12 @@
 .. _chap_benchmark_sets:
 
-Benchmarking data sets
-======================
+Benchmark data sets
+===================
 
 Image features and image processing were benchmarked using a digital
 image phantom and the CT image of a lung cancer patient, which are
-described below.
+described below. The data sets themselves may be found here:
+https://github.com/theibsi/data\_sets.
 
 Digital phantom
 ---------------
@@ -32,8 +33,8 @@ following characteristics:
    :math:`2` and :math:`5` are absent. :math:`1` is the lowest grey
    level present in the ROI, and :math:`6` the highest.
 
-Calculating image features
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Computing image features
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The digital phantom does not require the additional image processing
 that conventional images require before feature calculation. Thus,
@@ -153,11 +154,8 @@ differences propagate. Hence we define a small number of diagnostic
 features that describe how the image and ROI masks change with each
 image processing step.
 
-Import diagnostic features for the five different configurations are
-shown in chapter [chap\_app\_diagnostic] of the appendix.
-
 Initial image stack.
-~~~~~~~~~~~~~~~~~~~~
+''''''''''''''''''''
 
 The following features may be used to describe the initial image stack
 (i.e. after loading image data for processing):
@@ -180,13 +178,13 @@ The following features may be used to describe the initial image stack
    image.
 
 Interpolated image stack.
-~~~~~~~~~~~~~~~~~~~~~~~~~
+'''''''''''''''''''''''''
 
 The above features may also be used to describe the image stack after
 image interpolation.
 
 Initial region of interest.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+'''''''''''''''''''''''''''
 
 The following descriptors are used to describe the region of interest
 (ROI) directly after segmentation of the image:
@@ -217,19 +215,19 @@ The following descriptors are used to describe the region of interest
    voxels within the ROI intensity mask.
 
 Interpolated region of interest.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+''''''''''''''''''''''''''''''''
 
 The same features can be used to describe the ROI after interpolation of
 the ROI mask.
 
 Re-segmented region of interest.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+''''''''''''''''''''''''''''''''
 
 Again, the same features as above can be used to describe the ROI after
 re-segmentation.
 
-Calculating image features
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Computing image features
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Unlike the digital phantom, the radiomics phantom does require
 additional image processing, which is done according to the processing
@@ -251,14 +249,14 @@ should be taken into account when calculating image features:
 -  Due to re-segmentation, the ROI morphological and intensity masks are
    not identical.
 
--  Calculation of IVH feature: since by default CT contains definite and
-   discrete intensities, no separate discretisation prior to the
+-  Calculation of IVH feature: since by default CT contains calibrated
+   and discrete intensities, no separate discretisation prior to the
    calculation of intensity-volume histogram features is required. This
-   is the case for configurations A, B and D (i.e. “definite intensity
+   is the case for configurations A, B and D (i.e. “calibrated intensity
    units – discrete case”). However, for configurations C and E, we
    re-discretise the ROI intensities prior to calculation of
    intensity-volume histogram features to provide better verification of
-   processing algorithms. Configuration C simulates the “definite
+   processing algorithms. Configuration C simulates the “calibrated
    intensity units – continuous case”, while configuration E simulates
    the “arbitrary intensity units” case where re-segmentation range is
    not used. For details, please consult section [sect\_ivh].
@@ -337,7 +335,7 @@ should be taken into account when calculating image features:
      -   :math:`\left[-500,400\right]` 
      -  :math:`\left[-1000,400\right]` 
      -  no 
-     -   :math:`\left[-500,400\right]`
+     -   :math:`\left[-1000,400\right]`
    * -  Outliers 
      -  no 
      -  no 
