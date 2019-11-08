@@ -280,7 +280,7 @@ holes within the morphological mask are understood to be the result of
 segmentation decisions, and thus to be intentional. The intensity mask
 is used to generate the voxel intensity set :math:`\mathbf{X}_{gl}` with
 corresponding point set :math:`\mathbf{X}_{c,gl}`. In the benchmark data
-sets (Chapter [chap\_benchmark sets]), the masks are identical for the
+sets (:ref:`chap_benchmark_sets`), the masks are identical for the
 digital phantom, but differ due to re-segmentation of the intensity
 mask.
 
@@ -295,7 +295,7 @@ Units of measurement
 
 By definition, morphological features are computed using the unit of
 length as defined in the DICOM standard, i.e. millimeter for most
-medical imaging modalities [1]_.
+medical imaging modalities.
 
 If the unit of length is not defined by a standard, but is explicitly
 defined as meta data, this definition should be used. In this case, care
@@ -3154,7 +3154,7 @@ Texture features were originally designed to assess surface texture in
 2D images. Texture analysis is however not restricted to 2D slices and
 can be extended to 3D objects. Image intensities are generally
 discretised before calculation of texture features, see Section
-[discretisation].
+:ref:`discretisation`.
 
 The grey level co-occurrence matrix (GLCM) is a matrix that expresses
 how combinations of discretised intensities (grey levels) of

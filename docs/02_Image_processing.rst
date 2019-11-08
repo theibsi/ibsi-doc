@@ -542,6 +542,8 @@ placeholder value, often *NaN*. This placeholder value may then used to
 exclude these voxels from calculations. Voxels included in the ROI mask
 retain their original intensity.
 
+.. _discretisation:
+
 Intensity discretisation
 ------------------------
 .. raw:: html
