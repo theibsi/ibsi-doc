@@ -225,7 +225,7 @@ of its widespread availability in different programming languages and
 reasonable approximation of the surface area and volume
 :cite:`Stelldinger2007`. In practice, mesh-based feature
 values depend upon the meshing algorithm and small differences may occur
-between implementations :raw-latex:`\citep{Limkin2019-jt}`.
+between implementations :cite:`Limkin2019-jt`.
 
 .. _figMorphMesh:
 .. figure:: ./Figures/MorphMesh.png
