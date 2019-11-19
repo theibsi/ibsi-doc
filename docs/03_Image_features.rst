@@ -152,14 +152,21 @@ vector from a center voxel at
 
    .. math:: \|\mathbf{m}\|_{\infty} = \text{max}(|m_x|,|m_y|,|m_z|)
 
-An example of how the above norms differ in practice is shown in figure
-[fig:distance\_norms].
+An example of how the above norms differ in practice is shown below.
 
-120pt [fig:manhattan\_distance]
+.. _manhattan_distance:
+.. figure:: ./Figures/manhattan_distance.pdf
 
-120pt [fig:euclidean\_distance]
+    Manhattan norm
 
-120pt [fig:chebyshev\_distance]
+.. figure:: ./Figures/euclidean_distance.pdf
+
+    Euclidean norm
+
+.. figure:: ./Figures/chebyshev_distance.pdf
+
+    Chebyshev norm
+
 
 Feature aggregation
 -------------------
@@ -168,7 +175,7 @@ Feature aggregation
   <p style="color:grey;font-style:italic;text-align:right">5QB6</p>
 
 Features from some families may be calculated from, e.g. slices. As a
-consequence, multip le values for the same feature may be computed.
+consequence, multiple values for the same feature may be computed.
 These different values should be combined into a single value for many
 common purposes. This process is referred to as feature aggregation.
 Feature aggregation methods depend on the family, and are detailed in
