@@ -85,37 +85,37 @@ their suggested abbreviations:
      - 
    * -  morphology 
      -  MORPH 
-     - 
+     -  *HCUG*
    * -  local intensity 
      -  LI 
-     - 
+     -  *9ST6*
    * -  intensity-based statistics 
      -  IS, STAT 
-     - 
+     -  *UHIW*
    * -  intensity histogram 
      -  IH 
-     - 
+     -  *ZVCW*
    * -  intensity-volume histogram 
      -  IVH 
-     - 
+     -  *P88C*
    * -  grey level co-occurrence matrix 
      -  GLCM, CM 
-     - 
+     -  *LFYI*
    * -  grey level run length matrix 
      -  GLRLM, RLM 
-     - 
+     -  *TP0I*
    * -  grey level size zone matrix 
      -  GLSZM, SZM
-     - 
+     -  *9SAK*
    * -  grey level distance zone matrix 
      -  GLDZM, DZM 
-     - 
+     -  *VMDZ*
    * -  neighbourhood grey tone difference matrix 
      -  NGTDM 
-     - 
+     -  *IPET*
    * -  neighbouring grey level dependence matrix 
      -  NGLDM 
-     - 
+     -  *REK0*
 
 Abbreviating feature aggregation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -128,40 +128,40 @@ methods:
 
    * -  – 
      -  features are 3D by definition 
-     - 
+     -  *DHQ4*
    * -  2D 
      -  averaged over slices (rare) 
-     - 
+     -  *3IDG*
    * -  –, 3D 
      -  calculated over the volume (default) 
-     - 
+     -  *DHQ4*
    * -  2D:avg 
      -  averaged over slices and directions 
-     - 
+     -  *BTW3*
    * -  2D:mrg, 2D:smrg 
      -  merged directions per slice and averaged 
-     - 
+     -  *SUJT*
    * -  2.5D:avg, 2.5D:dmrg 
      -  merged per direction and averaged 
-     - 
+     -  *JJUI*
    * -  2.5D:mrg, 2.5D:vmrg 
      -  merged over all slices
-     - 
+     -  *ZW7Z*
    * -  3D:avg 
      -  averaged over 3D directions
-     - 
+     -  *ITBB*
    * -  3D:mrg 
      -  merged 3D directions
-     - 
+     -  *IAZD*
    * -  2D 
      -  averaged over slices 
-     - 
+     -  *8QNN*
    * -  2.5D 
      -  merged over all slices 
-     - 
+     -  *62GR*
    * -  3D 
      -  calculated from single 3D matrix 
-     - 
+     -  *KOBO*
 
 In the list above, ’–’ signifies an empty entry which does not need to
 be added to the subscript. The following examples highlight the
@@ -237,10 +237,10 @@ Re-segmentation can be noted as follows:
      - 
    * -  range 
      -  RS:[#,#] 
-     - 
+     -  *USB3*
    * -  outlier filtering 
      -  RS:#\ :math:`\sigma` 
-     - 
+     -  *7ACA*
 
 In the table above # signify numbers. A re-segmentation range can be
 half-open, i.e. RS:[#,\ :math:`\infty`). Re-segmentation methods may be
@@ -280,10 +280,10 @@ parameter, e.g. number of bins or bin size, including units.
      - 
    * -  fixed bin size 
      -  FBS:# 
-     - 
+     -  *Q3RU*
    * -  fixed bin number 
      -  FBN:# 
-     - 
+     -  *K15C*
    * -  histogram equalisation 
      -  EQ:#
      - 
@@ -324,13 +324,13 @@ may be varied. These are the following:
      - 
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
-     - 
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     - 
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     - 
+     -  *LIFZ*
    * -  –, w:1 
      -  no weighting (default) 
      - 
@@ -345,40 +345,40 @@ may be varied. These are the following:
      - 
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance (default) # 
-     - 
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     - 
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     - 
+     -  *LIFZ*
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance (default) # 
-     - 
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     - 
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     - 
+     -  *LIFZ*
    * -  :math:`l`-:math:`\infty`:# 
      -  Chebyshev (:math:`\ell_{\infty}`) norm 
-     - 
+     -   *PVMT*
    * -  :math:`l`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm 
-     - 
+     -  *G9EV*
    * -  –, :math:`l`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm (default)  
-     - 
+     -  *LIFZ*
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
-     - 
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     - 
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     - 
+     -  *LIFZ*
    * -  –, w:1 
      -  no weighting (default) 
      - 
@@ -390,13 +390,13 @@ may be varied. These are the following:
      - 
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
-     - 
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     - 
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     - 
+     -  *LIFZ*
    * -  –, w:1 
      -  no weighting (default) 
      - 

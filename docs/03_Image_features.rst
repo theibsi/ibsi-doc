@@ -140,15 +140,15 @@ vector from a center voxel at
 :math:`\mathbf{k}=\left(k_x,k_y,k_z\right)` to a neighbour voxel at
 :math:`\mathbf{k}+\mathbf{m}`. The following norms (distances) are used:
 
--  :math:`\ell_1` norm or *Manhattan* norm ():
+-  :math:`\ell_1` norm or *Manhattan* norm (*LIFZ*):
 
    .. math:: \|\mathbf{m}\|_1 = |m_x| + |m_y| + |m_z|
 
--  :math:`\ell_2` norm or *Euclidean* norm ():
+-  :math:`\ell_2` norm or *Euclidean* norm (*G9EV*):
 
    .. math:: \|\mathbf{m}\|_2 = \sqrt{m_x^2 + m_y^2 + m_z^2}
 
--  :math:`\ell_{\infty}` norm or *Chebyshev* norm ():
+-  :math:`\ell_{\infty}` norm or *Chebyshev* norm (*PVMT*):
 
    .. math:: \|\mathbf{m}\|_{\infty} = \text{max}(|m_x|,|m_y|,|m_z|)
 
@@ -197,12 +197,12 @@ based on ROI voxel representations of the volume. Three voxel
 representations of the volume are conceivable:
 
 #. The volume is represented by a collection of voxels with each voxel
-   taking up a certain volume ().
+   taking up a certain volume (*LQD8*).
 
 #. The volume is represented by a voxel point set :math:`\mathbf{X}_{c}`
-   that consists of coordinates of the voxel centers ().
+   that consists of coordinates of the voxel centers (*4KW8*).
 
-#. The volume is represented by a surface mesh ().
+#. The volume is represented by a surface mesh (*WRJH*).
 
 We use the second representation when the inner structure of the volume
 is important, and the third representation when only the outer surface
@@ -287,8 +287,8 @@ mask.
 Aggregating features
 --------------------
 
-By definition, morphological features are calculated in 3D (), and not
-per slice.
+By definition, morphological features are calculated in 3D (*DHQ4*), and
+not per slice.
 
 Units of measurement
 --------------------
@@ -991,19 +991,19 @@ box.
 +================+=============+============+=================+
 | dig. phantom   | 0.869       | 0.005      | moderate        |
 +----------------+-------------+------------+-----------------+
-| config. A      |             |            | weak            |
+| config. A      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. B      |             |            | weak            |
+| config. B      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. C      |             |            | weak            |
+| config. C      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. D      |             |            | weak            |
+| config. D      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. E      |             |            | weak            |
+| config. E      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *volume density (OMBB)* feature. Unset
-values () indicate the lack of reliable benchmark values.
+values (—) indicate the lack of reliable benchmark values.
 
 Area density (oriented minimum bounding box)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1023,19 +1023,19 @@ calculated for the *volume density (OMBB)* feature.
 +================+=============+============+=================+
 | dig. phantom   | 0.866       | 0.005      | moderate        |
 +----------------+-------------+------------+-----------------+
-| config. A      |             |            | weak            |
+| config. A      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. B      |             |            | weak            |
+| config. B      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. C      |             |            | weak            |
+| config. C      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. D      |             |            | weak            |
+| config. D      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
 | config. E      | 0.69        | 0.002      | moderate        |
 +----------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *area density (OMBB)* feature. Unset
-values () indicate the lack of reliable benchmark values.
+values (—) indicate the lack of reliable benchmark values.
 
 Volume density (approximate enclosing ellipsoid)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1143,21 +1143,21 @@ default tolerance :math:`\tau=0.001` as stopping criterion.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   |             |            | weak            |
+| dig. phantom   | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. A      |             |            | weak            |
+| config. A      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. B      |             |            | weak            |
+| config. B      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. C      |             |            | weak            |
+| config. C      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. D      |             |            | weak            |
+| config. D      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. E      |             |            | weak            |
+| config. E      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *volume density (MVEE)* feature. Unset
-values () indicate the lack of reliable benchmark values.
+values (—) indicate the lack of reliable benchmark values.
 
 Area density (minimum volume enclosing ellipsoid)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1175,21 +1175,21 @@ MVEE be :math:`A_{\mathit{mvee}}`. Then:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   |             |            | weak            |
+| dig. phantom   | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. A      |             |            | weak            |
+| config. A      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. B      |             |            | weak            |
+| config. B      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. C      |             |            | weak            |
+| config. C      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. D      |             |            | weak            |
+| config. D      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
-| config. E      |             |            | weak            |
+| config. E      | —           | —          | weak            |
 +----------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *area density (MVEE)* feature. Unset
-values () indicate the lack of reliable benchmark values.
+values (—) indicate the lack of reliable benchmark values.
 
 Volume density (convex hull)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1395,8 +1395,8 @@ in an ROI.
 Aggregating features
 --------------------
 
-By definition, local intensity features are calculated in 3D (), and not
-per slice.
+By definition, local intensity features are calculated in 3D (*DHQ4*),
+and not per slice.
 
 Local intensity peak 
 ^^^^^^^^^^^^^^^^^^^^^
@@ -1424,7 +1424,7 @@ the highest *local intensity peak* is chosen.
 +----------------+------------------+------------+-----------------+
 | **data**       | **value**        | **tol.**   | **consensus**   |
 +================+==================+============+=================+
-| dig. phantom   | 2.6              |            | strong          |
+| dig. phantom   | 2.6              | —          | strong          |
 +----------------+------------------+------------+-----------------+
 | config. A      | :math:`-`\ 277   | 10         | moderate        |
 +----------------+------------------+------------+-----------------+
@@ -1470,7 +1470,7 @@ becomes a spherical mean filter by dividing the labels by :math:`N_s`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 3.1         |            | strong          |
+| dig. phantom   | 3.1         | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. A      | 189         | 5          | moderate        |
 +----------------+-------------+------------+-----------------+
@@ -1505,8 +1505,9 @@ Aggregating features
 --------------------
 
 We recommend calculating intensity-based statistical features using the
-3D volume (). An approach that computes intensity-based statistical
-features per slice and subsequently averages them () is not recommended.
+3D volume (*DHQ4*). An approach that computes intensity-based
+statistical features per slice and subsequently averages them (*3IDG*)
+is not recommended.
 
 Mean intensity
 ^^^^^^^^^^^^^^
@@ -1521,7 +1522,7 @@ The *mean intensity* of :math:`\mathbf{X}_{gl}` is calculated as:
 +----------------+-------------------+------------+-----------------+
 | **data**       | **value**         | **tol.**   | **consensus**   |
 +================+===================+============+=================+
-| dig. phantom   | 2.15              |            | very strong     |
+| dig. phantom   | 2.15              | —          | very strong     |
 +----------------+-------------------+------------+-----------------+
 | config. A      | 13.4              | 1.1        | very strong     |
 +----------------+-------------------+------------+-----------------+
@@ -1551,7 +1552,7 @@ Note that we do not apply a bias correction when computing the variance.
 +----------------+------------------------------+-----------------------------+-----------------+
 | **data**       | **value**                    | **tol.**                    | **consensus**   |
 +================+==============================+=============================+=================+
-| dig. phantom   | 3.05                         |                             | very strong     |
+| dig. phantom   | 3.05                         | —                           | very strong     |
 +----------------+------------------------------+-----------------------------+-----------------+
 | config. A      | :math:`1.42 \times 10^{4}`   | 400                         | very strong     |
 +----------------+------------------------------+-----------------------------+-----------------+
@@ -1583,7 +1584,7 @@ Here :math:`\mu=F_{\mathit{stat.mean}}`. If the *intensity variance*
 +----------------+-------------------+------------+-----------------+
 | **data**       | **value**         | **tol.**   | **consensus**   |
 +================+===================+============+=================+
-| dig. phantom   | 1.08              |            | very strong     |
+| dig. phantom   | 1.08              | —          | very strong     |
 +----------------+-------------------+------------+-----------------+
 | config. A      | :math:`-`\ 2.47   | 0.05       | very strong     |
 +----------------+-------------------+------------+-----------------+
@@ -1617,7 +1618,7 @@ distributions. If the *intensity variance*
 +----------------+--------------------+------------+-----------------+
 | **data**       | **value**          | **tol.**   | **consensus**   |
 +================+====================+============+=================+
-| dig. phantom   | :math:`-`\ 0.355   |            | very strong     |
+| dig. phantom   | :math:`-`\ 0.355   | —          | very strong     |
 +----------------+--------------------+------------+-----------------+
 | config. A      | 5.96               | 0.24       | very strong     |
 +----------------+--------------------+------------+-----------------+
@@ -1644,7 +1645,7 @@ median of :math:`\mathbf{X}_{gl}`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1           |            | very strong     |
+| dig. phantom   | 1           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 46          | 0.3        | very strong     |
 +----------------+-------------+------------+-----------------+
@@ -1673,11 +1674,11 @@ The *minimum intensity* is equal to the lowest intensity present in
 +----------------+------------------+------------+-----------------+
 | **data**       | **value**        | **tol.**   | **consensus**   |
 +================+==================+============+=================+
-| dig. phantom   | 1                |            | very strong     |
+| dig. phantom   | 1                | —          | very strong     |
 +----------------+------------------+------------+-----------------+
-| config. A      | :math:`-`\ 500   |            | very strong     |
+| config. A      | :math:`-`\ 500   | —          | very strong     |
 +----------------+------------------+------------+-----------------+
-| config. B      | :math:`-`\ 500   |            | very strong     |
+| config. B      | :math:`-`\ 500   | —          | very strong     |
 +----------------+------------------+------------+-----------------+
 | config. C      | :math:`-`\ 939   | 4          | strong          |
 +----------------+------------------+------------+-----------------+
@@ -1701,7 +1702,7 @@ the *minimum intensity*.
 +----------------+------------------+------------+-----------------+
 | **data**       | **value**        | **tol.**   | **consensus**   |
 +================+==================+============+=================+
-| dig. phantom   | 1                |            | very strong     |
+| dig. phantom   | 1                | —          | very strong     |
 +----------------+------------------+------------+-----------------+
 | config. A      | :math:`-`\ 129   | 8          | strong          |
 +----------------+------------------+------------+-----------------+
@@ -1729,11 +1730,11 @@ the *maximum intensity*.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 4           |            | very strong     |
+| dig. phantom   | 4           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
-| config. A      | 95          |            | strong          |
+| config. A      | 95          | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. B      | 91          |            | strong          |
+| config. B      | 91          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. C      | 86          | 0.1        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -1763,7 +1764,7 @@ The *maximum intensity* is equal to the highest intensity present in
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 6           |            | very strong     |
+| dig. phantom   | 6           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 377         | 9          | very strong     |
 +----------------+-------------+------------+-----------------+
@@ -1795,7 +1796,7 @@ as:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 3           |            | very strong     |
+| dig. phantom   | 3           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 56          | 0.5        | very strong     |
 +----------------+-------------+------------+-----------------+
@@ -1823,7 +1824,7 @@ The *intensity range* is defined as:
 +----------------+------------------------------+------------+-----------------+
 | **data**       | **value**                    | **tol.**   | **consensus**   |
 +================+==============================+============+=================+
-| dig. phantom   | 5                            |            | very strong     |
+| dig. phantom   | 5                            | —          | very strong     |
 +----------------+------------------------------+------------+-----------------+
 | config. A      | 877                          | 9          | very strong     |
 +----------------+------------------------------+------------+-----------------+
@@ -1854,7 +1855,7 @@ Here :math:`\mu=F_{\mathit{stat.mean}}`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1.55        |            | very strong     |
+| dig. phantom   | 1.55        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 73.6        | 1.4        | very strong     |
 +----------------+-------------+------------+-----------------+
@@ -1896,7 +1897,7 @@ absolute deviation is then:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1.11        |            | very strong     |
+| dig. phantom   | 1.11        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 27.7        | 0.8        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -1928,7 +1929,7 @@ Here, median :math:`M = F_{\mathit{stat.median}}`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1.15        |            | very strong     |
+| dig. phantom   | 1.15        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 64.3        | 1          | strong          |
 +----------------+-------------+------------+-----------------+
@@ -1961,7 +1962,7 @@ of the intensity distribution, respectively.
 +----------------+-------------------+------------+-----------------+
 | **data**       | **value**         | **tol.**   | **consensus**   |
 +================+===================+============+=================+
-| dig. phantom   | 0.812             |            | very strong     |
+| dig. phantom   | 0.812             | —          | very strong     |
 +----------------+-------------------+------------+-----------------+
 | config. A      | 8.9               | 4.98       | strong          |
 +----------------+-------------------+------------+-----------------+
@@ -1993,7 +1994,7 @@ the *intensity-based coefficient of variance*. It is defined as:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 0.6         |            | very strong     |
+| dig. phantom   | 0.6         | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 0.636       | 0.008      | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2023,7 +2024,7 @@ is defined as:
 +----------------+------------------------------+-----------------------------+-----------------+
 | **data**       | **value**                    | **tol.**                    | **consensus**   |
 +================+==============================+=============================+=================+
-| dig. phantom   | 567                          |                             | very strong     |
+| dig. phantom   | 567                          | —                           | very strong     |
 +----------------+------------------------------+-----------------------------+-----------------+
 | config. A      | :math:`1.65 \times 10^{9}`   | :math:`2 \times 10^{7}`     | very strong     |
 +----------------+------------------------------+-----------------------------+-----------------+
@@ -2053,7 +2054,7 @@ defined as:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 2.77        |            | very strong     |
+| dig. phantom   | 2.77        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 120         | 2          | very strong     |
 +----------------+-------------+------------+-----------------+
@@ -2092,8 +2093,8 @@ Aggregating features
 --------------------
 
 We recommend calculating intensity histogram features using the 3D
-volume (). An approach that computes features per slice and subsequently
-averages () is not recommended.
+volume (*DHQ4*). An approach that computes features per slice and
+subsequently averages (*3IDG*) is not recommended.
 
 Mean discretised intensity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2113,7 +2114,7 @@ An equivalent definition is:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 2.15        |            | very strong     |
+| dig. phantom   | 2.15        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 21.1        | 0.1        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2149,7 +2150,7 @@ Note that no bias-correction is applied when computing the variance.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 3.05        |            | strong          |
+| dig. phantom   | 3.05        | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. A      | 22.8        | 0.6        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2186,7 +2187,7 @@ If the *discretised intensity variance*
 +----------------+-------------------+------------+-----------------+
 | **data**       | **value**         | **tol.**   | **consensus**   |
 +================+===================+============+=================+
-| dig. phantom   | 1.08              |            | very strong     |
+| dig. phantom   | 1.08              | —          | very strong     |
 +----------------+-------------------+------------+-----------------+
 | config. A      | :math:`-`\ 2.46   | 0.05       | strong          |
 +----------------+-------------------+------------+-----------------+
@@ -2226,7 +2227,7 @@ variance* :math:`F_{\mathit{ih.var}} = 0`,
 +----------------+--------------------+------------+-----------------+
 | **data**       | **value**          | **tol.**   | **consensus**   |
 +================+====================+============+=================+
-| dig. phantom   | :math:`-`\ 0.355   |            | very strong     |
+| dig. phantom   | :math:`-`\ 0.355   | —          | very strong     |
 +----------------+--------------------+------------+-----------------+
 | config. A      | 5.9                | 0.24       | strong          |
 +----------------+--------------------+------------+-----------------+
@@ -2253,13 +2254,13 @@ The *median* :math:`F_{\mathit{ih.median}}` is the sample median of
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1           |            | very strong     |
+| dig. phantom   | 1           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
-| config. A      | 22          |            | strong          |
+| config. A      | 22          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. B      | 20          | 0.3        | strong          |
 +----------------+-------------+------------+-----------------+
-| config. C      | 42          |            | strong          |
+| config. C      | 42          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. D      | 20          | 0.5        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2287,17 +2288,17 @@ size* discretisation.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1           |            | very strong     |
+| dig. phantom   | 1           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
-| config. A      | 1           |            | strong          |
+| config. A      | 1           | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. B      | 1           |            | strong          |
+| config. B      | 1           | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. C      | 3           | 0.16       | strong          |
 +----------------+-------------+------------+-----------------+
-| config. D      | 1           |            | strong          |
+| config. D      | 1           | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. E      | 1           |            | strong          |
+| config. E      | 1           | —          | strong          |
 +----------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *minimum* feature.
@@ -2311,7 +2312,7 @@ Table: Benchmark table for the *minimum* feature.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1           |            | very strong     |
+| dig. phantom   | 1           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 15          | 0.4        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2335,13 +2336,13 @@ and is defined as :math:`F_{\mathit{ih.P90}}`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 4           |            | strong          |
+| dig. phantom   | 4           | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. A      | 24          |            | strong          |
+| config. A      | 24          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. B      | 22          | 0.3        | strong          |
 +----------------+-------------+------------+-----------------+
-| config. C      | 44          |            | strong          |
+| config. C      | 44          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. D      | 21          | 0.5        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2370,17 +2371,17 @@ By definition, :math:`F_{\mathit{ih.max}}=N_g`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 6           |            | very strong     |
+| dig. phantom   | 6           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 36          | 0.4        | strong          |
 +----------------+-------------+------------+-----------------+
-| config. B      | 32          |            | strong          |
+| config. B      | 32          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. C      | 56          | 0.5        | strong          |
 +----------------+-------------+------------+-----------------+
-| config. D      | 32          |            | strong          |
+| config. D      | 32          | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. E      | 32          |            | strong          |
+| config. E      | 32          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *maximum* feature.
@@ -2400,9 +2401,9 @@ selected.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1           |            | very strong     |
+| dig. phantom   | 1           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
-| config. A      | 23          |            | strong          |
+| config. A      | 23          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. B      | 20          | 0.3        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2428,11 +2429,11 @@ The *interquartile range* (IQR) of :math:`\mathbf{X}_{d}` is defined as:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 3           |            | very strong     |
+| dig. phantom   | 3           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
-| config. A      | 2           |            | strong          |
+| config. A      | 2           | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. B      | 2           |            | strong          |
+| config. B      | 2           | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. C      | 3           | 0.21       | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2457,17 +2458,17 @@ range* equals :math:`N_g` by definition.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 5           |            | very strong     |
+| dig. phantom   | 5           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 35          | 0.4        | strong          |
 +----------------+-------------+------------+-----------------+
-| config. B      | 31          |            | strong          |
+| config. B      | 31          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. C      | 53          | 0.6        | strong          |
 +----------------+-------------+------------+-----------------+
-| config. D      | 31          |            | strong          |
+| config. D      | 31          | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. E      | 31          |            | strong          |
+| config. E      | 31          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *range* feature.
@@ -2485,7 +2486,7 @@ Here :math:`\mu=F_{\mathit{ih.mean}}`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1.55        |            | very strong     |
+| dig. phantom   | 1.55        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 2.94        | 0.06       | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2524,7 +2525,7 @@ The robust mean absolute deviation is then:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1.11        |            | very strong     |
+| dig. phantom   | 1.11        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 1.18        | 0.04       | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2553,7 +2554,7 @@ Here, median :math:`M = F_{\mathit{ih.median}}`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1.15        |            | very strong     |
+| dig. phantom   | 1.15        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 2.58        | 0.05       | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2583,7 +2584,7 @@ the discretised intensity distribution, respectively.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 0.812       |            | very strong     |
+| dig. phantom   | 0.812       | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 0.227       | 0.004      | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2612,9 +2613,9 @@ the *intensity histogram coefficient of variance*. It is defined as:
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 0.6         |            | very strong     |
+| dig. phantom   | 0.6         | —          | very strong     |
 +----------------+-------------+------------+-----------------+
-| config. A      | 0.0455      |            | strong          |
+| config. A      | 0.0455      | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. B      | 0.05        | 0.0005     | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2645,7 +2646,7 @@ intensity distributions.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1.27        |            | very strong     |
+| dig. phantom   | 1.27        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 3.36        | 0.03       | very strong     |
 +----------------+-------------+------------+-----------------+
@@ -2676,7 +2677,7 @@ Note that this feature is sometimes referred to as *energy*.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 0.512       |            | very strong     |
+| dig. phantom   | 0.512       | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 0.15        | 0.002      | very strong     |
 +----------------+-------------+------------+-----------------+
@@ -2719,7 +2720,7 @@ and the bins of :math:`\mathbf{H}'`. The *maximum histogram gradient*
 +----------------+------------------------------+------------+-----------------+
 | **data**       | **value**                    | **tol.**   | **consensus**   |
 +================+==============================+============+=================+
-| dig. phantom   | 8                            |            | very strong     |
+| dig. phantom   | 8                            | —          | very strong     |
 +----------------+------------------------------+------------+-----------------+
 | config. A      | :math:`1.1 \times 10^{4}`    | 100        | strong          |
 +----------------+------------------------------+------------+-----------------+
@@ -2746,13 +2747,13 @@ gradient*, i.e. the value :math:`i` in :math:`\mathbf{H}` for which
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 3           |            | strong          |
+| dig. phantom   | 3           | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. A      | 21          |            | strong          |
+| config. A      | 21          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. B      | 19          | 0.3        | strong          |
 +----------------+-------------+------------+-----------------+
-| config. C      | 41          |            | strong          |
+| config. C      | 41          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. D      | 19          | 0.4        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2772,7 +2773,7 @@ The *minimum histogram gradient* :cite:`VanDijk2016` is:
 +----------------+-------------------------------+------------+-----------------+
 | **data**       | **value**                     | **tol.**   | **consensus**   |
 +================+===============================+============+=================+
-| dig. phantom   | :math:`-`\ 50                 |            | very strong     |
+| dig. phantom   | :math:`-`\ 50                 | —          | very strong     |
 +----------------+-------------------------------+------------+-----------------+
 | config. A      | :math:`-1.01 \times 10^{4}`   | 100        | strong          |
 +----------------+-------------------------------+------------+-----------------+
@@ -2799,13 +2800,13 @@ gradient*, i.e. the value :math:`i` in :math:`\mathbf{H}` for which
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 1           |            | strong          |
+| dig. phantom   | 1           | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. A      | 24          |            | strong          |
+| config. A      | 24          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. B      | 22          | 0.3        | strong          |
 +----------------+-------------+------------+-----------------+
-| config. C      | 44          |            | strong          |
+| config. C      | 44          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. D      | 22          | 0.4        | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2961,8 +2962,8 @@ Aggregating features
 --------------------
 
 We recommend calculating intensity-volume histogram features using the
-3D volume (). Computing features per slice and subsequently averaging ()
-is not recommended.
+3D volume (*DHQ4*). Computing features per slice and subsequently
+averaging (*3IDG*) is not recommended.
 
 Volume at intensity fraction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2980,7 +2981,7 @@ features are defined as :math:`F_{\mathit{ivh.V10}}` and
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 0.324       |            | very strong     |
+| dig. phantom   | 0.324       | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 0.978       | 0.001      | strong          |
 +----------------+-------------+------------+-----------------+
@@ -2999,7 +3000,7 @@ feature.
 +----------------+-------------------------------+-------------------------------+-----------------+
 | **data**       | **value**                     | **tol.**                      | **consensus**   |
 +================+===============================+===============================+=================+
-| dig. phantom   | 0.0946                        |                               | very strong     |
+| dig. phantom   | 0.0946                        | —                             | very strong     |
 +----------------+-------------------------------+-------------------------------+-----------------+
 | config. A      | :math:`6.98 \times 10^{-5}`   | :math:`1.03 \times 10^{-5}`   | strong          |
 +----------------+-------------------------------+-------------------------------+-----------------+
@@ -3028,11 +3029,11 @@ features are defined as :math:`F_{\mathit{ivh.I10}}` and
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 5           |            | very strong     |
+| dig. phantom   | 5           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
-| config. A      | 96          |            | strong          |
+| config. A      | 96          | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. B      | 92          |            | strong          |
+| config. B      | 92          | —          | strong          |
 +----------------+-------------+------------+-----------------+
 | config. C      | 88.8        | 0.2        | moderate        |
 +----------------+-------------+------------+-----------------+
@@ -3046,7 +3047,7 @@ Table: Benchmark table for the *intensity at 10% volume* feature.
 +----------------+------------------+------------+-----------------+
 | **data**       | **value**        | **tol.**   | **consensus**   |
 +================+==================+============+=================+
-| dig. phantom   | 2                |            | very strong     |
+| dig. phantom   | 2                | —          | very strong     |
 +----------------+------------------+------------+-----------------+
 | config. A      | :math:`-`\ 128   | 8          | strong          |
 +----------------+------------------+------------+-----------------+
@@ -3072,7 +3073,7 @@ feature is defined as :math:`F_{\mathit{ivh.V10minusV90}}`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 0.23        |            | very strong     |
+| dig. phantom   | 0.23        | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 0.978       | 0.001      | strong          |
 +----------------+-------------+------------+-----------------+
@@ -3099,7 +3100,7 @@ feature is defined as :math:`F_{\mathit{ivh.I10minusI90}}`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 3           |            | very strong     |
+| dig. phantom   | 3           | —          | very strong     |
 +----------------+-------------+------------+-----------------+
 | config. A      | 224         | 8          | strong          |
 +----------------+-------------+------------+-----------------+
@@ -3127,11 +3128,11 @@ we define the *area under the IVH curve* :math:`F_{\mathit{ivh.auc}}=0`.
 +----------------+-------------+------------+-----------------+
 | **data**       | **value**   | **tol.**   | **consensus**   |
 +================+=============+============+=================+
-| dig. phantom   | 0.32        |            | strong          |
+| dig. phantom   | 0.32        | —          | strong          |
 +----------------+-------------+------------+-----------------+
-| config. A      |             |            | moderate        |
+| config. A      | —           | —          | moderate        |
 +----------------+-------------+------------+-----------------+
-| config. B      |             |            | moderate        |
+| config. B      | —           | —          | moderate        |
 +----------------+-------------+------------+-----------------+
 | config. C      | 0.681       | 0.003      | strong          |
 +----------------+-------------+------------+-----------------+
@@ -3141,7 +3142,7 @@ we define the *area under the IVH curve* :math:`F_{\mathit{ivh.auc}}=0`.
 +----------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *area under the IVH curve* feature. Unset
-values () indicate the lack of reliable benchmark values.
+values (—) indicate the lack of reliable benchmark values.
 
 Grey level co-occurrence based features
 ---------------------------------------
@@ -3234,23 +3235,24 @@ example is shown in Figure [figGLCMCalcApproaches]. A feature may be
 aggregated as follows:
 
 #. Features are computed from each 2D directional matrix and averaged
-   over 2D directions and slices ().
+   over 2D directions and slices (*BTW3*).
 
 #. Features are computed from a single matrix after merging 2D
-   directional matrices per slice, and then averaged over slices ().
+   directional matrices per slice, and then averaged over slices
+   (*SUJT*).
 
 #. Features are computed from a single matrix after merging 2D
    directional matrices per direction, and then averaged over directions
-   ().
+   (*JJUI*).
 
 #. The feature is computed from a single matrix after merging all 2D
-   directional matrices ().
+   directional matrices (*ZW7Z*).
 
 #. Features are computed from each 3D directional matrix and averaged
-   over the 3D directions ().
+   over the 3D directions (*ITBB*).
 
 #. The feature is computed from a single matrix after merging all 3D
-   directional matrices ().
+   directional matrices (*IAZD*).
 
 In methods 2,3,4 and 6, matrices are merged by summing the co-occurrence
 counts in each matrix element :math:`(i,j)` over the different matrices.
@@ -3338,6 +3340,52 @@ corresponding to the most common grey level co-occurrence in the GLCM:
 
 .. math:: F_{\mathit{cm.joint.max}}=\text{max}(p_{ij})
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.519       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.512       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.489       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.492       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.503       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.509       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.109       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.109       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.0943      | 0.0008     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.0943      | 0.0008     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.156       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.156       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.126       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.126       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.111       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.111       | 0.002      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.232       | 0.007      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.232       | 0.007      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.153       | 0.003      | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.153       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *joint maximum* feature.
+
 Joint average
 ^^^^^^^^^^^^^
 
@@ -3345,6 +3393,52 @@ Joint average
 weighted sum of joint probabilities:
 
 .. math:: F_{\mathit{cm.joint.avg}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\, p_{ij}
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 2.14        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 2.14        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 2.2         | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 2.2         | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 2.14        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 2.15        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 20.6        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 20.6        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 21.3        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 21.3        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 18.7        | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 18.7        | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 19.2        | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 19.2        | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 39          | 0.2        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 39          | 0.2        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 18.9        | 0.5        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 18.9        | 0.5        | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 22.1        | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 22.1        | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *joint average* feature.
 
 Joint variance
 ^^^^^^^^^^^^^^
@@ -3358,12 +3452,104 @@ as:
 Here :math:`\mu` is equal to the value of
 :math:`F_{\mathit{cm.joint.avg}}`, which was defined above.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 2.69        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 2.71        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 3.22        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 3.24        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 3.1         | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 3.13        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 27          | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 27          | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 18.6        | 0.5        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 18.6        | 0.5        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 21          | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 21          | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 14.2        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 14.2        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 73.7        | 2          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 73.8        | 2          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 17.6        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 17.6        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 24.4        | 0.9        | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 24.4        | 0.9        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *joint variance* feature.
+
 Joint entropy
 ^^^^^^^^^^^^^
 
 *Joint entropy* :cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.joint.entr}}=-\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{ij} \log_2 p_{ij}
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 2.05        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 2.24        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 2.48        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 2.61        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 2.4         | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 2.57        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 5.82        | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 5.9         | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 5.78        | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 5.79        | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 5.26        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 5.45        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 5.45        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 5.46        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 6.39        | 0.06       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 6.42        | 0.06       | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 4.95        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 4.96        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 5.6         | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 5.61        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *joint entropy* feature.
 
 Difference average
 ^^^^^^^^^^^^^^^^^^
@@ -3376,6 +3562,52 @@ probabilities is defined as:
 By definition *difference average* is equivalent to the *dissimilarity*
 feature :cite:`VanGriethuysen2017`.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 1.42        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 1.4         | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 1.46        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 1.44        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 1.43        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 1.38        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 1.58        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 1.57        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 1.35        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 1.35        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 1.81        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 1.81        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 1.47        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 1.47        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 2.17        | 0.05       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 2.16        | 0.05       | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 1.29        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 1.29        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 1.7         | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 1.7         | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *difference average* feature.
+
 Difference variance
 ^^^^^^^^^^^^^^^^^^^
 
@@ -3386,6 +3618,52 @@ The *difference variance* for the diagonal probabilities
 
 Here :math:`\mu` is equal to the value of *difference average*.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 2.9         | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 3.06        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 3.11        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 3.23        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 3.06        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 3.21        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 4.94        | 0.19       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 4.96        | 0.19       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 4.12        | 0.2        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 4.14        | 0.2        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 7.74        | 0.05       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 7.76        | 0.05       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 6.48        | 0.06       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 6.48        | 0.06       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 14.4        | 0.5        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 14.4        | 0.5        | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 5.37        | 0.11       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 5.38        | 0.11       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 8.22        | 0.06       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 8.23        | 0.06       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *difference variance* feature.
+
 Difference entropy
 ^^^^^^^^^^^^^^^^^^
 
@@ -3393,6 +3671,52 @@ The *difference entropy* for the diagonal probabilities
 :cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.diff.entr}}=-\sum_{k=0}^{N_g-1} p_{i-j,k} \log_2 p_{i-j,k}
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 1.4         | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 1.49        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 1.61        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 1.67        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 1.56        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 1.64        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 2.27        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 2.28        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 2.16        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 2.16        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 2.35        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 2.38        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 2.24        | 0.01       | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 2.24        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 2.64        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 2.64        | 0.03       | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 2.13        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 2.14        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 2.39        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 2.4         | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *difference entropy* feature.
 
 Sum average
 ^^^^^^^^^^^
@@ -3406,6 +3730,52 @@ By definition,
 :math:`F_{\mathit{cm.sum.avg}} = 2 F_{\mathit{cm.joint.avg}}`
 :cite:`VanGriethuysen2017`.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 4.28        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 4.29        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 4.41        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 4.41        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 4.29        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 4.3         | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 41.3        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 41.3        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 42.7        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 42.7        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 37.4        | 0.5        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 37.4        | 0.5        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 38.5        | 0.6        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 38.5        | 0.6        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 78          | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 78          | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 37.7        | 0.8        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 37.7        | 0.8        | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 44.3        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 44.3        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *sum average* feature.
+
 Sum variance
 ^^^^^^^^^^^^
 
@@ -3418,6 +3788,52 @@ Here :math:`\mu` is equal to the value of *sum average*. *Sum variance*
 is mathematically identical to the *cluster tendency* feature
 :cite:`VanGriethuysen2017`.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 5.47        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 5.66        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 7.48        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 7.65        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 7.07        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 7.41        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 100         | 1          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 100         | 1          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 68.5        | 1.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 68.5        | 1.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 72.1        | 1          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 72.3        | 1          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 48.1        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 48.1        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 276         | 8          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 276         | 8          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 63.4        | 1.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 63.5        | 1.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 86.6        | 3.3        | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 86.7        | 3.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *sum variance* feature.
+
 Sum entropy
 ^^^^^^^^^^^
 
@@ -3425,6 +3841,52 @@ The *sum entropy* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
 
 .. math:: F_{\mathit{cm.sum.entr}}=-\sum_{k=2}^{2N_g} p_{i+j,k} \log_2 p_{i+j,k}
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 1.6         | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 1.79        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 2.01        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 2.14        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 1.92        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 2.11        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 4.19        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 4.21        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 4.17        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 4.18        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 3.83        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 3.89        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 3.91        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 3.91        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 4.56        | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 4.56        | 0.04       | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 3.68        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 3.68        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 3.96        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 3.97        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *sum entropy* feature.
 
 Angular second moment
 ^^^^^^^^^^^^^^^^^^^^^
@@ -3437,6 +3899,52 @@ represents the energy of :math:`\mathbf{P}_{\Delta}`, is defined as:
 This feature is also called *energy*
 :cite:`Unser1986,Aerts2014` and *uniformity*
 :cite:`Clausi2002`.
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.368       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.352       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.286       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.277       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.303       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.291       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.045       | 0.0008     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.0446      | 0.0008     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.0429      | 0.0007     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.0427      | 0.0007     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.0678      | 0.0006     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.0669      | 0.0006     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.0581      | 0.0006     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.058       | 0.0006     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.045       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.0447      | 0.001      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.11        | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.109       | 0.003      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.0638      | 0.0009     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.0635      | 0.0009     | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *angular second moment* feature.
 
 Contrast
 ^^^^^^^^
@@ -3453,6 +3961,52 @@ Note that the original definition by :cite:`Haralick1973`
 is seemingly more complex, but rearranging and simplifying terms leads
 to the above formulation of *contrast*.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 5.28        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 5.19        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 5.39        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 5.29        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 5.32        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 5.12        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 7.85        | 0.26       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 7.82        | 0.26       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 5.96        | 0.27       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 5.95        | 0.27       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 11.9        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 11.8        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 8.66        | 0.09       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 8.65        | 0.09       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 19.2        | 0.7        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 19.1        | 0.7        | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 7.07        | 0.13       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 7.05        | 0.13       | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 11.1        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 11.1        | 0.1        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *contrast* feature.
+
 Dissimilarity
 ^^^^^^^^^^^^^
 
@@ -3463,6 +4017,52 @@ to the *contrast* feature, and is defined as:
 
 By definition *dissimilarity* is equivalent to the *difference average*
 feature :cite:`VanGriethuysen2017`.
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 1.42        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 1.4         | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 1.46        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 1.44        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 1.43        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 1.38        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 1.58        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 1.57        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 1.35        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 1.35        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 1.81        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 1.81        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 1.47        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 1.47        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 2.17        | 0.05       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 2.16        | 0.05       | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 1.29        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 1.29        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 1.7         | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 1.7         | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *dissimilarity* feature.
 
 Inverse difference
 ^^^^^^^^^^^^^^^^^^
@@ -3479,6 +4079,52 @@ The equation above may also be expressed in terms of diagonal
 probabilities :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.diff}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k}
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.678       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.683       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.668       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.673       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.677       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.688       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.581       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.581       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.605       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.605       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.592       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.593       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.628       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.628       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.582       | 0.004      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.583       | 0.004      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.682       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.682       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.608       | 0.001      | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.608       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *inverse difference* feature.
 
 Normalised inverse difference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3499,6 +4145,52 @@ probabilities :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.diff.norm}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+k/N_g}
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.851       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.854       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.847       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.85        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.851       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.856       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.961       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.961       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.966       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.966       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.952       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.952       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.96        | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.96        | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.966       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.966       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.965       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.965       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.955       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.955       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised inverse difference* feature.
+
 Inverse difference moment
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3516,6 +4208,52 @@ probabilities :cite:`VanGriethuysen2017`:
 This feature is also called *homogeneity*
 :cite:`Unser1986`.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.619       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.625       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.606       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.613       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.618       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.631       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.544       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.544       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.573       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.573       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.557       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.558       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.6         | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.6         | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.547       | 0.004      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.548       | 0.004      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.656       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.657       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.576       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.577       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *inverse difference moment* feature.
+
 Normalised inverse difference moment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3530,6 +4268,53 @@ probabilities :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.diff.mom.norm}}=\sum_{k=0}^{N_g-1} \frac{p_{i-j,k}}{1+\left(k/N_g\right)^2}
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.899       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.901       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.897       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.899       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.898       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.902       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.994       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.994       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.996       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.996       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.99        | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.99        | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.992       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.992       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.994       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.994       | 0.001      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.994       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.994       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.99        | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.99        | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised inverse difference moment*
+feature.
+
 Inverse variance
 ^^^^^^^^^^^^^^^^
 
@@ -3543,6 +4328,52 @@ probabilities. Note that in this case, summation starts at :math:`k=1`
 instead of :math:`k=0`\ :cite:`VanGriethuysen2017`:
 
 .. math:: F_{\mathit{cm.inv.var}}=\sum_{k=1}^{N_g-1} \frac{p_{i-j,k}}{k^2}
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.0567      | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.0553      | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.0597      | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.0582      | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.0604      | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.0574      | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.441       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.441       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.461       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.461       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.401       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.401       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.424       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.424       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.39        | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.39        | 0.003      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.341       | 0.005      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.34        | 0.005      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.41        | 0.004      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.41        | 0.004      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *inverse variance* feature.
 
 Correlation
 ^^^^^^^^^^^
@@ -3570,12 +4401,104 @@ Again, simplifying due to matrix symmetry yields:
 
 .. math:: F_{\mathit{cm.corr}}=\frac{1}{\sigma_{i.}^2} \sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i-\mu_{i.}\right) \left(j-\mu_{i.}\right)p_{ij}
 
++----------------+--------------------------+---------------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**           | **tol.**   | **consensus**   |
++================+==========================+=====================+============+=================+
+| dig. phantom   | 2D, averaged             | :math:`-`\ 0.0121   | —          | very strong     |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.0173              | —          | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.178               | —          | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.182               | —          | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.157               | —          | very strong     |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.183               | —          | very strong     |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.778               | 0.002      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.78                | 0.002      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.839               | 0.003      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.84                | 0.003      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.577               | 0.002      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.58                | 0.002      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.693               | 0.003      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.695               | 0.003      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.869               | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.871               | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.798               | 0.005      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.8                 | 0.005      | very strong     |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.771               | 0.006      | moderate        |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.773               | 0.006      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+
+Table: Benchmark table for the *correlation* feature.
+
 Autocorrelation
 ^^^^^^^^^^^^^^^
 
 :cite:`soh1999texture` defined *autocorrelation* as:
 
 .. math:: F_{\mathit{cm.auto.corr}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} i\,j\,p_{ij}
+
++----------------+--------------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**                    | **tol.**   | **consensus**   |
++================+==========================+==============================+============+=================+
+| dig. phantom   | 2D, averaged             | 5.09                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 5.14                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 5.4                          | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 5.45                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 5.06                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 5.19                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2D, averaged             | 455                          | 2          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 455                          | 2          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 471                          | 2          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 471                          | 2          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2D, averaged             | 369                          | 11         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 369                          | 11         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 380                          | 11         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 380                          | 11         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. C      | 3D, averaged             | :math:`1.58 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. C      | 3D, merged               | :math:`1.58 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. D      | 3D, averaged             | 370                          | 16         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. D      | 3D, merged               | 370                          | 16         | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. E      | 3D, averaged             | 509                          | 8          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. E      | 3D, merged               | 509                          | 8          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *autocorrelation* feature.
 
 Cluster tendency
 ^^^^^^^^^^^^^^^^
@@ -3594,6 +4517,52 @@ formulated as:
 *Cluster tendency* is mathematically equal to the *sum variance*
 feature :cite:`VanGriethuysen2017`.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 5.47        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 5.66        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 7.48        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 7.65        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 7.07        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 7.41        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 100         | 1          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 100         | 1          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 68.5        | 1.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 68.5        | 1.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 72.1        | 1          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 72.3        | 1          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 48.1        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 48.1        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 276         | 8          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 276         | 8          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 63.4        | 1.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 63.5        | 1.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 86.6        | 3.3        | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 86.7        | 3.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *cluster tendency* feature.
+
 Cluster shade
 ^^^^^^^^^^^^^
 
@@ -3609,6 +4578,52 @@ formulated as:
 
 .. math:: F_{\mathit{cm.clust.shade}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-2\mu_{i.}\right)^3 p_{ij}
 
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**                     | **tol.**   | **consensus**   |
++================+==========================+===============================+============+=================+
+| dig. phantom   | 2D, averaged             | 7                             | —          | very strong     |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 6.98                          | —          | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 16.6                          | —          | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 16.4                          | —          | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 16.6                          | —          | very strong     |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 17.4                          | —          | very strong     |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. A      | 2D, averaged             | :math:`-1.04 \times 10^{3}`   | 20         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | :math:`-1.05 \times 10^{3}`   | 20         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | :math:`-1.49 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. A      | 2.5D, merged             | :math:`-1.49 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. B      | 2D, averaged             | :math:`-`\ 668                | 17         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | :math:`-`\ 673                | 17         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | :math:`-`\ 905                | 19         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. B      | 2.5D, merged             | :math:`-`\ 906                | 19         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. C      | 3D, averaged             | :math:`-1.06 \times 10^{4}`   | 300        | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. C      | 3D, merged               | :math:`-1.06 \times 10^{4}`   | 300        | very strong     |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. D      | 3D, averaged             | :math:`-1.27 \times 10^{3}`   | 40         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. D      | 3D, merged               | :math:`-1.28 \times 10^{3}`   | 40         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. E      | 3D, averaged             | :math:`-2.07 \times 10^{3}`   | 70         | moderate        |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+| config. E      | 3D, merged               | :math:`-2.08 \times 10^{3}`   | 70         | strong          |
++----------------+--------------------------+-------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *cluster shade* feature.
+
 Cluster prominence
 ^^^^^^^^^^^^^^^^^^
 
@@ -3622,6 +4637,52 @@ nature of :math:`\mathbf{P}_{\Delta}`, the feature can also be
 formulated as:
 
 .. math:: F_{\mathit{cm.clust.prom}}=\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} \left(i+j-2\mu_{i.}\right)^4 p_{ij}
+
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| **data**       | **aggr. method**         | **value**                    | **tol.**                    | **consensus**   |
++================+==========================+==============================+=============================+=================+
+| dig. phantom   | 2D, averaged             | 79.1                         | —                           | very strong     |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 80.4                         | —                           | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 147                          | —                           | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 142                          | —                           | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 3D, averaged             | 145                          | —                           | very strong     |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 3D, merged               | 147                          | —                           | very strong     |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2D, averaged             | :math:`5.27 \times 10^{4}`   | 500                         | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2D, slice-merged         | :math:`5.28 \times 10^{4}`   | 500                         | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2.5D, direction-merged   | :math:`4.76 \times 10^{4}`   | 700                         | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2.5D, merged             | :math:`4.77 \times 10^{4}`   | 700                         | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2D, averaged             | :math:`2.94 \times 10^{4}`   | :math:`1.4 \times 10^{3}`   | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2D, slice-merged         | :math:`2.95 \times 10^{4}`   | :math:`1.4 \times 10^{3}`   | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2.5D, direction-merged   | :math:`2.52 \times 10^{4}`   | :math:`1 \times 10^{3}`     | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2.5D, merged             | :math:`2.53 \times 10^{4}`   | :math:`1 \times 10^{3}`     | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. C      | 3D, averaged             | :math:`5.69 \times 10^{5}`   | :math:`1.1 \times 10^{4}`   | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. C      | 3D, merged               | :math:`5.7 \times 10^{5}`    | :math:`1.1 \times 10^{4}`   | very strong     |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. D      | 3D, averaged             | :math:`3.57 \times 10^{4}`   | :math:`1.4 \times 10^{3}`   | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. D      | 3D, merged               | :math:`3.57 \times 10^{4}`   | :math:`1.5 \times 10^{3}`   | very strong     |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. E      | 3D, averaged             | :math:`6.89 \times 10^{4}`   | :math:`2.1 \times 10^{3}`   | moderate        |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+| config. E      | 3D, merged               | :math:`6.9 \times 10^{4}`    | :math:`2.1 \times 10^{3}`   | strong          |
++----------------+--------------------------+------------------------------+-----------------------------+-----------------+
+
+Table: Benchmark table for the *cluster prominence* feature.
 
 Information correlation 1
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3642,6 +4703,52 @@ to the entropy of the column marginal probability.
 
 .. math:: \mathit{HXY}_1 = -\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{ij} \log_2 \left(p_{i.} p_{.j}\right)
 
++----------------+--------------------------+---------------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**           | **tol.**   | **consensus**   |
++================+==========================+=====================+============+=================+
+| dig. phantom   | 2D, averaged             | :math:`-`\ 0.155    | —          | very strong     |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | :math:`-`\ 0.0341   | —          | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | :math:`-`\ 0.124    | —          | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | :math:`-`\ 0.0334   | —          | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | :math:`-`\ 0.157    | —          | very strong     |
++----------------+--------------------------+---------------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | :math:`-`\ 0.0288   | —          | very strong     |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. A      | 2D, averaged             | :math:`-`\ 0.236    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | :math:`-`\ 0.214    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | :math:`-`\ 0.231    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. A      | 2.5D, merged             | :math:`-`\ 0.228    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. B      | 2D, averaged             | :math:`-`\ 0.239    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | :math:`-`\ 0.181    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | :math:`-`\ 0.188    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. B      | 2.5D, merged             | :math:`-`\ 0.185    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. C      | 3D, averaged             | :math:`-`\ 0.236    | 0.001      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. C      | 3D, merged               | :math:`-`\ 0.228    | 0.001      | very strong     |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. D      | 3D, averaged             | :math:`-`\ 0.231    | 0.003      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. D      | 3D, merged               | :math:`-`\ 0.225    | 0.003      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. E      | 3D, averaged             | :math:`-`\ 0.181    | 0.003      | moderate        |
++----------------+--------------------------+---------------------+------------+-----------------+
+| config. E      | 3D, merged               | :math:`-`\ 0.175    | 0.003      | strong          |
++----------------+--------------------------+---------------------+------------+-----------------+
+
+Table: Benchmark table for the *information correlation 1* feature.
+
 Information correlation 2
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3656,6 +4763,52 @@ As earlier,
 :math:`\mathit{HXY}_2` is a type of entropy defined as:
 
 .. math:: \mathit{HXY}_2=-\sum_{i=1}^{N_g} \sum_{j=1}^{N_g} p_{i.} p_{.j} \log_2 \left(p_{i.} p_{.j} \right)
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.487       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.263       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.487       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.291       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.52        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.269       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.863       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.851       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.879       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.88        | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.837       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.792       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.821       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.819       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.9         | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.899       | 0.001      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.845       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.846       | 0.003      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.813       | 0.004      | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.813       | 0.004      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *information correlation 2* feature.
 
 Grey level run length based features
 ------------------------------------
@@ -3702,23 +4855,24 @@ example was previously shown in Figure [figGLCMCalcApproaches]. A
 feature may be aggregated as follows:
 
 #. Features are computed from each 2D directional matrix and averaged
-   over 2D directions and slices ().
+   over 2D directions and slices (*BTW3*).
 
 #. Features are computed from a single matrix after merging 2D
-   directional matrices per slice, and then averaged over slices ().
+   directional matrices per slice, and then averaged over slices
+   (*SUJT*).
 
 #. Features are computed from a single matrix after merging 2D
    directional matrices per direction, and then averaged over directions
-   ().
+   (*JJUI*).
 
 #. The feature is computed from a single matrix after merging all 2D
-   directional matrices ().
+   directional matrices (*ZW7Z*).
 
 #. Features are computed from each 3D directional matrix and averaged
-   over the 3D directions ().
+   over the 3D directions (*ITBB*).
 
 #. The feature is computed from a single matrix after merging all 3D
-   directional matrices ().
+   directional matrices (*IAZD*).
 
 In methods 2,3,4 and 6 matrices are merged by summing the run counts of
 each matrix element :math:`(i,j)` over the different matrices. Note that
@@ -3753,6 +4907,52 @@ This feature emphasises short run lengths
 
 .. math:: F_{\mathit{rlm.sre}} = \frac{1}{N_s} \sum_{j=1}^{N_r} \frac{r_{.j}}{j^2}
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.641       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.661       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.665       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.68        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.705       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.729       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.785       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.786       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.768       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.769       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.781       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.782       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.759       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.759       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.786       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.787       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.734       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.736       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.776       | 0.001      | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.777       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *short runs emphasis* feature.
+
 Long runs emphasis
 ^^^^^^^^^^^^^^^^^^
 
@@ -3760,6 +4960,52 @@ This feature emphasises long run lengths
 :cite:`Galloway1975`. It is defined as:
 
 .. math:: F_{\mathit{rlm.lre}} = \frac{1}{N_s} \sum_{j=1}^{N_r} j^2 r_{.j}
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 3.78        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 3.51        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 3.46        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 3.27        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 3.06        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 2.76        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 2.91        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 2.89        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 3.09        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 3.08        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 3.52        | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 3.5         | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 3.82        | 0.05       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 3.81        | 0.05       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 3.31        | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 3.28        | 0.04       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 6.66        | 0.18       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 6.56        | 0.18       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 3.55        | 0.07       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 3.52        | 0.07       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *long runs emphasis* feature.
 
 Low grey level run emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3770,6 +5016,52 @@ levels are emphasised. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.lgre}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{r_{i.}}{i^2}
 
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**                   | **consensus**   |
++================+==========================+=============+============================+=================+
+| dig. phantom   | 2D, averaged             | 0.604       | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.609       | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.58        | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.585       | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.603       | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.607       | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D, averaged             | 0.0264      | 0.0003                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.0264      | 0.0003                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.0148      | 0.0004                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D, merged             | 0.0147      | 0.0004                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D, averaged             | 0.0331      | 0.0006                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.033       | 0.0006                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.0194      | 0.0006                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D, merged             | 0.0194      | 0.0006                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D, averaged             | 0.00155     | :math:`5 \times 10^{-5}`   | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D, merged               | 0.00155     | :math:`5 \times 10^{-5}`   | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D, averaged             | 0.0257      | 0.0012                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D, merged               | 0.0257      | 0.0012                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D, averaged             | 0.0204      | 0.0008                     | moderate        |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D, merged               | 0.0204      | 0.0008                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+
+Table: Benchmark table for the *low grey level run emphasis* feature.
+
 High grey level run emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3778,6 +5070,52 @@ The *high grey level run emphasis* feature is a grey level analogue to
 emphasises high grey levels, and is defined as:
 
 .. math:: F_{\mathit{rlm.hgre}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 r_{i.}
+
++----------------+--------------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**                    | **tol.**   | **consensus**   |
++================+==========================+==============================+============+=================+
+| dig. phantom   | 2D, averaged             | 9.82                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 9.74                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 10.3                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 10.2                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 9.7                          | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 9.64                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2D, averaged             | 428                          | 3          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 428                          | 3          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 449                          | 3          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 449                          | 3          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2D, averaged             | 342                          | 11         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 342                          | 11         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 356                          | 11         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 356                          | 11         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. C      | 3D, averaged             | :math:`1.47 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. C      | 3D, merged               | :math:`1.47 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. D      | 3D, averaged             | 326                          | 17         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. D      | 3D, merged               | 326                          | 17         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. E      | 3D, averaged             | 471                          | 9          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. E      | 3D, merged               | 471                          | 9          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *high grey level run emphasis* feature.
 
 Short run low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3788,6 +5126,53 @@ where short run lengths and low grey levels are located
 
 .. math:: F_{\mathit{rlm.srlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{r_{ij}}{i^2 j^2}
 
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**                   | **consensus**   |
++================+==========================+=============+============================+=================+
+| dig. phantom   | 2D, averaged             | 0.294       | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.311       | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.296       | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.312       | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.352       | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.372       | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D, averaged             | 0.0243      | 0.0003                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.0243      | 0.0003                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.0135      | 0.0004                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D, merged             | 0.0135      | 0.0004                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D, averaged             | 0.0314      | 0.0006                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.0313      | 0.0006                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.0181      | 0.0006                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D, merged             | 0.0181      | 0.0006                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D, averaged             | 0.00136     | :math:`5 \times 10^{-5}`   | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D, merged               | 0.00136     | :math:`5 \times 10^{-5}`   | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D, averaged             | 0.0232      | 0.001                      | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D, merged               | 0.0232      | 0.001                      | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D, averaged             | 0.0187      | 0.0007                     | moderate        |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D, merged               | 0.0186      | 0.0007                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+
+Table: Benchmark table for the *short run low grey level emphasis*
+feature.
+
 Short run high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3796,6 +5181,53 @@ where short run lengths and high grey levels are located
 :cite:`Dasarathy1991`. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.srhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{i^2 r_{ij}}{j^2}
+
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**                   | **tol.**   | **consensus**   |
++================+==========================+=============================+============+=================+
+| dig. phantom   | 2D, averaged             | 8.57                        | —          | very strong     |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 8.67                        | —          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 9.03                        | —          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 9.05                        | —          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 8.54                        | —          | very strong     |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 8.67                        | —          | very strong     |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. A      | 2D, averaged             | 320                         | 1          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 320                         | 1          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 332                         | 1          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 333                         | 1          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. B      | 2D, averaged             | 251                         | 8          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 252                         | 8          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 257                         | 9          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 258                         | 9          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. C      | 3D, averaged             | :math:`1.1 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. C      | 3D, merged               | :math:`1.1 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. D      | 3D, averaged             | 219                         | 13         | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. D      | 3D, merged               | 219                         | 13         | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. E      | 3D, averaged             | 346                         | 7          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+| config. E      | 3D, merged               | 347                         | 7          | strong          |
++----------------+--------------------------+-----------------------------+------------+-----------------+
+
+Table: Benchmark table for the *short run high grey level emphasis*
+feature.
 
 Long run low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3806,6 +5238,53 @@ where long run lengths and low grey levels are located
 
 .. math:: F_{\mathit{rlm.lrlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} \frac{j^2 r_{ij}}{i^2}
 
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**                   | **consensus**   |
++================+==========================+=============+============================+=================+
+| dig. phantom   | 2D, averaged             | 3.14        | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 2.92        | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 2.79        | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 2.63        | —                          | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D, averaged             | 2.39        | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D, merged               | 2.16        | —                          | very strong     |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D, averaged             | 0.0386      | 0.0003                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.0385      | 0.0003                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.0229      | 0.0004                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D, merged             | 0.0228      | 0.0004                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D, averaged             | 0.0443      | 0.0008                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.0442      | 0.0008                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.0293      | 0.0009                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D, merged             | 0.0292      | 0.0009                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D, averaged             | 0.00317     | :math:`4 \times 10^{-5}`   | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D, merged               | 0.00314     | :math:`4 \times 10^{-5}`   | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D, averaged             | 0.0484      | 0.0031                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D, merged               | 0.0478      | 0.0031                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D, averaged             | 0.0313      | 0.0016                     | moderate        |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D, merged               | 0.0311      | 0.0016                     | strong          |
++----------------+--------------------------+-------------+----------------------------+-----------------+
+
+Table: Benchmark table for the *long run low grey level emphasis*
+feature.
+
 Long run high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3814,6 +5293,53 @@ where long run lengths and high grey levels are located
 :cite:`Dasarathy1991`. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.lrhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i^2 j^2 r_{ij}
+
++----------------+--------------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**                    | **tol.**   | **consensus**   |
++================+==========================+==============================+============+=================+
+| dig. phantom   | 2D, averaged             | 17.4                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 16.1                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 17.9                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 17                           | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 17.6                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 15.6                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2D, averaged             | :math:`1.41 \times 10^{3}`   | 20         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | :math:`1.4 \times 10^{3}`    | 20         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | :math:`1.5 \times 10^{3}`    | 20         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D, merged             | :math:`1.5 \times 10^{3}`    | 20         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2D, averaged             | :math:`1.39 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | :math:`1.38 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | :math:`1.5 \times 10^{3}`    | 30         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D, merged             | :math:`1.5 \times 10^{3}`    | 30         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. C      | 3D, averaged             | :math:`5.59 \times 10^{3}`   | 80         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. C      | 3D, merged               | :math:`5.53 \times 10^{3}`   | 80         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. D      | 3D, averaged             | :math:`2.67 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. D      | 3D, merged               | :math:`2.63 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. E      | 3D, averaged             | :math:`1.9 \times 10^{3}`    | 20         | moderate        |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. E      | 3D, merged               | :math:`1.89 \times 10^{3}`   | 20         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *long run high grey level emphasis*
+feature.
 
 Grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3824,6 +5350,52 @@ are equally distributed along grey levels. The feature is defined as:
 
 .. math:: F_{\mathit{rlm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} r_{i.}^2
 
++----------------+--------------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**                    | **tol.**   | **consensus**   |
++================+==========================+==============================+============+=================+
+| dig. phantom   | 2D, averaged             | 5.2                          | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 20.5                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 19.5                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 77.1                         | —          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 21.8                         | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 281                          | —          | very strong     |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2D, averaged             | 432                          | 1          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | :math:`1.73 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | :math:`9.85 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D, merged             | :math:`3.94 \times 10^{4}`   | 100        | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2D, averaged             | 107                          | 1          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 427                          | 1          | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | :math:`2.4 \times 10^{3}`    | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D, merged             | :math:`9.6 \times 10^{3}`    | 20         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. C      | 3D, averaged             | :math:`3.18 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. C      | 3D, merged               | :math:`4.13 \times 10^{4}`   | 100        | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. D      | 3D, averaged             | :math:`3.29 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. D      | 3D, merged               | :math:`4.28 \times 10^{4}`   | 200        | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. E      | 3D, averaged             | :math:`4 \times 10^{3}`      | 10         | moderate        |
++----------------+--------------------------+------------------------------+------------+-----------------+
+| config. E      | 3D, merged               | :math:`5.19 \times 10^{4}`   | 200        | strong          |
++----------------+--------------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *grey level non-uniformity* feature.
+
 Normalised grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3831,6 +5403,53 @@ This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
 
 .. math:: F_{\mathit{rlm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} r_{i.}^2
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.46        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.456       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.413       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.412       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.43        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.43        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.128       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.128       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.126       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.126       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.145       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.145       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.137       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.137       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.102       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.102       | 0.003      | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.133       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.134       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.135       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.135       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised grey level non-uniformity*
+feature.
 
 Run length non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3841,6 +5460,52 @@ are equally distributed along run lengths. It is defined as:
 
 .. math:: F_{\mathit{rlm.rlnu}}= \frac{1}{N_s} \sum_{j=1}^{N_r} r_{.j}^2
 
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| **data**       | **aggr. method**         | **value**                    | **tol.**                  | **consensus**   |
++================+==========================+==============================+===========================+=================+
+| dig. phantom   | 2D, averaged             | 6.12                         | —                         | very strong     |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 21.6                         | —                         | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 22.3                         | —                         | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 83.2                         | —                         | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| dig. phantom   | 3D, averaged             | 26.9                         | —                         | very strong     |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| dig. phantom   | 3D, merged               | 328                          | —                         | very strong     |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. A      | 2D, averaged             | :math:`1.65 \times 10^{3}`   | 10                        | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. A      | 2D, slice-merged         | :math:`6.6 \times 10^{3}`    | 30                        | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. A      | 2.5D, direction-merged   | :math:`4.27 \times 10^{4}`   | 200                       | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. A      | 2.5D, merged             | :math:`1.71 \times 10^{5}`   | :math:`1 \times 10^{3}`   | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. B      | 2D, averaged             | 365                          | 3                         | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. B      | 2D, slice-merged         | :math:`1.46 \times 10^{3}`   | 10                        | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. B      | 2.5D, direction-merged   | :math:`9.38 \times 10^{3}`   | 70                        | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. B      | 2.5D, merged             | :math:`3.75 \times 10^{4}`   | 300                       | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. C      | 3D, averaged             | :math:`1.8 \times 10^{4}`    | 500                       | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. C      | 3D, merged               | :math:`2.34 \times 10^{5}`   | :math:`6 \times 10^{3}`   | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. D      | 3D, averaged             | :math:`1.24 \times 10^{4}`   | 200                       | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. D      | 3D, merged               | :math:`1.6 \times 10^{5}`    | :math:`3 \times 10^{3}`   | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. E      | 3D, averaged             | :math:`1.66 \times 10^{4}`   | 300                       | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+| config. E      | 3D, merged               | :math:`2.15 \times 10^{5}`   | :math:`4 \times 10^{3}`   | strong          |
++----------------+--------------------------+------------------------------+---------------------------+-----------------+
+
+Table: Benchmark table for the *run length non-uniformity* feature.
+
 Normalised run length non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -3848,6 +5513,53 @@ This is normalised version of the *run length non-uniformity* feature.
 It is defined as:
 
 .. math:: F_{\mathit{rlm.rlnu.norm}}= \frac{1}{N_s^2} \sum_{j=1}^{N_r} r_{.j}^2
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.492       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.441       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.461       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.445       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.513       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.501       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.579       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.579       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.548       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.548       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.578       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.578       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.533       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.534       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.574       | 0.004      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.575       | 0.004      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.5         | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.501       | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.559       | 0.001      | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.56        | 0.001      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised run length non-uniformity*
+feature.
 
 Run percentage
 ^^^^^^^^^^^^^^
@@ -3863,6 +5575,52 @@ As noted before, when this feature is calculated using a merged GLRLM,
 :math:`N_v` should be the sum of the number of voxels of the underlying
 matrices to allow proper normalisation.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.627       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.627       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.632       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.632       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.68        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.68        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.704       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.704       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.68        | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.68        | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 0.681       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 0.681       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 0.642       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 0.642       | 0.002      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 0.679       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 0.679       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 0.554       | 0.005      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 0.554       | 0.005      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 0.664       | 0.003      | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 0.664       | 0.003      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *run percentage* feature.
+
 Grey level variance
 ^^^^^^^^^^^^^^^^^^^
 
@@ -3875,6 +5633,52 @@ finding discretised grey level :math:`i` with run length :math:`j`.
 
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i\,p_{ij}`.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 3.35        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 3.37        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 3.58        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 3.59        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 3.46        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 3.48        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 33.7        | 0.6        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 33.7        | 0.6        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 29.1        | 0.6        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 29.1        | 0.6        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 28.3        | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 28.3        | 0.3        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 25.7        | 0.2        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 25.7        | 0.2        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 101         | 3          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 101         | 3          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 31.5        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 31.4        | 0.4        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 39.8        | 0.9        | moderate        |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 39.7        | 0.9        | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *grey level variance* feature.
+
 Run length variance
 ^^^^^^^^^^^^^^^^^^^
 
@@ -3886,6 +5690,52 @@ before let :math:`p_{ij} = r_{ij}/N_s`. The feature is defined as:
 Mean run length is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} j\,p_{ij}`.
 
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 0.761       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 0.778       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 0.758       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 0.767       | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 0.574       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 0.598       | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 0.828       | 0.008      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 0.826       | 0.008      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 0.916       | 0.011      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 0.914       | 0.011      | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 1.22        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 1.21        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 1.39        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 1.39        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 1.12        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 1.11        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 3.35        | 0.14       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 3.29        | 0.13       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 1.26        | 0.05       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 1.25        | 0.05       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *run length variance* feature.
+
 Run entropy
 ^^^^^^^^^^^
 
@@ -3893,6 +5743,52 @@ Run entropy
 Again, let :math:`p_{ij} = r_{ij}/N_s`. The entropy is then defined as:
 
 .. math:: F_{\mathit{rlm.rl.entr}} = - \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} p_{ij} \log_2 p_{ij}
+
++----------------+--------------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**         | **value**   | **tol.**   | **consensus**   |
++================+==========================+=============+============+=================+
+| dig. phantom   | 2D, averaged             | 2.17        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2D, slice-merged         | 2.57        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, direction-merged   | 2.52        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D, merged             | 2.76        | —          | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, averaged             | 2.43        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D, merged               | 2.62        | —          | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, averaged             | 4.73        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2D, slice-merged         | 4.76        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, direction-merged   | 4.87        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. A      | 2.5D, merged             | 4.87        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, averaged             | 4.53        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2D, slice-merged         | 4.58        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, direction-merged   | 4.84        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. B      | 2.5D, merged             | 4.84        | 0.01       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, averaged             | 5.35        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. C      | 3D, merged               | 5.35        | 0.03       | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, averaged             | 5.08        | 0.02       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. D      | 3D, merged               | 5.08        | 0.02       | very strong     |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, averaged             | 4.87        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+| config. E      | 3D, merged               | 4.87        | 0.03       | strong          |
++----------------+--------------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *run entropy* feature.
 
 Grey level size zone based features
 -----------------------------------
@@ -3936,12 +5832,13 @@ Three methods can be used to aggregate GLSZMs and arrive at a single
 feature value. A schematic example is shown in Figure
 [figGLSZMCalcApproaches]. A feature may be aggregated as follows:
 
-#. Features are computed from 2D matrices and averaged over slices ().
+#. Features are computed from 2D matrices and averaged over slices
+   (*8QNN*).
 
 #. The feature is computed from a single matrix after merging all 2D
-   matrices ().
+   matrices (*62GR*).
 
-#. The feature is computed from a 3D matrix ().
+#. The feature is computed from a 3D matrix (*KOBO*).
 
 Method 2 involves merging GLSZMs by summing the number of zones
 :math:`s_{ij}` over the GLSZM for the different slices. Note that when
@@ -3995,12 +5892,64 @@ This feature emphasises small zones. It is defined as:
 
 .. math:: F_{\mathit{szm.sze}} = \frac{1}{N_s} \sum_{j=1}^{N_z} \frac{s_{.j}}{j^2}
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.363       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.368       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.255       | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.688       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.68        | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.745       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.741       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.695       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.637       | 0.005      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.676       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *small zone emphasis* feature.
+
 Large zone emphasis
 ^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises large zones. It is defined as:
 
 .. math:: F_{\mathit{szm.lze}} = \frac{1}{N_s} \sum_{j=1}^{N_z} j^2 s_{.j}
+
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**                    | **consensus**   |
++================+====================+==============================+=============================+=================+
+| dig. phantom   | 2D                 | 43.9                         | —                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 34.2                         | —                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 3D                 | 550                          | —                           | very strong     |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2D                 | 625                          | 9                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2.5D               | 675                          | 8                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2D                 | 439                          | 8                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2.5D               | 444                          | 8                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. C      | 3D                 | :math:`3.89 \times 10^{4}`   | 900                         | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. D      | 3D                 | :math:`9.91 \times 10^{4}`   | :math:`2.8 \times 10^{3}`   | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. E      | 3D                 | :math:`5.86 \times 10^{4}`   | 800                         | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+
+Table: Benchmark table for the *large zone emphasis* feature.
 
 Low grey level zone emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4011,6 +5960,32 @@ defined as:
 
 .. math:: F_{\mathit{szm.lgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{s_{i.}}{i^2}
 
++----------------+--------------------+-------------+----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**                   | **consensus**   |
++================+====================+=============+============================+=================+
+| dig. phantom   | 2D                 | 0.371       | —                          | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 0.368       | —                          | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D                 | 0.253       | —                          | very strong     |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D                 | 0.0368      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D               | 0.0291      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D                 | 0.0475      | 0.001                      | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D               | 0.0387      | 0.001                      | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D                 | 0.00235     | :math:`6 \times 10^{-5}`   | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D                 | 0.0409      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D                 | 0.034       | 0.0004                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+
+Table: Benchmark table for the *low grey level emphasis* feature.
+
 High grey level zone emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4019,6 +5994,32 @@ The *high grey level zone emphasis* feature is a grey level analogue to
 defined as:
 
 .. math:: F_{\mathit{szm.hgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 s_{i.}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 16.4        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 16.2        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 15.6        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 363         | 3          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 370         | 3          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 284         | 11         | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 284         | 11         | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 971         | 7          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 188         | 10         | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 286         | 6          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *high grey level emphasis* feature.
 
 Small zone low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4029,6 +6030,33 @@ defined as:
 
 .. math:: F_{\mathit{szm.szlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{s_{ij}}{i^2 j^2}
 
++----------------+--------------------+-------------+----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**                   | **consensus**   |
++================+====================+=============+============================+=================+
+| dig. phantom   | 2D                 | 0.0259      | —                          | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 0.0295      | —                          | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D                 | 0.0256      | —                          | very strong     |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D                 | 0.0298      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D               | 0.0237      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D                 | 0.0415      | 0.0008                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D               | 0.0335      | 0.0009                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D                 | 0.0016      | :math:`4 \times 10^{-5}`   | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D                 | 0.0248      | 0.0004                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D                 | 0.0224      | 0.0004                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+
+Table: Benchmark table for the *small zone low grey level emphasis*
+feature.
+
 Small zone high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4037,6 +6065,33 @@ GLSZM, where small zone sizes and high grey levels are located. The
 feature is defined as:
 
 .. math:: F_{\mathit{szm.szhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{i^2 s_{ij}}{j^2}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 10.3        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 9.87        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 2.76        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 226         | 1          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 229         | 1          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 190         | 7          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 190         | 7          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 657         | 4          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 117         | 7          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 186         | 4          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *small zone high grey level emphasis*
+feature.
 
 Large zone low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4047,6 +6102,33 @@ feature is defined as:
 
 .. math:: F_{\mathit{szm.lzlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} \frac{j^2 s_{ij}}{i^2}
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 40.4        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 30.6        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 503         | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 1.35        | 0.03       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 1.44        | 0.02       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 1.15        | 0.04       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 1.16        | 0.04       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 21.6        | 0.5        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 241         | 14         | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 105         | 4          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *large zone low grey level emphasis*
+feature.
+
 Large zone high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4055,6 +6137,33 @@ GLSZM, where large zone sizes and high grey levels are located. The
 feature is defined as:
 
 .. math:: F_{\mathit{szm.lzhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} i^2 j^2 s_{ij}
+
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**                    | **consensus**   |
++================+====================+==============================+=============================+=================+
+| dig. phantom   | 2D                 | 113                          | —                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 107                          | —                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 3D                 | :math:`1.49 \times 10^{3}`   | —                           | very strong     |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2D                 | :math:`3.16 \times 10^{5}`   | :math:`5 \times 10^{3}`     | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2.5D               | :math:`3.38 \times 10^{5}`   | :math:`5 \times 10^{3}`     | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2D                 | :math:`1.81 \times 10^{5}`   | :math:`3 \times 10^{3}`     | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2.5D               | :math:`1.81 \times 10^{5}`   | :math:`3 \times 10^{3}`     | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. C      | 3D                 | :math:`7.07 \times 10^{7}`   | :math:`1.5 \times 10^{6}`   | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. D      | 3D                 | :math:`4.14 \times 10^{7}`   | :math:`3 \times 10^{5}`     | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. E      | 3D                 | :math:`3.36 \times 10^{7}`   | :math:`3 \times 10^{5}`     | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+
+Table: Benchmark table for the *large zone high grey level emphasis*
+feature.
 
 Grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4065,6 +6174,32 @@ distributed along grey levels. The feature is defined as:
 
 .. math:: F_{\mathit{szm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} s_{i.}^2
 
++----------------+--------------------+-----------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                   | **tol.**   | **consensus**   |
++================+====================+=============================+============+=================+
+| dig. phantom   | 2D                 | 1.41                        | —          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 5.44                        | —          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 1.4                         | —          | very strong     |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. A      | 2D                 | 82.2                        | 0.1        | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. A      | 2.5D               | :math:`1.8 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. B      | 2D                 | 20.5                        | 0.1        | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. B      | 2.5D               | 437                         | 3          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. C      | 3D                 | 195                         | 6          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. D      | 3D                 | 212                         | 6          | very strong     |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. E      | 3D                 | 231                         | 6          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+
+Table: Benchmark table for the *grey level non-uniformity* feature.
+
 Normalised grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4072,6 +6207,33 @@ This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
 
 .. math:: F_{\mathit{szm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} s_{i.}^2
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.323       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.302       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.28        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.0728      | 0.0014     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.0622      | 0.0007     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.0789      | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.0613      | 0.0005     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.0286      | 0.0003     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.0491      | 0.0008     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.0414      | 0.0003     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised grey level non-uniformity*
+feature.
 
 Zone size non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4082,6 +6244,32 @@ are equally distributed along zone sizes. It is defined as:
 
 .. math:: F_{\mathit{szm.zsnu}}= \frac{1}{N_s} \sum_{j=1}^{N_z} s_{.j}^2
 
++----------------+--------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**   | **consensus**   |
++================+====================+==============================+============+=================+
+| dig. phantom   | 2D                 | 1.49                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 3.44                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 1                            | —          | very strong     |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2D                 | 479                          | 4          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D               | :math:`1.24 \times 10^{4}`   | 100        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2D                 | 140                          | 3          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D               | :math:`3.63 \times 10^{3}`   | 70         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. C      | 3D                 | :math:`3.04 \times 10^{3}`   | 100        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. D      | 3D                 | :math:`1.63 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. E      | 3D                 | :math:`2.37 \times 10^{3}`   | 40         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *zone size non-uniformity* feature.
+
 Normalised zone size non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4089,6 +6277,33 @@ This is a normalised version of *zone size non-uniformity*. It is
 defined as:
 
 .. math:: F_{\mathit{szm.zsnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_z} s_{.j}^2
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.333       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.191       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.2         | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.44        | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.427       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.521       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.509       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.447       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.377       | 0.006      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.424       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised zone size non-uniformity*
+feature.
 
 Zone percentage
 ^^^^^^^^^^^^^^^
@@ -4098,6 +6313,32 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 *zone percentage*. It is defined as:
 
 .. math:: F_{\mathit{szm.z.perc}}=\frac{N_s}{N_v}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.24        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.243       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.0676      | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.3         | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.253       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.324       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.26        | 0.002      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.148       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.0972      | 0.0007     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.126       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *zone percentage* feature.
 
 Grey level variance
 ^^^^^^^^^^^^^^^^^^^
@@ -4111,6 +6352,32 @@ The feature is then defined as:
 
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} i\,p_{ij}`.
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 3.97        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 3.92        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 2.64        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 42.7        | 0.7        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 47.9        | 0.4        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 36.1        | 0.3        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 41          | 0.7        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 106         | 1          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 32.7        | 1.6        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 50.8        | 0.9        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *grey level variance* feature.
+
 Zone size variance
 ^^^^^^^^^^^^^^^^^^
 
@@ -4123,12 +6390,64 @@ defined as:
 Mean zone size is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} j\,p_{ij}`.
 
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**                    | **consensus**   |
++================+====================+==============================+=============================+=================+
+| dig. phantom   | 2D                 | 21                           | —                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 17.3                         | —                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 3D                 | 331                          | —                           | very strong     |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2D                 | 609                          | 9                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2.5D               | 660                          | 8                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2D                 | 423                          | 8                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2.5D               | 429                          | 8                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. C      | 3D                 | :math:`3.89 \times 10^{4}`   | 900                         | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. D      | 3D                 | :math:`9.9 \times 10^{4}`    | :math:`2.8 \times 10^{3}`   | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. E      | 3D                 | :math:`5.85 \times 10^{4}`   | 800                         | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+
+Table: Benchmark table for the *zone size variance* feature.
+
 Zone size entropy
 ^^^^^^^^^^^^^^^^^
 
 Let :math:`p_{ij} = s_{ij}/N_s`. *Zone size entropy* is then defined as:
 
 .. math:: F_{\mathit{szm.zs.entr}} = - \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} p_{ij} \log_2 p_{ij}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 1.93        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 3.08        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 2.32        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 5.92        | 0.02       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 6.39        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 5.29        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 5.98        | 0.02       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 7           | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 6.52        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 6.57        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *zone size entropy* feature.
 
 Grey level distance zone based features
 ---------------------------------------
@@ -4206,12 +6525,13 @@ Three methods can be used to aggregate GLDZMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
 [figGLSZMCalcApproaches]. A feature may be aggregated as follows:
 
-#. Features are computed from 2D matrices and averaged over slices ().
+#. Features are computed from 2D matrices and averaged over slices
+   (*8QNN*).
 
 #. The feature is computed from a single matrix after merging all 2D
-   matrices ().
+   matrices (*62GR*).
 
-#. The feature is computed from a 3D matrix ().
+#. The feature is computed from a 3D matrix (*KOBO*).
 
 Method 2 involves merging GLDZMs by summing the number of zones
 :math:`d_{ij}` over the GLDZM for the different slices. Note that when
@@ -4251,12 +6571,64 @@ This feature emphasises small distances. It is defined as:
 
 .. math:: F_{\mathit{dzm.sde}} = \frac{1}{N_s} \sum_{j=1}^{N_d} \frac{d_{.j}}{j^2}
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.946       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.917       | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 1           | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.192       | 0.006      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.168       | 0.005      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.36        | 0.005      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.329       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.531       | 0.006      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.579       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.527       | 0.004      | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *small distance emphasis* feature.
+
 Large distance emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 This feature emphasises large distances. It is defined as:
 
 .. math:: F_{\mathit{dzm.lde}} = \frac{1}{N_s} \sum_{j=1}^{N_d} j^2 d_{.j}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 1.21        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 1.33        | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 1           | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 161         | 1          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 178         | 1          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 31.6        | 0.2        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 34.3        | 0.2        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 11          | 0.3        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 10.3        | 0.1        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 12.6        | 0.1        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *large distance emphasis* feature.
 
 Low grey level zone emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4267,6 +6639,32 @@ feature is defined as:
 
 .. math:: F_{\mathit{dzm.lgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{d_{i.}}{i^2}
 
++----------------+--------------------+-------------+----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**                   | **consensus**   |
++================+====================+=============+============================+=================+
+| dig. phantom   | 2D                 | 0.371       | —                          | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 0.368       | —                          | moderate        |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D                 | 0.253       | —                          | very strong     |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D                 | 0.0368      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D               | 0.0291      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D                 | 0.0475      | 0.001                      | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D               | 0.0387      | 0.001                      | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D                 | 0.00235     | :math:`6 \times 10^{-5}`   | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D                 | 0.0409      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D                 | 0.034       | 0.0004                     | moderate        |
++----------------+--------------------+-------------+----------------------------+-----------------+
+
+Table: Benchmark table for the *low grey level emphasis* feature.
+
 High grey level zone emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4275,6 +6673,32 @@ The *high grey level zone emphasis* feature is a grey level analogue to
 is defined as:
 
 .. math:: F_{\mathit{dzm.hgze}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 d_{i.}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 16.4        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 16.2        | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 15.6        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 363         | 3          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 370         | 3          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 284         | 11         | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 284         | 11         | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 971         | 7          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 188         | 10         | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 286         | 6          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *high grey level emphasis* feature.
 
 Small distance low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4285,6 +6709,33 @@ defined as:
 
 .. math:: F_{\mathit{dzm.sdlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{d_{ij}}{i^2 j^2}
 
++----------------+--------------------+-------------+----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**                   | **consensus**   |
++================+====================+=============+============================+=================+
+| dig. phantom   | 2D                 | 0.367       | —                          | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 0.362       | —                          | moderate        |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D                 | 0.253       | —                          | very strong     |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D                 | 0.00913     | 0.00023                    | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D               | 0.00788     | 0.00022                    | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D                 | 0.0192      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D               | 0.0168      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D                 | 0.00149     | :math:`4 \times 10^{-5}`   | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D                 | 0.0302      | 0.0006                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D                 | 0.0228      | 0.0003                     | moderate        |
++----------------+--------------------+-------------+----------------------------+-----------------+
+
+Table: Benchmark table for the *small distance low grey level emphasis*
+feature.
+
 Small distance high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4293,6 +6744,33 @@ where small zone distances and high grey levels are located. *Small
 distance high grey level emphasis* is defined as:
 
 .. math:: F_{\mathit{dzm.sdhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{i^2 d_{ij}}{j^2}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 15.2        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 14.3        | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 15.6        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 60.1        | 3.3        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 49.5        | 2.8        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 95.7        | 5.5        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 81.4        | 4.6        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 476         | 11         | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 99.3        | 5.1        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 136         | 4          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *small distance high grey level emphasis*
+feature.
 
 Large distance low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4303,6 +6781,33 @@ is defined as:
 
 .. math:: F_{\mathit{dzm.ldlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} \frac{j^2 d_{ij}}{i^2}
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.386       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.391       | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.253       | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 2.96        | 0.02       | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 2.31        | 0.01       | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.934       | 0.018      | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.748       | 0.017      | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.0154      | 0.0005     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.183       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.179       | 0.004      | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *large distance low grey level emphasis*
+feature.
+
 Large distance high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4311,6 +6816,33 @@ where large zone distances and high grey levels are located. The *large
 distance high grey level emphasis* feature is defined as:
 
 .. math:: F_{\mathit{dzm.ldhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} i^2 j^2 d_{ij}
+
++----------------+--------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**   | **consensus**   |
++================+====================+==============================+============+=================+
+| dig. phantom   | 2D                 | 21.3                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 23.7                         | —          | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 15.6                         | —          | very strong     |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2D                 | :math:`7.01 \times 10^{4}`   | 100        | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D               | :math:`7.95 \times 10^{4}`   | 100        | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2D                 | :math:`1.06 \times 10^{4}`   | 300        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D               | :math:`1.16 \times 10^{4}`   | 400        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. C      | 3D                 | :math:`1.34 \times 10^{4}`   | 200        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. D      | 3D                 | :math:`2.62 \times 10^{3}`   | 110        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. E      | 3D                 | :math:`4.85 \times 10^{3}`   | 60         | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *large distance high grey level emphasis*
+feature.
 
 Grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4321,6 +6853,32 @@ distributed along grey levels. The feature is defined as:
 
 .. math:: F_{\mathit{dzm.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} d_{i.}^2
 
++----------------+--------------------+-----------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                   | **tol.**   | **consensus**   |
++================+====================+=============================+============+=================+
+| dig. phantom   | 2D                 | 1.41                        | —          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 5.44                        | —          | moderate        |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 1.4                         | —          | very strong     |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. A      | 2D                 | 82.2                        | 0.1        | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. A      | 2.5D               | :math:`1.8 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. B      | 2D                 | 20.5                        | 0.1        | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. B      | 2.5D               | 437                         | 3          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. C      | 3D                 | 195                         | 6          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. D      | 3D                 | 212                         | 6          | strong          |
++----------------+--------------------+-----------------------------+------------+-----------------+
+| config. E      | 3D                 | 231                         | 6          | moderate        |
++----------------+--------------------+-----------------------------+------------+-----------------+
+
+Table: Benchmark table for the *grey level non-uniformity* feature.
+
 Normalised grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4328,6 +6886,33 @@ This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
 
 .. math:: F_{\mathit{dzm.glnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_g} d_{i.}^2
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.323       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.302       | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.28        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.0728      | 0.0014     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.0622      | 0.0007     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.0789      | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.0613      | 0.0005     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.0286      | 0.0003     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.0491      | 0.0008     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.0414      | 0.0003     | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised grey level non-uniformity*
+feature.
 
 Zone distance non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4339,6 +6924,32 @@ defined as:
 
 .. math:: F_{\mathit{dzm.zdnu}}= \frac{1}{N_s} \sum_{j=1}^{N_d} d_{.j}^2
 
++----------------+--------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**   | **consensus**   |
++================+====================+==============================+============+=================+
+| dig. phantom   | 2D                 | 3.79                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 14.4                         | —          | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 5                            | —          | very strong     |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2D                 | 64                           | 0.4        | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D               | :math:`1.57 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2D                 | 39.8                         | 0.3        | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D               | 963                          | 6          | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. C      | 3D                 | :math:`1.87 \times 10^{3}`   | 40         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. D      | 3D                 | :math:`1.37 \times 10^{3}`   | 20         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. E      | 3D                 | :math:`1.5 \times 10^{3}`    | 30         | moderate        |
++----------------+--------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *zone distance non-uniformity* feature.
+
 Normalised zone distance non-uniformity 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4346,6 +6957,33 @@ This is a normalised version of the *zone distance non-uniformity*
 feature. It is defined as:
 
 .. math:: F_{\mathit{dzm.zdnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_d} d_{.j}^2
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.898       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.802       | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 1           | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.0716      | 0.0022     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.0543      | 0.0014     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.174       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.135       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.274       | 0.005      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.317       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.269       | 0.003      | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised zone distance non-uniformity*
+feature.
 
 Zone percentage
 ^^^^^^^^^^^^^^^
@@ -4355,6 +6993,32 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 *zone percentage*. It is defined as:
 
 .. math:: F_{\mathit{dzm.z.perc}}=\frac{N_s}{N_v}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.24        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.243       | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.0676      | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.3         | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.253       | 0.004      | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.324       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.26        | 0.002      | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.148       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.0972      | 0.0007     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.126       | 0.001      | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *zone percentage* feature.
 
 Grey level variance
 ^^^^^^^^^^^^^^^^^^^
@@ -4368,6 +7032,32 @@ finding zones with discretised grey level :math:`i` at distance
 
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} i\,p_{ij}`.
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 3.97        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 3.92        | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 2.64        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 42.7        | 0.7        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 47.9        | 0.4        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 36.1        | 0.3        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 41          | 0.7        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 106         | 1          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 32.7        | 1.6        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 50.8        | 0.9        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *grey level variance* feature.
+
 Zone distance variance
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4380,6 +7070,32 @@ is defined as:
 Mean zone size is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} j\,p_{ij}`.
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.051       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.0988      | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0           | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 69.4        | 0.1        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 78.9        | 0.1        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 13.5        | 0.1        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 15          | 0.1        | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 4.6         | 0.06       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 4.61        | 0.04       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 5.56        | 0.05       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *zone distance variance* feature.
+
 Zone distance entropy
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -4387,6 +7103,32 @@ Again, let :math:`p_{ij} = d_{ij}/N_s`. Zone distance entropy is then
 defined as:
 
 .. math:: F_{\mathit{dzm.zd.entr}} = - \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} p_{ij} \log_2 p_{ij}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 1.73        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 2           | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 1.92        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 8           | 0.04       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 8.87        | 0.03       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 6.47        | 0.03       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 7.58        | 0.01       | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 7.56        | 0.03       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 6.61        | 0.03       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 7.06        | 0.01       | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *zone distance entropy* feature.
 
 Neighbourhood grey tone difference based features
 -------------------------------------------------
@@ -4472,12 +7214,13 @@ Three methods can be used to aggregate NGTDMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
 [figGLSZMCalcApproaches]. A feature may be aggregated as follows:
 
-#. Features are computed from 2D matrices and averaged over slices ().
+#. Features are computed from 2D matrices and averaged over slices
+   (*8QNN*).
 
 #. The feature is computed from a single matrix after merging all 2D
-   matrices ().
+   matrices (*62GR*).
 
-#. The feature is computed from a 3D matrix ().
+#. The feature is computed from a 3D matrix (*KOBO*).
 
 Method 2 involves merging NGTDMs by summing the neighbourhood grey tone
 difference :math:`s_i` and the number of voxels with a valid
@@ -4533,6 +7276,32 @@ adding a unspecified small number :math:`\epsilon` to the denominator,
 but an explicit, though arbitrary, maximum value should allow for more
 consistency.
 
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**                     | **tol.**                     | **consensus**   |
++================+====================+===============================+==============================+=================+
+| dig. phantom   | 2D                 | 0.121                         | —                            | strong          |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| dig. phantom   | 2.5D               | 0.0285                        | —                            | strong          |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| dig. phantom   | 3D                 | 0.0296                        | —                            | very strong     |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| config. A      | 2D                 | 0.00629                       | 0.00046                      | strong          |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| config. A      | 2.5D               | :math:`9.06 \times 10^{-5}`   | :math:`3.3 \times 10^{-6}`   | strong          |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| config. B      | 2D                 | 0.0168                        | 0.0005                       | strong          |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| config. B      | 2.5D               | 0.000314                      | :math:`4 \times 10^{-6}`     | strong          |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| config. C      | 3D                 | 0.000216                      | :math:`4 \times 10^{-6}`     | strong          |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| config. D      | 3D                 | 0.000208                      | :math:`4 \times 10^{-6}`     | very strong     |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+| config. E      | 3D                 | 0.000188                      | :math:`4 \times 10^{-6}`     | strong          |
++----------------+--------------------+-------------------------------+------------------------------+-----------------+
+
+Table: Benchmark table for the *coarseness* feature.
+
 Contrast
 ^^^^^^^^
 
@@ -4548,6 +7317,32 @@ copies of :math:`p_i` with different iterators, i.e.
 considers the grey level dynamic range, whereas the second term is a
 measure for intensity changes within the volume. If :math:`N_{g,p}=1`,
 :math:`F_{\mathit{ngt.contrast}}=0`.
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.925       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.601       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.584       | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.107       | 0.002      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.0345      | 0.0009     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.181       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.0506      | 0.0005     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.0873      | 0.0019     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.046       | 0.0005     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.0752      | 0.0019     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *contrast* feature.
 
 Busyness
 ^^^^^^^^
@@ -4567,6 +7362,32 @@ always evaluate to 0. Therefore we use a slightly different definition
 
 If :math:`N_{g,p}=1`, :math:`F_{\mathit{ngt.busyness}}=0`.
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 2.99        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 6.8         | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 6.54        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.489       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 8.84        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.2         | 0.005      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 3.45        | 0.07       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 1.39        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 5.14        | 0.14       | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 4.65        | 0.1        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *busyness* feature.
+
 Complexity
 ^^^^^^^^^^
 
@@ -4579,6 +7400,32 @@ defined as:
 As before, :math:`p_{i_{1}}=p_{i_{2}}` for :math:`i_{1}=i_{2}`, and
 likewise :math:`s_{i_{1}}=s_{i_{2}}` for :math:`i_{1}=i_{2}`.
 
++----------------+--------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**   | **consensus**   |
++================+====================+==============================+============+=================+
+| dig. phantom   | 2D                 | 10.4                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 14.1                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 13.5                         | —          | very strong     |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2D                 | 438                          | 9          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D               | 580                          | 19         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2D                 | 391                          | 7          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D               | 496                          | 5          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. C      | 3D                 | :math:`1.81 \times 10^{3}`   | 60         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. D      | 3D                 | 400                          | 5          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. E      | 3D                 | 574                          | 1          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *complexity* feature.
+
 Strength
 ^^^^^^^^
 
@@ -4588,6 +7435,32 @@ Strength
 
 As before, :math:`p_{i_{1}}=p_{i_{2}}` for :math:`i_{1}=i_{2}`. If
 :math:`\sum_{i=1}^{N_g}s_i=0`, :math:`F_{\mathit{ngt.strength}}=0`.
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 2.88        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.741       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.763       | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 3.33        | 0.08       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.0904      | 0.0027     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 6.02        | 0.23       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.199       | 0.009      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.651       | 0.015      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.162       | 0.008      | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.167       | 0.006      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *strength* feature.
 
 Neighbouring grey level dependence based features
 -------------------------------------------------
@@ -4664,12 +7537,13 @@ Three methods can be used to aggregate NGLDMs and arrive at a single
 feature value. A schematic example was previously shown in Figure
 [figGLSZMCalcApproaches]. A feature may be aggregated as follows:
 
-#. Features are computed from 2D matrices and averaged over slices ().
+#. Features are computed from 2D matrices and averaged over slices
+   (*8QNN*).
 
 #. The feature is computed from a single matrix after merging all 2D
-   matrices ().
+   matrices (*62GR*).
 
-#. The feature is computed from a 3D matrix ().
+#. The feature is computed from a 3D matrix (*KOBO*).
 
 Method 2 involves merging NGLDMs by summing the dependence count
 :math:`s_{ij}` by element over the NGLDM of the different slices. Note
@@ -4719,6 +7593,32 @@ emphasis*. It is defined as:
 
 .. math:: F_{\mathit{ngl.lde}} = \frac{1}{N_s} \sum_{j=1}^{N_n} \frac{s_{.j}}{j^2}
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.158       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.159       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.045       | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.281       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.243       | 0.004      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.31        | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.254       | 0.002      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.137       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.0912      | 0.0007     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.118       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *low dependence emphasis* feature.
+
 High dependence emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4727,6 +7627,32 @@ This feature emphasises high neighbouring grey level dependence counts.
 emphasis*. It is defined as:
 
 .. math:: F_{\mathit{ngl.hde}} = \frac{1}{N_s} \sum_{j=1}^{N_n} j^2 s_{.j}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 19.2        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 18.8        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 109         | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 14.8        | 0.1        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 16.1        | 0.2        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 17.3        | 0.2        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 19.6        | 0.2        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 126         | 2          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 223         | 5          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 134         | 3          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *high dependence emphasis* feature.
 
 Low grey level count emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4737,6 +7663,32 @@ levels are emphasised. The feature is defined as:
 
 .. math:: F_{\mathit{ngl.lgce}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \frac{s_{i.}}{i^2}
 
++----------------+--------------------+-------------+----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**                   | **consensus**   |
++================+====================+=============+============================+=================+
+| dig. phantom   | 2D                 | 0.702       | —                          | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 0.693       | —                          | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| dig. phantom   | 3D                 | 0.693       | —                          | very strong     |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2D                 | 0.0233      | 0.0003                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. A      | 2.5D               | 0.0115      | 0.0003                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2D                 | 0.0286      | 0.0004                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. B      | 2.5D               | 0.0139      | 0.0005                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. C      | 3D                 | 0.0013      | :math:`4 \times 10^{-5}`   | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. D      | 3D                 | 0.0168      | 0.0009                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+| config. E      | 3D                 | 0.0154      | 0.0007                     | strong          |
++----------------+--------------------+-------------+----------------------------+-----------------+
+
+Table: Benchmark table for the *low grey level count emphasis* feature.
+
 High grey level count emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4745,6 +7697,32 @@ The *high grey level count emphasis* feature is a grey level analogue to
 is defined as:
 
 .. math:: F_{\mathit{ngl.hgce}}=\frac{1}{N_s} \sum_{i=1}^{N_g} i^2 s_{i.}
+
++----------------+--------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**   | **consensus**   |
++================+====================+==============================+============+=================+
+| dig. phantom   | 2D                 | 7.49                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 7.66                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 7.66                         | —          | very strong     |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2D                 | 446                          | 2          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D               | 466                          | 2          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2D                 | 359                          | 10         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D               | 375                          | 11         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. C      | 3D                 | :math:`1.57 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. D      | 3D                 | 364                          | 16         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. E      | 3D                 | 502                          | 8          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *high grey level count emphasis* feature.
 
 Low dependence low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4755,6 +7733,33 @@ grey levels are located. It is defined as:
 
 .. math:: F_{\mathit{ngl.ldlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{s_{ij}}{i^2 j^2}
 
++----------------+--------------------+-------------+------------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**                     | **consensus**   |
++================+====================+=============+==============================+=================+
+| dig. phantom   | 2D                 | 0.0473      | —                            | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| dig. phantom   | 2.5D               | 0.0477      | —                            | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| dig. phantom   | 3D                 | 0.00963     | —                            | very strong     |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| config. A      | 2D                 | 0.0137      | 0.0002                       | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| config. A      | 2.5D               | 0.00664     | 0.0002                       | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| config. B      | 2D                 | 0.0203      | 0.0003                       | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| config. B      | 2.5D               | 0.00929     | 0.00026                      | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| config. C      | 3D                 | 0.000306    | :math:`1.2 \times 10^{-5}`   | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| config. D      | 3D                 | 0.00357     | :math:`4 \times 10^{-5}`     | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+| config. E      | 3D                 | 0.00388     | :math:`4 \times 10^{-5}`     | strong          |
++----------------+--------------------+-------------+------------------------------+-----------------+
+
+Table: Benchmark table for the *low dependence low grey level emphasis*
+feature.
+
 Low dependence high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4764,6 +7769,33 @@ grey levels are located. The feature is defined as:
 
 .. math:: F_{\mathit{ngl.ldhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{i^2 s_{ij}}{j^2}
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 3.06        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 3.07        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.736       | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 94.2        | 0.4        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 91.9        | 0.5        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 78.9        | 2.2        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 73.4        | 2.1        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 141         | 2          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 18.9        | 1.1        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 36.7        | 0.5        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *low dependence high grey level emphasis*
+feature.
+
 High dependence low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4772,6 +7804,33 @@ upper right quadrant of the NGLDM, where high dependence counts and low
 grey levels are located. The feature is defined as:
 
 .. math:: F_{\mathit{ngl.hdlge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} \frac{j^2 s_{ij}}{i^2}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 17.6        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 17.2        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 102         | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.116       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.0674      | 0.0004     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.108       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.077       | 0.0019     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.0828      | 0.0003     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.798       | 0.072      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.457       | 0.031      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *high dependence low grey level emphasis*
+feature.
 
 High dependence high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4783,6 +7842,33 @@ located. The feature is defined as:
 
 .. math:: F_{\mathit{ngl.hdhge}}=\frac{1}{N_s} \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} i^2 j^2 s_{ij}
 
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**                    | **consensus**   |
++================+====================+==============================+=============================+=================+
+| dig. phantom   | 2D                 | 49.5                         | —                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 2.5D               | 50.8                         | —                           | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| dig. phantom   | 3D                 | 235                          | —                           | very strong     |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2D                 | :math:`7.54 \times 10^{3}`   | 60                          | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. A      | 2.5D               | :math:`8.1 \times 10^{3}`    | 60                          | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2D                 | :math:`7.21 \times 10^{3}`   | 130                         | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. B      | 2.5D               | :math:`7.97 \times 10^{3}`   | 150                         | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. C      | 3D                 | :math:`2.27 \times 10^{5}`   | :math:`3 \times 10^{3}`     | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. D      | 3D                 | :math:`9.28 \times 10^{4}`   | :math:`1.3 \times 10^{3}`   | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+| config. E      | 3D                 | :math:`7.6 \times 10^{4}`    | 600                         | strong          |
++----------------+--------------------+------------------------------+-----------------------------+-----------------+
+
+Table: Benchmark table for the *high dependence high grey level
+emphasis* feature.
+
 Grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4792,6 +7878,32 @@ low when dependence counts are equally distributed along grey levels.
 The feature is defined as:
 
 .. math:: F_{\mathit{ngl.glnu}}= \frac{1}{N_s} \sum_{i=1}^{N_g} s_{i.}^2
+
++----------------+--------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**   | **consensus**   |
++================+====================+==============================+============+=================+
+| dig. phantom   | 2D                 | 10.2                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 37.9                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 37.9                         | —          | very strong     |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2D                 | 757                          | 1          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D               | :math:`1.72 \times 10^{4}`   | 100        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2D                 | 216                          | 3          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D               | :math:`4.76 \times 10^{3}`   | 50         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. C      | 3D                 | :math:`6.42 \times 10^{3}`   | 10         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. D      | 3D                 | :math:`1.02 \times 10^{4}`   | 300        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. E      | 3D                 | :math:`8.17 \times 10^{3}`   | 130        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *grey level non-uniformity* feature.
 
 Normalised grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4805,6 +7917,33 @@ The *normalised grey level non-uniformity* computed from a single 3D
 NGLDM matrix is equivalent to the *intensity histogram uniformity*
 feature :cite:`VanGriethuysen2017`.
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.562       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.512       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.512       | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.151       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.15        | 0.002      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.184       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.174       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.14        | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.229       | 0.003      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.184       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised grey level non-uniformity*
+feature.
+
 Dependence count non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4816,10 +7955,64 @@ non-uniformity*. It is defined as:
 
 .. math:: F_{\mathit{ngl.dcnu}}= \frac{1}{N_s} \sum_{j=1}^{N_n} s_{.j}^2
 
++----------------+--------------------+------------------------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**                    | **tol.**   | **consensus**   |
++================+====================+==============================+============+=================+
+| dig. phantom   | 2D                 | 3.96                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 12.4                         | —          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| dig. phantom   | 3D                 | 4.86                         | —          | very strong     |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2D                 | 709                          | 2          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. A      | 2.5D               | :math:`1.75 \times 10^{4}`   | 100        | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2D                 | 157                          | 1          | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. B      | 2.5D               | :math:`3.71 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. C      | 3D                 | :math:`2.45 \times 10^{3}`   | 60         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. D      | 3D                 | :math:`1.84 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+| config. E      | 3D                 | :math:`2.25 \times 10^{3}`   | 30         | strong          |
++----------------+--------------------+------------------------------+------------+-----------------+
+
+Table: Benchmark table for the *dependence count non-uniformity*
+feature.
+
 This is a normalised version of the *dependence count non-uniformity*
 feature. It is defined as:
 
 .. math:: F_{\mathit{ngl.dcnu.norm}}= \frac{1}{N_s^2} \sum_{i=1}^{N_n} s_{.j}^2
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.212       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.167       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.0657      | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.175       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.153       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.179       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.136       | 0.001      | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.0532      | 0.0005     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.0413      | 0.0003     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.0505      | 0.0003     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *normalised dependence count
+non-uniformity* feature.
 
 Dependence count percentage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4831,6 +8024,32 @@ to :math:`1` when complete neighbourhoods are not required, as is the
 case under our definition. It is defined as:
 
 .. math:: F_{\mathit{ngl.dc.perc}}=\frac{N_s}{N_v}
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 1           | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 1           | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 1           | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 1           | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 1           | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 1           | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 1           | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 1           | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 1           | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 1           | —          | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *dependence count percentage* feature.
 
 Grey level variance
 ^^^^^^^^^^^^^^^^^^^
@@ -4844,6 +8063,32 @@ estimate for finding discretised grey level :math:`i` with dependence
 
 Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} i\,p_{ij}`.
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 2.7         | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 3.05        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 3.05        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 31.1        | 0.5        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 22.8        | 0.6        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 25.3        | 0.4        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 18.7        | 0.2        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 81.1        | 2.1        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 21.7        | 0.4        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 30.4        | 0.8        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *grey level variance* feature.
+
 Dependence count variance
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4855,6 +8100,32 @@ different possible dependence counts. As before let
 
 Mean dependence count is defined as
 :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} j\,p_{ij}`.
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 2.73        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 3.27        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 22.1        | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 3.12        | 0.02       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 3.37        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 4.02        | 0.05       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 4.63        | 0.06       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 39.2        | 0.1        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 63.9        | 1.3        | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 39.4        | 1          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *dependence count variance* feature.
 
 Dependence count entropy
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4870,6 +8141,32 @@ This definition remedies an error in the definition of
 dependence count :math:`s_{ij}` instead of count probability
 :math:`p_{ij}`.
 
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 2.71        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 3.36        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 4.4         | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 5.76        | 0.02       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 5.93        | 0.02       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 5.38        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 5.78        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 7.54        | 0.03       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 6.98        | 0.01       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 7.06        | 0.02       | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *dependence count entropy* feature.
+
 Dependence count energy
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4884,3 +8181,29 @@ where squared dependence count :math:`s_{ij}^2` is divided by
 :math:`N_s` only, thus leaving a major volume dependency. In the
 definition given here, :math:`s_{ij}^2` is normalised by :math:`N_s^2`
 through the use of count probability :math:`p_{ij}`.
+
++----------------+--------------------+-------------+------------+-----------------+
+| **data**       | **aggr. method**   | **value**   | **tol.**   | **consensus**   |
++================+====================+=============+============+=================+
+| dig. phantom   | 2D                 | 0.17        | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 2.5D               | 0.122       | —          | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| dig. phantom   | 3D                 | 0.0533      | —          | very strong     |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2D                 | 0.0268      | 0.0004     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. A      | 2.5D               | 0.0245      | 0.0003     | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2D                 | 0.0321      | 0.0002     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. B      | 2.5D               | 0.0253      | 0.0001     | moderate        |
++----------------+--------------------+-------------+------------+-----------------+
+| config. C      | 3D                 | 0.00789     | 0.00011    | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. D      | 3D                 | 0.0113      | 0.0002     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+| config. E      | 3D                 | 0.0106      | 0.0001     | strong          |
++----------------+--------------------+-------------+------------+-----------------+
+
+Table: Benchmark table for the *dependence count energy* feature.

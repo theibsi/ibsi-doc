@@ -26,7 +26,7 @@ change.
 Copyright
 ---------
 
-This work is a copy-edited version of the final (v9) pre-print version
+This work is a copy-edited version of the final (v10) pre-print version
 of the IBSI reference manual, which was licensed under the Creative
 Commons Attribution 4.0 International License (CC-BY). The original work
 may be cited as: [redacted]
