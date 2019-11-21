@@ -32,14 +32,15 @@ def main():
 
     fix_benchmark_tables(os.path.join(tmp, 'ibsi-reference-manual', 'benchmarks'))
 
-    output = parse_input(tex_source)
-    if output is None or output == '':
-      raise ValueError('Empty output was returned!')
-
     figures = parse_tex_figures(tex_data)
     chap_labels = get_chapter_labels(tex_data)
 
+    output = parse_input(tex_source)
+    if output is None or output == '':
+      raise ValueError('Empty output was returned!')
     output = output.replace('\r', '')
+
+    output, footnotes = get_footnotes(output)
 
     output = correct_tables(output)
     output = parse_chapter_refs(output, chap_labels)
@@ -62,6 +63,9 @@ def main():
       ]
 
     cnt = 0
+
+    footnote_ref_pattern = re.compile('\[(?P<no>\d+)\]_')
+
     for section, code_dict in split_sections(output_lines, feature_class_codes, feature_codes, other_codes, hdr_chars):
 
       for line in sorted(code_dict.keys(), reverse=True):
@@ -93,8 +97,14 @@ def main():
 
       out_str = u'\n'.join(section).encode('utf-8')
 
+      section_footnotes = sorted([int(m.groupdict()['no']) for m in footnote_ref_pattern.finditer(out_str)])
+      footer = ''
+      for sf in section_footnotes:
+        footer += u'\n.. [%i]\n   %s\n' % (sf, footnotes[sf])
+
       with open(dest_name + '.rst', mode='wb') as out_fs:
         out_fs.write(out_str)
+        out_fs.write(footer)
 
     index.append('   References')
     index.append('')
@@ -545,6 +555,16 @@ def parse_chapter_refs(output, chapter_labels):
     output = output.replace(r, r_str)
   return output
 
+
+def get_footnotes(output):
+  footnotes = {}
+  footnote_pattern = re.compile(r'\n.. \[(?P<no>\d+)\]\s*\n\s+(?P<value>.+)\n')
+  for m in footnote_pattern.finditer(output):
+    grp = m.groupdict()
+    footnotes[int(grp['no'])] = grp['value']
+
+  output = footnote_pattern.sub('', output)
+  return output, footnotes
 
 
 if __name__ == '__main__':
