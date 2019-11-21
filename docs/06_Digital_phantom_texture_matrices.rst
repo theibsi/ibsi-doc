@@ -2125,9 +2125,6 @@ Table: Neighbouring grey level dependence matrix extracted
 volumetrically (3D) from the digital phantom using Chebyshev distance 1
 and coarseness 0.
 
-.. [1]
-   DICOM PS3.3 2019a - Information Object Definitions, Section 10.7.1.3
-
 .. |Approaches to calculating grey level co-occurrence matrix-based features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated for direction :math:`\Delta` in slice :math:`k` (if applicable), and :math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and (e) the matrices are merged prior to feature calculation.| image:: ./Figures/DirTexture_2d_avg.pdf
 .. |Approaches to calculating grey level co-occurrence matrix-based features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated for direction :math:`\Delta` in slice :math:`k` (if applicable), and :math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and (e) the matrices are merged prior to feature calculation.| image:: ./Figures/DirTexture_2d_s_mrg.pdf
 .. |Approaches to calculating grey level co-occurrence matrix-based features. :math:`\mathbf{M}_{\Delta k}` are texture matrices calculated for direction :math:`\Delta` in slice :math:`k` (if applicable), and :math:`f_{\Delta k}` is the corresponding feature value. In (b-d) and (e) the matrices are merged prior to feature calculation.| image:: ./Figures/DirTexture_2_5d_d_mrg.pdf

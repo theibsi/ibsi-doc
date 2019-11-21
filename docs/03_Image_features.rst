@@ -8207,3 +8207,6 @@ through the use of count probability :math:`p_{ij}`.
 +----------------+--------------------+-------------+------------+-----------------+
 
 Table: Benchmark table for the *dependence count energy* feature.
+
+.. [1]
+   DICOM PS3.3 2019a - Information Object Definitions, Section 10.7.1.3
