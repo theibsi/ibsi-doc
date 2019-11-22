@@ -60,9 +60,6 @@ described in detail within this chapter.
    \*Discretisation of IVH differs from IH and texture features (see
    :ref:`sect_ivh`).
 
-
-.. _ref_data_conversion:
-
 Data conversion
 ---------------
 .. raw:: html
@@ -74,8 +71,6 @@ meaningful presentation, e.g. standardised uptake values
 (SUV) :cite:`Boellaard2015`. This is performed during the
 data conversion step. Assessment of data conversion methods falls
 outside the scope of the current work.
-
-.. _ref_image_postprocessing:
 
 Image post-acquisition processing
 ---------------------------------
@@ -104,8 +99,6 @@ processing methods falls outside the scope of the current work. Note
 that vendors may provide or implement software to perform noise
 reduction and other post-processing during image reconstruction. In such
 cases, additional post-acquisition processing may not be required.
-
-.. _ref_segmentation:
 
 Segmentation
 ------------
@@ -191,9 +184,6 @@ itself to the interior.
    current row. (3) Determine the number of intersections crossed from
    ray origin to the row voxel centers. (4) Apply *even-odd* rule to
    determine whether voxel centers are inside the polygon.
-
-
-.. _ref_interpolation:
 
 Interpolation
 -------------
@@ -346,7 +336,7 @@ Grid alignment affects feature values and is non-trivial. Three common
 grid alignments may be identified, and are shown in
 :numref:`figMeshGrids`:
 
-#. **Fit to original grid** (**58MB**). In this case the interpolation
+#. **Fit to original grid** (*58MB*). In this case the interpolation
    grid is deformed so that the voxel centers at the grid intersections
    overlap with the original grid vertices. For an original
    :math:`4\times4` voxel grid with spacing :math:`(3.00, 3.00)` mm and
@@ -361,7 +351,7 @@ grid alignments may be identified, and are shown in
    world coordinates, which differs from the desired grid spacing of
    :math:`(2.00, 2.00)` mm.
 
-#. **Align grid origins** (**SBKJ**). A simple approach which conserves
+#. **Align grid origins** (*SBKJ*). A simple approach which conserves
    the desired grid spacing is the alignment of the origins of the
    interpolation and original grids. Keeping with the same example, the
    interpolation grid is :math:`(6 \times 6)`. The resulting voxel grid
@@ -369,7 +359,7 @@ grid alignments may be identified, and are shown in
    By definition both grids are aligned at the origin,
    :math:`(0.00, 0.00)`.
 
-#. **Align grid centers** (**3WE3**). The position of the origin may
+#. **Align grid centers** (*3WE3*). The position of the origin may
    depend on image meta-data defining image orientation. Not all
    software implementations may process this meta-data the same way. An
    implementation-independent solution is to align both grids on the
@@ -491,11 +481,11 @@ ROI into sub-volumes. To avoid undue complexity by again updating the
 re-segmented ROI for a more plausible morphology, we define two separate
 ROI masks.
 
-The morphological mask (**G5KJ**) is not re-segmented and maintains the
+The morphological mask (*G5KJ*) is not re-segmented and maintains the
 original morphology as defined by an expert and/or (semi-)automatic
 segmentation algorithms.
 
-The intensity mask (**SEFI**) can be re-segmented and will contain only
+The intensity mask (*SEFI*) can be re-segmented and will contain only
 the selected voxels. For many feature families, only this is important.
 However, for morphological and grey level distance zone matrix (GLDZM)
 feature families, both intensity and morphological masks are used. A
@@ -553,8 +543,6 @@ placeholder value, often *NaN*. This placeholder value may then used to
 exclude these voxels from calculations. Voxels included in the ROI mask
 retain their original intensity.
 
-.. _discretisation:
-
 Intensity discretisation
 ------------------------
 .. raw:: html
@@ -585,8 +573,6 @@ value :math:`1`, and not :math:`0`. This ensures consistency for
 calculations of texture features, where for some features grey level
 :math:`0` is not allowed.
 
-.. _par_discr_FBN:
-
 Fixed bin number
 ^^^^^^^^^^^^^^^^
 .. raw:: html
@@ -610,17 +596,15 @@ ROI, divided by the bin width
 :math:`\left(X_{gl,max}-X_{gl,min}\right)/N_g`, and subsequently rounded
 down to the nearest integer (floor function).
 
-The *fixed bin number* method breaks the relationship between image
-intensity and physiological meaning (if any). However, it introduces a
-normalising effect which may be beneficial when intensity units are
-arbitrary (e.g. raw MRI data and many spatial filters), and where
-contrast is considered important. Furthermore, as values of many
-features depend on the number of grey levels found within a given ROI,
-the use of a *fixed bin number* discretisation algorithm allows for a
-direct comparison of feature values across multiple analysed ROIs (e.g.
-across different samples).
-
-.. _par_discr_FBS:
+The *fixed bin number*
+method breaks the relationship between image intensity and physiological
+meaning (if any). However, it introduces a normalising effect which may
+be beneficial when intensity units are arbitrary (e.g. raw MRI data and
+many spatial filters), and where contrast is considered important.
+Furthermore, as values of many features depend on the number of grey
+levels found within a given ROI, the use of a *fixed bin number*
+discretisation algorithm allows for a direct comparison of feature
+values across multiple analysed ROIs (e.g. across different samples).
 
 Fixed bin size
 ^^^^^^^^^^^^^^

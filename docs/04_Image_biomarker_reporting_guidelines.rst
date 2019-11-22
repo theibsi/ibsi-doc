@@ -8,8 +8,6 @@ and validation of results. To help provide a complete report on image
 processing and image biomarker extraction, we present the guidelines
 below, as well as a nomenclature system to uniquely features.
 
-.. _sec_reporting_guidelines:
-
 Reporting guidelines
 --------------------
 
@@ -19,320 +17,6 @@ Additionally, guidelines are derived from the image processing and
 feature calculation steps described within this document. An earlier
 version was reported elsewhere
 :cite:`vallieres2017responsible`.
-
-.. raw:: latex
-
-   \footnotesize{
-   \begin{longtable}{p{3.5cm}ccp{7cm}}
-
-   \toprule
-   \textbf{topic} & & \textbf{item} & \textbf{description}\\
-   \midrule
-   \endhead
-
-   \bottomrule
-   \multicolumn{4}{r}{\textit{continued on next page}}
-   \endfoot
-
-   \bottomrule
-   \caption[Reporting guidelines]{Guidelines for reporting on radiomic studies. Not all items may be applicable.} \label{table_guidelines}
-   \endlastfoot
-
-   \multicolumn{4}{l}{\textbf{Patient}}\\
-   \midrule
-   Region of interest\footnote{Also referred to as volume of interest.} & &
-   1 & Describe the region of interest that is being imaged.
-   \\
-   Patient preparation & & 2a & Describe specific instructions given to
-   patients prior to image acquisition, e.g. fasting prior to imaging.
-   \\
-   & & 2b & Describe administration of drugs to the patient prior to image
-   acquisition, e.g. muscle relaxants. \\
-   & & 2c & Describe the use of specific equipment for patient comfort
-   during scanning, e.g. ear plugs. \\
-   Radioactive tracer & PET, SPECT & 3a & Describe which radioactive tracer
-   was administered to the patient, e.g. 18F-FDG. \\
-   & PET, SPECT & 3b & Describe the administration method. \\
-   & PET, SPECT & 3c & Describe the injected activity of the radioactive
-   tracer at administration. \\
-   & PET, SPECT & 3d & Describe the uptake time prior to image acquisition.
-   \\
-   & PET, SPECT & 3e & Describe how competing substance levels were
-   controlled.\footnote{An example is glucose present in the blood which
-     competes with the uptake of 18F-FDG tracer in tumour tissue. To reduce
-     competition with the tracer, patients are usually asked to fast for
-     several hours and a blood glucose measurement may be conducted prior
-     to tracer administration.} \\
-   Contrast agent & & 4a & Describe which contrast agent was administered
-   to the patient. \\
-   & & 4b & Describe the administration method. \\
-   & & 4c & Describe the injected quantity of contrast agent.
-   \\
-   & & 4d & Describe the uptake time prior to image acquisition.
-   \\
-   & & 4e & Describe how competing substance levels were controlled.
-   \\
-   Comorbidities & & 5 & Describe if the patients have comorbidities that
-   affect imaging.\footnote{An example of a comorbidity that may affect
-     image quality in 18F-FDG PET scans are type I and type II diabetes
-     melitus, as well as kidney failure.} \\
-    
-   \multicolumn{4}{l}{\textbf{Acquisition}\footnote{Many acquisition parameters may be
-     extracted from DICOM header meta-data, or calculated from them.}}\\
-   \midrule
-   Acquisition protocol & & 6 & Describe whether a standard imaging
-   protocol was used, and where its description may be found.
-   \\
-   Scanner type & & 7 & Describe the scanner type(s) and vendor(s) used in
-   the study. \\
-   Imaging modality & & 8 & Clearly state the imaging modality that was
-   used in the study, e.g. CT, MRI. \\
-   Static/dynamic scans & & 9a & State if the scans were static or dynamic.
-   \\
-   & Dynamic scans & 9b & Describe the acquisition time per time frame.
-   \\
-   & Dynamic scans & 9c & Describe any temporal modelling technique that
-   was used. \\
-   Scanner calibration & & 10 & Describe how and when the scanner was
-   calibrated. \\
-   Patient instructions & & 11 & Describe specific instructions given to
-   the patient during acquisition, e.g. breath holding. \\
-   Anatomical motion correction & & 12 & Describe the method used to
-   minimise the effect of anatomical motion. \\
-   Scan duration & & 13 & Describe the duration of the complete scan or the
-   time per bed position. \\
-   Tube voltage & CT & 14 & Describe the peak kilo voltage output of the
-   X-ray source. \\
-   Tube current & CT & 15 & Describe the tube current in mA.
-   \\
-   Time-of-flight & PET & 16 & State if scanner time-of-flight capabilities
-   are used during acquisition. \\
-   RF coil & MRI & 17 & Describe what kind RF coil used for acquisition,
-   incl. vendor. \\
-   Scanning sequence & MRI & 18a & Describe which scanning sequence was
-   acquired. \\
-   & MRI & 18b & Describe which sequence variant was acquired.
-   \\
-   & MRI & 18c & Describe which scan options apply to the current sequence,
-   e.g. flow compensation, cardiac gating. \\
-   Repetition time & MRI & 19 & Describe the time in ms between subsequent
-   pulse sequences. \\
-   Echo time & MRI & 20 & Describe the echo time in ms. \\
-   Echo train length & MRI & 21 & Describe the number of lines in k-space
-   that are acquired per excitation pulse. \\
-   Inversion time & MRI & 22 & Describe the time in ms between the middle
-   of the inverting RF pulse to the middle of the excitation pulse.
-   \\
-   Flip angle & MRI & 23 & Describe the flip angle produced by the RF
-   pulses. \\
-   Acquisition type & MRI & 24 & Describe the acquisition type of the MRI
-   scan, e.g. 3D. \\
-   k-space traversal & MRI & 25 & Describe the acquisition trajectory of
-   the k-space. \\
-   Number of averages/ excitations & MRI & 26 & Describe the number of
-   times each point in k-space is sampled. \\
-   Magnetic field strength & MRI & 27 & Describe the nominal strength of
-   the MR magnetic field. \\
-
-   \multicolumn{4}{l}{\textbf{Reconstruction}\footnote{Many reconstruction parameters may be
-     extracted from DICOM header meta-data.}}\\
-   \midrule
-   In-plane resolution & & 28 & Describe the distance between pixels, or
-   alternatively the field of view and matrix size. \\
-   Image slice thickness & & 29 & Describe the slice thickness.
-   \\
-   Image slice spacing & & 30 & Describe the distance between image
-   slices.\footnote{Spacing between image slicing is commonly, but not
-     necessarily, the same as the slice thickness,.} \\
-   Convolution kernel & CT & 31a & Describe the convolution kernel used to
-   reconstruct the image. \\
-   & CT & 31b & Describe settings pertaining to iterative reconstruction
-   algorithms. \\
-   Exposure & CT & 31c & Describe the exposure (in mAs) in slices
-   containing the region of interest. \\
-   Reconstruction method & PET & 32a & Describe which reconstruction method
-   was used, e.g. 3D OSEM. \\
-   & PET & 32b & Describe the number of iterations for iterative
-   reconstruction. \\
-   & PET & 32c & Describe the number of subsets for iterative
-   reconstruction. \\
-   Point spread function modelling & PET & 33 & Describe if and how
-   point-spread function modelling was performed. \\
-   Image corrections & PET & 34a & Describe if and how attenuation
-   correction was performed. \\
-   & PET & 34b & Describe if and how other forms of correction were
-   performed, e.g. scatter correction, randoms correction, dead time
-   correction etc. \\
-   Reconstruction method & MRI & 35a & Describe the reconstruction method
-   used to reconstruct the image from the k-space information.
-   \\
-   & MRI & 35b & Describe any artifact suppression methods used during
-   reconstruction to suppress artifacts due to undersampling of k-space.
-   \\
-   Diffusion-weighted imaging & DWI-MRI & 36 & Describe the b-values used
-   for diffusion-weighting. \\
-
-   \multicolumn{4}{l}{\textbf{Image registration}}\\
-   \midrule
-   Registration method & & 37 & Describe the method used to register
-   multi-modality imaging. \\
-
-   \multicolumn{4}{l}{\textbf{Image processing - data conversion}} \\
-   \midrule
-   SUV normalisation & PET & 38 & Describe which standardised uptake value
-   (SUV) normalisation method is used. \\
-   ADC computation & DWI-MRI & 39 & Describe how apparent diffusion
-   coefficient (ADC) values were calculated. \\
-   Other data conversions & & 40 & Describe any other conversions that are
-   performed to generate e.g. perfusion maps. \\
-
-   \multicolumn{4}{l}{\textbf{Image processing - post-acquisition processing}} \\
-   \midrule
-   Anti-aliasing & & 41 & Describe the method used to deal with
-   anti-aliasing when down-sampling during interpolation. \\
-   Noise suppression & & 42 & Describe methods used to suppress image
-   noise. \\
-   Post-reconstruction smoothing filter & PET & 43 & Describe the width of
-   the Gaussian filter (FWHM) to spatially smooth intensities.
-   \\
-   Skull stripping & MRI (brain) & 44 & Describe method used to perform
-   skull stripping. \\
-   Non-uniformity correction\footnote{Also known as bias-field correction.}
-   & MRI & 45 & Describe the method and settings used to perform
-   non-uniformity correction. \\
-   Intensity normalisation & & 46 & Describe the method and settings used
-   to normalise intensity distributions within a patient or patient cohort.
-   \\
-   Other post-acquisition processing methods & & 47 & Describe any other
-   methods that were used to process the image and are not mentioned
-   separately in this list. \\
-
-   \multicolumn{4}{l}{\textbf{Segmentation}} \\
-   \midrule
-   Segmentation method & & 48a & Describe how regions of interest were
-   segmented, e.g. manually. \\
-   & & 48b & Describe the number of experts, their expertise and consensus
-   strategies for manual delineation. \\
-   & & 48c & Describe methods and settings used for semi-automatic and
-   fully automatic segmentation. \\
-   & & 48d & Describe which image was used to define segmentation in case
-   of multi-modality imaging. \\
-   Conversion to mask & & 49 & Describe the method used to convert
-   polygonal or mesh-based segmentations to a voxel-based mask.
-   \\
-
-   \multicolumn{4}{l}{\textbf{Image processing - image interpolation}} \\
-   \midrule
-   Interpolation method & & 50a & Describe which interpolation algorithm
-   was used to interpolate the image. \\
-   & & 50b & Describe how the position of the interpolation grid was
-   defined, e.g. align by center. \\
-   & & 50c & Describe how the dimensions of the interpolation grid were
-   defined, e.g. rounded to nearest integer. \\
-   & & 50d & Describe how extrapolation beyond the original image was
-   handled. \\
-   Voxel dimensions & & 51 & Describe the size of the interpolated voxels.
-   \\
-   Intensity rounding & CT & 52 & Describe how fractional Hounsfield Units
-   are rounded to integer values after interpolation. \\
-
-   \multicolumn{4}{l}{\textbf{Image processing - ROI interpolation}} \\
-   \midrule
-   Interpolation method & & 53 & Describe which interpolation algorithm was
-   used to interpolate the region of interest mask. \\
-   Partially masked voxels & & 54 & Describe how partially masked voxels
-   after interpolation are handled. \\
-
-   \multicolumn{4}{l}{\textbf{Image processing - re-segmentation}} \\
-   \midrule
-   Re-segmentation methods & & 55 & Describe which methods and settings are
-   used to re-segment the ROI intensity mask. \\
-
-   \multicolumn{4}{l}{\textbf{Image processing - discretisation}} \\
-   \midrule
-   Discretisation method\footnote{Discretisation may be performed
-     separately to create intensity-volume histograms. If this is indeed
-     the case, this should be described as well.} & & 56a & Describe the
-   method used to discretise image intensities. \\
-   & & 56b & Describe the number of bins (FBN) or the bin size (FBS) used
-   for discretisation. \\
-   & & 56c & Describe the lowest intensity in the first bin for FBS
-   discretisation.\footnote{This is typically set by range re-segmentation.}
-   \\
-
-   \multicolumn{4}{l}{\textbf{Image processing - image transformation}} \\
-   \midrule
-   Image filter\footnote{The IBSI has not introduced image transformation
-     into the standardised image processing scheme, and is in the process
-     of benchmarking various common filters. This section may therefore be
-     expanded in the future.} & & 57 & Describe the methods and settings
-   used to filter images, e.g. Laplacian-of-Gaussian. \\
-
-   \multicolumn{4}{l}{\textbf{Image biomarker computation}} \\
-   \midrule
-   Biomarker set & & 58 & Describe which set of image biomarkers is
-   computed and refer to their definitions or provide these.
-   \\
-   IBSI compliance & & 59 & State if the software used to extract the set
-   of image biomarkers is compliant with the IBSI benchmarks.\footnote{A
-     software is compliant if and only if it is able to reproduce the image
-     biomarker benchmarks for the digital phantom and for one or more image
-     processing configurations using the radiomics CT phantom. Reviewers
-     may demand that you provide the IBSI compliance spreadsheet for your
-     software.} \\
-   Robustness & & 60 & Describe how robustness of the image biomarkers was
-   assessed, e.g. test-retest analysis. \\
-   Software availability & & 61 & Describe which software and version was
-   used to compute image biomarkers. \\
-
-   \multicolumn{4}{l}{\textbf{Image biomarker computation - texture parameters}}\\
-   \midrule
-   Texture matrix aggregation & & 62 & Define how texture-matrix based
-   biomarkers were computed from underlying texture matrices.
-   \\
-   Distance weighting & & 63 & Define how CM, RLM, NGTDM and NGLDM weight
-   distances, e.g. no weighting. \\
-   CM symmetry & & 64 & Define whether symmetric or asymmetric
-   co-occurrence matrices were computed. \\
-   CM distance & & 65 & Define the (Chebyshev) distance at which
-   co-occurrence of intensities is determined, e.g. 1. \\
-   SZM linkage distance & & 66 & Define the distance and distance norm for
-   which voxels with the same intensity are considered to belong to the
-   same zone for the purpose of constructing an SZM, e.g. Chebyshev
-   distance of 1. \\
-   DZM linkage distance & & 67 & Define the distance and distance norm for
-   which voxels with the same intensity are considered to belong to the
-   same zone for the purpose of constructing a DZM, e.g. Chebyshev distance
-   of 1. \\
-   DZM zone distance norm & & 68 & Define the distance norm for determining
-   the distance of zones to the border of the ROI, e.g. Manhattan distance.
-   \\
-   NGTDM distance & & 69 & Define the neighbourhood distance and distance
-   norm for the NGTDM, e.g. Chebyshev distance of 1. \\
-   NGLDM distance & & 70 & Define the neighbourhood distance and distance
-   norm for the NGLDM, e.g. Chebyshev distance of 1. \\
-   NGLDM coarseness & & 71 & Define the coarseness parameter for the NGLDM,
-   e.g. 0. \\
-
-   \multicolumn{4}{l}{\textbf{Machine learning and radiomics analysis}} \\
-   \midrule
-   Diagnostic and prognostic modelling & & 72 & See the TRIPOD guidelines
-   for reporting on diagnostic and prognostic modelling. \\
-   Comparison with known factors & & 73 & Describe where performance of
-   radiomics models is compared with known (clinical) factors.
-   \\
-   Multicollinearity & & 74 & Describe where the multicollinearity between
-   image biomarkers in the signature is assessed. \\
-   Model availability & & 75 & Describe where radiomics models with the
-   necessary pre-processing information may be found. \\
-   Data availability & & 76 & Describe where imaging data and relevant
-   meta-data used in the study may be found. \\
-   \end{longtable}
-   }
-
-.. raw:: latex
-
-   \FloatBarrier
 
 Feature nomenclature
 --------------------
@@ -346,8 +30,8 @@ and *ii*) grey level run length matrix entropy, discretised using a
 *fixed bin number* algorithm with 32 bins, extracted from a PET image.
 To refer to both as *entropy* would be ambiguous, whereas to add a full
 textual description would be cumbersome. In the nomenclature proposed
-below, the features would be called *entropy\ IH, CT, FBS:25HU* and
-*entropy\ RLM, PET, FBN:32*, respectively.
+below, the features would be called *entropy\ :sub:`IH, CT, FBS:25HU`*
+and *entropy\ :sub:`RLM, PET, FBN:32`*, respectively.
 
 Features are thus indicated by a feature name and a subscript. As the
 nomenclature is designed to both concise and complete, only details for
@@ -382,8 +66,7 @@ items to address ambiguous naming:
 Optional descriptors are only added to the subscript if there are
 multiple possibilities. For example, if only CT data is used, adding the
 modality to the subscript is not required. Nonetheless, such details
-must be reported as well (see section
-`4.1 <#sec_reporting_guidelines>`__).
+must be reported as well (see section [sec\_reporting\_guidelines]).
 
 The sections below have tables with permanent IBSI identifiers for
 concepts that were defined within this document.
@@ -402,37 +85,37 @@ their suggested abbreviations:
      - 
    * -  morphology 
      -  MORPH 
-     -  **HCUG**
+     -  *HCUG*
    * -  local intensity 
      -  LI 
-     -  **9ST6**
+     -  *9ST6*
    * -  intensity-based statistics 
      -  IS, STAT 
-     -  **UHIW**
+     -  *UHIW*
    * -  intensity histogram 
      -  IH 
-     -  **ZVCW**
+     -  *ZVCW*
    * -  intensity-volume histogram 
      -  IVH 
-     -  **P88C**
+     -  *P88C*
    * -  grey level co-occurrence matrix 
      -  GLCM, CM 
-     -  **LFYI**
+     -  *LFYI*
    * -  grey level run length matrix 
      -  GLRLM, RLM 
-     -  **TP0I**
+     -  *TP0I*
    * -  grey level size zone matrix 
      -  GLSZM, SZM
-     -  **9SAK**
+     -  *9SAK*
    * -  grey level distance zone matrix 
      -  GLDZM, DZM 
-     -  **VMDZ**
+     -  *VMDZ*
    * -  neighbourhood grey tone difference matrix 
      -  NGTDM 
-     -  **IPET**
+     -  *IPET*
    * -  neighbouring grey level dependence matrix 
      -  NGLDM 
-     -  **REK0**
+     -  *REK0*
 
 Abbreviating feature aggregation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -445,40 +128,40 @@ methods:
 
    * -  – 
      -  features are 3D by definition 
-     -  **DHQ4**
+     -  *DHQ4*
    * -  2D 
      -  averaged over slices (rare) 
-     -  **3IDG**
+     -  *3IDG*
    * -  –, 3D 
      -  calculated over the volume (default) 
-     -  **DHQ4**
+     -  *DHQ4*
    * -  2D:avg 
      -  averaged over slices and directions 
-     -  **BTW3**
+     -  *BTW3*
    * -  2D:mrg, 2D:smrg 
      -  merged directions per slice and averaged 
-     -  **SUJT**
+     -  *SUJT*
    * -  2.5D:avg, 2.5D:dmrg 
      -  merged per direction and averaged 
-     -  **JJUI**
+     -  *JJUI*
    * -  2.5D:mrg, 2.5D:vmrg 
      -  merged over all slices
-     -  **ZW7Z**
+     -  *ZW7Z*
    * -  3D:avg 
      -  averaged over 3D directions
-     -  **ITBB**
+     -  *ITBB*
    * -  3D:mrg 
      -  merged 3D directions
-     -  **IAZD**
+     -  *IAZD*
    * -  2D 
      -  averaged over slices 
-     -  **8QNN**
+     -  *8QNN*
    * -  2.5D 
      -  merged over all slices 
-     -  **62GR**
+     -  *62GR*
    * -  3D 
      -  calculated from single 3D matrix 
-     -  **KOBO**
+     -  *KOBO*
 
 In the list above, ’–’ signifies an empty entry which does not need to
 be added to the subscript. The following examples highlight the
@@ -554,10 +237,10 @@ Re-segmentation can be noted as follows:
      - 
    * -  range 
      -  RS:[#,#] 
-     -  **USB3**
+     -  *USB3*
    * -  outlier filtering 
      -  RS:#\ :math:`\sigma` 
-     -  **7ACA**
+     -  *7ACA*
 
 In the table above # signify numbers. A re-segmentation range can be
 half-open, i.e. RS:[#,\ :math:`\infty`). Re-segmentation methods may be
@@ -597,10 +280,10 @@ parameter, e.g. number of bins or bin size, including units.
      - 
    * -  fixed bin size 
      -  FBS:# 
-     -  **Q3RU**
+     -  *Q3RU*
    * -  fixed bin number 
      -  FBN:# 
-     -  **K15C**
+     -  *K15C*
    * -  histogram equalisation 
      -  EQ:#
      - 
@@ -610,8 +293,8 @@ parameter, e.g. number of bins or bin size, including units.
 
 In the table above, # signify numbers such as the number of bins or
 their width. Histogram equalisation of the ROI intensities can be
-performed before the "none", "fixed bin size", "fixed bin number" or
-"Lloyd-Max, minimum mean squared" algorithms defined above, with #
+performed before the “none”, “fixed bin size”, “fixed bin number” or
+“Lloyd-Max, minimum mean squared” algorithms defined above, with #
 specifying the number of bins in the histogram to be equalised. The
 following are examples of the application of the above notation:
 
@@ -630,24 +313,6 @@ Abbreviating feature-specific parameters
 Some features and feature families require additional parameters, which
 may be varied. These are the following:
 
-to 0.99
-
-.. raw:: latex
-
-   \multicolumn{3}{r}{\textit{continued on next page}}
-
-.. raw:: latex
-
-   \endfoot
-
-.. raw:: latex
-
-   \bottomrule
-
-.. raw:: latex
-
-   \endlastfoot
-
 .. list-table::
    :widths: auto
 
@@ -659,13 +324,13 @@ to 0.99
      - 
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
-     -  **PVMT**
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     -  **G9EV**
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     -  **LIFZ**
+     -  *LIFZ*
    * -  –, w:1 
      -  no weighting (default) 
      - 
@@ -680,40 +345,40 @@ to 0.99
      - 
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance (default) # 
-     -  **PVMT**
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     -  **G9EV**
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     -  **LIFZ**
+     -  *LIFZ*
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance (default) # 
-     -  **PVMT**
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     -  **G9EV**
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     -  **LIFZ**
+     -  *LIFZ*
    * -  :math:`l`-:math:`\infty`:# 
      -  Chebyshev (:math:`\ell_{\infty}`) norm 
-     -   **PVMT**
+     -   *PVMT*
    * -  :math:`l`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm 
-     -  **G9EV**
+     -  *G9EV*
    * -  –, :math:`l`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm (default)  
-     -  **LIFZ**
+     -  *LIFZ*
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
-     -  **PVMT**
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     -  **G9EV**
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     -  **LIFZ**
+     -  *LIFZ*
    * -  –, w:1 
      -  no weighting (default) 
      - 
@@ -725,13 +390,13 @@ to 0.99
      - 
    * -  :math:`\delta`:#, :math:`\delta`-:math:`\infty`:# 
      -  Chebyshev  (:math:`\ell_{\infty}`) norm with distance # (default) 
-     -  **PVMT**
+     -  *PVMT*
    * -  :math:`\delta`-:math:`2`:# 
      -  Euclidean (:math:`\ell_{2}`) norm with  distance # 
-     -  **G9EV**
+     -  *G9EV*
    * -  :math:`\delta`-:math:`1`:# 
      -  Manhattan (:math:`\ell_{1}`) norm with  distance # 
-     -  **LIFZ**
+     -  *LIFZ*
    * -  –, w:1 
      -  no weighting (default) 
      - 
@@ -740,9 +405,3 @@ to 0.99
      - 
 
 In the above table, # represents numbers.
-
-.. raw:: latex
-
-   \newpage
-
-.. _chap_benchmark sets:

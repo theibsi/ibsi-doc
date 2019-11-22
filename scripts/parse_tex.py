@@ -1,95 +1,128 @@
 # -*- coding: utf-8 -*-
 import os
 import re
+import shutil
+import tempfile
 
 import six
 from six.moves import range
 
 
 def main():
-  tex_source = r'../ibsi-reference-manual/IBSIWorkDocument_notextid.tex'
-  output = parse_input(tex_source)
-  if output is None or output == '':
-    raise ValueError('Empty output was returned!')
+  tex_source_folder = '../ibsi-reference-manual'
+  tmp = tempfile.mkdtemp()
+  try:
+    shutil.copytree(tex_source_folder, os.path.join(tmp, 'ibsi-reference-manual'))
 
-  tex_data = read_tex_source(tex_source)
-  features_tex = read_tex_source(os.path.join(tex_source[:-29], 'Chapters', 'FeatureDef_notextid.tex'))
-  feature_class_codes, feature_codes = parse_feature_ids(features_tex)
-  other_codes = parse_other_ids(tex_data)
+    tex_source = os.path.join(tmp, 'ibsi-reference-manual', 'IBSIWorkDocument.tex')
+    feature_source = os.path.join(tex_source, '..', 'Chapters', 'FeatureDef.tex')
 
-  figures = parse_tex_figures(tex_data)
-  chap_labels = get_chapter_labels(tex_data)
+    tex_data = read_tex_source(tex_source)
+    feature_data = read_tex_source(feature_source)
 
-  output = output.replace('\r', '')
+    feature_class_codes, feature_codes = parse_feature_ids(feature_data)
+    other_codes = parse_other_ids(tex_data)
 
-  output = correct_tables(output)
-  output = parse_chapter_refs(output, chap_labels)
+    tex_data, inline_codes = update_inline_ids(tex_data)
+    with open(tex_source, mode='w') as tex_fs:
+      tex_fs.write(tex_data)
+    feature_data, feature_inline_codes = update_inline_ids(feature_data)
+    with open(feature_source, mode='w') as feature_fs:
+      feature_fs.write(feature_data)
 
-  output_lines = output.split('\n')
-  hdr_chars = ['=', '-']
-  index = [
-    '',
-    'Contents',
-    '--------',
-    '',
-    '.. toctree::',
-    '   :hidden:',
-    '',
-    '   Home <self>',
-    '',
-    '.. toctree::',
-    '   :maxdepth: 2',
-    ''
-    ]
+    fix_benchmark_tables(os.path.join(tmp, 'ibsi-reference-manual', 'benchmarks'))
 
-  cnt = 0
-  for section, code_dict in split_sections(output_lines, feature_class_codes, feature_codes, other_codes, hdr_chars):
+    figures = parse_tex_figures(tex_data)
+    chap_labels = get_chapter_labels(tex_data)
 
-    for line in sorted(code_dict.keys(), reverse=True):
-      section.insert(line + 2, '.. raw:: html\n\n  <p style="color:grey;font-style:italic;text-align:right">%s</p>' % code_dict[line][0])
+    output = parse_input(tex_source)
+    if output is None or output == '':
+      raise ValueError('Empty output was returned!')
+    output = output.replace('\r', '')
 
-    process_citations(section)
-    fix_math_indent(section)
-    fix_math_formula(section)
-    fix_figures(section, figures)
-    fix_numbered_lists(section)
+    output, footnotes = get_footnotes(output)
 
-    print('Storing section %s' % section[0])
+    output = correct_tables(output)
+    output = parse_chapter_refs(output, chap_labels)
 
-    dest_name = section[0].replace(' ', '_')
-    if cnt > 0:
-      dest_name = '%-.2i_' % cnt + dest_name
+    output_lines = output.split('\n')
+    hdr_chars = ['=', '-']
+    index = [
+      '',
+      'Contents',
+      '--------',
+      '',
+      '.. toctree::',
+      '   :hidden:',
+      '',
+      '   Home <self>',
+      '',
+      '.. toctree::',
+      '   :maxdepth: 2',
+      ''
+      ]
 
-    cnt += 1
+    cnt = 0
 
-    if cnt == 1:
-      index.insert(0, '.. include:: %s.rst' % str(dest_name))
-    else:
-      index.append('   %s <%s>' % (section[0], dest_name))
+    footnote_ref_pattern = re.compile('\[(?P<no>\d+)\]_')
 
-    # Check if this chapter has a label in the source. If so, also add a label in the rst document
-    section_title = section[0].lower()
-    if section_title in chap_labels:
-      section.insert(0, '.. _%s:\n' % chap_labels[section_title])
+    for section, code_dict in split_sections(output_lines, feature_class_codes, feature_codes, other_codes, hdr_chars):
 
-    out_str = u'\n'.join(section).encode('utf-8')
+      for line in sorted(code_dict.keys(), reverse=True):
+        section.insert(line + 2, '.. raw:: html\n\n  <p style="color:grey;font-style:italic;text-align:right">%s</p>' % code_dict[line][0])
 
-    with open(dest_name + '.rst', mode='wb') as out_fs:
-      out_fs.write(out_str)
+      process_citations(section)
+      fix_math_indent(section)
+      fix_math_formula(section)
+      fix_figures(section, figures)
+      fix_numbered_lists(section)
 
-  index.append('   References')
-  index.append('')
+      print('Storing section %s' % section[0])
 
-  with open('index.rst', mode='w') as index_fs:
-    out_str = u'\n'.join(index).encode('utf-8')
-    index_fs.write(out_str)
+      dest_name = section[0].replace(' ', '_')
+      if cnt > 0:
+        dest_name = '%-.2i_' % cnt + dest_name
 
-  print (hdr_chars)
+      cnt += 1
+
+      if cnt == 1:
+        index.insert(0, '.. include:: %s.rst' % str(dest_name))
+      else:
+        index.append('   %s <%s>' % (section[0], dest_name))
+
+      # Check if this chapter has a label in the source. If so, also add a label in the rst document
+      section_title = section[0].lower()
+      if section_title in chap_labels:
+        section.insert(0, '.. _%s:\n' % chap_labels[section_title])
+
+      out_str = u'\n'.join(section).encode('utf-8')
+
+      section_footnotes = sorted([int(m.groupdict()['no']) for m in footnote_ref_pattern.finditer(out_str)])
+      footer = ''
+      for sf in section_footnotes:
+        footer += u'\n.. [%i]\n   %s\n' % (sf, footnotes[sf])
+
+      with open(dest_name + '.rst', mode='wb') as out_fs:
+        out_fs.write(out_str)
+        out_fs.write(footer)
+
+    index.append('   References')
+    index.append('')
+
+    with open('index.rst', mode='w') as index_fs:
+      out_str = u'\n'.join(index).encode('utf-8')
+      index_fs.write(out_str)
+
+    print (hdr_chars)
+  finally:
+    shutil.rmtree(tmp)
 
 
 def parse_input(source_file):
   import pypandoc
+
   print('PyPandoc version: %s' % pypandoc.__version__)
+
   current_dir = os.path.abspath(os.path.curdir)
   source_dir = os.path.dirname(source_file)
 
@@ -100,7 +133,7 @@ def parse_input(source_file):
     os.chdir(source_dir)
 
   try:
-    return pypandoc.convert_file(os.path.basename(source_file), to='rst', extra_args=['--mathjax'])
+    return pypandoc.convert_file(source_file, to='rst', extra_args=['--mathjax'])
   finally:
     os.chdir(current_dir)
 
@@ -353,6 +386,44 @@ def parse_other_ids(source_tex):
   return other_codes
 
 
+def update_inline_ids(source_tex):
+  id_pattern = re.compile(r'\\textid{(?P<InlineCode>\w{4})}')
+
+  inline_codes = set()
+  for match in id_pattern.finditer(source_tex):
+    inline_codes.add(match.groupdict()['InlineCode'])
+
+  source_tex, n = id_pattern.subn(r'\\textit{\g<InlineCode>}', source_tex)
+  print('replaced %i instances of an inline ID (%s)' % (n, inline_codes))
+  return source_tex, inline_codes
+
+
+def fix_benchmark_tables(benchmark_dir):
+  small_pattern = re.compile(r'\\small{(?P<table>(.*\n)+)}\n')
+  table_pattern = re.compile(r'\\begin{longtable}{ccccc}\n\s+\\toprule\n(?P<hdr>({\\textbf{.+}} & )+{\\textbf{.+}}\s)\\\\\s*\n\s+\\midrule\n(?P<table_data>(.+\\\\\s*\n)+\s+\\bottomrule)(?P<caption>\n\\caption{)')
+  em_dash_pattern = re.compile(r'\\textemdash')
+
+  def header_fix(match):
+    grps = match.groupdict()
+    header = grps['hdr']
+    repl = '\\begin{longtable}\n\\centering\n\\begin{tabular}{ccccc}\n  \\toprule\n'
+    repl += re.sub(r'{(?P<hdr>\\textbf{[a-z\. ]+})} ', '\g<hdr> ', header)
+    repl += '\\\\ \n  \\midrule\n'
+    repl += grps['table_data']
+    repl += '\n\\end{tabular}'
+    repl += grps['caption']
+    return repl
+
+  for fname in os.listdir(benchmark_dir):
+    with open(os.path.join(benchmark_dir, fname)) as b_fs:
+      b_table = b_fs.read()
+    b_table = small_pattern.sub(r'\\small\g<table>', b_table)
+    b_table = table_pattern.sub(header_fix, b_table)
+    b_table = em_dash_pattern.sub('---', b_table)
+    with open(os.path.join(benchmark_dir, fname), mode='w') as b_fs:
+      b_fs.write(b_table)
+
+
 def fix_figures(section_lines, figures):
   fig_start = None
   indent = None
@@ -485,7 +556,17 @@ def parse_chapter_refs(output, chapter_labels):
   return output
 
 
+def get_footnotes(output):
+  footnotes = {}
+  footnote_pattern = re.compile(r'\n.. \[(?P<no>\d+)\]\s*\n\s+(?P<value>.+)\n')
+  for m in footnote_pattern.finditer(output):
+    grp = m.groupdict()
+    footnotes[int(grp['no'])] = grp['value']
+
+  output = footnote_pattern.sub('', output)
+  return output, footnotes
+
 
 if __name__ == '__main__':
-  os.chdir(r'../docs')
+  os.chdir(r'..\docs')
   main()
