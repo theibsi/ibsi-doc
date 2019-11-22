@@ -58,6 +58,6 @@ processing of acquired imaging for high-throughput image biomarker
 extraction (:ref:`chap_img_proc`); define a diverse set of
 image biomarkers (:ref:`chap_image_features`); describe
 guidelines for reporting on high-throughput image biomarker extraction
-and an image biomarker nomenclature 
+and an image biomarker nomenclature
 (:ref:`chap_report_guidelines`); and describe the benchmark data sets
 (:ref:`chap_benchmark_sets`).

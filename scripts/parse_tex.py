@@ -7,13 +7,13 @@ from six.moves import range
 
 
 def main():
-  tex_source = r'..\ibsi-reference-manual\IBSIWorkDocument.tex'
+  tex_source = r'../ibsi-reference-manual/IBSIWorkDocument_notextid.tex'
   output = parse_input(tex_source)
   if output is None or output == '':
     raise ValueError('Empty output was returned!')
 
   tex_data = read_tex_source(tex_source)
-  features_tex = read_tex_source(os.path.join(tex_source, '..', 'Chapters', 'FeatureDef.tex'))
+  features_tex = read_tex_source(os.path.join(tex_source[:-29], 'Chapters', 'FeatureDef_notextid.tex'))
   feature_class_codes, feature_codes = parse_feature_ids(features_tex)
   other_codes = parse_other_ids(tex_data)
 
@@ -89,7 +89,7 @@ def main():
 
 def parse_input(source_file):
   import pypandoc
-
+  print('PyPandoc version: %s' % pypandoc.__version__)
   current_dir = os.path.abspath(os.path.curdir)
   source_dir = os.path.dirname(source_file)
 
@@ -487,5 +487,5 @@ def parse_chapter_refs(output, chapter_labels):
 
 
 if __name__ == '__main__':
-  os.chdir(r'..\docs')
+  os.chdir(r'../docs')
   main()

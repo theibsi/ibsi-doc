@@ -6,14 +6,16 @@ Benchmark data sets
 Image features and image processing were benchmarked using a digital
 image phantom and the CT image of a lung cancer patient, which are
 described below. The data sets themselves may be found here:
-https://github.com/theibsi/data\_sets.
+https://github.com/theibsi/data_sets.
+
+.. _sec_digital_phantom:
 
 Digital phantom
 ---------------
 
 A small digital phantom was developed to compare image features. The
-phantom is shown in figure [figTestVolume]. The phantom has the
-following characteristics:
+phantom is shown in figure `[figTestVolume] <#figTestVolume>`__. The
+phantom has the following characteristics:
 
 -  The phantom consists of :math:`5 \times 4 \times 4` :math:`(x,y,z)`
    voxels.
@@ -27,7 +29,7 @@ following characteristics:
 -  Not all voxels are included in the region of interest. Several
    excluded voxels are located on the outside of the ROI, and one
    internal voxel was excluded as well. Voxels excluded from the ROI are
-   shown in blue in figure [figTestVolume].
+   shown in blue in figure `[figTestVolume] <#figTestVolume>`__.
 
 -  Some intensities are not present in the phantom. Notably, grey levels
    :math:`2` and :math:`5` are absent. :math:`1` is the lowest grey
@@ -72,6 +74,8 @@ following should be taken into account for calculating image features:
    and :math:`z` increases from top to bottom, as is indicated by the
    axis definition in the top-left.
 
+.. _sec_patient_data:
+
 Radiomics phantom data
 ----------------------
 
@@ -92,17 +96,20 @@ should be converted to (at least) 32-bit floating point and rounded to
 the nearest integer before further processing.
 
 Five image processing configurations are defined to test different image
-processing algorithms, see Table [list\_summary\_cases]. While most
-settings are self-explanatory, there are several aspects that require
-some attention. Configurations are divided in 2D and 3D approaches. For
-the 2D configurations (A, B), image interpolation is conducted within
-the slice, and likewise texture features are extracted from the in-slice
+processing algorithms, see Table
+`[list_summary_cases] <#list_summary_cases>`__. While most settings are
+self-explanatory, there are several aspects that require some attention.
+Configurations are divided in 2D and 3D approaches. For the 2D
+configurations (A, B), image interpolation is conducted within the
+slice, and likewise texture features are extracted from the in-slice
 plane, and not volumetrically (3D). For the 3D configurations (C-E)
 interpolation is conducted in three dimensions, and features are
 likewise extracted volumetrically. Discretisation is moreover required
 for texture, intensity histogram and intensity-volume histogram
 features, and both *fixed bin number* and *fixed bin size* algorithms
 are tested.
+
+.. _sec_benchmark_interpolation_notes:
 
 Notes on interpolation
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -143,7 +150,9 @@ implementation allows or implements the following guidelines:
    require rounding if the original data were integer values, such as
    Hounsfield Units or the ROI mask labels.
 
-More details are provided in Section [ref\_interpolation].
+More details are provided in Section `2.4 <#ref_interpolation>`__.
+
+.. _sub_sect_diag_feat:
 
 Diagnostic features
 ^^^^^^^^^^^^^^^^^^^
@@ -226,13 +235,16 @@ Re-segmented region of interest.
 Again, the same features as above can be used to describe the ROI after
 re-segmentation.
 
+.. _computing-image-features-1:
+
 Computing image features
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Unlike the digital phantom, the radiomics phantom does require
 additional image processing, which is done according to the processing
-configurations described in Table [list\_summary\_cases]. The following
-should be taken into account when calculating image features:
+configurations described in Table
+`[list_summary_cases] <#list_summary_cases>`__. The following should be
+taken into account when calculating image features:
 
 -  Grey level co-occurrence matrices are symmetrical and calculated for
    (Chebyshev) distance :math:`\delta=1`.
