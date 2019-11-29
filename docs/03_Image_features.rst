@@ -152,14 +152,21 @@ vector from a center voxel at
 
    .. math:: \|\mathbf{m}\|_{\infty} = \text{max}(|m_x|,|m_y|,|m_z|)
 
-An example of how the above norms differ in practice is shown in figure
-[fig:distance\_norms].
+An example of how the above norms differ in practice is shown below.
 
-120pt [fig:manhattan\_distance]
+.. _manhattan_distance:
+.. figure:: ./Figures/manhattan_distance.pdf
 
-120pt [fig:euclidean\_distance]
+    Manhattan norm
 
-120pt [fig:chebyshev\_distance]
+.. figure:: ./Figures/euclidean_distance.pdf
+
+    Euclidean norm
+
+.. figure:: ./Figures/chebyshev_distance.pdf
+
+    Chebyshev norm
+
 
 Feature aggregation
 -------------------
@@ -168,7 +175,7 @@ Feature aggregation
   <p style="color:grey;font-style:italic;text-align:right">5QB6</p>
 
 Features from some families may be calculated from, e.g. slices. As a
-consequence, multip le values for the same feature may be computed.
+consequence, multiple values for the same feature may be computed.
 These different values should be combined into a single value for many
 common purposes. This process is referred to as feature aggregation.
 Feature aggregation methods depend on the family, and are detailed in
@@ -225,7 +232,7 @@ of its widespread availability in different programming languages and
 reasonable approximation of the surface area and volume
 :cite:`Stelldinger2007`. In practice, mesh-based feature
 values depend upon the meshing algorithm and small differences may occur
-between implementations :raw-latex:`\citep{Limkin2019-jt}`.
+between implementations :cite:`Limkin2019-jt`.
 
 .. _figMorphMesh:
 .. figure:: ./Figures/MorphMesh.png
@@ -280,7 +287,7 @@ holes within the morphological mask are understood to be the result of
 segmentation decisions, and thus to be intentional. The intensity mask
 is used to generate the voxel intensity set :math:`\mathbf{X}_{gl}` with
 corresponding point set :math:`\mathbf{X}_{c,gl}`. In the benchmark data
-sets (Chapter [chap\_benchmark sets]), the masks are identical for the
+sets (:ref:`chap_benchmark_sets`), the masks are identical for the
 digital phantom, but differ due to re-segmentation of the intensity
 mask.
 
@@ -295,7 +302,7 @@ Units of measurement
 
 By definition, morphological features are computed using the unit of
 length as defined in the DICOM standard, i.e. millimeter for most
-medical imaging modalities [1]_.
+medical imaging modalities.
 
 If the unit of length is not defined by a standard, but is explicitly
 defined as meta data, this definition should be used. In this case, care
@@ -305,6 +312,8 @@ the cohort.
 If a feature value should be expressed as a different unit of length,
 e.g. cm instead of mm, such conversions should take place after
 computing the value using the standard units.
+
+.. _feat_morph_volume:
 
 Volume (mesh)
 ^^^^^^^^^^^^^
@@ -351,6 +360,9 @@ active tumour volume* (MATV) for :sup:`18`\ F-FDG.
 
 Table: Benchmark table for the *volume (mesh)* feature.
 
+
+.. _feat_morph_approx_volume:
+
 Volume (voxel counting)
 ^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
@@ -389,6 +401,9 @@ the ROI, and :math:`V_k` the volume of voxel :math:`k`.
 +----------------+------------------------------+---------------------------+-----------------+
 
 Table: Benchmark table for the *volume (voxel counting)* feature.
+
+
+.. _feat_morph_area:
 
 Surface area (mesh)
 ^^^^^^^^^^^^^^^^^^^
