@@ -9,7 +9,7 @@ an image is defined as a three-dimensional (3D) stack of two-dimensional
 (2D) digital image slices. Image slices are stacked along the
 :math:`z`-axis. This stack is furthermore assumed to possess the same
 coordinate system, i.e. image slices are not rotated or translated (in
-the :math:`xy`-plane) with regards to each other. Moreover, digital
+the :math:`xy`-plane) with regard to each other. Moreover, digital
 images typically possess a finite resolution. Intensities in an image
 are thus located at regular intervals, or spacing. In 2D such regular
 positions are called *pixels*, whereas in 3D the term *voxels* is used.
@@ -57,8 +57,10 @@ described in detail within this chapter.
    run length matrix; GLSZM: grey level size zone matrix; NGTDM:
    neighbourhood grey tone difference matrix; NGLDM: Neighbouring grey
    level dependence matrix; GLDZM: grey level distance zone matrix;
-   \*Discretisation of IVH differs from IH and texture features (see
+   \*Discretisation of IVH differs from IH and texture features, (see
    :ref:`sect_ivh`).
+
+.. _ref_data_conversion:
 
 Data conversion
 ---------------
@@ -71,6 +73,8 @@ meaningful presentation, e.g. standardised uptake values
 (SUV) :cite:`Boellaard2015`. This is performed during the
 data conversion step. Assessment of data conversion methods falls
 outside the scope of the current work.
+
+.. _ref_image_postprocessing:
 
 Image post-acquisition processing
 ---------------------------------
@@ -99,6 +103,8 @@ processing methods falls outside the scope of the current work. Note
 that vendors may provide or implement software to perform noise
 reduction and other post-processing during image reconstruction. In such
 cases, additional post-acquisition processing may not be required.
+
+.. _ref_segmentation:
 
 Segmentation
 ------------
@@ -185,6 +191,9 @@ itself to the interior.
    ray origin to the row voxel centers. (4) Apply *even-odd* rule to
    determine whether voxel centers are inside the polygon.
 
+
+.. _ref_interpolation:
+
 Interpolation
 -------------
 .. raw:: html
@@ -202,14 +211,15 @@ measurements and devices is therefore important for reproducibility. At
 the moment there are no clear indications whether upsampling or
 downsampling schemes are preferable. Consider, for example, an image
 stack of slices with :math:`1.0 \times 1.0 \times 3.0~\text{mm}^3` voxel
-spacing. Down-sampling (:math:`1.0 \times 1.0 \times 1.0~\text{mm}^3`)
+spacing. Upsampling to :math:`1.0 \times 1.0 \times 1.0~\text{mm}^3`
 requires inference and introduces artificial information, while
-conversely upsampling to the largest dimension
+conversely downsampling to the largest dimension
 (:math:`3.0 \times 3.0 \times 3.0~\text{mm}^3`) incurs information loss.
 Multiple-scaling strategies potentially offer a good trade-off
-:cite:`Vallieres2017`. Note that upsampling may introduce
-image aliasing artifacts that require anti-aliasing filters prior to
-filtering :cite:`Mackin2017,Zwanenburg2018`.
+:cite:`Vallieres2017`. Note that downsampling may introduce
+image aliasing artifacts. Downsampling may therefore require
+anti-aliasing filters prior to filtering
+:cite:`Mackin2017,Zwanenburg2018`.
 
 While in general 3D interpolation algorithms are used to interpolate 3D
 images, 2D interpolation within the image slice plane may be recommended
@@ -469,6 +479,19 @@ section. Combining multiple re-segmentation methods is possible. In this
 case, the intersection of the intensity ranges defined by the
 re-segmentation methods is used.
 
+
+.. _figresegmentation_real_example:
+.. figure:: ./Figures/resegmentation.png
+   :align: center
+
+   Re-segmentation example based on a CT-image. The masked region (blue)
+   is re-segmented to create an intensity mask (orange). Examples using
+   three different re-segmentation parameter sets are shown. The bottom
+   right combines the range and outlier re-segmentation, and the
+   resulting mask is the intersection of the masks in the other two
+   examples. Image data from Vallières et al. :cite:`Vallieres2015,Vallieres2015-hv,Clark2013`.
+
+
 Intensity and morphological masks of an ROI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
@@ -489,7 +512,10 @@ The intensity mask (*SEFI*) can be re-segmented and will contain only
 the selected voxels. For many feature families, only this is important.
 However, for morphological and grey level distance zone matrix (GLDZM)
 feature families, both intensity and morphological masks are used. A
-two-dimensional example is shown in :numref:`figReSegmentationExample`.
+two-dimensional schematic example is shown in
+:numref:`figReSegmentationExample`, and a real
+example is shown in
+:numref:`figresegmentation_real_example`.
 
 Range re-segmentation
 ^^^^^^^^^^^^^^^^^^^^^
@@ -536,12 +562,26 @@ ROI extraction
 
   <p style="color:grey;font-style:italic;text-align:right">1OBP</p>
 
+
+.. _figroi_extraction:
+.. figure:: ./Figures/roi_extraction.png
+   :align: center
+
+   Masking of an image by the ROI mask during *ROI extraction*.
+   Intensities outside the ROI are excluded. Image data from Vallières
+   et al. :cite:`Vallieres2015,Vallieres2015-hv,Clark2013`.
+
+
+
 Many feature families require that the ROI is isolated from the
 surrounding voxels. The ROI intensity mask is used to extract the image
 volume to be studied. Excluded voxels are commonly replaced by a
 placeholder value, often *NaN*. This placeholder value may then used to
 exclude these voxels from calculations. Voxels included in the ROI mask
-retain their original intensity.
+retain their original intensity. An example is shown in
+:numref:`figroi_extraction`.
+
+.. _discretisation:
 
 Intensity discretisation
 ------------------------
@@ -555,13 +595,8 @@ often required to make calculation of texture features tractable
 as well. An example of discretisation is shown in
 :numref:`figImageDiscretisation`.
 
-.. _figImageDiscretisation:
-.. figure:: ./Figures/ImageDiscretisation.png
-   :align: center
 
-   The image volume contained in the region of interest (ROI) is
-   discretised. Here, intensities from the original ROI volume were
-   assigned to 3 intensity bins to create a discretised volume.
+
 
 Two approaches to discretisation are commonly used. One involves the
 discretisation to a fixed number of bins, and the other discretisation
@@ -571,7 +606,22 @@ particular characteristics (as described below) that may make them
 better suited for specific purposes. Note that the lowest bin always has
 value :math:`1`, and not :math:`0`. This ensures consistency for
 calculations of texture features, where for some features grey level
-:math:`0` is not allowed.
+:math:`0` is not allowed .
+
+.. _figImageDiscretisation:
+.. figure:: ./Figures/discretisation.png
+
+   Discretisation of two different 18F-FDG-PET images with
+   SUV\ :sub:`max` of :math:`27.8` (A) and :math:`6.6` (B). *Fixed bin
+   number* discretisation adjust the contrast between the two images,
+   with the number of bins determining the coarseness of the discretised
+   image. *Fixed bin size* discretisation leaves the contrast
+   differences between image A and B intact. Increasing the bin size
+   increases the coarseness of the discretised image. Image data from
+   Vallières et al.
+   :cite:`Vallieres2015,Vallieres2015-hv,Clark2013`.
+
+.. _par_discr_FBN:
 
 Fixed bin number
 ^^^^^^^^^^^^^^^^
@@ -596,15 +646,17 @@ ROI, divided by the bin width
 :math:`\left(X_{gl,max}-X_{gl,min}\right)/N_g`, and subsequently rounded
 down to the nearest integer (floor function).
 
-The *fixed bin number*
-method breaks the relationship between image intensity and physiological
-meaning (if any). However, it introduces a normalising effect which may
-be beneficial when intensity units are arbitrary (e.g. raw MRI data and
-many spatial filters), and where contrast is considered important.
-Furthermore, as values of many features depend on the number of grey
-levels found within a given ROI, the use of a *fixed bin number*
-discretisation algorithm allows for a direct comparison of feature
-values across multiple analysed ROIs (e.g. across different samples).
+The *fixed bin number* method breaks the relationship between image
+intensity and physiological meaning (if any). However, it introduces a
+normalising effect which may be beneficial when intensity units are
+arbitrary (e.g. raw MRI data and many spatial filters), and where
+contrast is considered important. Furthermore, as values of many
+features depend on the number of grey levels found within a given ROI,
+the use of a *fixed bin number* discretisation algorithm allows for a
+direct comparison of feature values across multiple analysed ROIs (e.g.
+across different samples).
+
+.. _par_discr_FBS:
 
 Fixed bin size
 ^^^^^^^^^^^^^^
