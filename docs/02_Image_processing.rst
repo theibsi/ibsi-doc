@@ -9,7 +9,7 @@ an image is defined as a three-dimensional (3D) stack of two-dimensional
 (2D) digital image slices. Image slices are stacked along the
 :math:`z`-axis. This stack is furthermore assumed to possess the same
 coordinate system, i.e. image slices are not rotated or translated (in
-the :math:`xy`-plane) with regard to each other. Moreover, digital
+the :math:`xy`-plane) with regards to each other. Moreover, digital
 images typically possess a finite resolution. Intensities in an image
 are thus located at regular intervals, or spacing. In 2D such regular
 positions are called *pixels*, whereas in 3D the term *voxels* is used.
@@ -57,7 +57,7 @@ described in detail within this chapter.
    run length matrix; GLSZM: grey level size zone matrix; NGTDM:
    neighbourhood grey tone difference matrix; NGLDM: Neighbouring grey
    level dependence matrix; GLDZM: grey level distance zone matrix;
-   \*Discretisation of IVH differs from IH and texture features, (see
+   \*Discretisation of IVH differs from IH and texture features (see
    :ref:`sect_ivh`).
 
 .. _ref_data_conversion:
@@ -606,7 +606,7 @@ particular characteristics (as described below) that may make them
 better suited for specific purposes. Note that the lowest bin always has
 value :math:`1`, and not :math:`0`. This ensures consistency for
 calculations of texture features, where for some features grey level
-:math:`0` is not allowed .
+:math:`0` is not allowed.
 
 .. _figImageDiscretisation:
 .. figure:: ./Figures/discretisation.png
