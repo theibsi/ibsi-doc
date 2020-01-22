@@ -3485,7 +3485,7 @@ and :math:`j` occur in neighbouring voxels along direction
 :math:`\mathbf{M}_{\mathbf{m}}` is symmetric. An example of the
 calculation of a GLCM is shown in :numref:`figGLCM1`.
 Corresponding grey level co-occurrence matrices for each direction are
-shown in Table `[figGLCM2] <#figGLCM2>`__.
+shown in :numref:`figGLCM2`.
 
 
 .. _figGLCM1:
@@ -3494,13 +3494,24 @@ shown in Table `[figGLCM2] <#figGLCM2>`__.
 
    Grey levels (a) and corresponding grey level co-occurrence matrices for the 0◦ (b)
    and 180◦ directions (c). In vector notation these directions are :math:`\mathbf{m_{+}} = (1, 0)` and
-   :math:`\mathbf{m_{-}}` = (−1, 0). To calculate the symmetrical co-occurrence matrix Mm both matrices are
-   summed by element.
+   :math:`\mathbf{m_{-}}` = (−1, 0). To calculate the symmetrical co-occurrence matrix :math:`\mathbf{M}_{\mathbf{m}}`
+   both matrices are summed by element.
+
+
+
+.. _figGLCM2:
+.. figure:: ./Figures/figGLCM2.png
+   :width: 450px
+   :align: center
+
+   Grey level co-occurrence matrices for the 0◦ (a), 45◦ (b), 90◦ (c) and 135◦ (d) directions.
+   In vector notation these directions are :math:`\mathbf{m} = (1, 0)`, :math:`\mathbf{m} = (1, 1)`,
+   :math:`\mathbf{m} = (0, 1)` and :math:`\mathbf{m} = (−1, 1)`, respectively.
 
 
 GLCM features rely on the probability distribution for the elements of
 the GLCM. Let us consider :math:`\mathbf{M}_{\mathbf{m}=(1,0)}` from the
-example, as shown in Table `[figGLCM3] <#figGLCM3>`__. We derive a
+example, as shown in :numref:`figGLCM3`. We derive a
 probability distribution for grey level co-occurrences,
 :math:`\mathbf{P}_{\mathbf{m}}`, by normalising
 :math:`\mathbf{M}_{\mathbf{m}}` by the sum of its elements. Each element
@@ -3533,6 +3544,16 @@ voxels at :math:`(0,0,3)`, :math:`(0,3,0)`, :math:`(3,0,0)`,
 :math:`(3,3,0)`, :math:`(3,-3,0)`, :math:`(3,3,3)`, :math:`(3,3,-3)`,
 :math:`(3,-3,3)` and :math:`(3,-3,-3)` from the center voxel are
 considered.
+
+.. _figGLCM3:
+.. figure:: ./Figures/figGLCM3.png
+   :align: center
+
+   Grey level co-occurrence matrix for the 0◦ direction (a); its corresponding probability matrix :math:`\mathbf{P}_{\mathbf{m}} = (1,0)`
+   with marginal probabilities :math:`p_{i.}`. and :math:`p_{.j}`; the diagonal probabilities :math:`p_{i-j}` (c); and the cross-diagonal
+   probabilities :math:`p_{i+j}` (d). Discrepancies in panels b, c, and d are due to rounding errors caused by showing
+   only two decimal places. Also, note that due to GLCM symmetry marginal probabilities :math:`p_{i.}`. and :math:`p_{.j}` are the
+   same in both row and column margins of panel b.
 
 .. _aggregating-features-5:
 
