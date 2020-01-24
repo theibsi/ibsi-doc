@@ -1254,7 +1254,7 @@ consists of the vertex set :math:`\mathbf{X}_{vx,convex}` and
 corresponding faces, see section :ref:`feat_morph_max_3d_diam`.
 The volume of the ROI mesh convex hull set :math:`V_{convex}` is
 computed in the same way as that of the *volume (mesh)* feature
-(:ref:`feat_morph_volume>`). The *volume density* can then be
+(:ref:`feat_morph_volume`). The *volume density* can then be
 calculated as follows:
 
 .. math:: F_{\mathit{morph.v.dens.conv.hull}} = \frac{V}{V_{convex}}
@@ -3144,7 +3144,7 @@ Some imaging modalities by default generate voxels with calibrated,
 discrete intensities – for example CT. In this case, the discretised ROI
 voxel set :math:`\mathbf{X}_{d,gl}=\mathbf{X}_{gl}`, i.e. no
 discretisation required. If a re-segmentation range is provided (see
-Section :ref:`ref_resegmentation`), the total range
+Section :ref:`re_segmentation`), the total range
 :math:`\mathbf{G}` is equal to the re-segmentation range. In the case of
 a half-open re-segmentation range, the upper limit of the range is
 :math:`\text{max}(\mathbf{X}_{gl})`. When no range is provided,
@@ -6419,7 +6419,7 @@ Aggregating features
 --------------------
 
 Three methods can be used to aggregate GLSZMs and arrive at a single
-feature value. A schematic example is shown in Figure
+feature value. A schematic example is shown in
 :numref:`figGLSZMCalcApproaches`. A feature may be aggregated as follows:
 
 #. Features are computed from 2D matrices and averaged over slices
@@ -7217,7 +7217,7 @@ Note on feature references
 
 GLDZM feature definitions are based on the definitions of GLRLM features
 :cite:`Thibault2014`. Hence, references may be found in the
-section on GLRLM (:numref:`sect_glrlm`).
+section on GLRLM (:ref:`sects_glrlm`).
 
 
 .. _feat_dzm_small_distance_emphasis:
@@ -7946,7 +7946,7 @@ Aggregating features
 --------------------
 
 Three methods can be used to aggregate NGTDMs and arrive at a single
-feature value. A schematic example was previously shown in Figure
+feature value. A schematic example was previously shown in
 :numref:`figGLSZMCalcApproaches`. A feature may be
 aggregated as follows:
 
