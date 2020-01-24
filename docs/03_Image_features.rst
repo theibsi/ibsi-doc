@@ -3264,6 +3264,9 @@ averaging (*3IDG*) is not recommended.
 
 Volume at intensity fraction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">BC2M</p>
 
 The *volume at intensity fraction* :math:`V_x` is the largest volume
 fraction :math:`\nu` that has an intensity fraction :math:`\gamma` of at
@@ -3296,6 +3299,7 @@ features are defined as :math:`F_{\mathit{ivh.V10}}` and
 
 
 .. table:: Reference values for the *volume fraction at 90% intensity* feature.
+
    +----------------+-------------------------------+-------------------------------+-----------------+
    | **data**       | **value**                     | **tol.**                      | **consensus**   |
    +================+===============================+===============================+=================+
@@ -3317,6 +3321,10 @@ features are defined as :math:`F_{\mathit{ivh.V10}}` and
 
 Intensity at volume fraction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GBPN</p>
+
 
 The *intensity at volume fraction* :math:`I_x` is the minimum
 discretised intensity :math:`i` present in at most :math:`x\%` of the
@@ -3367,6 +3375,9 @@ features are defined as :math:`F_{\mathit{ivh.I10}}` and
 
 Volume fraction difference between intensity fractions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">DDTU</p>
 
 This feature is the difference between the volume fractions at two
 different intensity fractions, e.g. :math:`V_{10}-V_{90}`
@@ -3396,6 +3407,9 @@ feature is defined as :math:`F_{\mathit{ivh.V10minusV90}}`.
 
 Intensity fraction difference between volume fractions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">CNV2</p>
 
 This feature is the difference between discretised intensities at two
 different fractional volumes, e.g. :math:`I_{10} - I_{90}`
@@ -3426,6 +3440,9 @@ feature is defined as :math:`F_{\mathit{ivh.I10minusI90}}`.
 
 Area under the IVH curve
 ^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9CMM</p>
 
 **Note:** This feature currently has no reference values and should not
 be used.
@@ -3630,6 +3647,9 @@ exceptions, we recommend against using distance weighting for GLCM.
 
 Joint maximum
 ^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GYBY</p>
 
 *Joint maximum* :cite:`Haralick1979` is the probability
 corresponding to the most common grey level co-occurrence in the GLCM:
@@ -3686,6 +3706,9 @@ corresponding to the most common grey level co-occurrence in the GLCM:
 
 Joint average
 ^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">60VM</p>
 
 *Joint average* :cite:`Unser1986` is the grey level
 weighted sum of joint probabilities:
@@ -3743,6 +3766,9 @@ weighted sum of joint probabilities:
 
 Joint variance
 ^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">UR99</p>
 
 The *joint variance* :cite:`Unser1986`, which is also
 called *sum of squares* :cite:`Haralick1973`, is defined
@@ -3803,6 +3829,9 @@ Here :math:`\mu` is equal to the value of
 
 Joint entropy
 ^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TU9B</p>
 
 *Joint entropy* :cite:`Haralick1973` is defined as:
 
@@ -3976,6 +4005,9 @@ Here :math:`\mu` is equal to the value of *difference average*.
 
 Difference entropy
 ^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NTRS</p>
 
 The *difference entropy* for the diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -4032,6 +4064,9 @@ The *difference entropy* for the diagonal probabilities
 
 Sum average
 ^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">ZGXS</p>
 
 The *sum average* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -4092,6 +4127,9 @@ By definition,
 
 Sum variance
 ^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OEEB</p>
 
 The *sum variance* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -4159,6 +4197,9 @@ is mathematically identical to the *cluster tendency* feature
 
 Sum entropy
 ^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">P6QZ</p>
 
 The *sum entropy* for the cross-diagonal probabilities
 :cite:`Haralick1973` is defined as:
@@ -4215,6 +4256,9 @@ The *sum entropy* for the cross-diagonal probabilities
 
 Angular second moment
 ^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8ZQL</p>
 
 The *angular second moment* :cite:`Haralick1973`, which
 represents the energy of :math:`\mathbf{P}_{\Delta}`, is defined as:
@@ -4275,6 +4319,9 @@ This feature is also called *energy*
 
 Contrast
 ^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">ACUI</p>
 
 *Contrast* assesses grey level variations
 :cite:`Haralick1973`. Hence elements of
@@ -4338,6 +4385,9 @@ to the above formulation of *contrast*.
 
 Dissimilarity
 ^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8S9J</p>
 
 *Dissimilarity* :cite:`Clausi2002` is conceptually similar
 to the *contrast* feature, and is defined as:
@@ -4397,6 +4447,9 @@ feature :cite:`VanGriethuysen2017`.
 
 Inverse difference
 ^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IB1Z</p>
 
 *Inverse difference* is a measure of homogeneity
 :cite:`Clausi2002`. Grey level co-occurrences with a large
@@ -4461,6 +4514,9 @@ probabilities :cite:`VanGriethuysen2017`:
 
 Normalised inverse difference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NDRX</p>
 
 :cite:`Clausi2002` suggested normalising *inverse
 difference* to improve classification ability. The normalised feature is
@@ -4528,6 +4584,9 @@ probabilities :cite:`VanGriethuysen2017`:
 
 Inverse difference moment
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">WF0Z</p>
 
 *Inverse difference moment* :cite:`Haralick1973` is similar
 in concept to the *inverse difference* feature, but with lower weights
@@ -4593,6 +4652,9 @@ This feature is also called *homogeneity*
 
 Normalised inverse difference moment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1QCO</p>
 
 :cite:`Clausi2002` suggested normalising *inverse
 difference moment* to improve classification performance. This leads to
@@ -4655,6 +4717,9 @@ probabilities :cite:`VanGriethuysen2017`:
 
 Inverse variance
 ^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">E8JP</p>
 
 The *inverse variance* :cite:`Aerts2014` feature is defined
 as:
@@ -4717,6 +4782,9 @@ instead of :math:`k=0`\ :cite:`VanGriethuysen2017`:
 
 Correlation
 ^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NI2N</p>
 
 *Correlation* :cite:`Haralick1973` is defined as:
 
@@ -4791,6 +4859,9 @@ Again, simplifying due to matrix symmetry yields:
 
 Autocorrelation
 ^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QWB0</p>
 
 :cite:`soh1999texture` defined *autocorrelation* as:
 
@@ -4874,6 +4945,9 @@ Autocorrelation
 
 Cluster tendency
 ^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">DG8W</p>
 
 *Cluster tendency* :cite:`Aerts2014` is defined as:
 
@@ -4939,6 +5013,9 @@ feature :cite:`VanGriethuysen2017`.
 
 Cluster shade
 ^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7NFM</p>
 
 *Cluster shade* :cite:`Unser1986` is defined as:
 
@@ -5038,6 +5115,9 @@ formulated as:
 
 Cluster prominence
 ^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">AE86</p>
 
 *Cluster prominence* :cite:`Unser1986` is defined as:
 
@@ -5100,6 +5180,9 @@ formulated as:
 
 Information correlation 1
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">R8DG</p>
 
 *Information theoretic correlation* is estimated using two different
 measures :cite:`Haralick1973`. For symmetric
@@ -5166,6 +5249,9 @@ to the entropy of the column marginal probability.
 
 Information correlation 2
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">JN9H</p>
 
 The *second measure of information theoretic correlation*
 :cite:`Haralick1973` is estimated as follows for symmetric
@@ -5330,6 +5416,9 @@ use, and we caution against it due to potential reproducibility issues.
 
 Short runs emphasis
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">22OV</p>
 
 This feature emphasises short run lengths
 :cite:`Galloway1975`. It is defined as:
@@ -5386,6 +5475,9 @@ This feature emphasises short run lengths
 
 Long runs emphasis
 ^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">W4KF</p>
 
 This feature emphasises long run lengths
 :cite:`Galloway1975`. It is defined as:
@@ -5441,6 +5533,9 @@ This feature emphasises long run lengths
 
 Low grey level run emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">V3SW</p>
 
 This feature is a grey level analogue to *short runs emphasis*
 :cite:`Chu1990`. Instead of short run lengths, low grey
@@ -5497,6 +5592,9 @@ levels are emphasised. The feature is defined as:
 
 High grey level run emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">G3QZ</p>
 
 The *high grey level run emphasis* feature is a grey level analogue to
 *long runs emphasis* :cite:`Chu1990`. The feature
@@ -5554,6 +5652,9 @@ emphasises high grey levels, and is defined as:
 
 Short run low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HTZT</p>
 
 This feature emphasises runs in the upper left quadrant of the GLRLM,
 where short run lengths and low grey levels are located
@@ -5611,6 +5712,9 @@ where short run lengths and low grey levels are located
 
 Short run high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GD3A</p>
 
 This feature emphasises runs in the lower left quadrant of the GLRLM,
 where short run lengths and high grey levels are located
@@ -5668,6 +5772,9 @@ where short run lengths and high grey levels are located
 
 Long run low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IVPO</p>
 
 This feature emphasises runs in the upper right quadrant of the GLRLM,
 where long run lengths and low grey levels are located
@@ -5725,6 +5832,9 @@ where long run lengths and low grey levels are located
 
 Long run high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">3KUM</p>
 
 This feature emphasises runs in the lower right quadrant of the GLRLM,
 where long run lengths and high grey levels are located
@@ -5782,6 +5892,9 @@ where long run lengths and high grey levels are located
 
 Grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">R5YN</p>
 
 This feature assesses the distribution of runs over the grey values
 :cite:`Galloway1975`. The feature value is low when runs
@@ -5839,6 +5952,9 @@ are equally distributed along grey levels. The feature is defined as:
 
 Normalised grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OVBL</p>
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -5894,6 +6010,9 @@ It is defined as:
 
 Run length non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">W92Y</p>
 
 This features assesses the distribution of runs over the run lengths
 :cite:`Galloway1975`. The feature value is low when runs
@@ -5950,6 +6069,9 @@ are equally distributed along run lengths. It is defined as:
 
 Normalised run length non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IC23</p>
 
 This is normalised version of the *run length non-uniformity* feature.
 It is defined as:
@@ -6005,6 +6127,9 @@ It is defined as:
 
 Run percentage
 ^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9ZK5</p>
 
 This feature measures the fraction of the number of realised runs and
 the maximum number of potential runs :cite:`Galloway1975`.
@@ -6065,6 +6190,9 @@ matrices to allow proper normalisation.
 
 Grey level variance
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8CE5</p>
 
 This feature estimates the variance in runs over the grey levels. Let
 :math:`p_{ij} = r_{ij}/N_s` be the joint probability estimate for
@@ -6124,6 +6252,9 @@ Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_r} i\,p_{ij}`.
 
 Run length variance
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SXLW</p>
 
 This feature estimates the variance in runs over the run lengths. As
 before let :math:`p_{ij} = r_{ij}/N_s`. The feature is defined as:
@@ -6182,6 +6313,9 @@ Mean run length is defined as
 
 Run entropy
 ^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HJ9O</p>
 
 *Run entropy* was investigated by :cite:`Albregtsen2000`.
 Again, let :math:`p_{ij} = r_{ij}/N_s`. The entropy is then defined as:
@@ -6367,6 +6501,9 @@ This feature emphasises small zones. It is defined as:
 
 Large zone emphasis
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">48P8</p>
 
 This feature emphasises large zones. It is defined as:
 
@@ -6401,6 +6538,9 @@ This feature emphasises large zones. It is defined as:
 
 Low grey level zone emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">XMSY</p>
 
 This feature is a grey level analogue to *small zone emphasis*. Instead
 of small zone sizes, low grey levels are emphasised. The feature is
@@ -6437,6 +6577,9 @@ defined as:
 
 High grey level zone emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5GN9</p>
 
 The *high grey level zone emphasis* feature is a grey level analogue to
 *large zone emphasis*. The feature emphasises high grey levels, and is
@@ -6474,6 +6617,9 @@ defined as:
 
 Small zone low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5RAI</p>
 
 This feature emphasises zone counts within the upper left quadrant of
 the GLSZM, where small zone sizes and low grey levels are located. It is
@@ -6510,6 +6656,9 @@ defined as:
 
 Small zone high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HW1V</p>
 
 This feature emphasises zone counts in the lower left quadrant of the
 GLSZM, where small zone sizes and high grey levels are located. The
@@ -6546,6 +6695,9 @@ feature is defined as:
 
 Large zone low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">YH51</p>
 
 This feature emphasises zone counts in the upper right quadrant of the
 GLSZM, where large zone sizes and low grey levels are located. The
@@ -6583,6 +6735,9 @@ feature is defined as:
 
 Large zone high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">J17V</p>
 
 This feature emphasises zone counts in the lower right quadrant of the
 GLSZM, where large zone sizes and high grey levels are located. The
@@ -6620,6 +6775,9 @@ feature is defined as:
 
 Grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">JNSA</p>
 
 This feature assesses the distribution of zone counts over the grey
 values. The feature value is low when zone counts are equally
@@ -6656,6 +6814,9 @@ distributed along grey levels. The feature is defined as:
 
 Normalised grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">Y1RO</p>
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -6691,6 +6852,9 @@ It is defined as:
 
 Zone size non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">4JP3</p>
 
 This features assesses the distribution of zone counts over the
 different zone sizes. *Zone size non-uniformity* is low when zone counts
@@ -6727,6 +6891,9 @@ are equally distributed along zone sizes. It is defined as:
 
 Normalised zone size non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VB3A</p>
 
 This is a normalised version of *zone size non-uniformity*. It is
 defined as:
@@ -6762,6 +6929,9 @@ defined as:
 
 Zone percentage
 ^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">P30P</p>
 
 This feature measures the fraction of the number of realised zones and
 the maximum number of potential zones. Highly uniform ROIs produce a low
@@ -6798,6 +6968,9 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 
 Grey level variance
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">BYLV</p>
 
 This feature estimates the variance in zone counts over the grey levels.
 Let :math:`p_{ij} = s_{ij}/N_s` be the joint probability estimate for
@@ -6837,6 +7010,9 @@ Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_z} i\,p_{ij}`.
 
 Zone size variance
 ^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">3NSA</p>
 
 This feature estimates the variance in zone counts over the different
 zone sizes. As before let :math:`p_{ij} = s_{ij}/N_s`. The feature is
@@ -6876,6 +7052,9 @@ Mean zone size is defined as
 
 Zone size entropy
 ^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GU8N</p>
 
 Let :math:`p_{ij} = s_{ij}/N_s`. *Zone size entropy* is then defined as:
 
@@ -7045,6 +7224,9 @@ section on GLRLM (:numref:`sect_glrlm`).
 
 Small distance emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">0GBI</p>
 
 This feature emphasises small distances. It is defined as:
 
@@ -7079,6 +7261,9 @@ This feature emphasises small distances. It is defined as:
 
 Large distance emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">MB4I</p>
 
 This feature emphasises large distances. It is defined as:
 
@@ -7114,6 +7299,9 @@ This feature emphasises large distances. It is defined as:
 
 Low grey level zone emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">S1RA</p>
 
 This feature is a grey level analogue to *small distance emphasis*.
 Instead of small zone distances, low grey levels are emphasised. The
@@ -7151,6 +7339,9 @@ feature is defined as:
 
 High grey level zone emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">K26C</p>
 
 The *high grey level zone emphasis* feature is a grey level analogue to
 *large distance emphasis*. The feature emphasises high grey levels, and
@@ -7187,6 +7378,9 @@ is defined as:
 
 Small distance low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">RUVG</p>
 
 This feature emphasises runs in the upper left quadrant of the GLDZM,
 where small zone distances and low grey levels are located. It is
@@ -7224,6 +7418,9 @@ defined as:
 
 Small distance high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">DKNJ</p>
 
 This feature emphasises runs in the lower left quadrant of the GLDZM,
 where small zone distances and high grey levels are located. *Small
@@ -7261,6 +7458,9 @@ distance high grey level emphasis* is defined as:
 
 Large distance low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">A7WM</p>
 
 This feature emphasises runs in the upper right quadrant of the GLDZM,
 where large zone distances and low grey levels are located. The feature
@@ -7297,6 +7497,9 @@ is defined as:
 
 Large distance high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">KLTH</p>
 
 This feature emphasises runs in the lower right quadrant of the GLDZM,
 where large zone distances and high grey levels are located. The *large
@@ -7334,6 +7537,9 @@ distance high grey level emphasis* feature is defined as:
 
 Grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VFT7</p>
 
 This feature measures the distribution of zone counts over the grey
 values. *Grey level non-uniformity* is low when zone counts are equally
@@ -7370,6 +7576,9 @@ distributed along grey levels. The feature is defined as:
 
 Normalised grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7HP3</p>
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -7405,6 +7614,9 @@ It is defined as:
 
 Zone distance non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">V294</p>
 
 *Zone distance non-uniformity* measures the distribution of zone counts
 over the different zone distances. *Zone distance non-uniformity* is low
@@ -7442,6 +7654,9 @@ defined as:
 
 Normalised zone distance non-uniformity 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IATH</p>
 
 This is a normalised version of the *zone distance non-uniformity*
 feature. It is defined as:
@@ -7478,6 +7693,9 @@ feature. It is defined as:
 
 Zone percentage
 ^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VIWW</p>
 
 This feature measures the fraction of the number of realised zones and
 the maximum number of potential zones. Highly uniform ROIs produce a low
@@ -7514,6 +7732,9 @@ the maximum number of potential zones. Highly uniform ROIs produce a low
 
 Grey level variance
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QK93</p>
 
 This feature estimates the variance in zone counts over the grey levels.
 Let :math:`p_{ij} = d_{ij}/N_s` be the joint probability estimate for
@@ -7554,6 +7775,9 @@ Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_d} i\,p_{ij}`.
 
 Zone distance variance
 ^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">7WT1</p>
 
 This feature estimates the variance in zone counts for the different
 zone distances. As before let :math:`p_{ij} = d_{ij}/N_s`. The feature
@@ -7593,6 +7817,9 @@ Mean zone size is defined as
 
 Zone distance entropy
 ^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GBDU</p>
 
 Again, let :math:`p_{ij} = d_{ij}/N_s`. Zone distance entropy is then
 defined as:
@@ -7660,7 +7887,7 @@ equal to :math:`i` and the voxel has a valid neighbourhood are both
 true; it is :math:`0` otherwise. :math:`N_v` is the number of voxels in
 the ROI intensity mask.
 
-A 2D example is shown in Table `[figNGTDM1] <#figNGTDM1>`__. A distance
+A 2D example is shown in :numref:`figNGTDM1`. A distance
 of :math:`\delta=1` is used in this example, leading to 8 neighbouring
 pixels. Entry :math:`s_1=0` because there are no valid pixels with grey
 level :math:`1`. Two pixels have grey level :math:`2`. The average value
@@ -7775,6 +8002,9 @@ reproducibility issues.
 
 Coarseness
 ^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">QCDE</p>
 
 Grey level differences in coarse textures are generally small due to
 large-scale patterns. Summing differences gives an indication of the
@@ -7819,6 +8049,9 @@ consistency.
 
 Contrast
 ^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">65HE</p>
 
 *Contrast* depends on the dynamic range of the grey levels as well as
 the spatial frequency of intensity changes
@@ -7862,6 +8095,9 @@ measure for intensity changes within the volume. If :math:`N_{g,p}=1`,
 
 Busyness
 ^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NQ30</p>
 
 Textures with large changes in grey levels between neighbouring voxels
 are said to be busy :cite:`Amadasun1989`. *Busyness* was
@@ -7907,6 +8143,9 @@ If :math:`N_{g,p}=1`, :math:`F_{\mathit{ngt.busyness}}=0`.
 
 Complexity
 ^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">HDEZ</p>
 
 Complex textures are non-uniform and rapid changes in grey levels are
 common :cite:`Amadasun1989`. Texture *complexity* is
@@ -7946,6 +8185,9 @@ likewise :math:`s_{i_{1}}=s_{i_{2}}` for :math:`i_{1}=i_{2}`.
 
 Strength
 ^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1X9X</p>
 
 :cite:`Amadasun1989` defined texture *strength* as:
 
@@ -8129,6 +8371,9 @@ except for the features originally defined by
 
 Low dependence emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SODN</p>
 
 This feature emphasises low neighbouring grey level dependence counts.
 :cite:`Sun1983` refer to this feature as *small number
@@ -8165,6 +8410,9 @@ emphasis*. It is defined as:
 
 High dependence emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">IMOQ</p>
 
 This feature emphasises high neighbouring grey level dependence counts.
 :cite:`Sun1983` refer to this feature as *large number
@@ -8201,6 +8449,9 @@ emphasis*. It is defined as:
 
 Low grey level count emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TL9H</p>
 
 This feature is a grey level analogue to *low dependence emphasis*.
 Instead of low neighbouring grey level dependence counts, low grey
@@ -8237,6 +8488,9 @@ levels are emphasised. The feature is defined as:
 
 High grey level count emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OAE7</p>
 
 The *high grey level count emphasis* feature is a grey level analogue to
 *high dependence emphasis*. The feature emphasises high grey levels, and
@@ -8274,6 +8528,9 @@ is defined as:
 
 Low dependence low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">EQ3F</p>
 
 This feature emphasises neighbouring grey level dependence counts in the
 upper left quadrant of the NGLDM, where low dependence counts and low
@@ -8311,6 +8568,9 @@ grey levels are located. It is defined as:
 
 Low dependence high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">JA6D</p>
 
 This feature emphasises neighbouring grey level dependence counts in the
 lower left quadrant of the NGLDM, where low dependence counts and high
@@ -8348,6 +8608,9 @@ grey levels are located. The feature is defined as:
 
 High dependence low grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">NBZI</p>
 
 This feature emphasises neighbouring grey level dependence counts in the
 upper right quadrant of the NGLDM, where high dependence counts and low
@@ -8385,6 +8648,9 @@ grey levels are located. The feature is defined as:
 
 High dependence high grey level emphasis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">9QMG</p>
 
 The *high dependence high grey level emphasis* feature emphasises
 neighbouring grey level dependence counts in the lower right quadrant of
@@ -8422,6 +8688,9 @@ located. The feature is defined as:
 
 Grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">FP8K</p>
 
 *Grey level non-uniformity* assesses the distribution of neighbouring
 grey level dependence counts over the grey values. The feature value is
@@ -8459,6 +8728,9 @@ The feature is defined as:
 
 Normalised grey level non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5SPA</p>
 
 This is a normalised version of the *grey level non-uniformity* feature.
 It is defined as:
@@ -8498,6 +8770,9 @@ feature :cite:`VanGriethuysen2017`.
 
 Dependence count non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">Z87G</p>
 
 This features assesses the distribution of neighbouring grey level
 dependence counts over the different dependence counts. The feature
@@ -8536,6 +8811,9 @@ non-uniformity*. It is defined as:
 
 Normalised dependence count non-uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">OKJI</p>
 
 This is a normalised version of the *dependence count non-uniformity*
 feature. It is defined as:
@@ -8572,6 +8850,9 @@ feature. It is defined as:
 
 Dependence count percentage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">6XV8</p>
 
 This feature measures the fraction of the number of realised
 neighbourhoods and the maximum number of potential neighbourhoods.
@@ -8611,6 +8892,9 @@ case under our definition. It is defined as:
 
 Grey level variance
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1PFV</p>
 
 This feature estimates the variance in dependence counts over the grey
 levels. Let :math:`p_{ij} = s_{ij}/N_s` be the joint probability
@@ -8651,6 +8935,9 @@ Here, :math:`\mu = \sum_{i=1}^{N_g} \sum_{j=1}^{N_n} i\,p_{ij}`.
 
 Dependence count variance
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">DNX2</p>
 
 This feature estimates the variance in dependence counts over the
 different possible dependence counts. As before let
@@ -8690,6 +8977,9 @@ Mean dependence count is defined as
 
 Dependence count entropy
 ^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">FCBV</p>
 
 This feature is referred to as *entropy* by
 :cite:`Sun1983`. Let :math:`p_{ij} = s_{ij}/N_s`.
@@ -8731,6 +9021,9 @@ dependence count :math:`s_{ij}` instead of count probability
 
 Dependence count energy
 ^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">CAS9</p>
 
 This feature is called *second moment* by :cite:`Sun1983`.
 Let :math:`p_{ij} = s_{ij}/N_s`. Then *dependence count energy* is
