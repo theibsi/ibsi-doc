@@ -1760,6 +1760,7 @@ distributions. If the *intensity variance*
 :math:`F_{\mathit{stat.var}} = 0`, :math:`F_{\mathit{stat.kurt}}=0`.
 
 ..  table:: Reference values for the *(excess) kurtosis* feature.
+
     +----------------+--------------------+------------+-----------------+
     | **data**       | **value**          | **tol.**   | **consensus**   |
     +================+====================+============+=================+
@@ -1821,6 +1822,7 @@ The *minimum intensity* is equal to the lowest intensity present in
 .. math:: F_{\mathit{stat.min}} = \text{min}(\mathbf{X}_{gl})
 
 ..  table:: Reference values for the *minimum* feature.
+
     +----------------+------------------+------------+-----------------+
     | **data**       | **value**        | **tol.**   | **consensus**   |
     +================+==================+============+=================+
