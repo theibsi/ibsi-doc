@@ -19,16 +19,17 @@ version was reported elsewhere
 :cite:`vallieres2017responsible`.
 
 
-.. table:: Guidelines for reporting on radiomic studies. Not all items may be applicable.
-   :widths: 50 20 15 70
+Patient
+-------
+
+.. table::
+   :widths: 30 20 10 85
 
    +-----------------+-----------------+-----------------+-----------------+
-   | **Topic**       |                 | **Item**        | **Description** |
-   +-----------------+-----------------+-----------------+-----------------+
-   | **Patient**     |                 |                 |                 |
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Region of       |                 | 1               | Describe the    |
-   | interest [11]_  |                 |                 | region of       |
+   | interest [1]_   |                 |                 | region of       |
    |                 |                 |                 | interest that   |
    |                 |                 |                 | is being        |
    |                 |                 |                 | imaged.         |
@@ -88,8 +89,8 @@ version was reported elsewhere
    |                 |                 |                 | competing       |
    |                 |                 |                 | substance       |
    |                 |                 |                 | levels were     |
-   |                 |                 |                 | controlled. [13 |
-   |                 |                 |                 | ]_              |
+   |                 |                 |                 | controlled.     |
+   |                 |                 |                 | [2]_            |
    +-----------------+-----------------+-----------------+-----------------+
    | Contrast agent  |                 | 4a              | Describe which  |
    |                 |                 |                 | contrast agent  |
@@ -121,10 +122,17 @@ version was reported elsewhere
    |                 |                 |                 | patients have   |
    |                 |                 |                 | comorbidities   |
    |                 |                 |                 | that affect     |
-   |                 |                 |                 | imaging. [14]_  |
+   |                 |                 |                 | imaging. [3]_   |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Acquisition** |                 |                 |                 |
-   | \  [15]_        |                 |                 |                 |
+
+Acquisition [4]_
+----------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Acquisition     |                 | 6               | Describe        |
    | protocol        |                 |                 | whether a       |
@@ -288,8 +296,15 @@ version was reported elsewhere
    |                 |                 |                 | MR magnetic     |
    |                 |                 |                 | field.          |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Reconstructi- |                 |                 |                 |
-   | on**\  [16]_    |                 |                 |                 |
+
+Reconstruction [5]_
+-------------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | In-plane        |                 | 28              | Describe the    |
    | resolution      |                 |                 | distance        |
@@ -307,7 +322,7 @@ version was reported elsewhere
    | Image slice     |                 | 30              | Describe the    |
    | spacing         |                 |                 | distance        |
    |                 |                 |                 | between image   |
-   |                 |                 |                 | slices. [17]_   |
+   |                 |                 |                 | slices. [6]_    |
    +-----------------+-----------------+-----------------+-----------------+
    | Convolution     | CT              | 31a             | Describe the    |
    | kernel          |                 |                 | convolution     |
@@ -396,8 +411,15 @@ version was reported elsewhere
    |                 |                 |                 | diffusion-weigh |
    |                 |                 |                 | ting.           |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | registration**  |                 |                 |                 |
+
+Image registration
+------------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Registration    |                 | 37              | Describe the    |
    | method          |                 |                 | method used to  |
@@ -405,10 +427,18 @@ version was reported elsewhere
    |                 |                 |                 | multi-modality  |
    |                 |                 |                 | imaging.        |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | processing -    |                 |                 |                 |
-   | data            |                 |                 |                 |
-   | conversion**    |                 |                 |                 |
+
+Image processing
+----------------
+
+Data conversion
+---------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | SUV             | PET             | 38              | Describe which  |
    | normalisation   |                 |                 | standardised    |
@@ -433,11 +463,15 @@ version was reported elsewhere
    |                 |                 |                 | generate e.g.   |
    |                 |                 |                 | perfusion maps. |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | processing -    |                 |                 |                 |
-   | post-acquisitio |                 |                 |                 |
-   | n               |                 |                 |                 |
-   | processing**    |                 |                 |                 |
+
+Post-acquisition processing
+---------------------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Anti-aliasing   |                 | 41              | Describe the    |
    |                 |                 |                 | method used to  |
@@ -467,8 +501,8 @@ version was reported elsewhere
    |                 |                 |                 | stripping.      |
    +-----------------+-----------------+-----------------+-----------------+
    | Non-uniformity  | MRI             | 45              | Describe the    |
-   | correction [18] |                 |                 | method and      |
-   | _               |                 |                 | settings used   |
+   | correction [7]_ |                 |                 | method and      |
+   |                 |                 |                 | settings used   |
    |                 |                 |                 | to perform      |
    |                 |                 |                 | non-uniformity  |
    |                 |                 |                 | correction.     |
@@ -492,8 +526,15 @@ version was reported elsewhere
    |                 |                 |                 | separately in   |
    |                 |                 |                 | this list.      |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Segmentation* |                 |                 |                 |
-   | *               |                 |                 |                 |
+
+Segmentation
+------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Segmentation    |                 | 48a             | Describe how    |
    | method          |                 |                 | regions of      |
@@ -537,10 +578,17 @@ version was reported elsewhere
    |                 |                 |                 | voxel-based     |
    |                 |                 |                 | mask.           |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | processing -    |                 |                 |                 |
-   | image           |                 |                 |                 |
-   | interpolation** |                 |                 |                 |
+
+.. _section-1:
+
+Image interpolation
+-------------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Interpolation   |                 | 50a             | Describe which  |
    | method          |                 |                 | interpolation   |
@@ -588,10 +636,15 @@ version was reported elsewhere
    |                 |                 |                 | after           |
    |                 |                 |                 | interpolation.  |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | processing -    |                 |                 |                 |
-   | ROI             |                 |                 |                 |
-   | interpolation** |                 |                 |                 |
+
+ROI interpolation
+-----------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Interpolation   |                 | 53              | Describe which  |
    | method          |                 |                 | interpolation   |
@@ -608,10 +661,15 @@ version was reported elsewhere
    |                 |                 |                 | interpolation   |
    |                 |                 |                 | are handled.    |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | processing -    |                 |                 |                 |
-   | re-segmentation |                 |                 |                 |
-   | **              |                 |                 |                 |
+
+Re-segmentation
+---------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Re-segmentation |                 | 55              | Describe which  |
    | methods         |                 |                 | methods and     |
@@ -621,13 +679,18 @@ version was reported elsewhere
    |                 |                 |                 | ROI intensity   |
    |                 |                 |                 | mask.           |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | processing** -  |                 |                 |                 |
-   | discretisation* |                 |                 |                 |
-   | *               |                 |                 |                 |
+
+Discretisation
+--------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Discretisation  |                 | 56a             | Describe the    |
-   | method [19]_    |                 |                 | method used to  |
+   | method [8]_     |                 |                 | method used to  |
    |                 |                 |                 | discretise      |
    |                 |                 |                 | image           |
    |                 |                 |                 | intensities.    |
@@ -645,25 +708,35 @@ version was reported elsewhere
    |                 |                 |                 | the first bin   |
    |                 |                 |                 | for FBS         |
    |                 |                 |                 | discretisation. |
-   |                 |                 |                 |  [20]_          |
+   |                 |                 |                 |  [9]_           |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | processing -    |                 |                 |                 |
-   | image           |                 |                 |                 |
-   | transformation* |                 |                 |                 |
-   | *               |                 |                 |                 |
+
+Image transformation
+--------------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Image           |                 | 57              | Describe the    |
-   | filter [21]_    |                 |                 | methods and     |
+   | filter [10]_    |                 |                 | methods and     |
    |                 |                 |                 | settings used   |
    |                 |                 |                 | to filter       |
    |                 |                 |                 | images, e.g.    |
    |                 |                 |                 | Laplacian-of-Ga |
    |                 |                 |                 | ussian.         |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | biomarker       |                 |                 |                 |
-   | computation**   |                 |                 |                 |
+
+Image biomarker computation
+---------------------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Biomarker set   |                 | 58              | Describe which  |
    |                 |                 |                 | set of image    |
@@ -680,8 +753,8 @@ version was reported elsewhere
    |                 |                 |                 | biomarkers is   |
    |                 |                 |                 | compliant with  |
    |                 |                 |                 | the IBSI        |
-   |                 |                 |                 | benchmarks. [22 |
-   |                 |                 |                 | ]_              |
+   |                 |                 |                 | benchmarks.     |
+   |                 |                 |                 | [11]_           |
    +-----------------+-----------------+-----------------+-----------------+
    | Robustness      |                 | 60              | Describe how    |
    |                 |                 |                 | robustness of   |
@@ -698,11 +771,17 @@ version was reported elsewhere
    |                 |                 |                 | image           |
    |                 |                 |                 | biomarkers.     |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Image         |                 |                 |                 |
-   | biomarker       |                 |                 |                 |
-   | computation -   |                 |                 |                 |
-   | texture         |                 |                 |                 |
-   | parameters**    |                 |                 |                 |
+
+.. _section-2:
+
+Image biomarker computation - texture parameters
+------------------------------------------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Texture matrix  |                 | 62              | Define how      |
    | aggregation     |                 |                 | texture-matrix  |
@@ -797,10 +876,15 @@ version was reported elsewhere
    |                 |                 |                 | the NGLDM, e.g. |
    |                 |                 |                 | 0.              |
    +-----------------+-----------------+-----------------+-----------------+
-   | **Machine       |                 |                 |                 |
-   | learning and    |                 |                 |                 |
-   | radiomics       |                 |                 |                 |
-   | analysis**      |                 |                 |                 |
+
+Machine learning and radiomics analysis
+---------------------------------------
+
+.. table::
+   :widths: 30 20 10 85
+
+   +-----------------+-----------------+-----------------+-----------------+
+   | **Topic**       | **Modality**    | **Item**        | **Description** |
    +-----------------+-----------------+-----------------+-----------------+
    | Diagnostic and  |                 | 72              | See the TRIPOD  |
    | prognostic      |                 |                 | guidelines for  |
@@ -842,6 +926,7 @@ version was reported elsewhere
    |                 |                 |                 | in the study    |
    |                 |                 |                 | may be found.   |
    +-----------------+-----------------+-----------------+-----------------+
+
 
 Feature nomenclature
 --------------------
@@ -1381,35 +1466,57 @@ may be varied. These are the following:
 |                       | function :math:`f`    |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. raw:: latex
 
-   \FloatBarrier
 
-In the above table, # represents numbers.
-
-.. raw:: latex
-
-   \clearpage
-
-.. _chap_benchmark sets:
-
-.. [11]
+.. [1]
    Also referred to as volume of interest.
 
-.. [13]
+.. [2]
+   An example is glucose present in the blood which competes with the
+   uptake of 18F-FDG tracer in tumour tissue. To reduce competition with
+   the tracer, patients are usually asked to fast for several hours and
+   a blood glucose measurement may be conducted prior to tracer
+   administration.
+
+.. [3]
    An example of a comorbidity that may affect image quality in 18F-FDG
+   PET scans are type I and type II diabetes melitus, as well as kidney
+   failure.
 
-.. [14]
+.. [4]
+   Many acquisition parameters may be extracted from DICOM header
+   meta-data, or calculated from them.
+
+.. [5]
+   Many reconstruction parameters may be extracted from DICOM header
+   meta-data.
+
+.. [6]
    Spacing between image slicing is commonly, but not necessarily, the
+   same as the slice thickness.
 
-.. [16]
+.. [7]
+   Also known as bias-field correction.
+
+.. [8]
    Discretisation may be performed separately to create intensity-volume
+   histograms. If this is indeed the case, this should be described as
+   well.
 
-.. [17]
+.. [9]
    This is typically set by range re-segmentation.
 
-.. [18]
+.. [10]
    The IBSI has not introduced image transformation into the
+   standardised image processing scheme, and is in the process of
+   benchmarking various common filters. This section may therefore be
+   expanded in the future.
 
-.. [19]
-   A software is compliant if and only if it is able to reproduce image
+.. [11]
+   A software is compliant if and only if it is able to reproduce the
+   image biomarker benchmarks for the digital phantom and for one or
+   more image processing configurations using the radiomics CT phantom.
+   Reviewers may demand that you provide the IBSI compliance spreadsheet
+   for your software.
+
+
