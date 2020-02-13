@@ -775,7 +775,7 @@ will better quantify the characteristics of the ROI when computed using
 different image processing parameters. For example, a lower number of
 grey levels in the discretisation process (e.g. 8 or 16) may allow to
 better characterize the sub-regions of the ROI using *grey level size
-zone matrix* () features, whereas *grey level co-occurence matrix* ()
+zone matrix* (GLSZM) features, whereas *grey level co-occurence matrix* (GLCM)
 features may be better modeled with a higher number of grey levels (e.g.
 32 or 64). Overall, these possible differences opens the door to the
 optimization of image processing parameters for each different feature

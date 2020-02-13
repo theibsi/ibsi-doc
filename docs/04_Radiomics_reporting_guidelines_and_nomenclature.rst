@@ -20,7 +20,7 @@ version was reported elsewhere
 
 
 Patient
--------
+^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -126,7 +126,7 @@ Patient
    +-----------------+-----------------+-----------------+-----------------+
 
 Acquisition [4]_
-----------------
+^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -298,7 +298,7 @@ Acquisition [4]_
    +-----------------+-----------------+-----------------+-----------------+
 
 Reconstruction [5]_
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -413,7 +413,7 @@ Reconstruction [5]_
    +-----------------+-----------------+-----------------+-----------------+
 
 Image registration
-------------------
+^^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -429,10 +429,10 @@ Image registration
    +-----------------+-----------------+-----------------+-----------------+
 
 Image processing
-----------------
+^^^^^^^^^^^^^^^^
 
 Data conversion
----------------
+^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -465,7 +465,7 @@ Data conversion
    +-----------------+-----------------+-----------------+-----------------+
 
 Post-acquisition processing
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -528,7 +528,7 @@ Post-acquisition processing
    +-----------------+-----------------+-----------------+-----------------+
 
 Segmentation
-------------
+^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -582,7 +582,7 @@ Segmentation
 .. _section-1:
 
 Image interpolation
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -638,7 +638,7 @@ Image interpolation
    +-----------------+-----------------+-----------------+-----------------+
 
 ROI interpolation
------------------
+^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -663,7 +663,7 @@ ROI interpolation
    +-----------------+-----------------+-----------------+-----------------+
 
 Re-segmentation
----------------
+^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -681,7 +681,7 @@ Re-segmentation
    +-----------------+-----------------+-----------------+-----------------+
 
 Discretisation
---------------
+^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -712,7 +712,7 @@ Discretisation
    +-----------------+-----------------+-----------------+-----------------+
 
 Image transformation
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -730,7 +730,7 @@ Image transformation
    +-----------------+-----------------+-----------------+-----------------+
 
 Image biomarker computation
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -775,7 +775,7 @@ Image biomarker computation
 .. _section-2:
 
 Image biomarker computation - texture parameters
-------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -878,7 +878,7 @@ Image biomarker computation - texture parameters
    +-----------------+-----------------+-----------------+-----------------+
 
 Machine learning and radiomics analysis
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. table::
    :widths: 30 20 10 85
@@ -982,19 +982,13 @@ must be reported as well (see section
 The sections below have tables with permanent IBSI identifiers for
 concepts that were defined within this document.
 
+
 Abbreviating feature families
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following is a list of the feature families in this document and
 their suggested abbreviations:
 
-.. raw:: latex
-
-   \centering
-
-.. raw:: latex
-
-   \small
 
 +-------------------------------------------+------------------+--------+
 | **feature family**                        | **abbreviation** |        |
@@ -1022,9 +1016,6 @@ their suggested abbreviations:
 | neighbouring grey level dependence matrix | NGLDM            | *REK0* |
 +-------------------------------------------+------------------+--------+
 
-.. raw:: latex
-
-   \FloatBarrier
 
 Abbreviating feature aggregation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1032,55 +1023,60 @@ Abbreviating feature aggregation
 The following is a list of feature families and the possible aggregation
 methods:
 
-.. raw:: latex
+.. table::
+   :widths: 30 80 10
 
-   \centering
+   +----+-------------------------------+--------+
+   |    | **morphology, LI**            |        |
+   +====+===============================+========+
+   | -, | features are 3D by definition | *DHQ4* |
+   +----+-------------------------------+--------+
 
-.. raw:: latex
 
-   \small
+.. table::
+   :widths: 30 80 10
 
-+-------------------------+------------------------------------------+--------+
-| –                       | features are 3D by definition            | *DHQ4* |
-+-------------------------+------------------------------------------+--------+
-| .. raw:: latex          |                                          |        |
-|                         |                                          |        |
-|    \noalign{\vskip 2mm} |                                          |        |
-+-------------------------+------------------------------------------+--------+
-| 2D                      | averaged over slices (rare)              | *3IDG* |
-+-------------------------+------------------------------------------+--------+
-| –, 3D                   | calculated over the volume (default)     | *DHQ4* |
-+-------------------------+------------------------------------------+--------+
-| .. raw:: latex          |                                          |        |
-|                         |                                          |        |
-|    \noalign{\vskip 2mm} |                                          |        |
-+-------------------------+------------------------------------------+--------+
-| 2D:avg                  | averaged over slices and directions      | *BTW3* |
-+-------------------------+------------------------------------------+--------+
-| 2D:mrg, 2D:smrg         | merged directions per slice and averaged | *SUJT* |
-+-------------------------+------------------------------------------+--------+
-| 2.5D:avg, 2.5D:dmrg     | merged per direction and averaged        | *JJUI* |
-+-------------------------+------------------------------------------+--------+
-| 2.5D:mrg, 2.5D:vmrg     | merged over all slices                   | *ZW7Z* |
-+-------------------------+------------------------------------------+--------+
-| 3D:avg                  | averaged over 3D directions              | *ITBB* |
-+-------------------------+------------------------------------------+--------+
-| 3D:mrg                  | merged 3D directions                     | *IAZD* |
-+-------------------------+------------------------------------------+--------+
-| .. raw:: latex          |                                          |        |
-|                         |                                          |        |
-|    \noalign{\vskip 2mm} |                                          |        |
-+-------------------------+------------------------------------------+--------+
-| 2D                      | averaged over slices                     | *8QNN* |
-+-------------------------+------------------------------------------+--------+
-| 2.5D                    | merged over all slices                   | *62GR* |
-+-------------------------+------------------------------------------+--------+
-| 3D                      | calculated from single 3D matrix         | *KOBO* |
-+-------------------------+------------------------------------------+--------+
+   +------+--------------------------------------+--------+
+   |      | **IS, IH, IVH**                      |        |
+   +======+======================================+========+
+   | 2D   | averaged over slices (rare)          | *3IDG* |
+   +------+--------------------------------------+--------+
+   | -,3D | calculated over the volume (default) | *DHQ4* |
+   +------+--------------------------------------+--------+
 
-.. raw:: latex
 
-   \FloatBarrier
+.. table::
+   :widths: 30 80 10
+
+   +---------------------+------------------------------------------+--------+
+   |                     | **GLCM, GLRLM**                          |        |
+   +=====================+==========================================+========+
+   | 2D:avg              | averaged over slices and directions      | *BTW3* |
+   +---------------------+------------------------------------------+--------+
+   | 2D:mrg, 2Dsmrg      | merged directions per slice and averaged | *SUJT* |
+   +---------------------+------------------------------------------+--------+
+   | 2.5D:avg, 2.5D:dmrg | merged per direction and averaged        | *JJUI* |
+   +---------------------+------------------------------------------+--------+
+   | 2.5D:mrg, 2.5D:vmrg | merged over all slices                   | *ZW7Z* |
+   +---------------------+------------------------------------------+--------+
+   | 3D:avg              | averaged over 3D directions              | *ITBB* |
+   +---------------------+------------------------------------------+--------+
+   | 3D:mrg              | merged 3D directions                     | *IAZD* |
+   +---------------------+------------------------------------------+--------+
+
+.. table::
+   :widths: 30 80 10
+
+   +------+----------------------------------+--------+
+   |      | **GLSZM, GLDZM, NGTDM, NGLDM**   |        |
+   +======+==================================+========+
+   | 2D   | averaged over slices             | *8QNN* |
+   +------+----------------------------------+--------+
+   | 2.5D | merged over all slices           | *62GR* |
+   +------+----------------------------------+--------+
+   | 3D   | calculated from single 3D matrix | *KOBO* |
+   +------+----------------------------------+--------+
+
 
 In the list above, ’–’ signifies an empty entry which does not need to
 be added to the subscript. The following examples highlight the
@@ -1108,13 +1104,6 @@ notation. Note that # is the interpolation spacing, including units, and
 *dim* is 2D for interpolation with the slice plane and 3D for volumetric
 interpolation.
 
-.. raw:: latex
-
-   \centering
-
-.. raw:: latex
-
-   \small
 
 +---------------------------------+------------------------------+
 | **interpolation method**        | **notation**                 |
@@ -1158,13 +1147,6 @@ Describing re-segmentation
 
 Re-segmentation can be noted as follows:
 
-.. raw:: latex
-
-   \centering
-
-.. raw:: latex
-
-   \small
 
 +----------------------------+----------------------+--------+
 | **re-segmentation method** | **notation**         |        |
