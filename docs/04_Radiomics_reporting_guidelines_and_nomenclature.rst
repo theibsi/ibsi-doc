@@ -1,3 +1,5 @@
+.. _chap_report_guidelines:
+
 Radiomics reporting guidelines and nomenclature
 ===============================================
 
