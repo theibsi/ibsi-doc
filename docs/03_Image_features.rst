@@ -656,17 +656,6 @@ volumes having an asphericity of 0. Asphericity is defined as:
 By definition
 :math:`F_{\mathit{morph.asphericity}} = \left(F_{\mathit{morph.comp.2}}\right)^{-1/3}-1`
 
-.. raw:: latex
-
-   \vspace{2mm}
-
-.. raw:: latex
-
-   \centering
-
-.. raw:: latex
-
-   \small
 
 .. table:: Reference values for the *asphericity* feature.
 
@@ -1497,17 +1486,6 @@ In case the maximum intensity is found in multiple voxels within the
 ROI, *local intensity peak* is calculated for each of these voxels, and
 the highest *local intensity peak* is chosen.
 
-.. raw:: latex
-
-   \vspace{2mm}
-
-.. raw:: latex
-
-   \centering
-
-.. raw:: latex
-
-   \small
 
 .. table:: Reference values for the *local intensity peak* feature.
 
@@ -1552,8 +1530,8 @@ construction and application of an appropriate spatial spherical mean
 convolution filter, due to the convolution theorem. In this case one
 would first construct an empty 3D filter that will fit a 1 cm\ :sup:`3`
 sphere. Within this context, the filter voxels may be represented by a
-point set, akin to :math:`\mathbf{X}_{c}` in section
-`3.1 <#sec_morph_feat>`__. Euclidean distances in world spacing between
+point set, akin to :math:`\mathbf{X}_{c}` in
+:ref:`sec_morph_feat`. Euclidean distances in world spacing between
 the central voxel of the filter and every remaining voxel are computed.
 If this distance lies within radius
 :math:`r=\left(\frac{3}{4 \pi}\right)^{1/3} \approx 0.62` the
@@ -1562,17 +1540,7 @@ Subsequent summation of the voxel labels yields :math:`N_s`, the number
 of voxels within the 1 cm\ :sup:`3` sphere. The filter then becomes a
 spherical mean filter by dividing the labels by :math:`N_s`.
 
-.. raw:: latex
 
-   \vspace{2mm}
-
-.. raw:: latex
-
-   \centering
-
-.. raw:: latex
-
-   \small
 
 .. table:: Reference values for the *global intensity peak* feature.
 
@@ -1638,17 +1606,6 @@ The *mean intensity* of :math:`\mathbf{X}_{gl}` is calculated as:
 
 .. math:: F_{\mathit{stat.mean}} = \frac{1}{N_v}\sum_{k=1}^{N_v} X_{gl,k}
 
-.. raw:: latex
-
-\vspace{2mm}
-
-.. raw:: latex
-
-   \centering
-
-.. raw:: latex
-
-   \small
 
 .. table:: Reference values for the *mean* feature.
 
@@ -1668,9 +1625,7 @@ The *mean intensity* of :math:`\mathbf{X}_{gl}` is calculated as:
    | config. E    | :math:`-`\ 22.6 | 4.1  | strong      |
    +--------------+-----------------+------+-------------+
 
-.. raw:: latex
 
-   \FloatBarrier
 
 .. _feat_stat_variance:
 
@@ -3227,10 +3182,10 @@ intensities that are absent in :math:`\mathbf{X}_{d,gl}`. For example
 intensities 2 and 5 are absent in the digital phantom (see
 :ref:`chap_benchmark_sets` Chapter), but are still evaluated to determine both
 the fractional volume and the intensity fraction. An example IVH for the
-digital phantom is shown in Table `[TableAUC-CVH] <#TableAUC-CVH>`__.
+digital phantom is shown in :numref:`TableAUC-CVH`.
 
-
-.. table:: Example intensity-volume histogram evaluated at discreteintensities :math:`i` of the digital phantom. The total range
+.. _TableAUC-CVH:
+.. table:: Example intensity-volume histogram evaluated at discrete intensities :math:`i` of the digital phantom. The total range
    :math:`\mathbf{G}=[1,6]`, with discretisation interval :math:`w=1`. Thus
    :math:`\gamma` is the intensity fraction and :math:`\nu` is the
    corresponding volume fraction that contains intensity :math:`i` or
@@ -9064,6 +9019,6 @@ through the use of count probability :math:`p_{ij}`.
 +----------------+--------------------+-------------+------------+-----------------+
 
 
-.. _chap_report_guidelines:
+
 
 
