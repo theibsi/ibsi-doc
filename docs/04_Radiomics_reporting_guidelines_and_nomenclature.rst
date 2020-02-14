@@ -708,8 +708,10 @@ Discretisation
    |                 |                 |                 | the first bin   |
    |                 |                 |                 | for FBS         |
    |                 |                 |                 | discretisation. |
-   |                 |                 |                 |  [9]_           |
+   |                 |                 |                 | [9]_            |
    +-----------------+-----------------+-----------------+-----------------+
+
+
 
 Image transformation
 ^^^^^^^^^^^^^^^^^^^^
@@ -1167,11 +1169,11 @@ application of the above notation:
    feature, based on an ROI in a CT image that was re-segmented within a
    [-200,150] HU range.
 
--  mean\ :sub:`IS, PET:SUV, RS:[3,\ :math:`\infty`)`: intensity
+-  mean\ :sub:`IS, PET:SUV, RS:[3,\ ∞)`: intensity
    statistical *mean* feature, based on an ROI in a PET image with SUV
    values, that was re-segmented to contain only SUV of 3 and above.
 
--  mean\ :sub:`IS, MRI:T1, RS:3\ :math:`\sigma``: intensity statistical
+-  mean\ :sub:`IS, MRI:T1, RS:3\ σ`: intensity statistical
    *mean* feature, based on an ROI in a T1-weighted MR image where the
    ROI was re-segmented by removing voxels with an intensity outside a
    :math:`\mu \pm 3\sigma` range.
