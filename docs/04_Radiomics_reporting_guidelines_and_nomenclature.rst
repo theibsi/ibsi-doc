@@ -944,8 +944,8 @@ and *ii*) grey level run length matrix entropy, discretised using a
 *fixed bin number* algorithm with 32 bins, extracted from a PET image.
 To refer to both as *entropy* would be ambiguous, whereas to add a full
 textual description would be cumbersome. In the nomenclature proposed
-below, the features would be called *entropy\ IH, CT, FBS:25HU* and
-*entropy\ RLM, PET, FBN:32*, respectively.
+below, the features would be called *entropy*\ :sub:`IH, CT, FBS:25HU` and
+*entropy*\ :sub:`RLM, PET, FBN:32`, respectively.
 
 Features are thus indicated by a feature name and a subscript. As the
 nomenclature is designed to both concise and complete, only details for
