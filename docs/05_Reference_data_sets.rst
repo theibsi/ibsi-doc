@@ -104,8 +104,7 @@ converted to (at least) 32-bit floating point and rounded to the nearest
 integer before further processing.
 
 We defined five image processing configurations to test different image
-processing methods, see Table
-`[list_summary_cases] <#list_summary_cases>`__. While most settings are
+processing methods, see :ref:`list_summary_cases`. While most settings are
 self-explanatory, there are several aspects that require some attention.
 Configurations are divided in 2D and 3D approaches. For the 2D
 configurations (A, B), image interpolation is conducted within the
@@ -283,6 +282,10 @@ taken into account when calculating image features:
 
 
 
+.. _list_summary_cases:
+
+Configurations
+^^^^^^^^^^^^^^
 
 Below are tables for the different configurations for image processing of the lung cancer CT Phantom. For details,
 refer to the corresponding sections in chapter :ref:`chap_img_proc`.
