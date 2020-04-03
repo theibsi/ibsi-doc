@@ -32,4 +32,5 @@ Commons Attribution 4.0 International License (CC-BY). The original work
 may be cited as: [redacted]
 
 Copyright information regarding the benchmark data sets may be found on
-GitHub: https://github.com/theibsi/data\_sets
+GitHub: https://github.com/theibsi/data_sets
+

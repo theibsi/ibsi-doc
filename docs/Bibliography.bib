@@ -1,3 +1,18 @@
+@article{Limkin2019jt,
+abstract = {Radiomics extracts high-throughput quantitative data from medical images to contribute to precision medicine. Radiomic shape features have been shown to correlate with patient outcomes. However, how radiomic shape features vary in function of tumor complexity and tumor volume, as well as with method used for meshing and voxel resampling, remains unknown. The aims of this study are to create tumor models with varying degrees of complexity, or spiculatedness, and evaluate their relationship with quantitatively extracted shape features. Twenty-eight tumor models were mathematically created using spherical harmonics with the spiculatedness degree d being increased by increments of 3 (d = 11 to d = 92). Models were 3D printed with identical bases of 5 cm, imaged with a CT scanner with two different slice thicknesses, and semi-automatically delineated. Resampling of the resulting masks on a 1 × 1 × 1 mm 3 grid was performed, and the voxel size of each model was then calculated to eliminate volume differences. Four MATLAB-based algorithms (isosurface (M1), isosurface filter (M2), isosurface remeshing (M3), and boundary (M4)) were used to extract nine 3D features (Volume, Surface area, Surface-to-volume, Compactness1, Compactness2, Compactness3, Spherical Disproportion, Sphericity and Fractional Concavity). To quantify the impact of 3D printing, acquisition, segmentation and meshing, features were computed directly from the stereolithography (STL) file format that was used for 3D printing, and compared to those computed. Changes in feature values between 0.6 and 2 mm slice acquisitions were also compared. Spearman's rank-order correlation coefficients were computed to determine the relationship of each shape feature with spiculatedness for each of the four meshing algorithms. Percent changes were calculated between shape features extracted from the original and resampled contoured images to evaluate the influence of spatial resampling. Finally, the percent change in shape features when the volume was changed from 25{\%} to 150{\%} of their original volume was quantified for three distinct tumor models and compared to the percent change observed when modifying the spiculatedness of the model from d = 11 to d = 92. Values extracted using isosurface remeshing method are the closest to the STL reference ones, with mean differences less than 10.8{\%} (Compactness2) for all features. Seven of the eight features had strong significant correlations with tumor model complexity irrespective of the meshing algorithm (r {\textgreater} 0.98, p {\textless} 10 -4 ), with fractional concavity having the lowest correlation coefficient (r = 0.83, p {\textless} 10 -4 , M2). Comparisons of features extracted from the 0.6 and 2 mm slice thicknesses showed that mean differences were from 2.1{\%} (Compactness3) to 12.7{\%} (Compactness2) for the isosurface remeshing method. Resampling on a 1 × 1 × 1 mm 3 grid resulted in between 1.3{\%} (Compactness3) to 9.5{\%} (Fractional Concavity) mean changes in feature values. Compactness2, Compactness3, Spherical Disproportion, Sphericity and Fractional Concavity were the features least affected by volume changes. Compactness1 had a 90.4{\%} change with volume, which was greater than the change between the least and most spiculated models. This is the first methodological study that directly demonstrates the relationship of tumor spiculatedness with radiomic shape features, that also produced 3D tumor models, which may serve as reference phantoms for future radiomic studies. Surface Area, Surface-to-volume, and Spherical Disproportion had direct relationships with spiculatedness while the three formulas for Compactness, Sphericity and Fractional Concavity had inverse relationships. The features Compactness2, Compactness3, Spherical Disproportion, and Sphericity should be prioritized as these have minimal variations with volume changes, slice thickness and resampling.},
+author = {Limkin, Elaine Johanna and Reuz{\'{e}}, Sylvain and Carr{\'{e}}, Alexandre and Sun, Roger and Schernberg, Antoine and Alexis, Anthony and Deutsch, Eric and Fert{\'{e}}, Charles and Robert, Charlotte},
+doi = {10.1038/s41598-019-40437-5},
+file = {:Users/whybrap/Dropbox/Research Papers/s41598-019-40437-5.pdf:pdf},
+issn = {2045-2322},
+journal = {Scientific Reports},
+month = {dec},
+number = {1},
+pages = {4329},
+title = {{The complexity of tumor shape, spiculatedness, correlates with tumor radiomic shape features}},
+url = {http://www.nature.com/articles/s41598-019-40437-5},
+volume = {9},
+year = {2019}
+}
 @article{Waterton2012,
 abstract = {Although many imaging biomarkers have been described for cancer research, few are sufficiently robust, reliable and well-characterised to be used as routine tools in clinical cancer research. In particular, biomarkers which show that investigational therapies have reduced tumour cell proliferation, or induced necrotic or apoptotic cell death are not commonly used to support decision-making in drug development, even though such pharmacodynamic effects are common goals of many classes of investigational drugs. Moreover we lack well-qualified biomarkers of propensity to metastasise. The qualification and technical validation of imaging biomarkers poses unique challenges not always encountered when validating biospecimen biomarkers. These include standardisation of acquisition and analysis, imaging-pathology correlation, cross-sectional clinical-biomarker correlations and correlation with outcome. Such work is ideally suited to precompetitive research and public-private partnerships, and this has been recognised within the Innovative Medicines Initiative (IMI), a Joint Undertaking between the European Union and the European Federation of Pharmaceutical Industries and Associations, which has initiated projects in the areas of drug safety, drug efficacy, knowledge management and training.},
 author = {Waterton, John C and Pylkkanen, Liisa},
@@ -5101,4 +5116,140 @@ month = {jun},
 title = {{Assessing robustness of radiomic features by image perturbation}},
 url = {http://arxiv.org/abs/1806.06719},
 year = {2018}
+}
+
+
+@MISC{Vallieres2015-hv,
+  title     = "Data from: A radiomics model from joint {FDG-PET} and {MRI}
+               texture features for the prediction of lung metastases in
+               soft-tissue sarcomas of the extremities",
+  author    = "Valli{\`e}res, Martin and Freeman, Carolyn R and Skamene, Sonia
+               R and El Naqa, Issam",
+  publisher = "The Cancer Imaging Archive",
+  year      =  2015,
+  doi       = "10.7937/K9/TCIA.2015.7GO2GSKS"
+}
+
+@article{Sollini2017N,
+abstract = {Imaging with positron emission tomography (PET)/computed tomography (CT) is crucial in the management of cancer because of its value in tumor staging, response assessment, restaging, prognosis and treatment responsiveness prediction. In the last years, interest has grown in texture analysis which provides an "in-vivo" lesion characterization, and predictive information in several malignances including NSCLC; however several drawbacks and limitations affect these studies, especially because of lack of standardization in features calculation, definitions and methodology reporting. The present paper provides a comprehensive review of literature describing the state-of-the-art of FDG-PET/CT texture analysis in NSCLC, suggesting a proposal for harmonization of methodology.},
+author = {Sollini, M. and Cozzi, L. and Antunovic, L. and Chiti, A. and Kirienko, M.},
+doi = {10.1038/s41598-017-00426-y},
+file = {:/g40fs1/home{\$}/ZwanenbAl/Eigene Dateien/Papers/Sollini2017 - PET radiomics in NSCLC - state of the art and a proposal for harmonization of methodology.pdf:pdf},
+isbn = {2045-2322 (Electronic)$\backslash$r2045-2322 (Linking)},
+issn = {2045-2322},
+journal = {Scientific reports},
+month = {mar},
+number = {1},
+pages = {358},
+pmid = {28336974},
+publisher = {Springer US},
+title = {{PET Radiomics in NSCLC: state of the art and a proposal for harmonization of methodology.}},
+url = {http://www.nature.com/articles/s41598-017-00426-y http://www.ncbi.nlm.nih.gov/pubmed/28336974 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC5428425},
+volume = {7},
+year = {2017}
+}
+
+
+@ARTICLE{Sanduleanu2018iu,
+  title    = "Tracking tumor biology with radiomics: A systematic review
+              utilizing a radiomics quality score",
+  author   = "Sanduleanu, Sebastian and Woodruff, Henry C and de Jong, Evelyn E
+              C and van Timmeren, Janna E and Jochems, Arthur and Dubois,
+              Ludwig and Lambin, Philippe",
+  abstract = "INTRODUCTION: In this review we describe recent developments in
+              the field of radiomics along with current relevant literature
+              linking it to tumor biology. We furthermore explore the
+              methodologic quality of these studies with our in-house radiomics
+              quality scoring (RQS) tool. Finally, we offer our vision on
+              necessary future steps for the development of stable radiomic
+              features and their links to tumor biology. METHODS: Two authors
+              (S.S. and H.W.) independently performed a thorough systematic
+              literature search and outcome extraction to identify relevant
+              studies published in MEDLINE/PubMed (National Center for
+              Biotechnology Information, NCBI), EMBASE (Ovid) and Web of
+              Science (WoS). Two authors (S.S, H.W) separately and two authors
+              (J.v.T and E.d.J) concordantly scored the articles for their
+              methodology and analyses according to the previously published
+              radiomics quality score (RQS). RESULTS: In summary, a total of
+              655 records were identified till 25-09-2017 based on the
+              previously specified search terms, from which n = 236 in
+              MEDLINE/PubMed, n = 215 in EMBASE and n = 204 from Web of
+              Science. After determining full article availability and reading
+              the available articles, a total of n = 41 studies were included
+              in the systematic review. The RQS scoring resulted in some
+              discrepancies between the reviewers, e.g. reviewer H.W scored 4
+              studies $\geq$50\%, reviewer S.S scored 3 studies $\geq$50\%
+              while reviewers J.v.T and E.d.J scored 1 study $\geq$50\%. Up to
+              nine studies were given a quality score of 0\%. The majority of
+              studies were scored below 50\%. DISCUSSION: In this study, we
+              performed a systematic literature search linking radiomics to
+              tumor biology. All but two studies (n = 39) revealed that
+              radiomic features derived from ultrasound, CT, PET and/or MR are
+              significantly associated with one or several specific tumor
+              biologic substrates, from somatic mutation status to tumor
+              histopathologic grading and metabolism. Considerable
+              inter-observer differences were found with regard to RQS scoring,
+              while important questions were raised concerning the
+              interpretability of the outcome of such scores.",
+  journal  = "Radiother. Oncol.",
+  volume   =  127,
+  number   =  3,
+  pages    = "349--360",
+  month    =  jun,
+  year     =  2018,
+  keywords = "Biology; Neoplasms; Radiomics",
+  language = "en"
+}
+
+
+@ARTICLE{Traverso2018yr,
+  title    = "Repeatability and Reproducibility of Radiomic Features: A
+              Systematic Review",
+  author   = "Traverso, Alberto and Wee, Leonard and Dekker, Andre and Gillies,
+              Robert",
+  abstract = "PURPOSE: An ever-growing number of predictive models used to
+              inform clinical decision making have included quantitative,
+              computer-extracted imaging biomarkers, or ``radiomic features.''
+              Broadly generalizable validity of radiomics-assisted models may
+              be impeded by concerns about reproducibility. We offer a
+              qualitative synthesis of 41 studies that specifically
+              investigated the repeatability and reproducibility of radiomic
+              features, derived from a systematic review of published
+              peer-reviewed literature. METHODS AND MATERIALS: The PubMed
+              electronic database was searched using combinations of the broad
+              Haynes and Ingui filters along with a set of text words specific
+              to cancer, radiomics (including texture analyses),
+              reproducibility, and repeatability. This review has been reported
+              in compliance with Preferred Reporting Items for Systematic
+              Reviews and Meta-Analyses guidelines. From each full-text
+              article, information was extracted regarding cancer type, class
+              of radiomic feature examined, reporting quality of key processing
+              steps, and statistical metric used to segregate stable features.
+              RESULTS: Among 624 unique records, 41 full-text articles were
+              subjected to review. The studies primarily addressed non-small
+              cell lung cancer and oropharyngeal cancer. Only 7 studies
+              addressed in detail every methodologic aspect related to image
+              acquisition, preprocessing, and feature extraction. The
+              repeatability and reproducibility of radiomic features are
+              sensitive at various degrees to processing details such as image
+              acquisition settings, image reconstruction algorithm, digital
+              image preprocessing, and software used to extract radiomic
+              features. First-order features were overall more reproducible
+              than shape metrics and textural features. Entropy was
+              consistently reported as one of the most stable first-order
+              features. There was no emergent consensus regarding either shape
+              metrics or textural features; however, coarseness and contrast
+              appeared among the least reproducible. CONCLUSIONS:
+              Investigations of feature repeatability and reproducibility are
+              currently limited to a small number of cancer types. Reporting
+              quality could be improved regarding details of feature extraction
+              software, digital image manipulation (preprocessing), and the
+              cutoff value used to distinguish stable features.",
+  journal  = "Int. J. Radiat. Oncol. Biol. Phys.",
+  volume   =  102,
+  number   =  4,
+  pages    = "1143--1158",
+  month    =  nov,
+  year     =  2018,
+  language = "en"
 }
