@@ -2471,6 +2471,9 @@ size* discretisation.
 
 10\ :sup:`th` discretised intensity percentile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">1PR8</p>
 
 :math:`P_{10}` is the 10\ :sup:`th` percentile of
 :math:`\mathbf{X}_{d}`.
@@ -2499,6 +2502,9 @@ size* discretisation.
 
 90\ :sup:`th` discretised intensity percentile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">GPMT</p>
 
 :math:`P_{90}` is the 90\ :sup:`th` percentile of :math:`\mathbf{X}_{d}`
 and is defined as :math:`F_{\mathit{ih.P90}}`.
@@ -2533,6 +2539,9 @@ this feature.
 
 Maximum discretised intensity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">3NCY</p>
 
 The *maximum discretised intensity* :cite:`Aerts2014` is
 equal to the highest discretised intensity present in
@@ -2566,6 +2575,9 @@ By definition, :math:`F_{\mathit{ih.max}}=N_g`.
 
 Intensity histogram mode
 ^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">AMMC</p>
 
 The *mode* of :math:`\mathbf{X}_{d}` :math:`F_{\mathit{ih.mode}}` is the
 most common discretised intensity present, i.e. the value :math:`i` for
@@ -2600,6 +2612,9 @@ selected.
 
 Discretised intensity interquartile range
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">WR0O</p>
 
 The *interquartile range* (IQR) of :math:`\mathbf{X}_{d}` is defined as:
 
@@ -2633,6 +2648,9 @@ The *interquartile range* (IQR) of :math:`\mathbf{X}_{d}` is defined as:
 
 Discretised intensity range
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">5Z3W</p>
 
 The *discretised intensity range* :cite:`Aerts2014` is
 defined as:
@@ -2666,6 +2684,9 @@ range* equals :math:`N_g` by definition.
 
 Intensity histogram mean absolute deviation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">D2ZX</p>
 
 The *mean absolute deviation* :cite:`Aerts2014` is a
 measure of dispersion from the mean of :math:`\mathbf{X}_{d}`:
@@ -2698,6 +2719,9 @@ Here :math:`\mu=F_{\mathit{ih.mean}}`.
 
 Intensity histogram robust mean absolute deviation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">WRZB</p>
 
 *Intensity histogram mean absolute deviation* may be affected by
 outliers. To increase robustness, the set of discretised intensities
@@ -2741,6 +2765,9 @@ The robust mean absolute deviation is then:
 
 Intensity histogram median absolute deviation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">4RNL</p>
 
 *Histogram median absolute deviation* is conceptually similar to
 *histogram mean absolute deviation*, but measures dispersion from the
@@ -2774,6 +2801,9 @@ Here, median :math:`M = F_{\mathit{ih.median}}`.
 
 Intensity histogram coefficient of variation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">CWYJ</p>
 
 The *coefficient of variation* measures the dispersion of the
 discretised intensity distribution. It is defined as:
@@ -2808,6 +2838,9 @@ the discretised intensity distribution, respectively.
 
 Intensity histogram quartile coefficient of dispersion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">SLWD</p>
 
 The *quartile coefficient of dispersion* is a more robust alternative to
 the *intensity histogram coefficient of variance*. It is defined as:
@@ -2841,6 +2874,9 @@ the *intensity histogram coefficient of variance*. It is defined as:
 
 Discretised intensity entropy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TLU2</p>
 
 *Entropy* :cite:`Aerts2014` is an information-theoretic
 concept that gives a metric for the information contained within
@@ -2877,6 +2913,9 @@ intensity distributions.
 
 Discretised intensity uniformity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">BJ5W</p>
 
 *Uniformity* :cite:`Aerts2014` of :math:`\mathbf{X}_{d}` is
 defined as:
@@ -2912,6 +2951,9 @@ Note that this feature is sometimes referred to as *energy*.
 
 Maximum histogram gradient
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">12CE</p>
 
 The histogram gradient :math:`\mathbf{H}'` of intensity histogram
 :math:`\mathbf{H}` can be calculated as:
@@ -2959,6 +3001,9 @@ and the bins of :math:`\mathbf{H}'`. The *maximum histogram gradient*
 
 Maximum histogram gradient intensity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">8E6O</p>
 
 The *maximum histogram gradient intensity*
 :cite:`VanDijk2016` :math:`F_{\mathit{ih.max.grad.gl}}` is
@@ -2990,6 +3035,9 @@ gradient*, i.e. the value :math:`i` in :math:`\mathbf{H}` for which
 
 Minimum histogram gradient
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">VQB3</p>
 
 The *minimum histogram gradient* :cite:`VanDijk2016` is:
 
@@ -3019,6 +3067,9 @@ The *minimum histogram gradient* :cite:`VanDijk2016` is:
 
 Minimum histogram gradient intensity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">RHQZ</p>
 
 The *minimum histogram gradient intensity*
 :cite:`VanDijk2016` :math:`F_{\mathit{ih.min.grad.gl}}` is
@@ -3824,6 +3875,9 @@ Joint entropy
 
 Difference average
 ^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">TF7R</p>
 
 The *difference average* :cite:`Unser1986` for the diagonal
 probabilities is defined as:
@@ -3883,6 +3937,9 @@ feature :cite:`VanGriethuysen2017`.
 
 Difference variance
 ^^^^^^^^^^^^^^^^^^^
+.. raw:: html
+
+  <p style="color:grey;font-style:italic;text-align:right">D3YU</p>
 
 The *difference variance* for the diagonal probabilities
 :cite:`Haralick1973` is defined as:
