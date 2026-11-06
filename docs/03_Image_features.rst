@@ -1149,12 +1149,41 @@ using an infinite series. We use the same semi-principal axes as for the
 
 .. math:: A_{\mathit{aee}}\left(a,b,c\right)=4\pi\,a\,b\sum_{\nu=0}^{\infty}\frac{\left(\alpha\,\beta\right)^{\nu}}{1-4\nu^2}P_{\nu}\left(\frac{\alpha^2+\beta^2}{2\alpha\beta}\right)
 
-Here :math:`\alpha=\sqrt{1-b^2/a^2}` and :math:`\beta=\sqrt{1-c^2/a^2}`
-are eccentricities of the ellipsoid and :math:`P_{\nu}` is the Legendre
+Here the semi-axes are ordered :math:`a\geq b\geq c>0`,
+:math:`\alpha=\sqrt{1-c^2/a^2}` and :math:`\beta=\sqrt{1-c^2/b^2}`
+are eccentricities of the ellipsoid, and :math:`P_{\nu}` is the Legendre
 polynomial function for degree :math:`\nu`. The Legendre polynomial
 series, though infinite, converges, and approximation may be stopped
 early when the incremental gains in precision become limited. By
 default, we stop the series after :math:`\nu=20`.
+
+When :math:`\alpha\beta=0`, the Legendre argument above is undefined,
+but the product :math:`q_{\nu}=(\alpha\beta)^{\nu}
+P_{\nu}((\alpha^2+\beta^2)/(2\alpha\beta))` has a finite limit.
+It can be evaluated, including in the spherical and prolate limits, using
+the recurrence:
+
+.. math::
+   q_0=1,\qquad q_1=\frac{\alpha^2+\beta^2}{2},\qquad
+   q_{\nu}=\frac{2\nu-1}{2\nu}(\alpha^2+\beta^2)q_{\nu-1}
+   -\frac{\nu-1}{\nu}\alpha^2\beta^2q_{\nu-2},\quad \nu\geq2.
+
+Substitute :math:`q_{\nu}` for the product in the surface-area series.
+For a sphere this gives :math:`A_{\mathit{aee}}=4\pi a^2`.
+
+.. note::
+
+   Earlier versions used :math:`\sqrt{1-b^2/a^2}` and
+   :math:`\sqrt{1-c^2/a^2}` as the eccentricities with this prefactor.
+   Those expressions do not give the ellipsoid surface area. For example,
+   for a prolate spheroid with semi-axes :math:`(3,2,2)` mm, the earlier
+   series converges to :math:`59.333824915` mm\ :sup:`2`, whereas the
+   analytic surface area is :math:`67.672872654` mm\ :sup:`2`.
+   The corrected series converges to the latter value, which can also be
+   checked using the exact elliptic-integral expression in
+   `NIST DLMF Section 19.33 <https://dlmf.nist.gov/19.33>`_. The published
+   consensus values below are retained as historical reference values and
+   require re-evaluation following this formula correction.
 
 The *area density (AEE)* is then approximated as:
 
